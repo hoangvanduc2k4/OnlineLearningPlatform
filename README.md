@@ -18,31 +18,30 @@ Dự án được thiết kế với vai trò người dùng rõ ràng, mang đ�
 
 \* 🎓 Mentee (Học viên) – Học tập thông minh, tiến bộ rõ ràng
 
-&nbsp; 
+ 
 
-&nbsp; -  🔐 Đăng ký / đăng nhập an toàn với ASP.NET Core Identity.
+  -  🔐 Đăng ký / đăng nhập an toàn với ASP.NET Core Identity.
 
-&nbsp; -  📚 Xem danh sách khóa học hấp dẫn, đăng ký (enroll) và mua khóa học chỉ trong vài cú click.
+  -  📚 Xem danh sách khóa học hấp dẫn, đăng ký (enroll) và mua khóa học chỉ trong vài cú click.
 
-&nbsp; -  📈 Theo dõi tiến độ học tập chi tiết, hoàn thành bài tập (assignments) và kiểm tra kiến thức.
-
-&nbsp; -  ⭐ Đánh giá \& review khóa học sau khi hoàn thành, chia sẻ trải nghiệm với cộng đồng.
-
-&nbsp; -  💳 Tích hợp thanh toán khóa học nhanh chóng và bảo mật.
-
-&nbsp; -  💬 Chat / nhắn tin thời gian thực với mentor qua SignalR.
+  -  📈 Theo dõi tiến độ học tập chi tiết, hoàn thành bài tập (assignments) và kiểm tra kiến thức.
+  
+  -  ⭐ Đánh giá \& review khóa học sau khi hoàn thành, chia sẻ trải nghiệm với cộng đồng.
+  
+  -  💳 Tích hợp thanh toán khóa học nhanh chóng và bảo mật.
+  
+  -  💬 Chat / nhắn tin thời gian thực với mentor qua SignalR.
 
 
 
 \* 👨‍🏫 Mentor (Giảng viên) – Giảng dạy dễ dàng, theo dõi hiệu quả
 
-&nbsp; 
 
-&nbsp; -  📝 Tạo mới, chỉnh sửa và quản lý khóa học một cách linh hoạt.
+  -  📝 Tạo mới, chỉnh sửa và quản lý khóa học một cách linh hoạt.
 
-&nbsp; -  📹 Upload tài liệu, video bài giảng, bài tập và lecture chất lượng cao.
+  -  📹 Upload tài liệu, video bài giảng, bài tập và lecture chất lượng cao.
 
-&nbsp; -  👥 Theo dõi tiến độ học tập của từng học viên trong khóa học, hỗ trợ kịp thời.
+  -  👥 Theo dõi tiến độ học tập của từng học viên trong khóa học, hỗ trợ kịp thời.
 
 
 
@@ -50,11 +49,11 @@ Dự án được thiết kế với vai trò người dùng rõ ràng, mang đ�
 
 
 
-&nbsp; -  👥 Quản lý người dùng (mentee, mentor): Thêm/sửa/xóa/khóa tài khoản dễ dàng.
+  -  👥 Quản lý người dùng (mentee, mentor): Thêm/sửa/xóa/khóa tài khoản dễ dàng.
 
-&nbsp; -  📂 Quản lý loại khóa học, cấp bậc và hệ thống Q\&A chuyên sâu.
+  -  📂 Quản lý loại khóa học, cấp bậc và hệ thống Q\&A chuyên sâu.
 
-&nbsp; -  ✅ Duyệt và kiểm soát nội dung khóa học từ mentor (approve/moderate) để đảm bảo chất lượng.
+  -  ✅ Duyệt và kiểm soát nội dung khóa học từ mentor (approve/moderate) để đảm bảo chất lượng.
 
 
 
@@ -132,11 +131,11 @@ Sẵn sàng khám phá? Hãy làm theo các bước dưới đây để khởi c
 
 
 
-&nbsp;  - Mở solution OnlineLearningPlatform.sln trong Visual Studio.
+   - Mở solution OnlineLearningPlatform.sln trong Visual Studio.
 
-&nbsp;  - Mở file appsettings.json và cập nhật chuỗi kết nối (ConnectionStrings) đến SQL Server của bạn.
-
-&nbsp;  - Build solution để kiểm tra không có lỗi biên dịch: Build > Build Solution (Ctrl+Shift+B).
+   - Mở file appsettings.json và cập nhật chuỗi kết nối (ConnectionStrings) đến SQL Server của bạn.
+  
+   - Build solution để kiểm tra không có lỗi biên dịch: Build > Build Solution (Ctrl+Shift+B).
 
 
 
@@ -146,31 +145,29 @@ Sẵn sàng khám phá? Hãy làm theo các bước dưới đây để khởi c
 
 \+ Nếu chưa cài dotnet-ef, hãy cài hoặc cập nhật:
 
-&nbsp; ```
-
-&nbsp;     dotnet tool install --global dotnet-ef
-
-&nbsp; ```
+ ```
+    dotnet tool install --global dotnet-ef
+ ```
 
 
 
 \+ hoặc
 
-&nbsp; ```
+ ```
 
-&nbsp;     dotnet tool update --global dotnet-ef
+     dotnet tool update --global dotnet-ef
 
-&nbsp; ```
+ ```
 
 
 
 \+ Áp dụng migration và cập nhật database:
 
-&nbsp; ```
+ ```
 
-&nbsp;     dotnet ef database update
+    dotnet ef database update
 
-&nbsp; ```
+ ```
 
 
 
@@ -186,7 +183,7 @@ Sẵn sàng khám phá? Hãy làm theo các bước dưới đây để khởi c
 
 ```
 
-&nbsp;   dotnet run --project OnlineLearning.Web
+   dotnet run --project OnlineLearning.Web
 
 ```
 
@@ -204,12 +201,12 @@ Sẵn sàng khám phá? Hãy làm theo các bước dưới đây để khởi c
 
 ```
 
-&nbsp;   git checkout main
+   git checkout main
 
-&nbsp;   git pull origin main
+   git pull origin main
 
-&nbsp;   git checkout -b feature/...  # Tạo branch mới
-
+   git checkout -b feature/...  # Tạo branch mới
+ 
 ```
 
 
@@ -220,11 +217,11 @@ Sẵn sàng khám phá? Hãy làm theo các bước dưới đây để khởi c
 
 ```
 
-&nbsp;   git add .
+      git add .
 
-&nbsp;   git commit -m "Mô tả commit rõ ràng và ngắn gọn"
+      git commit -m "Mô tả commit rõ ràng và ngắn gọn"
 
-&nbsp;   git push origin feature/...
+      git push origin feature/...
 
 ```
 
@@ -336,21 +333,20 @@ ICourseRepository và CourseRepository: Extend base cho logic cụ thể như Ge
 
 ```
 
-&nbsp;   public static class DIConfig
+   public static class DIConfig
 
-&nbsp;       {
+       {
 
-&nbsp;           public static void RegisterServices(IServiceCollection services)
+          public static void RegisterServices(IServiceCollection services)
 
-&nbsp;           {
+         {
 
-&nbsp;               services.AddScoped<ICourseRepository, CourseRepository>();
+              services.AddScoped<ICourseRepository, CourseRepository>();
 
-&nbsp;               services.AddScoped<ICourseService, CourseService>();
+               services.AddScoped<ICourseService, CourseService>();
 
-&nbsp;           }
-
-&nbsp;       }
+           }
+       }
 
 ```
 
