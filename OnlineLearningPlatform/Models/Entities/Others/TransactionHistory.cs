@@ -1,8 +1,9 @@
-﻿using OnlineLearningPlatform.Models.Entities.CoursePart;
-using OnlineLearningPlatform.Models.Entities.UserPart;
+﻿using OnlineLearningPlatform.Models.Entities;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using OnlineLearningPlatform.Enums;
+using OnlineLearningPlatform.Models.Entities.UserPart;
+using OnlineLearningPlatform.Models.Entities.CoursePart;
 
 namespace OnlineLearningPlatform.Models.Entities.Others
 {
@@ -20,7 +21,7 @@ namespace OnlineLearningPlatform.Models.Entities.Others
         public decimal Amount { get; set; }
 
         [Required]
-        public TransactionStatus Status { get; set; }  // ✅ dùng enum của bạn
+        public TransactionStatus Status { get; set; } 
 
         [StringLength(255)]
         public string? Description { get; set; }

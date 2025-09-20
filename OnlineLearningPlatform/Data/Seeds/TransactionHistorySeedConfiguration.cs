@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using OnlineLearningPlatform.Models.Entities.Others;
 using OnlineLearningPlatform.Enums;
+using OnlineLearningPlatform.Models.Entities.Others;
 
 namespace OnlineLearningPlatform.Data.Seeds
 {

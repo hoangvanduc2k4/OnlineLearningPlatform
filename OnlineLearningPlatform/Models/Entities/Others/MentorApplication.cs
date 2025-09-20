@@ -1,7 +1,7 @@
-﻿using OnlineLearningPlatform.Models.Entities.UserPart;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using OnlineLearningPlatform.Enums;
+using OnlineLearningPlatform.Models.Entities.UserPart;
 
 namespace OnlineLearningPlatform.Models.Entities.Others
 {

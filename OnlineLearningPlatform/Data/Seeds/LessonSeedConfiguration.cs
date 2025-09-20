@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
 using OnlineLearningPlatform.Enums;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 

@@ -52,11 +52,30 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account.Manage
         /// </summary>
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
+            [StringLength(2000)]
+            public string? AvatarUrl { get; set; }
+
+            [Display(Name = "Avatar")]
+            public IFormFile Avatar { get; set; }
+
+            [Required]
+            [EmailAddress]
+            [Display(Name = "Email")]
+            public string Email { get; set; }
+
+            [StringLength(255)]
+            [Display(Name = "Full name")]
+            public string? FullName { get; set; }
+
+            [DataType(DataType.Date)]
+            [Display(Name = "Date of birth")]
+            public DateOnly? Dob { get; set; }
+
+            [Display(Name = "Gender")]
+            public bool? Gender { get; set; }
+
             [Phone]
+            [StringLength(10)]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
         }
@@ -70,7 +89,13 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                FullName = user.FullName,
+                Dob = user.Dob,
+                PhoneNumber = user.PhoneNumber,
+                Gender = user.Gender,
+                AvatarUrl = user.AvatarUrl,
+                Email = user.Email
+                
             };
         }
 
@@ -110,6 +135,28 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
+
+            if (Input.PhoneNumber != user.PhoneNumber)
+            {
+                user.PhoneNumber = Input.PhoneNumber;
+            }
+            if(Input.Gender != Input.Gender)
+            {
+                user.Gender = Input.Gender;
+            }
+            if(Input.FullName != user.FullName)
+            {
+                user.FullName = Input.FullName; 
+            }
+            if(Input.Dob != user.Dob)
+            {
+                user.Dob = Input.Dob;
+            }
+            if(Input.AvatarUrl != user.AvatarUrl)
+            {
+                user.AvatarUrl = Input.AvatarUrl;
+            }
+
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";

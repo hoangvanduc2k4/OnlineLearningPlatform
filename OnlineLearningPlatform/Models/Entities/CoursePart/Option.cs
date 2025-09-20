@@ -1,5 +1,5 @@
-﻿using OnlineLearningPlatform.Enums;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using OnlineLearningPlatform.Enums;
 
 namespace OnlineLearningPlatform.Models.Entities.CoursePart
 {

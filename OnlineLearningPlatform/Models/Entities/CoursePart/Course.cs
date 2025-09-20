@@ -1,7 +1,6 @@
 ﻿using OnlineLearningPlatform.Models.Entities.UserPart;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Reflection;
 using OnlineLearningPlatform.Enums;
 
 namespace OnlineLearningPlatform.Models.Entities.CoursePart

@@ -71,34 +71,39 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
+            [StringLength(255)]
+            [Display(Name = "Full name")]
+            public string? FullName { get; set; }
+
+            [DataType(DataType.Date)]
+            [Display(Name = "Date of birth")]
+            public DateOnly? Dob { get; set; }    
+
+            [Phone]
+            [StringLength(10)]
+            [Display(Name = "Phone")]
+            public string? Phone { get; set; }
+
+            [Display(Name = "Gender")]
+            public bool? Gender { get; set; }   
+
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
         }
+
 
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -114,6 +119,17 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
+
+
+                user.Phone = Input.Phone;
+                user.PhoneNumber = Input.Phone;
+                user.FullName = Input.FullName; 
+                user.Email = Input.Email;
+                user.Gender = Input.Gender;
+                user.Dob = Input.Dob.Value;
+                user.AvatarUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdgRMycjS5jM0a4KPiVyWJn2OwoJQmUd9-Yg&s";
+
+
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);

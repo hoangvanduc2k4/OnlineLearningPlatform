@@ -1,5 +1,5 @@
 ﻿    using Microsoft.CodeAnalysis.Options;
-    using OnlineLearningPlatform.Enums;
+using OnlineLearningPlatform.Enums;
     using System.ComponentModel.DataAnnotations;
 
     namespace OnlineLearningPlatform.Models.Entities.CoursePart

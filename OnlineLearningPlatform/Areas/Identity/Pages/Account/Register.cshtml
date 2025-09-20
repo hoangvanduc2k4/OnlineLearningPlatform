@@ -4,61 +4,121 @@
     ViewData["Title"] = "Register";
 }
 
-<h1>@ViewData["Title"]</h1>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow-sm">
+                <div class="row g-0">
+                    <!-- Left: Register form -->
+                    <div class="col-md-6">
+                        <div class="card-body p-5">
+                            <h2 class="card-title mb-3">Create your account</h2>
+                            <p class="text-muted mb-4">Join KnowHub to access courses, track progress and learn new skills.</p>
 
-<div class="row">
-    <div class="col-md-4">
-        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
-            <hr />
-            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                <label asp-for="Input.Email">Email</label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.Password">Password</label>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-        </form>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to register.</h3>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins!)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
+                            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                                <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                                    <label asp-for="Input.Email">Email</label>
+                                    <span asp-validation-for="Input.Email" class="text-danger small"></span>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Input.FullName" class="form-control" placeholder="Full name" />
+                                    <label asp-for="Input.FullName">Full name</label>
+                                    <span asp-validation-for="Input.FullName" class="text-danger small"></span>
+                                </div>
+
+                                <div class="row g-2">
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <input asp-for="Input.Dob" type="date" class="form-control" placeholder="Date of birth" />
+                                            <label asp-for="Input.Dob">Date of birth</label>
+                                            <span asp-validation-for="Input.Dob" class="text-danger small"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <input asp-for="Input.Phone" class="form-control" placeholder="Phone number" />
+                                            <label asp-for="Input.Phone">Phone</label>
+                                            <span asp-validation-for="Input.Phone" class="text-danger small"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label d-block">Gender</label>
+                                    <select asp-for="Input.Gender" class="form-select" aria-label="Gender select">
+                                        <option value="">Prefer not to say</option>
+                                        <option value="true">Male</option>
+                                        <option value="false">Female</option>
+                                    </select>
+                                    <span asp-validation-for="Input.Gender" class="text-danger small"></span>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Password" />
+                                    <label asp-for="Input.Password">Password</label>
+                                    <span asp-validation-for="Input.Password" class="text-danger small"></span>
+                                </div>
+
+                                <div class="form-floating mb-3">
+                                    <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Confirm Password" />
+                                    <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger small"></span>
+                                </div>
+
+                                <div class="d-grid mb-3">
+                                    <button id="registerSubmit" type="submit" class="btn btn-primary btn-lg">Register</button>
+                                </div>
+
+                                <div class="text-center">
+                                    <p class="small mb-0">Already have an account? <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Sign in</a></p>
+                                </div>
+                            </form>
+
                         </div>
-                    </form>
-                }
-            }
-        </section>
+                    </div>
+
+                    <!-- Right: External register / Promo -->
+                    <div class="col-md-6 bg-light d-flex flex-column justify-content-center">
+                        <div class="card-body p-5">
+                            <h4 class="mb-3">Register with</h4>
+                            <hr />
+                            @if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                            {
+                                <div class="small text-muted">
+                                    <p>There are no external authentication services configured.</p>
+                                    <p class="mb-0">See <a href="https://go.microsoft.com/fwlink/?LinkID=532715" target="_blank" rel="noopener">this article</a> about configuring external providers.</p>
+                                </div>
+                            }
+                            else
+                            {
+                                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="d-grid gap-2">
+                                    @foreach (var provider in Model.ExternalLogins!)
+                                    {
+                                        <button type="submit" class="btn btn-outline-primary btn-block" name="provider" value="@provider.Name" title="Register using your @provider.DisplayName account">
+                                            <i class="bi bi-box-arrow-in-right me-2"></i> Continue with @provider.DisplayName
+                                        </button>
+                                    }
+                                </form>
+                            }
+
+                            <div class="mt-4">
+                                <h6 class="mb-2">Why register?</h6>
+                                <ul class="small mb-0">
+                                    <li>Enroll in courses and save progress.</li>
+                                    <li>Get personalized recommendations.</li>
+                                    <li>Participate in discussions and Q&A.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end right -->
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

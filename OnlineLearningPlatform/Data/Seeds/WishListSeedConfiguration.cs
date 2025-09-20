@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using OnlineLearningPlatform.Models.Entities.CoursePart;
 using System;
 using System.Collections.Generic;
-using OnlineLearningPlatform.Models.Entities.CoursePart; // đúng namespace
 
 namespace OnlineLearningPlatform.Data.Seeds
 {
