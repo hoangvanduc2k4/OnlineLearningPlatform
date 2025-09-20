@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OnlineLearningPlarform.Data;
+using OnlineLearningPlatform.Data;
 
-namespace OnlineLearningPlarform.Configurations
+namespace OnlineLearningPlatform.Configurations
 {
     public static class DatabaseConfig
     {

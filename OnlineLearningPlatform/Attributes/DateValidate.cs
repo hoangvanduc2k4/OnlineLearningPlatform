@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace OnlineLearningPlarform.Attributes
+namespace OnlineLearningPlatform.Attributes
 {
     public class DateValidate : ValidationAttribute
     {

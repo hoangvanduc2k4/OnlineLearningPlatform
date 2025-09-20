@@ -1,9 +1,9 @@
-﻿using OnlineLearningPlarform.Enums;
-using OnlineLearningPlarform.Models.Entities.CoursePart;
-using OnlineLearningPlarform.Models.Entities.UserPart;
+﻿using OnlineLearningPlatform.Enums;
+using OnlineLearningPlatform.Models.Entities.CoursePart;
+using OnlineLearningPlatform.Models.Entities.UserPart;
 using System.ComponentModel.DataAnnotations;
 
-namespace OnlineLearningPlarform.Models.Entities.Others
+namespace OnlineLearningPlatform.Models.Entities.Others
 {
     public class AdminReviewCourse
     {

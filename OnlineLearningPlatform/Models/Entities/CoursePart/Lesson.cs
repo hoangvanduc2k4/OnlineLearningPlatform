@@ -1,7 +1,7 @@
-﻿using OnlineLearningPlarform.Enums;
+﻿using OnlineLearningPlatform.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace OnlineLearningPlarform.Models.Entities.CoursePart
+namespace OnlineLearningPlatform.Models.Entities.CoursePart
 {
     public class Lesson : BaseEntity
     {

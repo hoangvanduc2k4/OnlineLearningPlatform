@@ -1,4 +1,4 @@
-﻿namespace OnlineLearningPlarform.Repositories.Interfaces
+﻿namespace OnlineLearningPlatform.Repositories.Interfaces
 {
     public interface IBaseRepository<T> where T : class
     {

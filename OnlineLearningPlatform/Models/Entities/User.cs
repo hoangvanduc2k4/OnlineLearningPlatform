@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using OnlineLearningPlarform.Models.Entities.CoursePart;
-using OnlineLearningPlarform.Models.Entities.Others;
+using OnlineLearningPlatform.Models.Entities.CoursePart;
+using OnlineLearningPlatform.Models.Entities.Others;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace OnlineLearningPlarform.Models.Entities.UserPart
+namespace OnlineLearningPlatform.Models.Entities.UserPart
 {
     [Table("User")]
     public class User : IdentityUser

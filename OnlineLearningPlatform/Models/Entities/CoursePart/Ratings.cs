@@ -1,7 +1,7 @@
-﻿using OnlineLearningPlarform.Models.Entities.UserPart;
+﻿using OnlineLearningPlatform.Models.Entities.UserPart;
 using System.ComponentModel.DataAnnotations;
 
-namespace OnlineLearningPlarform.Models.Entities.CoursePart
+namespace OnlineLearningPlatform.Models.Entities.CoursePart
 {
     public class Ratings : BaseEntity
     {

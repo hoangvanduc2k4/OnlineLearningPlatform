@@ -1,9 +1,9 @@
-﻿using OnlineLearningPlarform.Models.Entities.UserPart;
+﻿using OnlineLearningPlatform.Models.Entities.UserPart;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using OnlineLearningPlarform.Enums;
+using OnlineLearningPlatform.Enums;
 
-namespace OnlineLearningPlarform.Models.Entities.Others
+namespace OnlineLearningPlatform.Models.Entities.Others
 {
     [Table("MentorApplications")]
     public class MentorApplication

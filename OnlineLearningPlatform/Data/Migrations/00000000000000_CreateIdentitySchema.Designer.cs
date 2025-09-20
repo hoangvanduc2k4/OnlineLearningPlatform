@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using OnlineLearningPlarform.Data;
+using OnlineLearningPlatform.Data;
 
 namespace OnlineLearningPlatform.Data.Migrations
 {

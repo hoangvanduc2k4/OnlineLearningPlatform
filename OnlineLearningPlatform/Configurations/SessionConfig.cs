@@ -1,4 +1,4 @@
-﻿namespace OnlineLearningPlarform.Configurations
+﻿namespace OnlineLearningPlatform.Configurations
 {
     public static class SessionConfig
     {

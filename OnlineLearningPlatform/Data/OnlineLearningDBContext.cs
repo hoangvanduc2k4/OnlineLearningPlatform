@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using OnlineLearningPlarform.Models.Entities;
-using OnlineLearningPlarform.Models.Entities.Others;
-using OnlineLearningPlarform.Models.Entities.UserPart;
-using OnlineLearningPlarform.Models.Entities.CoursePart; // Assuming this namespace for course-related entities
-
-namespace OnlineLearningPlarform.Data
+using OnlineLearningPlatform.Models.Entities;
+using OnlineLearningPlatform.Models.Entities.CoursePart; // Assuming this namespace for course-related entities
+using OnlineLearningPlatform.Models.Entities.Others;
+using OnlineLearningPlatform.Models.Entities.UserPart;
+using OnlineLearningPlatform.Data.Seeds;
+namespace OnlineLearningPlatform.Data
 {
     public class OnlineLearningDBContext : IdentityDbContext<User>
     {
@@ -269,6 +269,46 @@ namespace OnlineLearningPlarform.Data
                  .HasForeignKey(t => t.CourseId)
                  .OnDelete(DeleteBehavior.SetNull);
             });
+
+
+            builder.ApplyConfiguration(new FAQSeedConfiguration());
+            builder.ApplyConfiguration(new MessageSeedConfiguration());
+            builder.ApplyConfiguration(new MentorApplicationSeedConfiguration());
+            builder.ApplyConfiguration(new QuizResultSeedConfiguration());
+            builder.ApplyConfiguration(new AnswerQuizSeedConfiguration());
+            builder.ApplyConfiguration(new OptionSeedConfiguration());
+            builder.ApplyConfiguration(new QuestionSeedConfiguration());
+            builder.ApplyConfiguration(new QuizSeedConfiguration());
+            builder.ApplyConfiguration(new LessonSeedConfiguration());
+            builder.ApplyConfiguration(new ModuleSeedConfiguration());
+            builder.ApplyConfiguration(new AdminReviewCourseSeedConfiguration());
+            builder.ApplyConfiguration(new TransactionHistorySeedConfiguration());
+            builder.ApplyConfiguration(new RatingSeedConfiguration());
+            builder.ApplyConfiguration(new CategorySeedConfiguration());
+            builder.ApplyConfiguration(new CourseCategorySeedConfiguration());
+            builder.ApplyConfiguration(new CourseEnrollmentSeedConfiguration());
+            builder.ApplyConfiguration(new CourseImageUrlSeedConfiguration());
+            builder.ApplyConfiguration(new CourseSeedConfiguration());
+            builder.ApplyConfiguration(new LevelSeedConfiguration());
+            builder.ApplyConfiguration(new RoleSeedConfiguration());
+            builder.ApplyConfiguration(new UserSeedConfiguration());
+            builder.ApplyConfiguration(new WishListSeedConfiguration());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

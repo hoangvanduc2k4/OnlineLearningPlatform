@@ -1,4 +1,4 @@
-﻿namespace OnlineLearningPlarform.Models.Entities
+﻿namespace OnlineLearningPlatform.Models.Entities
 {
     public class BaseEntity
     {

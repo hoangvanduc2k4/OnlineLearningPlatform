@@ -1,8 +1,8 @@
-﻿using OnlineLearningPlarform.Enums;
-using OnlineLearningPlarform.Models.Entities.UserPart;
+﻿using OnlineLearningPlatform.Enums;
+using OnlineLearningPlatform.Models.Entities.UserPart;
 using System.ComponentModel.DataAnnotations;
 
-namespace OnlineLearningPlarform.Models.Entities.CoursePart
+namespace OnlineLearningPlatform.Models.Entities.CoursePart
 {
     public class AnswerQuiz : BaseEntity
     {

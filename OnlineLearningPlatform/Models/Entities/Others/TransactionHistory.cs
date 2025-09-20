@@ -1,10 +1,10 @@
-﻿using OnlineLearningPlarform.Models.Entities.CoursePart;
-using OnlineLearningPlarform.Models.Entities.UserPart;
+﻿using OnlineLearningPlatform.Models.Entities.CoursePart;
+using OnlineLearningPlatform.Models.Entities.UserPart;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Transactions;
+using OnlineLearningPlatform.Enums;
 
-namespace OnlineLearningPlarform.Models.Entities.Others
+namespace OnlineLearningPlatform.Models.Entities.Others
 {
     public class TransactionHistory : BaseEntity
     {
@@ -20,13 +20,12 @@ namespace OnlineLearningPlarform.Models.Entities.Others
         public decimal Amount { get; set; }
 
         [Required]
-        public TransactionStatus Status { get; set; }
+        public TransactionStatus Status { get; set; }  // ✅ dùng enum của bạn
 
         [StringLength(255)]
         public string? Description { get; set; }
 
         public virtual User User { get; set; } = null!;
         public virtual Course? Course { get; set; }
-
     }
 }

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using OnlineLearningPlarform.Data;
-using OnlineLearningPlarform.Models.Entities.UserPart;
+using OnlineLearningPlatform.Data;
+using OnlineLearningPlatform.Models.Entities.UserPart;
 
-namespace OnlineLearningPlarform.Configurations
+namespace OnlineLearningPlatform.Configurations
 {
     public static class AuthConfig
     {

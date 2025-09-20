@@ -1,7 +1,7 @@
-﻿using OnlineLearningPlarform.Enums;
+﻿using OnlineLearningPlatform.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace OnlineLearningPlarform.Models.Entities.Others
+namespace OnlineLearningPlatform.Models.Entities.Others
 {
     public class FAQ
     {

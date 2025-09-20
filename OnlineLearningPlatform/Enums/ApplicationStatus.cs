@@ -1,4 +1,4 @@
-﻿namespace OnlineLearningPlarform.Enums
+﻿namespace OnlineLearningPlatform.Enums
 {
     public enum ApplicationStatus
     {

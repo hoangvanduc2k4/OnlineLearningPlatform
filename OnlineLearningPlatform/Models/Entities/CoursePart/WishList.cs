@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using OnlineLearningPlarform.Models.Entities.UserPart;
+using OnlineLearningPlatform.Models.Entities.UserPart;
 
-namespace OnlineLearningPlarform.Models.Entities.CoursePart
+namespace OnlineLearningPlatform.Models.Entities.CoursePart
 {
     public class WishList
     {

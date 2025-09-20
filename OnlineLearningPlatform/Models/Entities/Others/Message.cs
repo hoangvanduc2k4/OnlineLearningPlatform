@@ -1,7 +1,7 @@
-﻿using OnlineLearningPlarform.Models.Entities.UserPart;
+﻿using OnlineLearningPlatform.Models.Entities.UserPart;
 using System.ComponentModel.DataAnnotations;
 
-namespace OnlineLearningPlarform.Models.Entities.Others
+namespace OnlineLearningPlatform.Models.Entities.Others
 {
     public class Message
     {

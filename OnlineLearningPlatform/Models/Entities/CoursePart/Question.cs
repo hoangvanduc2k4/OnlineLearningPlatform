@@ -1,27 +1,27 @@
-﻿using Microsoft.CodeAnalysis.Options;
-using OnlineLearningPlarform.Enums;
-using System.ComponentModel.DataAnnotations;
+﻿    using Microsoft.CodeAnalysis.Options;
+    using OnlineLearningPlatform.Enums;
+    using System.ComponentModel.DataAnnotations;
 
-namespace OnlineLearningPlarform.Models.Entities.CoursePart
-{
-    public class Question : BaseEntity
+    namespace OnlineLearningPlatform.Models.Entities.CoursePart
     {
+        public class Question : BaseEntity
+        {
 
-        [Key]
-        public long QuestionId { get; set; }
+            [Key]
+            public long QuestionId { get; set; }
 
-        [Required]
-        public int QuestionNum { get; set; }
+            [Required]
+            public int QuestionNum { get; set; }
 
-        public long QuizId { get; set; }
+            public long QuizId { get; set; }
 
-        [Required]
-        [StringLength(255)]
-        public string QuestionContent { get; set; } = null!;
+            [Required]
+            [StringLength(255)]
+            public string QuestionContent { get; set; } = null!;
 
 
-        public virtual Quiz Quiz { get; set; } = null!;
-        public virtual ICollection<Option> Options { get; set; } = new List<Option>();
+            public virtual Quiz Quiz { get; set; } = null!;
+            public virtual ICollection<Option> Options { get; set; } = new List<Option>();
 
+        }
     }
-}

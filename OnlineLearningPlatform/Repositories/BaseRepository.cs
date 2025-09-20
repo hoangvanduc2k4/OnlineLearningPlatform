@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
-using OnlineLearningPlarform.Data;
-using OnlineLearningPlarform.Repositories.Interfaces;
+using OnlineLearningPlatform.Data;
+using OnlineLearningPlatform.Repositories.Interfaces;
 
-namespace OnlineLearningPlarform.Repositories
+namespace OnlineLearningPlatform.Repositories
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {

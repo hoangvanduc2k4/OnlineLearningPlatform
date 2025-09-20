@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using OnlineLearningPlarform.Configurations;
-using OnlineLearningPlarform.Mappers;
-using OnlineLearningPlarform.Data;
+using OnlineLearningPlatform.Configurations;
+using OnlineLearningPlatform.Mappers;
+using OnlineLearningPlatform.Data;
 
 namespace OnlineLearningPlarform
 {

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using OnlineLearningPlarform.Data;
+using OnlineLearningPlatform.Data;
 
 #nullable disable
 
@@ -47,6 +47,26 @@ namespace OnlineLearningPlatform.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("Roles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "admin-role",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "mentor-role",
+                            Name = "Mentor",
+                            NormalizedName = "MENTOR"
+                        },
+                        new
+                        {
+                            Id = "student-role",
+                            Name = "Student",
+                            NormalizedName = "STUDENT"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -159,7 +179,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.ToTable("UserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.AnswerQuiz", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.AnswerQuiz", b =>
                 {
                     b.Property<long>("AnswerQuizId")
                         .ValueGeneratedOnAdd()
@@ -193,9 +213,1091 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("AnswerQuizzes");
+
+                    b.HasData(
+                        new
+                        {
+                            AnswerQuizId = 1L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 0L,
+                            QuestionId = 1L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 2L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 0L,
+                            QuestionId = 1L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 3L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 4L,
+                            QuestionId = 2L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 4L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 4L,
+                            QuestionId = 2L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 5L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 8L,
+                            QuestionId = 3L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 6L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 8L,
+                            QuestionId = 3L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 7L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 12L,
+                            QuestionId = 4L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 8L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 13L,
+                            QuestionId = 4L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 9L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 17L,
+                            QuestionId = 5L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 10L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 17L,
+                            QuestionId = 5L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 11L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 20L,
+                            QuestionId = 6L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 12L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 20L,
+                            QuestionId = 6L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 13L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 24L,
+                            QuestionId = 7L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 14L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 24L,
+                            QuestionId = 7L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 15L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 28L,
+                            QuestionId = 8L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 16L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 28L,
+                            QuestionId = 8L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 17L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 32L,
+                            QuestionId = 9L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 18L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 33L,
+                            QuestionId = 9L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 19L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 37L,
+                            QuestionId = 10L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 20L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 37L,
+                            QuestionId = 10L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 21L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 40L,
+                            QuestionId = 11L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 22L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 40L,
+                            QuestionId = 11L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 23L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 44L,
+                            QuestionId = 12L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 24L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 44L,
+                            QuestionId = 12L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 25L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 48L,
+                            QuestionId = 13L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 26L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 48L,
+                            QuestionId = 13L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 27L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 52L,
+                            QuestionId = 14L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 28L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 53L,
+                            QuestionId = 14L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 29L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 57L,
+                            QuestionId = 15L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 30L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 57L,
+                            QuestionId = 15L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 31L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 60L,
+                            QuestionId = 16L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 32L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 60L,
+                            QuestionId = 16L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 33L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 64L,
+                            QuestionId = 17L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 34L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 64L,
+                            QuestionId = 17L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 35L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 68L,
+                            QuestionId = 18L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 36L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 68L,
+                            QuestionId = 18L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 37L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 72L,
+                            QuestionId = 19L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 38L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 73L,
+                            QuestionId = 19L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 39L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 77L,
+                            QuestionId = 20L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 40L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 77L,
+                            QuestionId = 20L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 41L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 80L,
+                            QuestionId = 21L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 42L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 80L,
+                            QuestionId = 21L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 43L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 84L,
+                            QuestionId = 22L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 44L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 84L,
+                            QuestionId = 22L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 45L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 88L,
+                            QuestionId = 23L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 46L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 88L,
+                            QuestionId = 23L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 47L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 92L,
+                            QuestionId = 24L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 48L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 93L,
+                            QuestionId = 24L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 49L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 97L,
+                            QuestionId = 25L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 50L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 97L,
+                            QuestionId = 25L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 51L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 100L,
+                            QuestionId = 26L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 52L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 100L,
+                            QuestionId = 26L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 53L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 104L,
+                            QuestionId = 27L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 54L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 104L,
+                            QuestionId = 27L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 55L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 108L,
+                            QuestionId = 28L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 56L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 108L,
+                            QuestionId = 28L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 57L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 112L,
+                            QuestionId = 29L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 58L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 113L,
+                            QuestionId = 29L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 59L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 117L,
+                            QuestionId = 30L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 60L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 117L,
+                            QuestionId = 30L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 61L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 120L,
+                            QuestionId = 31L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 62L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 120L,
+                            QuestionId = 31L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 63L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 124L,
+                            QuestionId = 32L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 64L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 124L,
+                            QuestionId = 32L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 65L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 128L,
+                            QuestionId = 33L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 66L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 128L,
+                            QuestionId = 33L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 67L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 132L,
+                            QuestionId = 34L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 68L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 133L,
+                            QuestionId = 34L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 69L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 137L,
+                            QuestionId = 35L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 70L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 137L,
+                            QuestionId = 35L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 71L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 140L,
+                            QuestionId = 36L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 72L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 140L,
+                            QuestionId = 36L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 73L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 144L,
+                            QuestionId = 37L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 74L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 144L,
+                            QuestionId = 37L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 75L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 148L,
+                            QuestionId = 38L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 76L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 148L,
+                            QuestionId = 38L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 77L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 152L,
+                            QuestionId = 39L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 78L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 153L,
+                            QuestionId = 39L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 79L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 157L,
+                            QuestionId = 40L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 80L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 157L,
+                            QuestionId = 40L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 81L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 160L,
+                            QuestionId = 41L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 82L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 160L,
+                            QuestionId = 41L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 83L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 164L,
+                            QuestionId = 42L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 84L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 164L,
+                            QuestionId = 42L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 85L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 168L,
+                            QuestionId = 43L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 86L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 168L,
+                            QuestionId = 43L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 87L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 172L,
+                            QuestionId = 44L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 88L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 173L,
+                            QuestionId = 44L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 89L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 177L,
+                            QuestionId = 45L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 90L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 177L,
+                            QuestionId = 45L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 91L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 180L,
+                            QuestionId = 46L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 92L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 180L,
+                            QuestionId = 46L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 93L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 184L,
+                            QuestionId = 47L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 94L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 184L,
+                            QuestionId = 47L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 95L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 188L,
+                            QuestionId = 48L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 96L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 188L,
+                            QuestionId = 48L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 97L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 192L,
+                            QuestionId = 49L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 98L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 193L,
+                            QuestionId = 49L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 99L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 197L,
+                            QuestionId = 50L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 100L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 197L,
+                            QuestionId = 50L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 101L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 200L,
+                            QuestionId = 51L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 102L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 200L,
+                            QuestionId = 51L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 103L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 204L,
+                            QuestionId = 52L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 104L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 204L,
+                            QuestionId = 52L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 105L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 208L,
+                            QuestionId = 53L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 106L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 208L,
+                            QuestionId = 53L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 107L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 212L,
+                            QuestionId = 54L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 108L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 213L,
+                            QuestionId = 54L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 109L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 217L,
+                            QuestionId = 55L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 110L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 217L,
+                            QuestionId = 55L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 111L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 220L,
+                            QuestionId = 56L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 112L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 220L,
+                            QuestionId = 56L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 113L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 224L,
+                            QuestionId = 57L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 114L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 224L,
+                            QuestionId = 57L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 115L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 228L,
+                            QuestionId = 58L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 116L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 228L,
+                            QuestionId = 58L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 117L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionId = 232L,
+                            QuestionId = 59L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 118L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 233L,
+                            QuestionId = 59L,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 119L,
+                            DateCreated = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 237L,
+                            QuestionId = 60L,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            AnswerQuizId = 120L,
+                            DateCreated = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionId = 237L,
+                            QuestionId = 60L,
+                            UserId = "4"
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Category", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Category", b =>
                 {
                     b.Property<long>("CategoryId")
                         .ValueGeneratedOnAdd()
@@ -214,9 +1316,41 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1L,
+                            CategoryName = "Programming",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 2L,
+                            CategoryName = "Design",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 3L,
+                            CategoryName = "Marketing",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 4L,
+                            CategoryName = "Business",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 5L,
+                            CategoryName = "Photography",
+                            IsDeleted = false
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Course", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Course", b =>
                 {
                     b.Property<long>("CourseId")
                         .ValueGeneratedOnAdd()
@@ -282,9 +1416,199 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasIndex("MentorId");
 
                     b.ToTable("Courses");
+
+                    b.HasData(
+                        new
+                        {
+                            CourseId = 1L,
+                            AdminId = "1",
+                            CourseName = "Demo Course 1",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Mô t? ng?n g?n cho khoá h?c s? 1",
+                            Discount = 0m,
+                            LevelId = 2L,
+                            MentorId = "2",
+                            Price = 21m,
+                            PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 0,
+                            StudyTime = "5 hours",
+                            UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 2L,
+                            AdminId = "1",
+                            CourseName = "Demo Course 2",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Mô t? ng?n g?n cho khoá h?c s? 2",
+                            Discount = 0m,
+                            LevelId = 3L,
+                            MentorId = "2",
+                            Price = 22m,
+                            PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 0,
+                            StudyTime = "5 hours",
+                            UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 3L,
+                            AdminId = "1",
+                            CourseName = "Demo Course 3",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Mô t? ng?n g?n cho khoá h?c s? 3",
+                            Discount = 5m,
+                            LevelId = 1L,
+                            MentorId = "2",
+                            Price = 23m,
+                            PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 0,
+                            StudyTime = "5 hours",
+                            UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 4L,
+                            AdminId = "1",
+                            CourseName = "Demo Course 4",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Mô t? ng?n g?n cho khoá h?c s? 4",
+                            Discount = 0m,
+                            LevelId = 2L,
+                            MentorId = "2",
+                            Price = 24m,
+                            PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 0,
+                            StudyTime = "5 hours",
+                            UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 5L,
+                            AdminId = "1",
+                            CourseName = "Demo Course 5",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Mô t? ng?n g?n cho khoá h?c s? 5",
+                            Discount = 0m,
+                            LevelId = 3L,
+                            MentorId = "2",
+                            Price = 25m,
+                            PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 0,
+                            StudyTime = "5 hours",
+                            UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 6L,
+                            AdminId = "1",
+                            CourseName = "Demo Course 6",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Mô t? ng?n g?n cho khoá h?c s? 6",
+                            Discount = 5m,
+                            LevelId = 1L,
+                            MentorId = "2",
+                            Price = 26m,
+                            PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 0,
+                            StudyTime = "5 hours",
+                            UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 7L,
+                            AdminId = "1",
+                            CourseName = "Demo Course 7",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Mô t? ng?n g?n cho khoá h?c s? 7",
+                            Discount = 0m,
+                            LevelId = 2L,
+                            MentorId = "2",
+                            Price = 27m,
+                            PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 0,
+                            StudyTime = "5 hours",
+                            UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 8L,
+                            AdminId = "1",
+                            CourseName = "Demo Course 8",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Mô t? ng?n g?n cho khoá h?c s? 8",
+                            Discount = 0m,
+                            LevelId = 3L,
+                            MentorId = "2",
+                            Price = 28m,
+                            PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 0,
+                            StudyTime = "5 hours",
+                            UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 9L,
+                            AdminId = "1",
+                            CourseName = "Demo Course 9",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Mô t? ng?n g?n cho khoá h?c s? 9",
+                            Discount = 5m,
+                            LevelId = 1L,
+                            MentorId = "2",
+                            Price = 29m,
+                            Status = 0,
+                            StudyTime = "5 hours",
+                            UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 10L,
+                            AdminId = "1",
+                            CourseName = "Demo Course 10",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Mô t? ng?n g?n cho khoá h?c s? 10",
+                            Discount = 0m,
+                            LevelId = 2L,
+                            MentorId = "2",
+                            Price = 30m,
+                            Status = 0,
+                            StudyTime = "5 hours",
+                            UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 11L,
+                            AdminId = "1",
+                            CourseName = "Demo Course 11",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Mô t? ng?n g?n cho khoá h?c s? 11",
+                            Discount = 0m,
+                            LevelId = 3L,
+                            MentorId = "2",
+                            Price = 31m,
+                            Status = 0,
+                            StudyTime = "5 hours",
+                            UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 12L,
+                            AdminId = "1",
+                            CourseName = "Demo Course 12",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Mô t? ng?n g?n cho khoá h?c s? 12",
+                            Discount = 5m,
+                            LevelId = 1L,
+                            MentorId = "2",
+                            Price = 32m,
+                            Status = 0,
+                            StudyTime = "5 hours",
+                            UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.CourseCategory", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.CourseCategory", b =>
                 {
                     b.Property<long>("CategoryId")
                         .HasColumnType("bigint");
@@ -297,9 +1621,131 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasIndex("CourseId");
 
                     b.ToTable("CourseCategories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 2L,
+                            CourseId = 1L
+                        },
+                        new
+                        {
+                            CategoryId = 3L,
+                            CourseId = 1L
+                        },
+                        new
+                        {
+                            CategoryId = 3L,
+                            CourseId = 2L
+                        },
+                        new
+                        {
+                            CategoryId = 1L,
+                            CourseId = 2L
+                        },
+                        new
+                        {
+                            CategoryId = 1L,
+                            CourseId = 3L
+                        },
+                        new
+                        {
+                            CategoryId = 2L,
+                            CourseId = 3L
+                        },
+                        new
+                        {
+                            CategoryId = 2L,
+                            CourseId = 4L
+                        },
+                        new
+                        {
+                            CategoryId = 3L,
+                            CourseId = 4L
+                        },
+                        new
+                        {
+                            CategoryId = 3L,
+                            CourseId = 5L
+                        },
+                        new
+                        {
+                            CategoryId = 1L,
+                            CourseId = 5L
+                        },
+                        new
+                        {
+                            CategoryId = 1L,
+                            CourseId = 6L
+                        },
+                        new
+                        {
+                            CategoryId = 2L,
+                            CourseId = 6L
+                        },
+                        new
+                        {
+                            CategoryId = 2L,
+                            CourseId = 7L
+                        },
+                        new
+                        {
+                            CategoryId = 3L,
+                            CourseId = 7L
+                        },
+                        new
+                        {
+                            CategoryId = 3L,
+                            CourseId = 8L
+                        },
+                        new
+                        {
+                            CategoryId = 1L,
+                            CourseId = 8L
+                        },
+                        new
+                        {
+                            CategoryId = 1L,
+                            CourseId = 9L
+                        },
+                        new
+                        {
+                            CategoryId = 2L,
+                            CourseId = 9L
+                        },
+                        new
+                        {
+                            CategoryId = 2L,
+                            CourseId = 10L
+                        },
+                        new
+                        {
+                            CategoryId = 3L,
+                            CourseId = 10L
+                        },
+                        new
+                        {
+                            CategoryId = 3L,
+                            CourseId = 11L
+                        },
+                        new
+                        {
+                            CategoryId = 1L,
+                            CourseId = 11L
+                        },
+                        new
+                        {
+                            CategoryId = 1L,
+                            CourseId = 12L
+                        },
+                        new
+                        {
+                            CategoryId = 2L,
+                            CourseId = 12L
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.CourseEnrollment", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.CourseEnrollment", b =>
                 {
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
@@ -318,9 +1764,47 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("CourseEnrollments");
+
+                    b.HasData(
+                        new
+                        {
+                            CourseId = 1L,
+                            UserId = "3",
+                            DateCreated = new DateTime(2025, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 2L,
+                            UserId = "4",
+                            DateCreated = new DateTime(2025, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 3L,
+                            UserId = "5",
+                            DateCreated = new DateTime(2025, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 4L,
+                            UserId = "6",
+                            DateCreated = new DateTime(2025, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 5L,
+                            UserId = "7",
+                            DateCreated = new DateTime(2025, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 6L,
+                            UserId = "8",
+                            DateCreated = new DateTime(2025, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.CourseImageUrl", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.CourseImageUrl", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -340,9 +1824,227 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasIndex("CourseId");
 
                     b.ToTable("CourseImageUrls");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CourseId = 1L,
+                            Url = "https://picsum.photos/seed/course1_img1/600/400"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CourseId = 1L,
+                            Url = "https://picsum.photos/seed/course1_img2/600/400"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CourseId = 1L,
+                            Url = "https://picsum.photos/seed/course1_img3/600/400"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CourseId = 2L,
+                            Url = "https://picsum.photos/seed/course2_img1/600/400"
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            CourseId = 2L,
+                            Url = "https://picsum.photos/seed/course2_img2/600/400"
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            CourseId = 2L,
+                            Url = "https://picsum.photos/seed/course2_img3/600/400"
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            CourseId = 3L,
+                            Url = "https://picsum.photos/seed/course3_img1/600/400"
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            CourseId = 3L,
+                            Url = "https://picsum.photos/seed/course3_img2/600/400"
+                        },
+                        new
+                        {
+                            Id = 9L,
+                            CourseId = 3L,
+                            Url = "https://picsum.photos/seed/course3_img3/600/400"
+                        },
+                        new
+                        {
+                            Id = 10L,
+                            CourseId = 4L,
+                            Url = "https://picsum.photos/seed/course4_img1/600/400"
+                        },
+                        new
+                        {
+                            Id = 11L,
+                            CourseId = 4L,
+                            Url = "https://picsum.photos/seed/course4_img2/600/400"
+                        },
+                        new
+                        {
+                            Id = 12L,
+                            CourseId = 4L,
+                            Url = "https://picsum.photos/seed/course4_img3/600/400"
+                        },
+                        new
+                        {
+                            Id = 13L,
+                            CourseId = 5L,
+                            Url = "https://picsum.photos/seed/course5_img1/600/400"
+                        },
+                        new
+                        {
+                            Id = 14L,
+                            CourseId = 5L,
+                            Url = "https://picsum.photos/seed/course5_img2/600/400"
+                        },
+                        new
+                        {
+                            Id = 15L,
+                            CourseId = 5L,
+                            Url = "https://picsum.photos/seed/course5_img3/600/400"
+                        },
+                        new
+                        {
+                            Id = 16L,
+                            CourseId = 6L,
+                            Url = "https://picsum.photos/seed/course6_img1/600/400"
+                        },
+                        new
+                        {
+                            Id = 17L,
+                            CourseId = 6L,
+                            Url = "https://picsum.photos/seed/course6_img2/600/400"
+                        },
+                        new
+                        {
+                            Id = 18L,
+                            CourseId = 6L,
+                            Url = "https://picsum.photos/seed/course6_img3/600/400"
+                        },
+                        new
+                        {
+                            Id = 19L,
+                            CourseId = 7L,
+                            Url = "https://picsum.photos/seed/course7_img1/600/400"
+                        },
+                        new
+                        {
+                            Id = 20L,
+                            CourseId = 7L,
+                            Url = "https://picsum.photos/seed/course7_img2/600/400"
+                        },
+                        new
+                        {
+                            Id = 21L,
+                            CourseId = 7L,
+                            Url = "https://picsum.photos/seed/course7_img3/600/400"
+                        },
+                        new
+                        {
+                            Id = 22L,
+                            CourseId = 8L,
+                            Url = "https://picsum.photos/seed/course8_img1/600/400"
+                        },
+                        new
+                        {
+                            Id = 23L,
+                            CourseId = 8L,
+                            Url = "https://picsum.photos/seed/course8_img2/600/400"
+                        },
+                        new
+                        {
+                            Id = 24L,
+                            CourseId = 8L,
+                            Url = "https://picsum.photos/seed/course8_img3/600/400"
+                        },
+                        new
+                        {
+                            Id = 25L,
+                            CourseId = 9L,
+                            Url = "https://picsum.photos/seed/course9_img1/600/400"
+                        },
+                        new
+                        {
+                            Id = 26L,
+                            CourseId = 9L,
+                            Url = "https://picsum.photos/seed/course9_img2/600/400"
+                        },
+                        new
+                        {
+                            Id = 27L,
+                            CourseId = 9L,
+                            Url = "https://picsum.photos/seed/course9_img3/600/400"
+                        },
+                        new
+                        {
+                            Id = 28L,
+                            CourseId = 10L,
+                            Url = "https://picsum.photos/seed/course10_img1/600/400"
+                        },
+                        new
+                        {
+                            Id = 29L,
+                            CourseId = 10L,
+                            Url = "https://picsum.photos/seed/course10_img2/600/400"
+                        },
+                        new
+                        {
+                            Id = 30L,
+                            CourseId = 10L,
+                            Url = "https://picsum.photos/seed/course10_img3/600/400"
+                        },
+                        new
+                        {
+                            Id = 31L,
+                            CourseId = 11L,
+                            Url = "https://picsum.photos/seed/course11_img1/600/400"
+                        },
+                        new
+                        {
+                            Id = 32L,
+                            CourseId = 11L,
+                            Url = "https://picsum.photos/seed/course11_img2/600/400"
+                        },
+                        new
+                        {
+                            Id = 33L,
+                            CourseId = 11L,
+                            Url = "https://picsum.photos/seed/course11_img3/600/400"
+                        },
+                        new
+                        {
+                            Id = 34L,
+                            CourseId = 12L,
+                            Url = "https://picsum.photos/seed/course12_img1/600/400"
+                        },
+                        new
+                        {
+                            Id = 35L,
+                            CourseId = 12L,
+                            Url = "https://picsum.photos/seed/course12_img2/600/400"
+                        },
+                        new
+                        {
+                            Id = 36L,
+                            CourseId = 12L,
+                            Url = "https://picsum.photos/seed/course12_img3/600/400"
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Lesson", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Lesson", b =>
                 {
                     b.Property<long>("LessonId")
                         .ValueGeneratedOnAdd()
@@ -390,9 +2092,875 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasIndex("ModuleId");
 
                     b.ToTable("Lessons");
+
+                    b.HasData(
+                        new
+                        {
+                            LessonId = 1L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 1.",
+                            LessonName = "Lesson 1 of Module 1",
+                            LessonNumber = 1,
+                            ModuleId = 1L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 2L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 1.",
+                            LessonName = "Lesson 2 of Module 1",
+                            LessonNumber = 2,
+                            ModuleId = 1L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 3L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 2.",
+                            LessonName = "Lesson 1 of Module 2",
+                            LessonNumber = 1,
+                            ModuleId = 2L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 4L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 2.",
+                            LessonName = "Lesson 2 of Module 2",
+                            LessonNumber = 2,
+                            ModuleId = 2L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 5L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 3.",
+                            LessonName = "Lesson 1 of Module 3",
+                            LessonNumber = 1,
+                            ModuleId = 3L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 6L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 3.",
+                            LessonName = "Lesson 2 of Module 3",
+                            LessonNumber = 2,
+                            ModuleId = 3L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 7L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 4.",
+                            LessonName = "Lesson 1 of Module 4",
+                            LessonNumber = 1,
+                            ModuleId = 4L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 8L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 4.",
+                            LessonName = "Lesson 2 of Module 4",
+                            LessonNumber = 2,
+                            ModuleId = 4L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 9L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 5.",
+                            LessonName = "Lesson 1 of Module 5",
+                            LessonNumber = 1,
+                            ModuleId = 5L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 10L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 5.",
+                            LessonName = "Lesson 2 of Module 5",
+                            LessonNumber = 2,
+                            ModuleId = 5L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 11L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 6.",
+                            LessonName = "Lesson 1 of Module 6",
+                            LessonNumber = 1,
+                            ModuleId = 6L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 12L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 6.",
+                            LessonName = "Lesson 2 of Module 6",
+                            LessonNumber = 2,
+                            ModuleId = 6L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 13L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 7.",
+                            LessonName = "Lesson 1 of Module 7",
+                            LessonNumber = 1,
+                            ModuleId = 7L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 14L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 7.",
+                            LessonName = "Lesson 2 of Module 7",
+                            LessonNumber = 2,
+                            ModuleId = 7L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 15L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 8.",
+                            LessonName = "Lesson 1 of Module 8",
+                            LessonNumber = 1,
+                            ModuleId = 8L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 16L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 8.",
+                            LessonName = "Lesson 2 of Module 8",
+                            LessonNumber = 2,
+                            ModuleId = 8L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 17L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 9.",
+                            LessonName = "Lesson 1 of Module 9",
+                            LessonNumber = 1,
+                            ModuleId = 9L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 18L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 9.",
+                            LessonName = "Lesson 2 of Module 9",
+                            LessonNumber = 2,
+                            ModuleId = 9L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 19L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 10.",
+                            LessonName = "Lesson 1 of Module 10",
+                            LessonNumber = 1,
+                            ModuleId = 10L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 20L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 10.",
+                            LessonName = "Lesson 2 of Module 10",
+                            LessonNumber = 2,
+                            ModuleId = 10L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 21L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 11.",
+                            LessonName = "Lesson 1 of Module 11",
+                            LessonNumber = 1,
+                            ModuleId = 11L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 22L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 11.",
+                            LessonName = "Lesson 2 of Module 11",
+                            LessonNumber = 2,
+                            ModuleId = 11L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 23L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 12.",
+                            LessonName = "Lesson 1 of Module 12",
+                            LessonNumber = 1,
+                            ModuleId = 12L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 24L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 12.",
+                            LessonName = "Lesson 2 of Module 12",
+                            LessonNumber = 2,
+                            ModuleId = 12L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 25L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 13.",
+                            LessonName = "Lesson 1 of Module 13",
+                            LessonNumber = 1,
+                            ModuleId = 13L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 26L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 13.",
+                            LessonName = "Lesson 2 of Module 13",
+                            LessonNumber = 2,
+                            ModuleId = 13L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 27L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 14.",
+                            LessonName = "Lesson 1 of Module 14",
+                            LessonNumber = 1,
+                            ModuleId = 14L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 28L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 14.",
+                            LessonName = "Lesson 2 of Module 14",
+                            LessonNumber = 2,
+                            ModuleId = 14L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 29L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 15.",
+                            LessonName = "Lesson 1 of Module 15",
+                            LessonNumber = 1,
+                            ModuleId = 15L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 30L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 15.",
+                            LessonName = "Lesson 2 of Module 15",
+                            LessonNumber = 2,
+                            ModuleId = 15L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 31L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 16.",
+                            LessonName = "Lesson 1 of Module 16",
+                            LessonNumber = 1,
+                            ModuleId = 16L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 32L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 16.",
+                            LessonName = "Lesson 2 of Module 16",
+                            LessonNumber = 2,
+                            ModuleId = 16L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 33L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 17.",
+                            LessonName = "Lesson 1 of Module 17",
+                            LessonNumber = 1,
+                            ModuleId = 17L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 34L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 17.",
+                            LessonName = "Lesson 2 of Module 17",
+                            LessonNumber = 2,
+                            ModuleId = 17L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 35L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 18.",
+                            LessonName = "Lesson 1 of Module 18",
+                            LessonNumber = 1,
+                            ModuleId = 18L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 36L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 18.",
+                            LessonName = "Lesson 2 of Module 18",
+                            LessonNumber = 2,
+                            ModuleId = 18L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 37L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 19.",
+                            LessonName = "Lesson 1 of Module 19",
+                            LessonNumber = 1,
+                            ModuleId = 19L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 38L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 19.",
+                            LessonName = "Lesson 2 of Module 19",
+                            LessonNumber = 2,
+                            ModuleId = 19L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 39L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 20.",
+                            LessonName = "Lesson 1 of Module 20",
+                            LessonNumber = 1,
+                            ModuleId = 20L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 40L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 20.",
+                            LessonName = "Lesson 2 of Module 20",
+                            LessonNumber = 2,
+                            ModuleId = 20L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 41L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 21.",
+                            LessonName = "Lesson 1 of Module 21",
+                            LessonNumber = 1,
+                            ModuleId = 21L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 42L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 21.",
+                            LessonName = "Lesson 2 of Module 21",
+                            LessonNumber = 2,
+                            ModuleId = 21L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 43L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 22.",
+                            LessonName = "Lesson 1 of Module 22",
+                            LessonNumber = 1,
+                            ModuleId = 22L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 44L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 22.",
+                            LessonName = "Lesson 2 of Module 22",
+                            LessonNumber = 2,
+                            ModuleId = 22L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 45L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 23.",
+                            LessonName = "Lesson 1 of Module 23",
+                            LessonNumber = 1,
+                            ModuleId = 23L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 46L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 23.",
+                            LessonName = "Lesson 2 of Module 23",
+                            LessonNumber = 2,
+                            ModuleId = 23L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 47L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 24.",
+                            LessonName = "Lesson 1 of Module 24",
+                            LessonNumber = 1,
+                            ModuleId = 24L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 48L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 24.",
+                            LessonName = "Lesson 2 of Module 24",
+                            LessonNumber = 2,
+                            ModuleId = 24L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 49L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 25.",
+                            LessonName = "Lesson 1 of Module 25",
+                            LessonNumber = 1,
+                            ModuleId = 25L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 50L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 25.",
+                            LessonName = "Lesson 2 of Module 25",
+                            LessonNumber = 2,
+                            ModuleId = 25L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 51L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 26.",
+                            LessonName = "Lesson 1 of Module 26",
+                            LessonNumber = 1,
+                            ModuleId = 26L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 52L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 26.",
+                            LessonName = "Lesson 2 of Module 26",
+                            LessonNumber = 2,
+                            ModuleId = 26L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 53L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 27.",
+                            LessonName = "Lesson 1 of Module 27",
+                            LessonNumber = 1,
+                            ModuleId = 27L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 54L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 27.",
+                            LessonName = "Lesson 2 of Module 27",
+                            LessonNumber = 2,
+                            ModuleId = 27L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 55L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 28.",
+                            LessonName = "Lesson 1 of Module 28",
+                            LessonNumber = 1,
+                            ModuleId = 28L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 56L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 28.",
+                            LessonName = "Lesson 2 of Module 28",
+                            LessonNumber = 2,
+                            ModuleId = 28L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 57L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 29.",
+                            LessonName = "Lesson 1 of Module 29",
+                            LessonNumber = 1,
+                            ModuleId = 29L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 58L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 29.",
+                            LessonName = "Lesson 2 of Module 29",
+                            LessonNumber = 2,
+                            ModuleId = 29L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 59L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 30.",
+                            LessonName = "Lesson 1 of Module 30",
+                            LessonNumber = 1,
+                            ModuleId = 30L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 60L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 30.",
+                            LessonName = "Lesson 2 of Module 30",
+                            LessonNumber = 2,
+                            ModuleId = 30L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 61L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 31.",
+                            LessonName = "Lesson 1 of Module 31",
+                            LessonNumber = 1,
+                            ModuleId = 31L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 62L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 31.",
+                            LessonName = "Lesson 2 of Module 31",
+                            LessonNumber = 2,
+                            ModuleId = 31L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 63L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 32.",
+                            LessonName = "Lesson 1 of Module 32",
+                            LessonNumber = 1,
+                            ModuleId = 32L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 64L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 32.",
+                            LessonName = "Lesson 2 of Module 32",
+                            LessonNumber = 2,
+                            ModuleId = 32L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 65L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 33.",
+                            LessonName = "Lesson 1 of Module 33",
+                            LessonNumber = 1,
+                            ModuleId = 33L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 66L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 33.",
+                            LessonName = "Lesson 2 of Module 33",
+                            LessonNumber = 2,
+                            ModuleId = 33L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 67L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 34.",
+                            LessonName = "Lesson 1 of Module 34",
+                            LessonNumber = 1,
+                            ModuleId = 34L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 68L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 34.",
+                            LessonName = "Lesson 2 of Module 34",
+                            LessonNumber = 2,
+                            ModuleId = 34L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 69L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 35.",
+                            LessonName = "Lesson 1 of Module 35",
+                            LessonNumber = 1,
+                            ModuleId = 35L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 70L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 35.",
+                            LessonName = "Lesson 2 of Module 35",
+                            LessonNumber = 2,
+                            ModuleId = 35L,
+                            Status = 1
+                        },
+                        new
+                        {
+                            LessonId = 71L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 10,
+                            LessonContent = "This is the content for Lesson 1 of Module 36.",
+                            LessonName = "Lesson 1 of Module 36",
+                            LessonNumber = 1,
+                            ModuleId = 36L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            LessonId = 72L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Duration = 20,
+                            LessonContent = "This is the content for Lesson 2 of Module 36.",
+                            LessonName = "Lesson 2 of Module 36",
+                            LessonNumber = 2,
+                            ModuleId = 36L,
+                            Status = 1
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Level", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Level", b =>
                 {
                     b.Property<long>("LevelId")
                         .ValueGeneratedOnAdd()
@@ -410,9 +2978,29 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasKey("LevelId");
 
                     b.ToTable("Levels");
+
+                    b.HasData(
+                        new
+                        {
+                            LevelId = 1L,
+                            IsDeleted = false,
+                            LevelName = "Beginner"
+                        },
+                        new
+                        {
+                            LevelId = 2L,
+                            IsDeleted = false,
+                            LevelName = "Intermediate"
+                        },
+                        new
+                        {
+                            LevelId = 3L,
+                            IsDeleted = false,
+                            LevelName = "Advanced"
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Module", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Module", b =>
                 {
                     b.Property<long>("ModuleId")
                         .ValueGeneratedOnAdd()
@@ -445,9 +3033,335 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasIndex("CourseId");
 
                     b.ToTable("Modules");
+
+                    b.HasData(
+                        new
+                        {
+                            ModuleId = 1L,
+                            CourseId = 1L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 1 of Course 1",
+                            ModuleNumber = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            ModuleId = 2L,
+                            CourseId = 1L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 2 of Course 1",
+                            ModuleNumber = 2,
+                            Status = 1
+                        },
+                        new
+                        {
+                            ModuleId = 3L,
+                            CourseId = 1L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 3 of Course 1",
+                            ModuleNumber = 3,
+                            Status = 2
+                        },
+                        new
+                        {
+                            ModuleId = 4L,
+                            CourseId = 2L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 1 of Course 2",
+                            ModuleNumber = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            ModuleId = 5L,
+                            CourseId = 2L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 2 of Course 2",
+                            ModuleNumber = 2,
+                            Status = 1
+                        },
+                        new
+                        {
+                            ModuleId = 6L,
+                            CourseId = 2L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 3 of Course 2",
+                            ModuleNumber = 3,
+                            Status = 2
+                        },
+                        new
+                        {
+                            ModuleId = 7L,
+                            CourseId = 3L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 1 of Course 3",
+                            ModuleNumber = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            ModuleId = 8L,
+                            CourseId = 3L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 2 of Course 3",
+                            ModuleNumber = 2,
+                            Status = 1
+                        },
+                        new
+                        {
+                            ModuleId = 9L,
+                            CourseId = 3L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 3 of Course 3",
+                            ModuleNumber = 3,
+                            Status = 2
+                        },
+                        new
+                        {
+                            ModuleId = 10L,
+                            CourseId = 4L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 1 of Course 4",
+                            ModuleNumber = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            ModuleId = 11L,
+                            CourseId = 4L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 2 of Course 4",
+                            ModuleNumber = 2,
+                            Status = 1
+                        },
+                        new
+                        {
+                            ModuleId = 12L,
+                            CourseId = 4L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 3 of Course 4",
+                            ModuleNumber = 3,
+                            Status = 2
+                        },
+                        new
+                        {
+                            ModuleId = 13L,
+                            CourseId = 5L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 1 of Course 5",
+                            ModuleNumber = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            ModuleId = 14L,
+                            CourseId = 5L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 2 of Course 5",
+                            ModuleNumber = 2,
+                            Status = 1
+                        },
+                        new
+                        {
+                            ModuleId = 15L,
+                            CourseId = 5L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 3 of Course 5",
+                            ModuleNumber = 3,
+                            Status = 2
+                        },
+                        new
+                        {
+                            ModuleId = 16L,
+                            CourseId = 6L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 1 of Course 6",
+                            ModuleNumber = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            ModuleId = 17L,
+                            CourseId = 6L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 2 of Course 6",
+                            ModuleNumber = 2,
+                            Status = 1
+                        },
+                        new
+                        {
+                            ModuleId = 18L,
+                            CourseId = 6L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 3 of Course 6",
+                            ModuleNumber = 3,
+                            Status = 2
+                        },
+                        new
+                        {
+                            ModuleId = 19L,
+                            CourseId = 7L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 1 of Course 7",
+                            ModuleNumber = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            ModuleId = 20L,
+                            CourseId = 7L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 2 of Course 7",
+                            ModuleNumber = 2,
+                            Status = 1
+                        },
+                        new
+                        {
+                            ModuleId = 21L,
+                            CourseId = 7L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 3 of Course 7",
+                            ModuleNumber = 3,
+                            Status = 2
+                        },
+                        new
+                        {
+                            ModuleId = 22L,
+                            CourseId = 8L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 1 of Course 8",
+                            ModuleNumber = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            ModuleId = 23L,
+                            CourseId = 8L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 2 of Course 8",
+                            ModuleNumber = 2,
+                            Status = 1
+                        },
+                        new
+                        {
+                            ModuleId = 24L,
+                            CourseId = 8L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 3 of Course 8",
+                            ModuleNumber = 3,
+                            Status = 2
+                        },
+                        new
+                        {
+                            ModuleId = 25L,
+                            CourseId = 9L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 1 of Course 9",
+                            ModuleNumber = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            ModuleId = 26L,
+                            CourseId = 9L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 2 of Course 9",
+                            ModuleNumber = 2,
+                            Status = 1
+                        },
+                        new
+                        {
+                            ModuleId = 27L,
+                            CourseId = 9L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 3 of Course 9",
+                            ModuleNumber = 3,
+                            Status = 2
+                        },
+                        new
+                        {
+                            ModuleId = 28L,
+                            CourseId = 10L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 1 of Course 10",
+                            ModuleNumber = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            ModuleId = 29L,
+                            CourseId = 10L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 2 of Course 10",
+                            ModuleNumber = 2,
+                            Status = 1
+                        },
+                        new
+                        {
+                            ModuleId = 30L,
+                            CourseId = 10L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 3 of Course 10",
+                            ModuleNumber = 3,
+                            Status = 2
+                        },
+                        new
+                        {
+                            ModuleId = 31L,
+                            CourseId = 11L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 1 of Course 11",
+                            ModuleNumber = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            ModuleId = 32L,
+                            CourseId = 11L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 2 of Course 11",
+                            ModuleNumber = 2,
+                            Status = 1
+                        },
+                        new
+                        {
+                            ModuleId = 33L,
+                            CourseId = 11L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 3 of Course 11",
+                            ModuleNumber = 3,
+                            Status = 2
+                        },
+                        new
+                        {
+                            ModuleId = 34L,
+                            CourseId = 12L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 1 of Course 12",
+                            ModuleNumber = 1,
+                            Status = 0
+                        },
+                        new
+                        {
+                            ModuleId = 35L,
+                            CourseId = 12L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 2 of Course 12",
+                            ModuleNumber = 2,
+                            Status = 1
+                        },
+                        new
+                        {
+                            ModuleId = 36L,
+                            CourseId = 12L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleName = "Module 3 of Course 12",
+                            ModuleNumber = 3,
+                            Status = 2
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Option", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Option", b =>
                 {
                     b.Property<long>("OptionId")
                         .ValueGeneratedOnAdd()
@@ -480,9 +3394,2171 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasIndex("QuestionId");
 
                     b.ToTable("Options");
+
+                    b.HasData(
+                        new
+                        {
+                            OptionId = 1L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 1",
+                            QuestionId = 1L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 2L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 1",
+                            QuestionId = 1L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 3L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 1",
+                            QuestionId = 1L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 4L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 1",
+                            QuestionId = 1L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 5L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 2",
+                            QuestionId = 2L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 6L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 2",
+                            QuestionId = 2L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 7L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 2",
+                            QuestionId = 2L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 8L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 2",
+                            QuestionId = 2L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 9L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 3",
+                            QuestionId = 3L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 10L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 3",
+                            QuestionId = 3L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 11L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 3",
+                            QuestionId = 3L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 12L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 3",
+                            QuestionId = 3L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 13L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 4",
+                            QuestionId = 4L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 14L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 4",
+                            QuestionId = 4L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 15L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 4",
+                            QuestionId = 4L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 16L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 4",
+                            QuestionId = 4L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 17L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 5",
+                            QuestionId = 5L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 18L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 5",
+                            QuestionId = 5L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 19L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 5",
+                            QuestionId = 5L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 20L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 5",
+                            QuestionId = 5L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 21L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 6",
+                            QuestionId = 6L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 22L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 6",
+                            QuestionId = 6L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 23L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 6",
+                            QuestionId = 6L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 24L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 6",
+                            QuestionId = 6L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 25L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 7",
+                            QuestionId = 7L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 26L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 7",
+                            QuestionId = 7L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 27L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 7",
+                            QuestionId = 7L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 28L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 7",
+                            QuestionId = 7L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 29L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 8",
+                            QuestionId = 8L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 30L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 8",
+                            QuestionId = 8L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 31L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 8",
+                            QuestionId = 8L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 32L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 8",
+                            QuestionId = 8L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 33L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 9",
+                            QuestionId = 9L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 34L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 9",
+                            QuestionId = 9L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 35L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 9",
+                            QuestionId = 9L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 36L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 9",
+                            QuestionId = 9L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 37L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 10",
+                            QuestionId = 10L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 38L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 10",
+                            QuestionId = 10L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 39L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 10",
+                            QuestionId = 10L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 40L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 10",
+                            QuestionId = 10L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 41L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 11",
+                            QuestionId = 11L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 42L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 11",
+                            QuestionId = 11L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 43L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 11",
+                            QuestionId = 11L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 44L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 11",
+                            QuestionId = 11L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 45L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 12",
+                            QuestionId = 12L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 46L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 12",
+                            QuestionId = 12L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 47L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 12",
+                            QuestionId = 12L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 48L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 12",
+                            QuestionId = 12L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 49L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 13",
+                            QuestionId = 13L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 50L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 13",
+                            QuestionId = 13L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 51L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 13",
+                            QuestionId = 13L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 52L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 13",
+                            QuestionId = 13L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 53L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 14",
+                            QuestionId = 14L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 54L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 14",
+                            QuestionId = 14L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 55L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 14",
+                            QuestionId = 14L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 56L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 14",
+                            QuestionId = 14L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 57L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 15",
+                            QuestionId = 15L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 58L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 15",
+                            QuestionId = 15L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 59L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 15",
+                            QuestionId = 15L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 60L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 15",
+                            QuestionId = 15L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 61L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 16",
+                            QuestionId = 16L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 62L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 16",
+                            QuestionId = 16L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 63L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 16",
+                            QuestionId = 16L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 64L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 16",
+                            QuestionId = 16L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 65L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 17",
+                            QuestionId = 17L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 66L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 17",
+                            QuestionId = 17L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 67L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 17",
+                            QuestionId = 17L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 68L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 17",
+                            QuestionId = 17L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 69L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 18",
+                            QuestionId = 18L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 70L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 18",
+                            QuestionId = 18L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 71L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 18",
+                            QuestionId = 18L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 72L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 18",
+                            QuestionId = 18L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 73L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 19",
+                            QuestionId = 19L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 74L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 19",
+                            QuestionId = 19L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 75L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 19",
+                            QuestionId = 19L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 76L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 19",
+                            QuestionId = 19L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 77L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 20",
+                            QuestionId = 20L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 78L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 20",
+                            QuestionId = 20L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 79L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 20",
+                            QuestionId = 20L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 80L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 20",
+                            QuestionId = 20L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 81L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 21",
+                            QuestionId = 21L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 82L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 21",
+                            QuestionId = 21L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 83L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 21",
+                            QuestionId = 21L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 84L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 21",
+                            QuestionId = 21L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 85L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 22",
+                            QuestionId = 22L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 86L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 22",
+                            QuestionId = 22L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 87L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 22",
+                            QuestionId = 22L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 88L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 22",
+                            QuestionId = 22L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 89L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 23",
+                            QuestionId = 23L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 90L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 23",
+                            QuestionId = 23L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 91L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 23",
+                            QuestionId = 23L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 92L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 23",
+                            QuestionId = 23L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 93L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 24",
+                            QuestionId = 24L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 94L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 24",
+                            QuestionId = 24L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 95L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 24",
+                            QuestionId = 24L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 96L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 24",
+                            QuestionId = 24L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 97L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 25",
+                            QuestionId = 25L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 98L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 25",
+                            QuestionId = 25L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 99L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 25",
+                            QuestionId = 25L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 100L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 25",
+                            QuestionId = 25L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 101L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 26",
+                            QuestionId = 26L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 102L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 26",
+                            QuestionId = 26L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 103L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 26",
+                            QuestionId = 26L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 104L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 26",
+                            QuestionId = 26L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 105L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 27",
+                            QuestionId = 27L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 106L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 27",
+                            QuestionId = 27L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 107L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 27",
+                            QuestionId = 27L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 108L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 27",
+                            QuestionId = 27L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 109L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 28",
+                            QuestionId = 28L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 110L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 28",
+                            QuestionId = 28L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 111L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 28",
+                            QuestionId = 28L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 112L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 28",
+                            QuestionId = 28L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 113L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 29",
+                            QuestionId = 29L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 114L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 29",
+                            QuestionId = 29L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 115L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 29",
+                            QuestionId = 29L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 116L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 29",
+                            QuestionId = 29L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 117L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 30",
+                            QuestionId = 30L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 118L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 30",
+                            QuestionId = 30L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 119L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 30",
+                            QuestionId = 30L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 120L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 30",
+                            QuestionId = 30L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 121L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 31",
+                            QuestionId = 31L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 122L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 31",
+                            QuestionId = 31L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 123L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 31",
+                            QuestionId = 31L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 124L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 31",
+                            QuestionId = 31L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 125L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 32",
+                            QuestionId = 32L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 126L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 32",
+                            QuestionId = 32L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 127L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 32",
+                            QuestionId = 32L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 128L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 32",
+                            QuestionId = 32L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 129L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 33",
+                            QuestionId = 33L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 130L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 33",
+                            QuestionId = 33L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 131L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 33",
+                            QuestionId = 33L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 132L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 33",
+                            QuestionId = 33L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 133L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 34",
+                            QuestionId = 34L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 134L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 34",
+                            QuestionId = 34L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 135L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 34",
+                            QuestionId = 34L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 136L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 34",
+                            QuestionId = 34L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 137L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 35",
+                            QuestionId = 35L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 138L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 35",
+                            QuestionId = 35L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 139L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 35",
+                            QuestionId = 35L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 140L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 35",
+                            QuestionId = 35L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 141L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 36",
+                            QuestionId = 36L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 142L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 36",
+                            QuestionId = 36L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 143L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 36",
+                            QuestionId = 36L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 144L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 36",
+                            QuestionId = 36L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 145L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 37",
+                            QuestionId = 37L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 146L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 37",
+                            QuestionId = 37L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 147L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 37",
+                            QuestionId = 37L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 148L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 37",
+                            QuestionId = 37L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 149L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 38",
+                            QuestionId = 38L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 150L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 38",
+                            QuestionId = 38L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 151L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 38",
+                            QuestionId = 38L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 152L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 38",
+                            QuestionId = 38L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 153L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 39",
+                            QuestionId = 39L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 154L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 39",
+                            QuestionId = 39L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 155L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 39",
+                            QuestionId = 39L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 156L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 39",
+                            QuestionId = 39L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 157L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 40",
+                            QuestionId = 40L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 158L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 40",
+                            QuestionId = 40L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 159L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 40",
+                            QuestionId = 40L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 160L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 40",
+                            QuestionId = 40L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 161L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 41",
+                            QuestionId = 41L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 162L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 41",
+                            QuestionId = 41L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 163L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 41",
+                            QuestionId = 41L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 164L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 41",
+                            QuestionId = 41L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 165L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 42",
+                            QuestionId = 42L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 166L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 42",
+                            QuestionId = 42L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 167L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 42",
+                            QuestionId = 42L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 168L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 42",
+                            QuestionId = 42L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 169L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 43",
+                            QuestionId = 43L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 170L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 43",
+                            QuestionId = 43L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 171L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 43",
+                            QuestionId = 43L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 172L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 43",
+                            QuestionId = 43L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 173L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 44",
+                            QuestionId = 44L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 174L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 44",
+                            QuestionId = 44L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 175L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 44",
+                            QuestionId = 44L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 176L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 44",
+                            QuestionId = 44L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 177L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 45",
+                            QuestionId = 45L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 178L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 45",
+                            QuestionId = 45L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 179L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 45",
+                            QuestionId = 45L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 180L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 45",
+                            QuestionId = 45L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 181L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 46",
+                            QuestionId = 46L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 182L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 46",
+                            QuestionId = 46L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 183L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 46",
+                            QuestionId = 46L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 184L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 46",
+                            QuestionId = 46L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 185L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 47",
+                            QuestionId = 47L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 186L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 47",
+                            QuestionId = 47L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 187L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 47",
+                            QuestionId = 47L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 188L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 47",
+                            QuestionId = 47L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 189L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 48",
+                            QuestionId = 48L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 190L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 48",
+                            QuestionId = 48L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 191L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 48",
+                            QuestionId = 48L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 192L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 48",
+                            QuestionId = 48L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 193L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 49",
+                            QuestionId = 49L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 194L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 49",
+                            QuestionId = 49L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 195L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 49",
+                            QuestionId = 49L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 196L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 49",
+                            QuestionId = 49L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 197L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 50",
+                            QuestionId = 50L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 198L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 50",
+                            QuestionId = 50L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 199L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 50",
+                            QuestionId = 50L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 200L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 50",
+                            QuestionId = 50L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 201L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 51",
+                            QuestionId = 51L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 202L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 51",
+                            QuestionId = 51L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 203L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 51",
+                            QuestionId = 51L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 204L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 51",
+                            QuestionId = 51L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 205L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 52",
+                            QuestionId = 52L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 206L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 52",
+                            QuestionId = 52L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 207L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 52",
+                            QuestionId = 52L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 208L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 52",
+                            QuestionId = 52L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 209L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 53",
+                            QuestionId = 53L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 210L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 53",
+                            QuestionId = 53L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 211L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 53",
+                            QuestionId = 53L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 212L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 53",
+                            QuestionId = 53L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 213L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 54",
+                            QuestionId = 54L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 214L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 54",
+                            QuestionId = 54L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 215L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 54",
+                            QuestionId = 54L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 216L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 54",
+                            QuestionId = 54L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 217L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 55",
+                            QuestionId = 55L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 218L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 55",
+                            QuestionId = 55L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 219L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 55",
+                            QuestionId = 55L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 220L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 55",
+                            QuestionId = 55L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 221L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 56",
+                            QuestionId = 56L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 222L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 56",
+                            QuestionId = 56L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 223L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 56",
+                            QuestionId = 56L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 224L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 56",
+                            QuestionId = 56L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 225L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 57",
+                            QuestionId = 57L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 226L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 57",
+                            QuestionId = 57L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 227L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 57",
+                            QuestionId = 57L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 228L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 57",
+                            QuestionId = 57L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 229L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 58",
+                            QuestionId = 58L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 230L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 58",
+                            QuestionId = 58L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 231L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 58",
+                            QuestionId = 58L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 232L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 58",
+                            QuestionId = 58L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 233L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 59",
+                            QuestionId = 59L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 234L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 59",
+                            QuestionId = 59L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 235L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 59",
+                            QuestionId = 59L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 236L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 59",
+                            QuestionId = 59L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 237L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = true,
+                            OptionText = "Option 1 for Question 60",
+                            QuestionId = 60L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 238L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 2 for Question 60",
+                            QuestionId = 60L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 239L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 3 for Question 60",
+                            QuestionId = 60L,
+                            Status = 0
+                        },
+                        new
+                        {
+                            OptionId = 240L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsCorrect = false,
+                            OptionText = "Option 4 for Question 60",
+                            QuestionId = 60L,
+                            Status = 0
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Question", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Question", b =>
                 {
                     b.Property<long>("QuestionId")
                         .ValueGeneratedOnAdd()
@@ -512,9 +5588,491 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasIndex("QuizId");
 
                     b.ToTable("Questions");
+
+                    b.HasData(
+                        new
+                        {
+                            QuestionId = 1L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 1 for Quiz 1",
+                            QuestionNum = 1,
+                            QuizId = 1L
+                        },
+                        new
+                        {
+                            QuestionId = 2L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 2 for Quiz 1",
+                            QuestionNum = 2,
+                            QuizId = 1L
+                        },
+                        new
+                        {
+                            QuestionId = 3L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 3 for Quiz 1",
+                            QuestionNum = 3,
+                            QuizId = 1L
+                        },
+                        new
+                        {
+                            QuestionId = 4L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 4 for Quiz 1",
+                            QuestionNum = 4,
+                            QuizId = 1L
+                        },
+                        new
+                        {
+                            QuestionId = 5L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 5 for Quiz 1",
+                            QuestionNum = 5,
+                            QuizId = 1L
+                        },
+                        new
+                        {
+                            QuestionId = 6L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 1 for Quiz 2",
+                            QuestionNum = 1,
+                            QuizId = 2L
+                        },
+                        new
+                        {
+                            QuestionId = 7L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 2 for Quiz 2",
+                            QuestionNum = 2,
+                            QuizId = 2L
+                        },
+                        new
+                        {
+                            QuestionId = 8L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 3 for Quiz 2",
+                            QuestionNum = 3,
+                            QuizId = 2L
+                        },
+                        new
+                        {
+                            QuestionId = 9L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 4 for Quiz 2",
+                            QuestionNum = 4,
+                            QuizId = 2L
+                        },
+                        new
+                        {
+                            QuestionId = 10L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 5 for Quiz 2",
+                            QuestionNum = 5,
+                            QuizId = 2L
+                        },
+                        new
+                        {
+                            QuestionId = 11L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 1 for Quiz 3",
+                            QuestionNum = 1,
+                            QuizId = 3L
+                        },
+                        new
+                        {
+                            QuestionId = 12L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 2 for Quiz 3",
+                            QuestionNum = 2,
+                            QuizId = 3L
+                        },
+                        new
+                        {
+                            QuestionId = 13L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 3 for Quiz 3",
+                            QuestionNum = 3,
+                            QuizId = 3L
+                        },
+                        new
+                        {
+                            QuestionId = 14L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 4 for Quiz 3",
+                            QuestionNum = 4,
+                            QuizId = 3L
+                        },
+                        new
+                        {
+                            QuestionId = 15L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 5 for Quiz 3",
+                            QuestionNum = 5,
+                            QuizId = 3L
+                        },
+                        new
+                        {
+                            QuestionId = 16L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 1 for Quiz 4",
+                            QuestionNum = 1,
+                            QuizId = 4L
+                        },
+                        new
+                        {
+                            QuestionId = 17L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 2 for Quiz 4",
+                            QuestionNum = 2,
+                            QuizId = 4L
+                        },
+                        new
+                        {
+                            QuestionId = 18L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 3 for Quiz 4",
+                            QuestionNum = 3,
+                            QuizId = 4L
+                        },
+                        new
+                        {
+                            QuestionId = 19L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 4 for Quiz 4",
+                            QuestionNum = 4,
+                            QuizId = 4L
+                        },
+                        new
+                        {
+                            QuestionId = 20L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 5 for Quiz 4",
+                            QuestionNum = 5,
+                            QuizId = 4L
+                        },
+                        new
+                        {
+                            QuestionId = 21L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 1 for Quiz 5",
+                            QuestionNum = 1,
+                            QuizId = 5L
+                        },
+                        new
+                        {
+                            QuestionId = 22L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 2 for Quiz 5",
+                            QuestionNum = 2,
+                            QuizId = 5L
+                        },
+                        new
+                        {
+                            QuestionId = 23L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 3 for Quiz 5",
+                            QuestionNum = 3,
+                            QuizId = 5L
+                        },
+                        new
+                        {
+                            QuestionId = 24L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 4 for Quiz 5",
+                            QuestionNum = 4,
+                            QuizId = 5L
+                        },
+                        new
+                        {
+                            QuestionId = 25L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 5 for Quiz 5",
+                            QuestionNum = 5,
+                            QuizId = 5L
+                        },
+                        new
+                        {
+                            QuestionId = 26L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 1 for Quiz 6",
+                            QuestionNum = 1,
+                            QuizId = 6L
+                        },
+                        new
+                        {
+                            QuestionId = 27L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 2 for Quiz 6",
+                            QuestionNum = 2,
+                            QuizId = 6L
+                        },
+                        new
+                        {
+                            QuestionId = 28L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 3 for Quiz 6",
+                            QuestionNum = 3,
+                            QuizId = 6L
+                        },
+                        new
+                        {
+                            QuestionId = 29L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 4 for Quiz 6",
+                            QuestionNum = 4,
+                            QuizId = 6L
+                        },
+                        new
+                        {
+                            QuestionId = 30L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 5 for Quiz 6",
+                            QuestionNum = 5,
+                            QuizId = 6L
+                        },
+                        new
+                        {
+                            QuestionId = 31L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 1 for Quiz 7",
+                            QuestionNum = 1,
+                            QuizId = 7L
+                        },
+                        new
+                        {
+                            QuestionId = 32L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 2 for Quiz 7",
+                            QuestionNum = 2,
+                            QuizId = 7L
+                        },
+                        new
+                        {
+                            QuestionId = 33L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 3 for Quiz 7",
+                            QuestionNum = 3,
+                            QuizId = 7L
+                        },
+                        new
+                        {
+                            QuestionId = 34L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 4 for Quiz 7",
+                            QuestionNum = 4,
+                            QuizId = 7L
+                        },
+                        new
+                        {
+                            QuestionId = 35L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 5 for Quiz 7",
+                            QuestionNum = 5,
+                            QuizId = 7L
+                        },
+                        new
+                        {
+                            QuestionId = 36L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 1 for Quiz 8",
+                            QuestionNum = 1,
+                            QuizId = 8L
+                        },
+                        new
+                        {
+                            QuestionId = 37L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 2 for Quiz 8",
+                            QuestionNum = 2,
+                            QuizId = 8L
+                        },
+                        new
+                        {
+                            QuestionId = 38L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 3 for Quiz 8",
+                            QuestionNum = 3,
+                            QuizId = 8L
+                        },
+                        new
+                        {
+                            QuestionId = 39L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 4 for Quiz 8",
+                            QuestionNum = 4,
+                            QuizId = 8L
+                        },
+                        new
+                        {
+                            QuestionId = 40L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 5 for Quiz 8",
+                            QuestionNum = 5,
+                            QuizId = 8L
+                        },
+                        new
+                        {
+                            QuestionId = 41L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 1 for Quiz 9",
+                            QuestionNum = 1,
+                            QuizId = 9L
+                        },
+                        new
+                        {
+                            QuestionId = 42L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 2 for Quiz 9",
+                            QuestionNum = 2,
+                            QuizId = 9L
+                        },
+                        new
+                        {
+                            QuestionId = 43L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 3 for Quiz 9",
+                            QuestionNum = 3,
+                            QuizId = 9L
+                        },
+                        new
+                        {
+                            QuestionId = 44L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 4 for Quiz 9",
+                            QuestionNum = 4,
+                            QuizId = 9L
+                        },
+                        new
+                        {
+                            QuestionId = 45L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 5 for Quiz 9",
+                            QuestionNum = 5,
+                            QuizId = 9L
+                        },
+                        new
+                        {
+                            QuestionId = 46L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 1 for Quiz 10",
+                            QuestionNum = 1,
+                            QuizId = 10L
+                        },
+                        new
+                        {
+                            QuestionId = 47L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 2 for Quiz 10",
+                            QuestionNum = 2,
+                            QuizId = 10L
+                        },
+                        new
+                        {
+                            QuestionId = 48L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 3 for Quiz 10",
+                            QuestionNum = 3,
+                            QuizId = 10L
+                        },
+                        new
+                        {
+                            QuestionId = 49L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 4 for Quiz 10",
+                            QuestionNum = 4,
+                            QuizId = 10L
+                        },
+                        new
+                        {
+                            QuestionId = 50L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 5 for Quiz 10",
+                            QuestionNum = 5,
+                            QuizId = 10L
+                        },
+                        new
+                        {
+                            QuestionId = 51L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 1 for Quiz 11",
+                            QuestionNum = 1,
+                            QuizId = 11L
+                        },
+                        new
+                        {
+                            QuestionId = 52L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 2 for Quiz 11",
+                            QuestionNum = 2,
+                            QuizId = 11L
+                        },
+                        new
+                        {
+                            QuestionId = 53L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 3 for Quiz 11",
+                            QuestionNum = 3,
+                            QuizId = 11L
+                        },
+                        new
+                        {
+                            QuestionId = 54L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 4 for Quiz 11",
+                            QuestionNum = 4,
+                            QuizId = 11L
+                        },
+                        new
+                        {
+                            QuestionId = 55L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 5 for Quiz 11",
+                            QuestionNum = 5,
+                            QuizId = 11L
+                        },
+                        new
+                        {
+                            QuestionId = 56L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 1 for Quiz 12",
+                            QuestionNum = 1,
+                            QuizId = 12L
+                        },
+                        new
+                        {
+                            QuestionId = 57L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 2 for Quiz 12",
+                            QuestionNum = 2,
+                            QuizId = 12L
+                        },
+                        new
+                        {
+                            QuestionId = 58L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 3 for Quiz 12",
+                            QuestionNum = 3,
+                            QuizId = 12L
+                        },
+                        new
+                        {
+                            QuestionId = 59L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 4 for Quiz 12",
+                            QuestionNum = 4,
+                            QuizId = 12L
+                        },
+                        new
+                        {
+                            QuestionId = 60L,
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            QuestionContent = "Question 5 for Quiz 12",
+                            QuestionNum = 5,
+                            QuizId = 12L
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Quiz", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Quiz", b =>
                 {
                     b.Property<long>("QuizId")
                         .ValueGeneratedOnAdd()
@@ -553,9 +6111,131 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasIndex("ModuleId");
 
                     b.ToTable("Quizzes");
+
+                    b.HasData(
+                        new
+                        {
+                            QuizId = 1L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleId = 1L,
+                            PassScore = 70,
+                            QuizName = "Quiz for Module 1",
+                            QuizTime = 20
+                        },
+                        new
+                        {
+                            QuizId = 2L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleId = 2L,
+                            PassScore = 70,
+                            QuizName = "Quiz for Module 2",
+                            QuizTime = 20
+                        },
+                        new
+                        {
+                            QuizId = 3L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleId = 3L,
+                            PassScore = 70,
+                            QuizName = "Quiz for Module 3",
+                            QuizTime = 20
+                        },
+                        new
+                        {
+                            QuizId = 4L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleId = 4L,
+                            PassScore = 70,
+                            QuizName = "Quiz for Module 4",
+                            QuizTime = 20
+                        },
+                        new
+                        {
+                            QuizId = 5L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleId = 5L,
+                            PassScore = 70,
+                            QuizName = "Quiz for Module 5",
+                            QuizTime = 20
+                        },
+                        new
+                        {
+                            QuizId = 6L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleId = 6L,
+                            PassScore = 70,
+                            QuizName = "Quiz for Module 6",
+                            QuizTime = 20
+                        },
+                        new
+                        {
+                            QuizId = 7L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleId = 7L,
+                            PassScore = 70,
+                            QuizName = "Quiz for Module 7",
+                            QuizTime = 20
+                        },
+                        new
+                        {
+                            QuizId = 8L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleId = 8L,
+                            PassScore = 70,
+                            QuizName = "Quiz for Module 8",
+                            QuizTime = 20
+                        },
+                        new
+                        {
+                            QuizId = 9L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleId = 9L,
+                            PassScore = 70,
+                            QuizName = "Quiz for Module 9",
+                            QuizTime = 20
+                        },
+                        new
+                        {
+                            QuizId = 10L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleId = 10L,
+                            PassScore = 70,
+                            QuizName = "Quiz for Module 10",
+                            QuizTime = 20
+                        },
+                        new
+                        {
+                            QuizId = 11L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleId = 11L,
+                            PassScore = 70,
+                            QuizName = "Quiz for Module 11",
+                            QuizTime = 20
+                        },
+                        new
+                        {
+                            QuizId = 12L,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModuleId = 12L,
+                            PassScore = 70,
+                            QuizName = "Quiz for Module 12",
+                            QuizTime = 20
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.QuizResult", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.QuizResult", b =>
                 {
                     b.Property<long>("QuizResultId")
                         .ValueGeneratedOnAdd()
@@ -598,9 +6278,323 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("QuizResults");
+
+                    b.HasData(
+                        new
+                        {
+                            QuizResultId = 1L,
+                            CorrectAnswers = 4,
+                            CreatedAt = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 1L,
+                            Score = 80.00m,
+                            StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5380),
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            QuizResultId = 2L,
+                            CorrectAnswers = 3,
+                            CreatedAt = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 1L,
+                            Score = 60.00m,
+                            StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5402),
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            QuizResultId = 3L,
+                            CorrectAnswers = 4,
+                            CreatedAt = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 2L,
+                            Score = 80.00m,
+                            StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5406),
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            QuizResultId = 4L,
+                            CorrectAnswers = 3,
+                            CreatedAt = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 2L,
+                            Score = 60.00m,
+                            StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5409),
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            QuizResultId = 5L,
+                            CorrectAnswers = 4,
+                            CreatedAt = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 3L,
+                            Score = 80.00m,
+                            StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5411),
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            QuizResultId = 6L,
+                            CorrectAnswers = 3,
+                            CreatedAt = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 3L,
+                            Score = 60.00m,
+                            StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5415),
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            QuizResultId = 7L,
+                            CorrectAnswers = 4,
+                            CreatedAt = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 4L,
+                            Score = 80.00m,
+                            StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5417),
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            QuizResultId = 8L,
+                            CorrectAnswers = 3,
+                            CreatedAt = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 4L,
+                            Score = 60.00m,
+                            StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5419),
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            QuizResultId = 9L,
+                            CorrectAnswers = 4,
+                            CreatedAt = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 5L,
+                            Score = 80.00m,
+                            StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5421),
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            QuizResultId = 10L,
+                            CorrectAnswers = 3,
+                            CreatedAt = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 5L,
+                            Score = 60.00m,
+                            StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5424),
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            QuizResultId = 11L,
+                            CorrectAnswers = 4,
+                            CreatedAt = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 6L,
+                            Score = 80.00m,
+                            StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5426),
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            QuizResultId = 12L,
+                            CorrectAnswers = 3,
+                            CreatedAt = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 6L,
+                            Score = 60.00m,
+                            StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5427),
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            QuizResultId = 13L,
+                            CorrectAnswers = 4,
+                            CreatedAt = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 7L,
+                            Score = 80.00m,
+                            StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5429),
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            QuizResultId = 14L,
+                            CorrectAnswers = 3,
+                            CreatedAt = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 7L,
+                            Score = 60.00m,
+                            StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5485),
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            QuizResultId = 15L,
+                            CorrectAnswers = 4,
+                            CreatedAt = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 8L,
+                            Score = 80.00m,
+                            StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5486),
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            QuizResultId = 16L,
+                            CorrectAnswers = 3,
+                            CreatedAt = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 8L,
+                            Score = 60.00m,
+                            StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5488),
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            QuizResultId = 17L,
+                            CorrectAnswers = 4,
+                            CreatedAt = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 9L,
+                            Score = 80.00m,
+                            StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5490),
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            QuizResultId = 18L,
+                            CorrectAnswers = 3,
+                            CreatedAt = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 9L,
+                            Score = 60.00m,
+                            StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5493),
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            QuizResultId = 19L,
+                            CorrectAnswers = 4,
+                            CreatedAt = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 10L,
+                            Score = 80.00m,
+                            StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5494),
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            QuizResultId = 20L,
+                            CorrectAnswers = 3,
+                            CreatedAt = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 10L,
+                            Score = 60.00m,
+                            StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5496),
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            QuizResultId = 21L,
+                            CorrectAnswers = 4,
+                            CreatedAt = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 11L,
+                            Score = 80.00m,
+                            StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5498),
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            QuizResultId = 22L,
+                            CorrectAnswers = 3,
+                            CreatedAt = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 11L,
+                            Score = 60.00m,
+                            StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5499),
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            QuizResultId = 23L,
+                            CorrectAnswers = 4,
+                            CreatedAt = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 1, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 12L,
+                            Score = 80.00m,
+                            StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5501),
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            QuizResultId = 24L,
+                            CorrectAnswers = 3,
+                            CreatedAt = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            EndTime = new DateTime(2025, 3, 2, 9, 45, 0, 0, DateTimeKind.Unspecified),
+                            QuizId = 12L,
+                            Score = 60.00m,
+                            StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            TotalQuestions = 5,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 741, DateTimeKind.Local).AddTicks(5502),
+                            UserId = "4"
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Ratings", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Ratings", b =>
                 {
                     b.Property<long>("RatingId")
                         .ValueGeneratedOnAdd()
@@ -634,9 +6628,101 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Ratings");
+
+                    b.HasData(
+                        new
+                        {
+                            RatingId = 1L,
+                            CourseId = 1L,
+                            DateCreated = new DateTime(2025, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Feedback = "Great course, very helpful!",
+                            Rating = (byte)5,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            RatingId = 2L,
+                            CourseId = 1L,
+                            DateCreated = new DateTime(2025, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Feedback = "Good explanation but can be improved.",
+                            Rating = (byte)4,
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            RatingId = 3L,
+                            CourseId = 2L,
+                            DateCreated = new DateTime(2025, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Feedback = "Excellent content!",
+                            Rating = (byte)5,
+                            UserId = "5"
+                        },
+                        new
+                        {
+                            RatingId = 4L,
+                            CourseId = 2L,
+                            DateCreated = new DateTime(2025, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Feedback = "Average, expected more details.",
+                            Rating = (byte)3,
+                            UserId = "6"
+                        },
+                        new
+                        {
+                            RatingId = 5L,
+                            CourseId = 3L,
+                            DateCreated = new DateTime(2025, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Feedback = "Well structured and clear.",
+                            Rating = (byte)4,
+                            UserId = "7"
+                        },
+                        new
+                        {
+                            RatingId = 6L,
+                            CourseId = 3L,
+                            DateCreated = new DateTime(2025, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Feedback = "Loved the practical examples.",
+                            Rating = (byte)5,
+                            UserId = "8"
+                        },
+                        new
+                        {
+                            RatingId = 7L,
+                            CourseId = 4L,
+                            DateCreated = new DateTime(2025, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Feedback = "Too basic for me.",
+                            Rating = (byte)2,
+                            UserId = "9"
+                        },
+                        new
+                        {
+                            RatingId = 8L,
+                            CourseId = 4L,
+                            DateCreated = new DateTime(2025, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Feedback = "Good for beginners.",
+                            Rating = (byte)4,
+                            UserId = "10"
+                        },
+                        new
+                        {
+                            RatingId = 9L,
+                            CourseId = 5L,
+                            DateCreated = new DateTime(2025, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Feedback = "Outstanding course!",
+                            Rating = (byte)5,
+                            UserId = "11"
+                        },
+                        new
+                        {
+                            RatingId = 10L,
+                            CourseId = 5L,
+                            DateCreated = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Feedback = "Enjoyed the teaching style.",
+                            Rating = (byte)4,
+                            UserId = "12"
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.WishList", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.WishList", b =>
                 {
                     b.Property<long>("CourseId")
                         .HasColumnType("bigint");
@@ -652,9 +6738,53 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("WishLists");
+
+                    b.HasData(
+                        new
+                        {
+                            CourseId = 1L,
+                            UserId = "3",
+                            CreatedAt = new DateTime(2025, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 2L,
+                            UserId = "4",
+                            CreatedAt = new DateTime(2025, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 3L,
+                            UserId = "5",
+                            CreatedAt = new DateTime(2025, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 4L,
+                            UserId = "6",
+                            CreatedAt = new DateTime(2025, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 5L,
+                            UserId = "3",
+                            CreatedAt = new DateTime(2025, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 2L,
+                            UserId = "5",
+                            CreatedAt = new DateTime(2025, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 1L,
+                            UserId = "6",
+                            CreatedAt = new DateTime(2025, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.Others.AdminReviewCourse", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.Others.AdminReviewCourse", b =>
                 {
                     b.Property<long>("ReviewId")
                         .ValueGeneratedOnAdd()
@@ -685,9 +6815,119 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasIndex("CourseId");
 
                     b.ToTable("AdminReviewCourses");
+
+                    b.HasData(
+                        new
+                        {
+                            ReviewId = 1L,
+                            AdminId = "1",
+                            CourseId = 1L,
+                            ReviewNotes = "Approved for publishing",
+                            ReviewedAt = new DateTime(2025, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 0
+                        },
+                        new
+                        {
+                            ReviewId = 2L,
+                            AdminId = "1",
+                            CourseId = 2L,
+                            ReviewNotes = "Needs improvement before publishing",
+                            ReviewedAt = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 1
+                        },
+                        new
+                        {
+                            ReviewId = 3L,
+                            AdminId = "1",
+                            CourseId = 3L,
+                            ReviewNotes = "Approved for publishing",
+                            ReviewedAt = new DateTime(2025, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 0
+                        },
+                        new
+                        {
+                            ReviewId = 4L,
+                            AdminId = "1",
+                            CourseId = 4L,
+                            ReviewNotes = "Needs improvement before publishing",
+                            ReviewedAt = new DateTime(2025, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 1
+                        },
+                        new
+                        {
+                            ReviewId = 5L,
+                            AdminId = "1",
+                            CourseId = 5L,
+                            ReviewNotes = "Approved for publishing",
+                            ReviewedAt = new DateTime(2025, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 0
+                        },
+                        new
+                        {
+                            ReviewId = 6L,
+                            AdminId = "1",
+                            CourseId = 6L,
+                            ReviewNotes = "Needs improvement before publishing",
+                            ReviewedAt = new DateTime(2025, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 1
+                        },
+                        new
+                        {
+                            ReviewId = 7L,
+                            AdminId = "1",
+                            CourseId = 7L,
+                            ReviewNotes = "Approved for publishing",
+                            ReviewedAt = new DateTime(2025, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 0
+                        },
+                        new
+                        {
+                            ReviewId = 8L,
+                            AdminId = "1",
+                            CourseId = 8L,
+                            ReviewNotes = "Needs improvement before publishing",
+                            ReviewedAt = new DateTime(2025, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 1
+                        },
+                        new
+                        {
+                            ReviewId = 9L,
+                            AdminId = "1",
+                            CourseId = 9L,
+                            ReviewNotes = "Approved for publishing",
+                            ReviewedAt = new DateTime(2025, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 0
+                        },
+                        new
+                        {
+                            ReviewId = 10L,
+                            AdminId = "1",
+                            CourseId = 10L,
+                            ReviewNotes = "Needs improvement before publishing",
+                            ReviewedAt = new DateTime(2025, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 1
+                        },
+                        new
+                        {
+                            ReviewId = 11L,
+                            AdminId = "1",
+                            CourseId = 11L,
+                            ReviewNotes = "Approved for publishing",
+                            ReviewedAt = new DateTime(2025, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 0
+                        },
+                        new
+                        {
+                            ReviewId = 12L,
+                            AdminId = "1",
+                            CourseId = 12L,
+                            ReviewNotes = "Needs improvement before publishing",
+                            ReviewedAt = new DateTime(2025, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 1
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.Others.FAQ", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.Others.FAQ", b =>
                 {
                     b.Property<long>("FaqId")
                         .ValueGeneratedOnAdd()
@@ -715,9 +6955,56 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasKey("FaqId");
 
                     b.ToTable("FAQs");
+
+                    b.HasData(
+                        new
+                        {
+                            FaqId = 1L,
+                            Answer = "Bạn có thể nhấn vào nút Đăng ký trên trang chủ và điền đầy đủ thông tin yêu cầu.",
+                            CommonStatus = 0,
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Question = "Làm thế nào để đăng ký tài khoản?",
+                            UpdatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            FaqId = 2L,
+                            Answer = "Một số khóa học được cung cấp miễn phí, bạn có thể tìm trong danh mục 'Khóa học miễn phí'.",
+                            CommonStatus = 0,
+                            CreatedAt = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Question = "Tôi có thể học các khóa học miễn phí không?",
+                            UpdatedAt = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            FaqId = 3L,
+                            Answer = "Chúng tôi hỗ trợ thanh toán qua thẻ ngân hàng, ví điện tử và PayPal.",
+                            CommonStatus = 0,
+                            CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Question = "Phương thức thanh toán nào được hỗ trợ?",
+                            UpdatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            FaqId = 4L,
+                            Answer = "Bạn có thể nộp đơn ứng tuyển Mentor trong mục 'Trở thành giảng viên'.",
+                            CommonStatus = 0,
+                            CreatedAt = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Question = "Làm thế nào để trở thành giảng viên?",
+                            UpdatedAt = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            FaqId = 5L,
+                            Answer = "Có, nền tảng hỗ trợ cả trên web và ứng dụng di động.",
+                            CommonStatus = 0,
+                            CreatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Question = "Tôi có thể học trên điện thoại không?",
+                            UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.Others.MentorApplication", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.Others.MentorApplication", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -757,9 +7044,42 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("MentorApplications");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            AdminReviewerId = "1",
+                            CvUrl = "https://example.com/cv/3.pdf",
+                            Note = "Experienced developer",
+                            ReviewedAt = new DateTime(2025, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 2,
+                            SubmittedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CvUrl = "https://example.com/cv/4.pdf",
+                            Note = "UI/UX designer",
+                            Status = 1,
+                            SubmittedAt = new DateTime(2025, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            AdminReviewerId = "2",
+                            CvUrl = "https://example.com/cv/5.pdf",
+                            Note = "Data analyst background",
+                            ReviewedAt = new DateTime(2025, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = 3,
+                            SubmittedAt = new DateTime(2025, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserId = "5"
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.Others.Message", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.Others.Message", b =>
                 {
                     b.Property<long>("MessageId")
                         .ValueGeneratedOnAdd()
@@ -792,9 +7112,56 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasIndex("SenderId");
 
                     b.ToTable("Messages");
+
+                    b.HasData(
+                        new
+                        {
+                            MessageId = 1L,
+                            Content = "Chào mừng bạn đến với hệ thống học trực tuyến!",
+                            CreatedAt = new DateTime(2025, 2, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = true,
+                            ReceiverId = "3",
+                            SenderId = "1"
+                        },
+                        new
+                        {
+                            MessageId = 2L,
+                            Content = "Cảm ơn admin, mình rất hào hứng!",
+                            CreatedAt = new DateTime(2025, 2, 1, 10, 5, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = true,
+                            ReceiverId = "1",
+                            SenderId = "3"
+                        },
+                        new
+                        {
+                            MessageId = 3L,
+                            Content = "Bạn có muốn tham gia nhóm học chung không?",
+                            CreatedAt = new DateTime(2025, 2, 2, 15, 20, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = false,
+                            ReceiverId = "5",
+                            SenderId = "4"
+                        },
+                        new
+                        {
+                            MessageId = 4L,
+                            Content = "Ok, mình rất quan tâm.",
+                            CreatedAt = new DateTime(2025, 2, 2, 15, 25, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = false,
+                            ReceiverId = "4",
+                            SenderId = "5"
+                        },
+                        new
+                        {
+                            MessageId = 5L,
+                            Content = "Chúng tôi đã nhận được đơn ứng tuyển mentor của bạn.",
+                            CreatedAt = new DateTime(2025, 2, 3, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = true,
+                            ReceiverId = "6",
+                            SenderId = "2"
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.Others.TransactionHistory", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.Others.TransactionHistory", b =>
                 {
                     b.Property<long>("TransactionId")
                         .ValueGeneratedOnAdd()
@@ -832,9 +7199,71 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("TransactionHistories");
+
+                    b.HasData(
+                        new
+                        {
+                            TransactionId = 1L,
+                            Amount = 19.99m,
+                            CourseId = 1L,
+                            DateCreated = new DateTime(2025, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Purchase course 1",
+                            Status = 1,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            TransactionId = 2L,
+                            Amount = 29.99m,
+                            CourseId = 2L,
+                            DateCreated = new DateTime(2025, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Purchase course 2",
+                            Status = 1,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            TransactionId = 3L,
+                            Amount = 24.99m,
+                            CourseId = 3L,
+                            DateCreated = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Pending payment for course 3",
+                            Status = 0,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            TransactionId = 4L,
+                            Amount = 34.99m,
+                            CourseId = 4L,
+                            DateCreated = new DateTime(2025, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Purchase course 4",
+                            Status = 1,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            TransactionId = 5L,
+                            Amount = 39.99m,
+                            CourseId = 5L,
+                            DateCreated = new DateTime(2025, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Failed transaction for course 5",
+                            Status = 2,
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            TransactionId = 6L,
+                            Amount = 44.99m,
+                            CourseId = 6L,
+                            DateCreated = new DateTime(2025, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Purchase course 6",
+                            Status = 1,
+                            UserId = "3"
+                        });
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.UserPart.User", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.UserPart.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -930,6 +7359,308 @@ namespace OnlineLearningPlatform.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("Users", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            AvatarUrl = "https://picsum.photos/seed/1/200/200",
+                            ConcurrencyStamp = "24ff7179-5472-49bd-98c7-4ea305c6fc61",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Dob = new DateOnly(2003, 7, 6),
+                            Email = "admin@admin.com",
+                            EmailConfirmed = true,
+                            FullName = "System Admin",
+                            Gender = true,
+                            IsActived = true,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@ADMIN.COM",
+                            NormalizedUserName = "ADMIN@ADMIN.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGc+7apP...==",
+                            Phone = "0000000000",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "963bc9e4-95b5-4281-9cfe-5cdf9cc1d237",
+                            TwoFactorEnabled = false,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 742, DateTimeKind.Local).AddTicks(888),
+                            UserName = "admin@admin.com"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            AccessFailedCount = 0,
+                            AvatarUrl = "https://picsum.photos/seed/2/200/200",
+                            ConcurrencyStamp = "09f69620-924b-4d56-9be8-d7a0aeee6186",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Dob = new DateOnly(1990, 1, 1),
+                            Email = "mentor@demo.com",
+                            EmailConfirmed = true,
+                            FullName = "Demo Mentor",
+                            Gender = true,
+                            IsActived = true,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "MENTOR@DEMO.COM",
+                            NormalizedUserName = "MENTOR@DEMO.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGc+7apP...==",
+                            Phone = "0000000001",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "a92802c6-c5c3-41e0-a860-cfeb7c7232d5",
+                            TwoFactorEnabled = false,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 742, DateTimeKind.Local).AddTicks(940),
+                            UserName = "mentor@demo.com"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            AccessFailedCount = 0,
+                            AvatarUrl = "https://picsum.photos/seed/3/200/200",
+                            ConcurrencyStamp = "6e2d10b1-b5bb-4ede-bd03-4fe62f377d61",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Dob = new DateOnly(1995, 5, 5),
+                            Email = "user3@example.com",
+                            EmailConfirmed = true,
+                            FullName = "User Three",
+                            Gender = true,
+                            IsActived = true,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER3@EXAMPLE.COM",
+                            NormalizedUserName = "USER3@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGc+7apP...==",
+                            Phone = "0000000003",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "216a9f2b-5225-4be0-9f7d-3f465f814916",
+                            TwoFactorEnabled = false,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 742, DateTimeKind.Local).AddTicks(974),
+                            UserName = "user3@example.com"
+                        },
+                        new
+                        {
+                            Id = "4",
+                            AccessFailedCount = 0,
+                            AvatarUrl = "https://picsum.photos/seed/4/200/200",
+                            ConcurrencyStamp = "530c8eaa-f6d4-4182-b868-43bc6ac3a1e7",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Dob = new DateOnly(1992, 2, 2),
+                            Email = "user4@example.com",
+                            EmailConfirmed = true,
+                            FullName = "User Four",
+                            Gender = false,
+                            IsActived = true,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER4@EXAMPLE.COM",
+                            NormalizedUserName = "USER4@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGc+7apP...==",
+                            Phone = "0000000004",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "61422693-d5e8-4702-b633-87b6b1ebc7fd",
+                            TwoFactorEnabled = false,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 742, DateTimeKind.Local).AddTicks(1048),
+                            UserName = "user4@example.com"
+                        },
+                        new
+                        {
+                            Id = "5",
+                            AccessFailedCount = 0,
+                            AvatarUrl = "https://picsum.photos/seed/5/200/200",
+                            ConcurrencyStamp = "afc770bc-c4de-4fbe-8f95-8e2c274a8b9f",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Dob = new DateOnly(1993, 3, 3),
+                            Email = "user5@example.com",
+                            EmailConfirmed = true,
+                            FullName = "User Five",
+                            Gender = true,
+                            IsActived = true,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER5@EXAMPLE.COM",
+                            NormalizedUserName = "USER5@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGc+7apP...==",
+                            Phone = "0000000005",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "842f0b88-6c52-4562-a50c-b908d48c614d",
+                            TwoFactorEnabled = false,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 742, DateTimeKind.Local).AddTicks(1070),
+                            UserName = "user5@example.com"
+                        },
+                        new
+                        {
+                            Id = "6",
+                            AccessFailedCount = 0,
+                            AvatarUrl = "https://picsum.photos/seed/6/200/200",
+                            ConcurrencyStamp = "ce7d2998-dccb-4c32-ace4-b6366cd31b51",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Dob = new DateOnly(1994, 4, 4),
+                            Email = "user6@example.com",
+                            EmailConfirmed = true,
+                            FullName = "User Six",
+                            Gender = false,
+                            IsActived = true,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER6@EXAMPLE.COM",
+                            NormalizedUserName = "USER6@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGc+7apP...==",
+                            Phone = "0000000006",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "e9ff54a5-9b09-4baa-95b6-0b1d8317a08b",
+                            TwoFactorEnabled = false,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 742, DateTimeKind.Local).AddTicks(1095),
+                            UserName = "user6@example.com"
+                        },
+                        new
+                        {
+                            Id = "7",
+                            AccessFailedCount = 0,
+                            AvatarUrl = "https://picsum.photos/seed/7/200/200",
+                            ConcurrencyStamp = "81da1e18-3bac-4344-acf4-45e63bb5e5be",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Dob = new DateOnly(1996, 6, 6),
+                            Email = "user7@example.com",
+                            EmailConfirmed = true,
+                            FullName = "User Seven",
+                            Gender = true,
+                            IsActived = true,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER7@EXAMPLE.COM",
+                            NormalizedUserName = "USER7@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGc+7apP...==",
+                            Phone = "0000000007",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "9b7ea821-ed79-4011-be1b-1fb603620794",
+                            TwoFactorEnabled = false,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 742, DateTimeKind.Local).AddTicks(1116),
+                            UserName = "user7@example.com"
+                        },
+                        new
+                        {
+                            Id = "8",
+                            AccessFailedCount = 0,
+                            AvatarUrl = "https://picsum.photos/seed/8/200/200",
+                            ConcurrencyStamp = "65eaeb26-fdf5-4d0f-9734-51360edb06ea",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Dob = new DateOnly(1997, 7, 7),
+                            Email = "user8@example.com",
+                            EmailConfirmed = true,
+                            FullName = "User Eight",
+                            Gender = false,
+                            IsActived = true,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER8@EXAMPLE.COM",
+                            NormalizedUserName = "USER8@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGc+7apP...==",
+                            Phone = "0000000008",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "a004c34e-f553-4e16-b5c8-7f863082a9a7",
+                            TwoFactorEnabled = false,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 742, DateTimeKind.Local).AddTicks(1141),
+                            UserName = "user8@example.com"
+                        },
+                        new
+                        {
+                            Id = "9",
+                            AccessFailedCount = 0,
+                            AvatarUrl = "https://picsum.photos/seed/9/200/200",
+                            ConcurrencyStamp = "86a3e24a-b700-4ac2-8c9f-b3df3db9713c",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Dob = new DateOnly(1998, 8, 8),
+                            Email = "user9@example.com",
+                            EmailConfirmed = true,
+                            FullName = "User Nine",
+                            Gender = true,
+                            IsActived = true,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER9@EXAMPLE.COM",
+                            NormalizedUserName = "USER9@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGc+7apP...==",
+                            Phone = "0000000009",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "6cf7b012-0826-40c2-9bb6-ff9960dbc8f6",
+                            TwoFactorEnabled = false,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 742, DateTimeKind.Local).AddTicks(1162),
+                            UserName = "user9@example.com"
+                        },
+                        new
+                        {
+                            Id = "10",
+                            AccessFailedCount = 0,
+                            AvatarUrl = "https://picsum.photos/seed/10/200/200",
+                            ConcurrencyStamp = "c73466ec-a15d-4e17-b077-0c77857c5147",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Dob = new DateOnly(1999, 9, 9),
+                            Email = "user10@example.com",
+                            EmailConfirmed = true,
+                            FullName = "User Ten",
+                            Gender = false,
+                            IsActived = true,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER10@EXAMPLE.COM",
+                            NormalizedUserName = "USER10@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGc+7apP...==",
+                            Phone = "0000000010",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "426d52fa-909c-4a8e-9326-c9583fd065c8",
+                            TwoFactorEnabled = false,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 742, DateTimeKind.Local).AddTicks(1182),
+                            UserName = "user10@example.com"
+                        },
+                        new
+                        {
+                            Id = "11",
+                            AccessFailedCount = 0,
+                            AvatarUrl = "https://picsum.photos/seed/11/200/200",
+                            ConcurrencyStamp = "bae8d433-401e-4562-8616-4cb8d36fa8a5",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Dob = new DateOnly(1991, 1, 11),
+                            Email = "user11@example.com",
+                            EmailConfirmed = true,
+                            FullName = "User Eleven",
+                            Gender = true,
+                            IsActived = true,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER11@EXAMPLE.COM",
+                            NormalizedUserName = "USER11@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGc+7apP...==",
+                            Phone = "0000000011",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "41089673-5515-440f-83b5-3c70626489b2",
+                            TwoFactorEnabled = false,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 742, DateTimeKind.Local).AddTicks(1206),
+                            UserName = "user11@example.com"
+                        },
+                        new
+                        {
+                            Id = "12",
+                            AccessFailedCount = 0,
+                            AvatarUrl = "https://picsum.photos/seed/12/200/200",
+                            ConcurrencyStamp = "65723c00-4c0a-4d76-a38d-8d38aee68971",
+                            CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Dob = new DateOnly(1992, 2, 12),
+                            Email = "user12@example.com",
+                            EmailConfirmed = true,
+                            FullName = "User Twelve",
+                            Gender = false,
+                            IsActived = true,
+                            IsDeleted = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER12@EXAMPLE.COM",
+                            NormalizedUserName = "USER12@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGc+7apP...==",
+                            Phone = "0000000012",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "2fa8adca-eeac-4625-8e1e-d87eb01fe991",
+                            TwoFactorEnabled = false,
+                            UpdatedAt = new DateTime(2025, 9, 20, 21, 19, 34, 742, DateTimeKind.Local).AddTicks(1227),
+                            UserName = "user12@example.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -943,7 +7674,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.UserPart.User", null)
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.UserPart.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -952,7 +7683,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.UserPart.User", null)
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.UserPart.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -967,7 +7698,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.UserPart.User", null)
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.UserPart.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -976,22 +7707,22 @@ namespace OnlineLearningPlatform.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.UserPart.User", null)
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.UserPart.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.AnswerQuiz", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.AnswerQuiz", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.CoursePart.Question", "Question")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.CoursePart.Question", "Question")
                         .WithMany()
                         .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.UserPart.User", "User")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.UserPart.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -1002,19 +7733,19 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Course", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Course", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.UserPart.User", "AcceptorUser")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.UserPart.User", "AcceptorUser")
                         .WithMany("AcceptedCourses")
                         .HasForeignKey("AdminId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.CoursePart.Level", "Level")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.CoursePart.Level", "Level")
                         .WithMany("Courses")
                         .HasForeignKey("LevelId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.UserPart.User", "CreatorUser")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.UserPart.User", "CreatorUser")
                         .WithMany("CreatedCourses")
                         .HasForeignKey("MentorId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -1027,15 +7758,15 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.Navigation("Level");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.CourseCategory", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.CourseCategory", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.CoursePart.Category", "Category")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.CoursePart.Category", "Category")
                         .WithMany("CourseCategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.CoursePart.Course", "Course")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.CoursePart.Course", "Course")
                         .WithMany("CourseCategories")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1046,15 +7777,15 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.Navigation("Course");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.CourseEnrollment", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.CourseEnrollment", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.CoursePart.Course", "Course")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.CoursePart.Course", "Course")
                         .WithMany()
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.UserPart.User", "User")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.UserPart.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -1065,9 +7796,9 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.CourseImageUrl", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.CourseImageUrl", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.CoursePart.Course", "Course")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.CoursePart.Course", "Course")
                         .WithMany("CourseImageUrls")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1076,9 +7807,9 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.Navigation("Course");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Lesson", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Lesson", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.CoursePart.Module", "Module")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.CoursePart.Module", "Module")
                         .WithMany("Lessons")
                         .HasForeignKey("ModuleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1087,9 +7818,9 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.Navigation("Module");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Module", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Module", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.CoursePart.Course", "Course")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.CoursePart.Course", "Course")
                         .WithMany("Modules")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1098,9 +7829,9 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.Navigation("Course");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Option", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Option", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.CoursePart.Question", "Question")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.CoursePart.Question", "Question")
                         .WithMany("Options")
                         .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1109,9 +7840,9 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.Navigation("Question");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Question", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Question", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.CoursePart.Quiz", "Quiz")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.CoursePart.Quiz", "Quiz")
                         .WithMany("Questions")
                         .HasForeignKey("QuizId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1120,9 +7851,9 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.Navigation("Quiz");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Quiz", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Quiz", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.CoursePart.Module", "Module")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.CoursePart.Module", "Module")
                         .WithMany("Quizzes")
                         .HasForeignKey("ModuleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1131,15 +7862,15 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.Navigation("Module");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.QuizResult", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.QuizResult", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.CoursePart.Quiz", "Quiz")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.CoursePart.Quiz", "Quiz")
                         .WithMany()
                         .HasForeignKey("QuizId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.UserPart.User", "User")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.UserPart.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -1150,15 +7881,15 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Ratings", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Ratings", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.CoursePart.Course", "Course")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.CoursePart.Course", "Course")
                         .WithMany()
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.UserPart.User", "User")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.UserPart.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -1169,15 +7900,15 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.WishList", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.WishList", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.CoursePart.Course", "Course")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.CoursePart.Course", "Course")
                         .WithMany()
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.UserPart.User", "User")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.UserPart.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -1188,15 +7919,15 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.Others.AdminReviewCourse", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.Others.AdminReviewCourse", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.UserPart.User", "Admin")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.UserPart.User", "Admin")
                         .WithMany()
                         .HasForeignKey("AdminId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.CoursePart.Course", "Course")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.CoursePart.Course", "Course")
                         .WithMany()
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -1207,14 +7938,14 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.Navigation("Course");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.Others.MentorApplication", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.Others.MentorApplication", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.UserPart.User", "AdminReviewer")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.UserPart.User", "AdminReviewer")
                         .WithMany("ReviewedApplications")
                         .HasForeignKey("AdminReviewerId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.UserPart.User", "User")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.UserPart.User", "User")
                         .WithMany("MentorApplications")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -1225,15 +7956,15 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.Others.Message", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.Others.Message", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.UserPart.User", "Receiver")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.UserPart.User", "Receiver")
                         .WithMany()
                         .HasForeignKey("ReceiverId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.UserPart.User", "Sender")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.UserPart.User", "Sender")
                         .WithMany()
                         .HasForeignKey("SenderId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -1244,14 +7975,14 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.Navigation("Sender");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.Others.TransactionHistory", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.Others.TransactionHistory", b =>
                 {
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.CoursePart.Course", "Course")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.CoursePart.Course", "Course")
                         .WithMany()
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("OnlineLearningPlarform.Models.Entities.UserPart.User", "User")
+                    b.HasOne("OnlineLearningPlatform.Models.Entities.UserPart.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -1262,12 +7993,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Category", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Category", b =>
                 {
                     b.Navigation("CourseCategories");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Course", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Course", b =>
                 {
                     b.Navigation("CourseCategories");
 
@@ -1276,29 +8007,29 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.Navigation("Modules");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Level", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Level", b =>
                 {
                     b.Navigation("Courses");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Module", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Module", b =>
                 {
                     b.Navigation("Lessons");
 
                     b.Navigation("Quizzes");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Question", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Question", b =>
                 {
                     b.Navigation("Options");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.CoursePart.Quiz", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.CoursePart.Quiz", b =>
                 {
                     b.Navigation("Questions");
                 });
 
-            modelBuilder.Entity("OnlineLearningPlarform.Models.Entities.UserPart.User", b =>
+            modelBuilder.Entity("OnlineLearningPlatform.Models.Entities.UserPart.User", b =>
                 {
                     b.Navigation("AcceptedCourses");
 
