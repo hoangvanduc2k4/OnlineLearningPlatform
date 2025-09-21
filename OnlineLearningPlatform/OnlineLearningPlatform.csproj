@@ -28,7 +28,6 @@
     <Folder Include="Areas\Mentor\" />
     <Folder Include="Areas\Mentee\" />
     <Folder Include="Hubs\" />
-    <Folder Include="Services\Interfaces\" />
   </ItemGroup>
 
 </Project>

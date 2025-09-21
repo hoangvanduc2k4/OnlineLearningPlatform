@@ -1,0 +1,71 @@
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<OnlineLearningPlatform.Models.ViewModels.FAQsViewModel>
+
+@{
+    ViewData["Title"] = "FAQ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-5">
+    <h1 class="text-center mb-4">Frequently Asked Questions</h1>
+
+    <form method="get" asp-controller="FAQs" asp-action="Index" class="mb-3 row gx-2 gy-1">
+        <div class="col-auto">
+            <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" placeholder="Search FAQs..." class="form-control" />
+        </div>
+        <div class="col-auto">
+            <input type="hidden" name="pageSize" value="@Model.PageSize" />
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+
+    @if (Model != null && Model.TotalItemCount > 0)
+    {
+        <div class="accordion" id="faqAccordion">
+            @foreach (var faq in Model)
+            {
+                var headingId = $"heading{faq.Id}";
+                var collapseId = $"collapse{faq.Id}";
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="@headingId">
+                        <button class="accordion-button collapsed" type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#@collapseId"
+                                aria-expanded="false"
+                                aria-controls="@collapseId">
+                            @faq.Question
+                        </button>
+                    </h2>
+                    <div id="@collapseId"
+                         class="accordion-collapse collapse"
+                         aria-labelledby="@headingId"
+                         data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            @faq.Answer
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <nav class="mt-4">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new
+                {
+                    pageNumber = page,
+                    pageSize = Model.PageSize,
+                    searchTerm = ViewBag.SearchTerm
+                }), new PagedListRenderOptions
+   {
+       LiElementClasses = new[] { "page-item" },
+       PageClasses = new[] { "page-link" },
+       UlElementClasses = new[] { "pagination justify-content-center" },
+       MaximumPageNumbersToDisplay = 5,
+   })
+        </nav>
+    }
+    else
+    {
+        <p class="text-muted">Không có câu hỏi FAQ nào.</p>
+    }
+</div>
