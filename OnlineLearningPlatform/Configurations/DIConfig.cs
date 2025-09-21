@@ -1,4 +1,7 @@
-﻿namespace OnlineLearningPlatform.Configurations
+﻿using Microsoft.AspNetCore.Identity.UI.Services;
+using OnlineLearningPlatform.Services;
+
+namespace OnlineLearningPlatform.Configurations
 {
     public static class DIConfig
     {
@@ -11,7 +14,7 @@
 
 
             //Add Service
-
+            services.AddTransient<IEmailSender, EmailSenderService>();
 
 
 

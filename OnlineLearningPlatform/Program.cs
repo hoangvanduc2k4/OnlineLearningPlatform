@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using OnlineLearningPlatform.Configurations;
 using OnlineLearningPlatform.Mappers;
 using OnlineLearningPlatform.Data;
+using OnlineLearningPlatform.Utils;
 
 namespace OnlineLearningPlarform
 {
@@ -19,6 +20,7 @@ namespace OnlineLearningPlarform
             builder.Services.ConfigureDIRepoService(builder.Configuration);
             builder.Services.AddControllersWithViews();
             builder.Services.ConfigureSession();
+            builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

@@ -10,15 +10,13 @@
 }
 
 <div class="container py-5">
-    <div class="card shadow-sm">
-        <div class="card-body">
-            <div class="d-flex align-items-center mb-4">
-                <div>
-                    <h1 class="h4 mb-0 text-center">Manage your account</h1>
-                </div>
+    <div class="card shadow-sm" data-aos="fade-up">
+        <div class="card-body p-5">
+            <div class="d-flex align-items-center justify-content-center mb-4">
+                <h1 class="h4 mb-0">Manage your account</h1>
             </div>
 
-            <hr />
+            <hr class="mb-4" />
 
             <div class="row">
                 <div class="col-lg-3 mb-4">
@@ -30,9 +28,7 @@
                 </div>
 
                 <div class="col-lg-9">
-                    <div>
-                        @RenderBody()
-                    </div>
+                    @RenderBody()
                 </div>
             </div>
         </div>
