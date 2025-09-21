@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Security.Principal;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using OnlineLearningPlatform.Data;
 using OnlineLearningPlatform.Models.Entities.UserPart;
@@ -36,12 +37,33 @@ namespace OnlineLearningPlatform.Configurations
                 options.User.RequireUniqueEmail = false;
             });
 
-            //services.AddAuthentication()
-            //    .AddGoogle(options =>
-            //    {
-            //        options.ClientId = configuration["Authentication:Google:ClientId"];
-            //        options.ClientSecret = configuration["Authentication:Google:ClientSecret"];
-            //    });
+            services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    options.ClientId = configuration["Authentication:Google:ClientId"]!;
+                    options.ClientSecret = configuration["Authentication:Google:ClientSecret"]!;
+                })
+                .AddFacebook(options =>
+                {
+                    options.AppId = configuration["Authentication:Facebook:AppId"]!;
+                    options.AppSecret = configuration["Authentication:Facebook:AppSecret"]!;
+                    options.Events = new Microsoft.AspNetCore.Authentication.OAuth.OAuthEvents
+                    {
+                        OnRemoteFailure = context =>
+                        {
+                            context.Response.Redirect("/Identity/Account/Login");
+                            context.HandleResponse();
+                            return Task.CompletedTask;
+                        },
+                        OnAccessDenied = context =>
+                        {
+                            context.Response.Redirect("/Identity/Account/Login");
+                            context.HandleResponse();
+                            return Task.CompletedTask;
+                        }
+                    };
+                })
+               ;
 
         }
     }
