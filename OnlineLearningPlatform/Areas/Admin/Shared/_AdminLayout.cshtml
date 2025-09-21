@@ -1,0 +1,392 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Admin Layout</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+	<script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
+	<script src="https://unpkg.com/feather-icons"></script>
+	<!-- Favicons -->
+	<link href="~/img/favicon.png" rel="icon">
+	<link href="~/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com" rel="preconnect">
+	<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+	<!-- Vendor CSS Files -->
+	<link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Main CSS File -->
+	<link href="~/css/main.css" rel="stylesheet" asp-append-version="true">
+	<style>
+		/* Root variables for theming */
+		:root {
+			--primary-color: #007bff; /* Blue primary */
+			--secondary-color: #6c757d; /* Gray secondary */
+			--sidebar-bg: #136ad5; /* Custom blue sidebar */
+			--sidebar-text: #ffffff; /* White text for sidebar */
+			--header-bg: #136ad5; /* Custom blue header */
+			--content-bg: #f8f9fa; /* Light gray content */
+			--footer-bg: #ffffff; /* White footer */
+			--accent-color: #00bcd4; /* Cyan accent */
+			--shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+			--border-radius: 8px; /* Rounded corners */
+			--transition: all 0.3s ease; /* Smooth transitions */
+		}
+
+		/* Body and global styles */
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: var(--content-bg);
+			color: #333;
+			margin: 0;
+			padding: 0;
+			overflow-x: hidden;
+			transition: var(--transition);
+		}
+
+		/* Sidebar styles: Sleek, dark, with hover effects */
+		.pc-sidebar {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 250px;
+			height: 100%;
+			background: var(--sidebar-bg);
+			color: var(--sidebar-text);
+			box-shadow: var(--shadow);
+			transition: var(--transition);
+			z-index: 1000;
+		}
+
+			.pc-sidebar.collapsed {
+				left: -250px;
+			}
+
+		.navbar-wrapper {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.m-header {
+			padding: 15px;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		.logo {
+			color: var(--sidebar-text);
+			text-decoration: none;
+			font-size: 1.5rem;
+			font-weight: bold;
+		}
+
+		.sitename {
+			margin: 0;
+		}
+
+		.navbar-content {
+			flex: 1;
+			overflow-y: auto;
+			padding: 15px;
+		}
+
+		.pc-navbar {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		.pc-item {
+			margin-bottom: 10px;
+		}
+
+		.pc-caption {
+			font-size: 0.85rem;
+			text-transform: uppercase;
+			color: rgba(255, 255, 255, 0.6);
+			margin: 20px 0 10px;
+			display: flex;
+			align-items: center;
+		}
+
+			.pc-caption i {
+				margin-left: 5px;
+			}
+
+		.pc-link {
+			display: flex;
+			align-items: center;
+			padding: 10px 15px;
+			color: var(--sidebar-text);
+			text-decoration: none;
+			border-radius: var(--border-radius);
+			transition: var(--transition);
+		}
+
+			.pc-link:hover {
+				background: rgba(255, 255, 255, 0.1);
+				transform: translateX(5px);
+			}
+
+		.pc-micon {
+			margin-right: 15px;
+			font-size: 1.2rem;
+		}
+
+		.pc-mtext {
+			font-size: 1rem;
+		}
+
+		/* Header styles: Clean, white with subtle shadow */
+		.pc-header {
+			position: fixed;
+			top: 0;
+			left: 250px;
+			right: 0;
+			height: 60px;
+			background: var(--header-bg);
+			box-shadow: var(--shadow);
+			z-index: 999;
+			transition: var(--transition);
+		}
+
+			.pc-header.collapsed {
+				left: 0;
+			}
+
+		.header-wrapper {
+			display: flex;
+			align-items: center;
+			height: 100%;
+			padding: 0 20px;
+		}
+
+		.pc-mob-drp {
+			display: flex;
+			align-items: center;
+		}
+
+		.pc-head-link {
+			color: #ffffff;
+			text-decoration: none;
+			margin: 0 10px;
+			font-size: 1.2rem;
+			transition: var(--transition);
+		}
+
+			.pc-head-link:hover {
+				color: rgba(255, 255, 255, 0.8);
+			}
+
+		/* User profile dropdown: Elegant with avatar */
+		.header-user-profile .dropdown-menu {
+			width: 250px;
+			border: none;
+			box-shadow: var(--shadow);
+			border-radius: var(--border-radius);
+		}
+
+		.dropdown-header {
+			padding: 15px;
+			background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+			color: white;
+			border-top-left-radius: var(--border-radius);
+			border-top-right-radius: var(--border-radius);
+		}
+
+		.user-avtar {
+			border-radius: 50%;
+			width: 40px !important;
+			height: 40px;
+			object-fit: cover;
+			border: 2px solid white;
+		}
+
+		.dropdown-body {
+			padding: 15px;
+		}
+
+		.btn-primary {
+			background: var(--primary-color);
+			border: none;
+			border-radius: var(--border-radius);
+			transition: var(--transition);
+		}
+
+			.btn-primary:hover {
+				background: color-mix(in srgb, var(--primary-color), black 10%);
+				transform: scale(1.05);
+			}
+
+		/* Main content: Spacious and responsive */
+		.pc-container {
+			margin-top: 60px;
+			margin-left: 250px;
+			padding: 20px;
+			min-height: calc(100vh - 120px);
+			transition: var(--transition);
+		}
+
+			.pc-container.collapsed {
+				margin-left: 0;
+			}
+
+		/* Footer styles: Simple and centered */
+		.pc-footer {
+			background: var(--footer-bg);
+			padding: 15px 20px;
+			text-align: center;
+			border-top: 1px solid #eee;
+			color: #777;
+			font-size: 0.9rem;
+		}
+
+		.footer-link a {
+			color: #777;
+			text-decoration: none;
+			transition: var(--transition);
+		}
+
+			.footer-link a:hover {
+				color: var(--primary-color);
+			}
+
+		.text-white {
+			color: white !important;
+		}
+
+		/* Adjust dropdown toggle text color */
+		.dropdown-toggle {
+			color: #ffffff !important;
+		}
+
+			.dropdown-toggle:hover {
+				color: rgba(255, 255, 255, 0.8) !important;
+			}
+	</style>
+</head>
+<body data-pc-preset="preset-1" data-pc-sidebar-caption="true" data-pc-direction="ltr" data-pc-theme="light">
+
+	<!-- [ Sidebar Menu ] start -->
+	<nav class="pc-sidebar">
+		<div class="navbar-wrapper">
+			<div class="m-header">
+				<a class="logo d-flex align-items-center me-auto" asp-controller="Home" asp-action="Index">
+					<h1 class="sitename text-white">KnowHub</h1>
+				</a>
+			</div>
+			<div class="navbar-content">
+				<ul class="pc-navbar">
+
+					<li class="pc-item">
+						<a asp-controller="Dashboard" asp-action="Index" class="pc-link">
+							<span class="pc-micon"><i class="bi bi-speedometer2"></i></span>
+							<span class="pc-mtext">Dashboard</span>
+						</a>
+					</li>
+
+					<li class="pc-item">
+						<a asp-controller="User" asp-action="Manage" class="pc-link">
+							<span class="pc-micon"><i class="bi bi-people"></i></span>
+							<span class="pc-mtext">User management</span>
+						</a>
+					</li>
+
+					<li class="pc-item">
+						<a asp-controller="Course" asp-action="Manage" class="pc-link">
+							<span class="pc-micon"><i class="bi bi-journal-text"></i></span>
+							<span class="pc-mtext">Course management</span>
+						</a>
+					</li>
+
+					<li class="pc-item">
+						<a asp-controller="ReviewCourse" asp-action="Index" class="pc-link">
+							<span class="pc-micon"><i class="bi bi-check2-square"></i></span>
+							<span class="pc-mtext">Review course</span>
+						</a>
+					</li>
+
+					<li class="pc-item">
+						<a asp-controller="Level" asp-action="Index" class="pc-link">
+							<span class="pc-micon"><i class="bi bi-layers"></i></span>
+							<span class="pc-mtext">Level management</span>
+						</a>
+					</li>
+
+					<li class="pc-item">
+						<a asp-controller="Category" asp-action="Index" class="pc-link">
+							<span class="pc-micon"><i class="bi bi-tags"></i></span>
+							<span class="pc-mtext">Category management</span>
+						</a>
+					</li>
+
+					<li class="pc-item">
+						<a asp-controller="Faq" asp-action="Index" class="pc-link">
+							<span class="pc-micon"><i class="bi bi-question-circle"></i></span>
+							<span class="pc-mtext">FAQ management</span>
+						</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- [ Sidebar Menu ] end -->
+	<!-- [ Header Topbar ] start -->
+	<header class="pc-header">
+		<div class="header-wrapper">
+			<div class="me-auto pc-mob-drp">
+				<a href="#" class="pc-head-link ms-0" id="sidebar-hide">
+					<i data-feather="menu"></i>
+				</a>
+			</div>
+
+			<partial name="_LoginPartial" />
+		</div>
+	</header>
+	<!-- [ Header ] end -->
+	<!-- [ Main Content ] start -->
+	<div class="pc-container">
+		@RenderBody()
+	</div>
+	<!-- [ Main Content ] end -->
+	<footer class="pc-footer">
+		<div class="footer-wrapper container-fluid">
+			<div class="row">
+				<div class="col my-1">
+					<p class="m-0">KnowHub &#9829; crafted by Team KnowHub</p>
+				</div>
+				<div class="col-auto my-1">
+					<ul class="list-inline footer-link mb-0">
+						<li class="list-inline-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	@await RenderSectionAsync("Scripts", required: false)
+	<script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Initialize Feather icons and sidebar toggle -->
+	<script>
+		feather.replace();
+
+		const sidebar = document.querySelector('.pc-sidebar');
+		const header = document.querySelector('.pc-header');
+		const container = document.querySelector('.pc-container');
+
+		document.getElementById('sidebar-hide').addEventListener('click', (e) => {
+			e.preventDefault();
+			sidebar.classList.toggle('collapsed');
+			header.classList.toggle('collapsed');
+			container.classList.toggle('collapsed');
+		});
+	</script>
+
+</body>
+</html>

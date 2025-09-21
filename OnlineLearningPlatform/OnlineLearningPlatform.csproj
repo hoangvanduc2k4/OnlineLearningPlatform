@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\" />
+    <Folder Include="Areas\Admin\FAQ\" />
     <Folder Include="Areas\Mentor\" />
     <Folder Include="Areas\Mentee\" />
     <Folder Include="Hubs\" />
