@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.UI.Services;
+using OnlineLearningPlatform.Repositories.Interfaces;
+using OnlineLearningPlatform.Repositories;
 using OnlineLearningPlatform.Services;
+using OnlineLearningPlatform.Services.Interfaces;
 
 namespace OnlineLearningPlatform.Configurations
 {
@@ -9,12 +12,15 @@ namespace OnlineLearningPlatform.Configurations
         {
 
             //Add Repository
+            services.AddScoped<IFAQsRepository, FAQsRepository>();
 
 
 
 
             //Add Service
             services.AddTransient<IEmailSender, EmailSenderService>();
+            services.AddScoped<IFAQsService, FAQsService>();
+
 
 
 
