@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using OnlineLearningPlatform.Configurations;
-using OnlineLearningPlatform.Mappers;
 using OnlineLearningPlatform.Data;
+using OnlineLearningPlatform.Hubs;
+using OnlineLearningPlatform.Mappers;
 using OnlineLearningPlatform.Utils;
 
 namespace OnlineLearningPlarform
@@ -19,6 +20,7 @@ namespace OnlineLearningPlarform
             builder.Services.ConfigureAuthentication(builder.Configuration);
             builder.Services.ConfigureDIRepoService(builder.Configuration);
             builder.Services.AddControllersWithViews();
+            builder.Services.AddSignalR();
             builder.Services.ConfigureSession();
             builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
             var app = builder.Build();
@@ -42,6 +44,7 @@ namespace OnlineLearningPlarform
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.MapHub<UserChatHub>("/userChatHub");
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
