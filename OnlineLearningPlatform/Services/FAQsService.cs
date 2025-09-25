@@ -66,7 +66,7 @@ namespace OnlineLearningPlatform.Services
         {
             IEnumerable<FAQ> allFaqs = await _faqsRepository.GetAllAsync();
 
-            IEnumerable<FAQ> filtered = allFaqs;
+            IEnumerable<FAQ> filtered = allFaqs.Where(f => f.CommonStatus == Enums.CommonStatus.Showed);
 
             if (!string.IsNullOrWhiteSpace(searchTerm))
             {

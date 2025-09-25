@@ -14,7 +14,7 @@ namespace OnlineLearningPlatform.Configurations
             //Add Repository
             services.AddScoped<IFAQsRepository, FAQsRepository>();
             services.AddScoped<ILevelRepository, LevelRepository>();
-
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 
 
@@ -22,6 +22,7 @@ namespace OnlineLearningPlatform.Configurations
             services.AddTransient<IEmailSender, EmailSenderService>();
             services.AddScoped<IFAQsService, FAQsService>();
             services.AddScoped<ILevelService, LevelService>();
+            services.AddScoped<ICategoryService, CategoryService>();
 
 
 
