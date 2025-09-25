@@ -275,7 +275,9 @@
 	</style>
 </head>
 <body data-pc-preset="preset-1" data-pc-sidebar-caption="true" data-pc-direction="ltr" data-pc-theme="light">
-
+	<form method="post" id="antiForgeryForm" hidden>
+		<input type="hidden" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" />
+	</form>
 	<!-- [ Sidebar Menu ] start -->
 	<nav class="pc-sidebar">
 		<div class="navbar-wrapper">
@@ -316,7 +318,7 @@
 					</li>
 
 					<li class="pc-item">
-						<a asp-controller="Level" asp-action="Index" class="pc-link">
+						<a asp-area="Admin" asp-page="/Levels/Index" class="pc-link">
 							<span class="pc-micon"><i class="bi bi-layers"></i></span>
 							<span class="pc-mtext">Level management</span>
 						</a>

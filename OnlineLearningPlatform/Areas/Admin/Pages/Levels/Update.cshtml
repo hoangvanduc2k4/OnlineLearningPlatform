@@ -1,0 +1,40 @@
+﻿@page "{id:long}"
+@model OnlineLearningPlatform.Areas.Admin.Pages.Levels.UpdateModel
+@{
+    ViewData["Title"] = "Edit Level";
+    Layout = "~/Areas/Admin/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid mt-4">
+    <div class="card">
+        <div class="card-header bg-light text-primary">
+            <h5>Edit Level</h5>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <input type="hidden" asp-for="Level.LevelId" />
+                <div class="mb-3">
+                    <label asp-for="Level.LevelName" class="form-label">Level Name</label>
+                    <input asp-for="Level.LevelName" class="form-control" />
+                    <span asp-validation-for="Level.LevelName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Level.IsDeleted" class="form-label">Status</label>
+                    <select asp-for="Level.IsDeleted" class="form-control">
+                        <option value="false">Active</option>
+                        <option value="true">Deleted</option>
+                    </select>
+                    <span asp-validation-for="Level.IsDeleted" class="text-danger"></span>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-sm btn-success">Update</button>
+                    <a asp-page="./Index" class="btn btn-sm btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
