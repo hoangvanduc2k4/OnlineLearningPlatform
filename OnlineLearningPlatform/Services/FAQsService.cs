@@ -64,10 +64,8 @@ namespace OnlineLearningPlatform.Services
         }
         public async Task<IPagedList<FAQsViewModel>> GetFAQsPagedAsync(int pageNumber, int pageSize, string? searchTerm = null)
         {
-            // Lấy tất cả FAQ
             IEnumerable<FAQ> allFaqs = await _faqsRepository.GetAllAsync();
 
-            // Chuyển sang IEnumerable cho LINQ
             IEnumerable<FAQ> filtered = allFaqs;
 
             if (!string.IsNullOrWhiteSpace(searchTerm))
@@ -81,16 +79,34 @@ namespace OnlineLearningPlatform.Services
             }
 
 
-            // Sắp xếp (ví dụ theo Id) nếu muốn
             filtered = filtered.OrderBy(f => f.FaqId);
 
-            // Map sang ViewModel
             IEnumerable<FAQsViewModel> vmEnumerable = filtered
                 .Select(f => _mapper.Map<FAQsViewModel>(f));
 
-            // Phân trang bằng ToPagedList
             IPagedList<FAQsViewModel> pagedResult = vmEnumerable.ToPagedList(pageNumber, pageSize);
 
+            return pagedResult;
+        }
+
+
+        public async Task<IPagedList<FAQ>> GetFAQsPagedAdminAsync(int pageNumber, int pageSize, string? searchTerm = null)
+        {
+
+            IEnumerable<FAQ> filtered = await _faqsRepository.GetAllAsync();
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                var lower = searchTerm.Trim().ToLower();
+                filtered = filtered.Where(f =>
+                    (!string.IsNullOrEmpty(f.Question) && f.Question.ToLower().Contains(lower))
+                    ||
+                    (!string.IsNullOrEmpty(f.Answer) && f.Answer.ToLower().Contains(lower))
+                );
+            }
+
+            filtered = filtered.OrderBy(f => f.FaqId);
+            IPagedList<FAQ> pagedResult = filtered.ToPagedList(pageNumber, pageSize);
             return pagedResult;
         }
 

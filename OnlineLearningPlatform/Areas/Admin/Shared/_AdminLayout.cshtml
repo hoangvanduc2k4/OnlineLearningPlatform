@@ -38,6 +38,10 @@
 			--transition: all 0.3s ease; /* Smooth transitions */
 		}
 
+		.pagination .page-item:not(.disabled) .page-link {
+			color: black !important;
+		}
+
 		/* Body and global styles */
 		body {
 			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -326,11 +330,12 @@
 					</li>
 
 					<li class="pc-item">
-						<a asp-controller="Faq" asp-action="Index" class="pc-link">
+						<a asp-area="Admin" asp-page="/FAQs/Index" class="pc-link">
 							<span class="pc-micon"><i class="bi bi-question-circle"></i></span>
 							<span class="pc-mtext">FAQ management</span>
 						</a>
 					</li>
+
 
 				</ul>
 			</div>
