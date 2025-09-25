@@ -1,28 +1,28 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using OnlineLearningPlatform.Models.Entities.Others;
+using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Services.Interfaces;
 
-namespace OnlineLearningPlatform.Areas.Admin.Pages.FAQs
+namespace OnlineLearningPlatform.Areas.Admin.Pages.Levels
 {
     [Authorize(Roles = "Admin")]
     public class UpdateModel : PageModel
     {
-        private readonly IFAQsService _faqsService;
+        private readonly ILevelService _levelService;
 
-        public UpdateModel(IFAQsService faqsService)
+        public UpdateModel(ILevelService levelService)
         {
-            _faqsService = faqsService;
+            _levelService = levelService;
         }
 
         [BindProperty]
-        public FAQ FAQ { get; set; }
+        public Level Level { get; set; }
 
         public async Task<IActionResult> OnGetAsync(long id)
         {
-            FAQ = await _faqsService.GetByIdAsync(id);
-            if (FAQ == null)
+            Level = await _levelService.GetLevelByIdAsync(id);
+            if (Level == null)
             {
                 return NotFound();
             }
@@ -36,9 +36,7 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.FAQs
                 return Page();
             }
 
-            FAQ.UpdatedAt = DateTime.Now;
-            await _faqsService.UpdateAsync(FAQ);
-
+            await _levelService.UpdateLevelAsync(Level);
             return RedirectToPage("./Index");
         }
     }

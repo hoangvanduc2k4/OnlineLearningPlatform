@@ -6,7 +6,7 @@ using X.PagedList;
 
 namespace OnlineLearningPlatform.Areas.Admin.FAQs
 {
-    [Authorize(Roles = "ADMIN")]
+    [Authorize(Roles = "Admin")]
     public class IndexModel : PageModel
     {
         private readonly IFAQsService _faqsService;

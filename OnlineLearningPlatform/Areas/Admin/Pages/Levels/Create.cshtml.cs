@@ -1,27 +1,26 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using OnlineLearningPlatform.Models.Entities.Others;
+using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Services.Interfaces;
 
-namespace OnlineLearningPlatform.Areas.Admin.Pages.FAQs
+namespace OnlineLearningPlatform.Areas.Admin.Pages.Levels
 {
     [Authorize(Roles = "Admin")]
     public class CreateModel : PageModel
     {
-        private readonly IFAQsService _faqsService;
+        private readonly ILevelService _levelService;
 
-        public CreateModel(IFAQsService faqsService)
+        public CreateModel(ILevelService levelService)
         {
-            _faqsService = faqsService;
+            _levelService = levelService;
         }
 
         [BindProperty]
-        public FAQ FAQ { get; set; } = new FAQ();
+        public Level Level { get; set; } = new Level { IsDeleted = false };
 
-        public IActionResult OnGet()
+        public void OnGet()
         {
-            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -31,10 +30,9 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.FAQs
                 return Page();
             }
 
-            FAQ.CreatedAt = DateTime.Now;
-            await _faqsService.AddAsync(FAQ);
-
+            await _levelService.AddLevelAsync(Level);
             return RedirectToPage("./Index");
         }
+
     }
 }

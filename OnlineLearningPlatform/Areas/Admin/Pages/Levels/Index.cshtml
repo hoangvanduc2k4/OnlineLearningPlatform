@@ -1,0 +1,72 @@
+﻿@page
+@model OnlineLearningPlatform.Areas.Admin.Pages.Levels.IndexModel
+@{
+    ViewData["Title"] = "Level Management";
+    Layout = "~/Areas/Admin/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid mt-4">
+    <div class="card">
+        <div class="card-header bg-light text-primary d-flex justify-content-end">
+            <a asp-page="./Create" class="btn btn-sm btn-success">Add New Level</a>
+        </div>
+        <div class="card-body">
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @TempData["SuccessMessage"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Level Name</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Levels != null && Model.Levels.Any())
+                    {
+                        int seq = 0;
+                        foreach (var level in Model.Levels)
+                        {
+                            seq++;
+                            <tr>
+                                <td>@seq</td>
+                                <td>@level.LevelName</td>
+                                <td>
+                                    <span class="@(level.IsDeleted ? "text-danger" : "text-success")">
+                                        @(level.IsDeleted ? "Deleted" : "Active")
+                                    </span>
+                                </td>
+                                <td>
+                                    <a asp-page="./Update" asp-route-id="@level.LevelId" class="btn btn-sm btn-warning">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </a>
+                                    <form method="post" asp-page-handler="Delete" class="d-inline">
+                                        <input type="hidden" name="id" value="@level.LevelId" />
+                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this?')">
+                                            <i class="bi bi-trash-fill"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4" class="text-center">No Levels found.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
