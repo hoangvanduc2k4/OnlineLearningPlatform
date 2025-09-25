@@ -1,0 +1,40 @@
+﻿@page "{id:long}"
+@model OnlineLearningPlatform.Areas.Admin.Pages.Categories.UpdateModel
+@{
+    ViewData["Title"] = "Edit Category";
+    Layout = "~/Areas/Admin/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid mt-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-light text-primary">
+            <h5 class="mb-0">Edit Category</h5>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <input type="hidden" asp-for="Category.CategoryId" />
+                <div class="form-group mb-3">
+                    <label asp-for="Category.CategoryName" class="form-label">Category Name</label>
+                    <input asp-for="Category.CategoryName" class="form-control" />
+                    <span asp-validation-for="Category.CategoryName" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="Category.IsDeleted" class="form-label">Status</label>
+                    <select asp-for="Category.IsDeleted" class="form-control">
+                        <option value="false">Active</option>
+                        <option value="true">Deleted</option>
+                    </select>
+                    <span asp-validation-for="Category.IsDeleted" class="text-danger"></span>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-sm btn-success me-2"><i class="bi bi-save"></i> Update</button>
+                    <a asp-page="./Index" class="btn btn-sm btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
