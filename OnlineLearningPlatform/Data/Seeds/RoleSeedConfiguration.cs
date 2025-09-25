@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.Collections.Generic;
 
 namespace OnlineLearningPlatform.Data.Seeds
 {
@@ -18,7 +17,7 @@ namespace OnlineLearningPlatform.Data.Seeds
             {
                 new IdentityRole { Id = "admin-role", Name = "Admin", NormalizedName = "ADMIN" },
                 new IdentityRole { Id = "mentor-role", Name = "Mentor", NormalizedName = "MENTOR" },
-                new IdentityRole { Id = "student-role", Name = "Student", NormalizedName = "STUDENT" }
+                new IdentityRole { Id = "mentee-role", Name = "Mentee", NormalizedName = "MENTEE" }
             };
         }
     }

@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using OnlineLearningPlatform.Data.Seeds;
 using OnlineLearningPlatform.Models.Entities;
 using OnlineLearningPlatform.Models.Entities.CoursePart; // Assuming this namespace for course-related entities
 using OnlineLearningPlatform.Models.Entities.Others;
 using OnlineLearningPlatform.Models.Entities.UserPart;
-using OnlineLearningPlatform.Data.Seeds;
 namespace OnlineLearningPlatform.Data
 {
     public class OnlineLearningDBContext : IdentityDbContext<User>
@@ -293,6 +292,7 @@ namespace OnlineLearningPlatform.Data
             builder.ApplyConfiguration(new RoleSeedConfiguration());
             builder.ApplyConfiguration(new UserSeedConfiguration());
             builder.ApplyConfiguration(new WishListSeedConfiguration());
+            builder.ApplyConfiguration(new UserRoleSeedConfiguration());
 
 
 
