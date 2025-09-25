@@ -1,8 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using OnlineLearningPlatform.Models.Entities.UserPart;
-using OnlineLearningPlatform.Utils;
-
 
 namespace OnlineLearningPlatform.Data.Seeds
 {
@@ -10,6 +9,9 @@ namespace OnlineLearningPlatform.Data.Seeds
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
+            // Tạo instance PasswordHasher
+            var hasher = new PasswordHasher<User>();
+
             var users = new List<User>
             {
                 // --- Admin ---
@@ -27,7 +29,8 @@ namespace OnlineLearningPlatform.Data.Seeds
                     Gender = true,
                     AvatarUrl = "https://picsum.photos/seed/1/200/200",
                     CreatedAt = new DateTime(2025, 1, 1),
-                    PasswordHash = PasswordUtils.HashPassword("123456")
+                    // Băm mật khẩu chuẩn Identity
+                    PasswordHash = hasher.HashPassword(null, "123456")
                 },
 
                 // --- Mentor demo ---
@@ -45,7 +48,7 @@ namespace OnlineLearningPlatform.Data.Seeds
                     Gender = true,
                     AvatarUrl = "https://picsum.photos/seed/2/200/200",
                     CreatedAt = new DateTime(2025, 1, 1),
-                    PasswordHash = PasswordUtils.HashPassword("123456")
+                    PasswordHash = hasher.HashPassword(null, "123456")
                 },
 
                 // --- 3 mentee cố định ---
@@ -63,9 +66,9 @@ namespace OnlineLearningPlatform.Data.Seeds
                     Gender = true,
                     AvatarUrl = "https://picsum.photos/seed/mentee1/200/200",
                     CreatedAt = new DateTime(2025, 1, 2),
-                    PasswordHash = PasswordUtils.HashPassword("123456")
+                    PasswordHash = hasher.HashPassword(null, "123456")
                 },
-                new User
+                 new User
                 {
                     Id = "4",
                     UserName = "mentee2@example.com",
@@ -79,7 +82,7 @@ namespace OnlineLearningPlatform.Data.Seeds
                     Gender = false,
                     AvatarUrl = "https://picsum.photos/seed/mentee2/200/200",
                     CreatedAt = new DateTime(2025, 1, 2),
-                    PasswordHash = PasswordUtils.HashPassword("123456")
+                    PasswordHash = hasher.HashPassword(null, "123456")
                 },
                 new User
                 {
@@ -95,12 +98,12 @@ namespace OnlineLearningPlatform.Data.Seeds
                     Gender = true,
                     AvatarUrl = "https://picsum.photos/seed/mentee3/200/200",
                     CreatedAt = new DateTime(2025, 1, 2),
-                    PasswordHash = PasswordUtils.HashPassword("123456")
+                    PasswordHash = hasher.HashPassword(null, "123456")
                 }
+
             };
 
-            // --- Vòng for thêm nhiều user Mentee tự động ---
-            // Id từ 6 -> 15 (có thể thay số lượng tuỳ ý)
+            // --- Tự động thêm nhiều mentee ---
             for (int i = 6; i <= 50; i++)
             {
                 users.Add(new User
@@ -112,19 +115,16 @@ namespace OnlineLearningPlatform.Data.Seeds
                     NormalizedEmail = $"USER{i}@EXAMPLE.COM",
                     EmailConfirmed = true,
                     FullName = $"User {i}",
-                    Dob = new DateOnly(2000, 1, 1).AddYears(-i), // năm sinh lùi theo i cho khác nhau
+                    Dob = new DateOnly(2000, 1, 1).AddYears(-i),
                     Phone = $"09000000{i:D2}",
-                    Gender = i % 2 == 0, // xen kẽ nam/nữ
+                    Gender = i % 2 == 0,
                     AvatarUrl = $"https://picsum.photos/seed/{i}/200/200",
                     CreatedAt = new DateTime(2025, 1, 3),
-                    PasswordHash = PasswordUtils.HashPassword("123456")
+                    PasswordHash = hasher.HashPassword(null, "123456")
                 });
             }
 
             builder.HasData(users);
         }
-
-
-
     }
 }
