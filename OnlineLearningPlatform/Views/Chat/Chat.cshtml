@@ -1,0 +1,171 @@
+﻿@model IEnumerable<OnlineLearningPlatform.Models.Entities.Others.Message>
+@{
+    ViewData["Title"] = "Chat with " + ViewBag.Partner.FullName + " - ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var currentUser = ViewBag.CurrentUser;
+    var partner = ViewBag.Partner;
+}
+
+<div class="container py-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        @if (!string.IsNullOrEmpty(partner.AvatarUrl))
+                        {
+                            <img src="@partner.AvatarUrl" class="rounded-circle me-3" width="40" height="40" alt="Avatar">
+                        }
+                        else
+                        {
+                            <div class="rounded-circle bg-white text-primary d-flex align-items-center justify-content-center me-3"
+                                 style="width: 40px; height: 40px;">
+                                <span>@(partner.FullName?.Substring(0, 1).ToUpper() ?? "U")</span>
+                            </div>
+                        }
+                        <h5 class="mb-0">@partner.FullName</h5>
+                    </div>
+                    <a href="@Url.Action("Index", "Chat")" class="btn btn-sm btn-light">
+                        <i class="fas fa-arrow-left me-1"></i> Quay lại
+                    </a>
+                </div>
+                <div class="card-body bg-light" id="chat-messages" style="height: 400px; overflow-y: auto;">
+                    @if (!Model.Any())
+                    {
+                        <div class="text-center py-5">
+                            <i class="fas fa-comments fa-4x text-muted mb-3"></i>
+                            <p class="lead">Chưa có tin nhắn nào.</p>
+                            <p>Hãy bắt đầu cuộc trò chuyện!</p>
+                        </div>
+                    }
+                    else
+                    {
+                        @foreach (var message in Model)
+                        {
+                            bool isCurrentUserMessage = message.SenderId == currentUser.Id;
+
+                            <div class="mb-3 @(isCurrentUserMessage ? "text-end" : "")">
+                                <div class="d-inline-block p-2 rounded-3 @(isCurrentUserMessage ? "bg-primary text-white" : "bg-white border")"
+                                     style="max-width: 75%;">
+                                    <div class="mb-1">@message.Content</div>
+                                    <div class="text-end">
+                                        <small class="@(isCurrentUserMessage ? "text-white-50" : "text-muted")">
+                                            @message.CreatedAt.ToString("HH:mm")
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="card-footer">
+                    <form id="messageForm" asp-action="SendMessage" asp-controller="Chat" method="post">
+                        <input type="hidden" name="receiverId" value="@partner.Id" />
+                        <div class="input-group">
+                            <input type="text" id="messageInput" name="content" class="form-control" placeholder="Nhập tin nhắn..." required>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane me-1"></i> Gửi
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Cuộn xuống cuối cùng khi trang được tải
+        document.addEventListener('DOMContentLoaded', function() {
+            var chatMessages = document.getElementById('chat-messages');
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Khởi tạo kết nối SignalR
+            const connection = new signalR.HubConnectionBuilder()
+                .withUrl("/userChatHub")
+                .withAutomaticReconnect()
+                .build();
+
+            // Khi nhận được tin nhắn mới
+            connection.on("ReceiveMessage", function (message) {
+                // Chỉ xử lý tin nhắn liên quan đến cuộc trò chuyện hiện tại
+                      const currentUserId = @Html.Raw(Json.Serialize(currentUser.Id));
+        const partnerId = @Html.Raw(Json.Serialize(partner.Id));
+
+        if ((message.senderId === currentUserId && message.receiverId === partnerId) ||
+            (message.senderId === partnerId && message.receiverId === currentUserId)) {
+
+                    const isCurrentUserMessage = message.senderId == currentUserId;
+                    const messageHtml = `
+                        <div class="mb-3 ${isCurrentUserMessage ? "text-end" : ""}">
+                            <div class="d-inline-block p-2 rounded-3 ${isCurrentUserMessage ? "bg-primary text-white" : "bg-white border"}"
+                                 style="max-width: 75%;">
+                                <div class="mb-1">${message.content}</div>
+                                <div class="text-end">
+                                    <small class="${isCurrentUserMessage ? "text-white-50" : "text-muted"}">
+                                        ${new Date(message.createdAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    // Thêm tin nhắn vào khung chat
+                    chatMessages.innerHTML += messageHtml;
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                    // Nếu là tin nhắn từ đối tác, đánh dấu là đã đọc
+                    if (!isCurrentUserMessage) {
+                        connection.invoke("MarkMessagesAsRead", message.senderId, currentUserId);
+                    }
+                }
+            });
+
+            // Khi tin nhắn được đánh dấu là đã đọc
+            connection.on("MessagesRead", function (userId) {
+                // Có thể thêm hiển thị "Đã xem" ở đây nếu cần
+                console.log("Tin nhắn đã được đọc bởi người dùng ID: " + userId);
+            });
+
+            // Bắt đầu kết nối
+            connection.start().then(function () {
+                console.log("Kết nối SignalR thành công!");
+
+                // Tham gia nhóm người dùng
+                connection.invoke("JoinUserGroup", currentUserId);
+
+                // Xử lý form gửi tin nhắn
+                const messageForm = document.getElementById("messageForm");
+                const messageInput = document.getElementById("messageInput");
+
+                messageForm.addEventListener("submit", function (e) {
+                    e.preventDefault();
+
+                    if (messageInput.value.trim() !== "") {
+                        // Gửi tin nhắn qua SignalR
+                        connection.invoke("SendMessageToUser",
+                            currentUserId,
+                            partnerId,
+                            messageInput.value
+                        ).catch(function (err) {
+                            console.error(err);
+                            // Nếu gửi qua SignalR thất bại, sử dụng form submit thông thường
+                            messageForm.submit();
+                        });
+
+                        // Xóa nội dung input
+                        messageInput.value = "";
+                    }
+                });
+            }).catch(function (err) {
+                console.error("Lỗi kết nối SignalR: " + err.toString());
+            });
+
+            // Xử lý khi rời khỏi trang
+            window.addEventListener("beforeunload", function () {
+                connection.invoke("LeaveUserGroup", currentUserId);
+            });
+        });
+    </script>
+}

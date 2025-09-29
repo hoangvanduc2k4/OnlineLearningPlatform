@@ -1,0 +1,184 @@
+﻿@using OnlineLearningPlatform.Models.ViewModels
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@model IEnumerable<ChatPartner>
+@{
+    ViewData["Title"] = "Chat-";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="text-center mt-3">
+        <a class=""
+           asp-controller="Chat"
+       asp-action="ChatWithMentor"
+           asp-route-mentorId="e9ecd039-723d-48dd-b31f-410558c9fa8c">
+            <i class="fas fa-comments me-1"></i> Chat with phamtra001
+        </a>
+    </div>
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Danh sách cuộc trò chuyện</h4>
+                </div>
+                <div class="card-body">
+                    <div id="chat-list-container">
+                        @if (!Model.Any())
+                        {
+                            <div class="text-center py-5" id="empty-chat-message">
+                                <i class="fas fa-comments fa-4x text-muted mb-3"></i>
+                                <p class="lead">Bạn chưa có cuộc trò chuyện nào.</p>
+                                <p>Hãy bắt đầu trò chuyện với mentor từ trang chi tiết khóa học.</p>
+                            </div>
+                        }
+                        else
+                        {
+                             <div class="list-group" id="chat-list">
+                                @foreach (var chatPartner in Model)
+                                {
+                                    <a href="@Url.Action("Chat", "Chat", new { partnerId = chatPartner.Partner.Id })"
+                                       class="list-group-item list-group-item-action @(chatPartner.UnreadCount > 0 ? "bg-light" : "")"
+                                       data-partner-id="@chatPartner.Partner.Id">
+                                        <div class="d-flex w-100 justify-content-between align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                @if (!string.IsNullOrEmpty(chatPartner.Partner.AvatarUrl))
+                                                {
+                                                    <img src="@chatPartner.Partner.AvatarUrl" class="rounded-circle me-3" width="50" height="50" alt="Avatar">
+                                                }
+                                                else
+                                                {
+                                                    <div class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center me-3"
+                                                         style="width: 50px; height: 50px;">
+                                                        <span>@(chatPartner.Partner.FullName?.Substring(0, 1).ToUpper() ?? "U")</span>
+                                                    </div>
+                                                }
+                                                <div>
+                                                    <h5 class="mb-1">@chatPartner.Partner.FullName</h5>
+                                                    <p class="mb-1 text-truncate message-content" style="max-width: 250px;">
+                                                        @if (chatPartner.LatestMessage.SenderId == chatPartner.Partner.Id)
+                                                        {
+                                                            @chatPartner.LatestMessage.Content
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>Bạn: @chatPartner.LatestMessage.Content</span>
+                                                        }
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="text-end">
+                                                <small class="text-muted message-time">@chatPartner.LatestMessage.CreatedAt.ToString("HH:mm dd/MM/yyyy")</small>
+                                                <span class="badge bg-primary rounded-pill ms-2 unread-count" style="@(chatPartner.UnreadCount > 0 ? "" : "display: none;")">
+                                                    @chatPartner.UnreadCount
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                }
+                            </div> 
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ @section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Khởi tạo kết nối SignalR
+            const connection = new signalR.HubConnectionBuilder()
+                .withUrl("/userChatHub")
+                .withAutomaticReconnect()
+                .build();
+
+            // Lấy ID người dùng hiện tại từ idnetity
+            const currentUserId = "@User.FindFirstValue(ClaimTypes.NameIdentifier)";
+
+            // Khi nhận được tin nhắn mới
+            connection.on("ReceiveMessage", function (message) {
+                // Chỉ xử lý tin nhắn liên quan đến người dùng hiện tại
+                if (message.senderId == currentUserId || message.receiverId == currentUserId) {
+                    updateChatList(message);
+                }
+            });
+
+            // Bắt đầu kết nối
+            connection.start().then(function () {
+                console.log("Kết nối SignalR thành công!");
+
+                // Tham gia nhóm người dùng
+                if (currentUserId) {
+                    connection.invoke("JoinUserGroup", currentUserId);
+                }
+            }).catch(function (err) {
+                console.error("Lỗi kết nối SignalR: " + err.toString());
+            });
+
+            // Xử lý khi rời khỏi trang
+            window.addEventListener("beforeunload", function () {
+                if (currentUserId) {
+                    connection.invoke("LeaveUserGroup", currentUserId);
+                }
+            });
+
+            // Hàm cập nhật danh sách chat khi có tin nhắn mới
+            function updateChatList(message) {
+                const partnerId = message.senderId == currentUserId ? message.receiverId : message.senderId;
+                const isFromPartner = message.senderId != currentUserId;
+
+                // Tìm chat partner trong danh sách
+                let chatItem = document.querySelector(`.list-group-item[data-partner-id="${partnerId}"]`);
+
+                if (chatItem) {
+                    // Cập nhật tin nhắn mới nhất
+                    const messageContent = chatItem.querySelector('.message-content');
+                    messageContent.textContent = isFromPartner ? message.content : `Bạn: ${message.content}`;
+
+                    // Cập nhật thời gian
+                    const messageTime = chatItem.querySelector('.message-time');
+                    const formattedTime = new Date(message.createdAt).toLocaleString('vi-VN', {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: 'numeric'
+                    });
+                    messageTime.textContent = formattedTime;
+
+                    // Nếu tin nhắn từ đối tác, tăng số lượng chưa đọc và đánh dấu
+                    if (isFromPartner) {
+                        const unreadBadge = chatItem.querySelector('.unread-count');
+                        const currentCount = parseInt(unreadBadge.textContent) || 0;
+                        unreadBadge.textContent = currentCount + 1;
+                        unreadBadge.style.display = '';
+                        chatItem.classList.add('bg-light');
+                    }
+
+                    // Di chuyển chat item lên đầu danh sách
+                    const chatList = document.getElementById('chat-list');
+                    if (chatList && chatList.firstChild) {
+                        chatList.insertBefore(chatItem, chatList.firstChild);
+                    }
+                } else {
+                    // Nếu chưa có chat với partner này, cần tải lại trang để hiển thị
+                    if (isFromPartner) {
+                        // Ẩn thông báo trống nếu có
+                        const emptyMessage = document.getElementById('empty-chat-message');
+                        if (emptyMessage) {
+                            emptyMessage.style.display = 'none';
+                        }
+
+                        // Hiển thị thông báo có tin nhắn mới
+                        const chatListContainer = document.getElementById('chat-list-container');
+                        const notification = document.createElement('div');
+                        notification.className = 'alert alert-info mt-3';
+                        notification.innerHTML = `Bạn có tin nhắn mới! <a href="javascript:location.reload()">Tải lại trang</a> để xem.`;
+                        chatListContainer.prepend(notification);
+                    }
+                }
+            }
+        });
+    </script>
+} 
