@@ -90,10 +90,13 @@
             // Khi nhận được tin nhắn mới
             connection.on("ReceiveMessage", function (message) {
                 // Chỉ xử lý tin nhắn liên quan đến cuộc trò chuyện hiện tại
-                if ((message.senderId == @currentUser..Id && message.receiverId == @partner.Id) ||
-                    (message.senderId == @partner.Id && message.receiverId == @currentUser.Id)) {
+                      const currentUserId = @Html.Raw(Json.Serialize(currentUser.Id));
+        const partnerId = @Html.Raw(Json.Serialize(partner.Id));
 
-                    const isCurrentUserMessage = message.senderId == @currentUser.Id;
+        if ((message.senderId === currentUserId && message.receiverId === partnerId) ||
+            (message.senderId === partnerId && message.receiverId === currentUserId)) {
+
+                    const isCurrentUserMessage = message.senderId == currentUserId;
                     const messageHtml = `
                         <div class="mb-3 ${isCurrentUserMessage ? "text-end" : ""}">
                             <div class="d-inline-block p-2 rounded-3 ${isCurrentUserMessage ? "bg-primary text-white" : "bg-white border"}"
@@ -114,7 +117,7 @@
 
                     // Nếu là tin nhắn từ đối tác, đánh dấu là đã đọc
                     if (!isCurrentUserMessage) {
-                        connection.invoke("MarkMessagesAsRead", message.senderId, @currentUser.Id);
+                        connection.invoke("MarkMessagesAsRead", message.senderId, currentUserId);
                     }
                 }
             });
@@ -130,7 +133,7 @@
                 console.log("Kết nối SignalR thành công!");
 
                 // Tham gia nhóm người dùng
-                connection.invoke("JoinUserGroup", "@currentUser.Id");
+                connection.invoke("JoinUserGroup", currentUserId);
 
                 // Xử lý form gửi tin nhắn
                 const messageForm = document.getElementById("messageForm");
@@ -142,8 +145,8 @@
                     if (messageInput.value.trim() !== "") {
                         // Gửi tin nhắn qua SignalR
                         connection.invoke("SendMessageToUser",
-                            @currentUser.Id,
-                            @partner.Id,
+                            currentUserId,
+                            partnerId,
                             messageInput.value
                         ).catch(function (err) {
                             console.error(err);
@@ -161,7 +164,7 @@
 
             // Xử lý khi rời khỏi trang
             window.addEventListener("beforeunload", function () {
-                connection.invoke("LeaveUserGroup", "@currentUser.Id");
+                connection.invoke("LeaveUserGroup", currentUserId);
             });
         });
     </script>

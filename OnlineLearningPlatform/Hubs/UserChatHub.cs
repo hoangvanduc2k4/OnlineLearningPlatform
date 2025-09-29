@@ -15,8 +15,9 @@ namespace OnlineLearningPlatform.Hubs
             var message = await _messageService.SendMessageAsync(senderId, receiverId, content);
 
             // Gửi tin nhắn đến người nhận và người gửi
-            await Clients.Group(receiverId.ToString()).SendAsync("ReceiveMessage", message);
-            await Clients.Group(senderId.ToString()).SendAsync("ReceiveMessage", message);
+
+            await Clients.Group(receiverId).SendAsync("ReceiveMessage", message);
+            await Clients.Group(senderId).SendAsync("ReceiveMessage", message);
         }
         public async Task JoinUserGroup(string userId)
         {
