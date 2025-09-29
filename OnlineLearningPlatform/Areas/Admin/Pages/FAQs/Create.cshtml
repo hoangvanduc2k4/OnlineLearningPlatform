@@ -1,0 +1,45 @@
+﻿
+@page
+@model OnlineLearningPlatform.Areas.Admin.Pages.FAQs.CreateModel
+@using OnlineLearningPlatform.Enums
+@{
+    ViewData["Title"] = "Add New FAQ";
+    Layout = "~/Areas/Admin/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid mt-4">
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-light text-primary">
+            <h5 class="mb-0">Add New FAQ</h5>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <div class="form-group mb-3">
+                    <label asp-for="FAQ.Question" class="form-label">Question</label>
+                    <input asp-for="FAQ.Question" class="form-control" />
+                    <span asp-validation-for="FAQ.Question" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="FAQ.Answer" class="form-label">Answer</label>
+                    <textarea asp-for="FAQ.Answer" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="FAQ.Answer" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label asp-for="FAQ.CommonStatus" class="form-label">Status</label>
+                    <select asp-for="FAQ.CommonStatus" asp-items="Html.GetEnumSelectList<CommonStatus>()" class="form-control">
+                        <option value="">Select Status</option>
+                    </select>
+                    <span asp-validation-for="FAQ.CommonStatus" class="text-danger"></span>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-sm btn-success me-2"><i class="bi bi-save"></i> Save</button>
+                    <a asp-page="./Index" class="btn btn-sm btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

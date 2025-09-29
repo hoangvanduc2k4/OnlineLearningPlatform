@@ -13,6 +13,8 @@ namespace OnlineLearningPlatform.Services.Interfaces
         Task DeleteAsync(FAQ faq);
         Task<bool> IsFAQExists(long id);
         Task<IPagedList<FAQsViewModel>> GetFAQsPagedAsync(int pageNumber, int pageSize, string? searchTerm = null);
+        Task<IPagedList<FAQ>> GetFAQsPagedAdminAsync(int pageNumber, int pageSize, string? searchTerm = null);
+
     }
 
 }

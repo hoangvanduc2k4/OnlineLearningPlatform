@@ -1,0 +1,64 @@
+﻿@page
+@model OnlineLearningPlatform.Areas.Admin.Pages.Dashboard.IndexModel
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Areas/Admin/Shared/_AdminLayout.cshtml";
+}
+
+<div class="pc-content p-4" style="background-color: #f8f9fa;">
+    <!-- Breadcrumb -->
+    <div class="page-header mb-4">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h5 class="mb-0 fw-bold text-primary">Home</h5>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 justify-content-end bg-transparent">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:;">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Home</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Embed revenue -->
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title mb-3">Revenue Overview</h4>
+                    <iframe width="100%" height="550" src="@Model.DashboardEmbedUrl"
+                            frameborder="0" style="border: 1px solid #dee2e6; border-radius: .25rem;"
+                            allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Yearly Sales -->
+        <div class="col-md-6 col-xl-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h6 class="text-uppercase text-muted mb-3">Yearly Sales</h6>
+                    <div class="d-flex align-items-center">
+                        <div class="me-3">
+                            <h2 class="mb-0 text-success">
+                                <i class="feather icon-arrow-up me-1"></i>$8,638.32
+                            </h2>
+                        </div>
+                        <div class="text-end text-muted">80%</div>
+                    </div>
+                    <div class="progress mt-4" style="height: 7px;">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 70%;"
+                             aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

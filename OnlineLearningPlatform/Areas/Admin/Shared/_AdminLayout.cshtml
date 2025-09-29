@@ -38,6 +38,10 @@
 			--transition: all 0.3s ease; /* Smooth transitions */
 		}
 
+		.pagination .page-item:not(.disabled) .page-link {
+			color: black !important;
+		}
+
 		/* Body and global styles */
 		body {
 			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -271,7 +275,9 @@
 	</style>
 </head>
 <body data-pc-preset="preset-1" data-pc-sidebar-caption="true" data-pc-direction="ltr" data-pc-theme="light">
-
+	<form method="post" id="antiForgeryForm" hidden>
+		<input type="hidden" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" />
+	</form>
 	<!-- [ Sidebar Menu ] start -->
 	<nav class="pc-sidebar">
 		<div class="navbar-wrapper">
@@ -284,7 +290,7 @@
 				<ul class="pc-navbar">
 
 					<li class="pc-item">
-						<a asp-controller="Dashboard" asp-action="Index" class="pc-link">
+						<a asp-area="Admin" asp-page="/Dashboard/Index" class="pc-link">
 							<span class="pc-micon"><i class="bi bi-speedometer2"></i></span>
 							<span class="pc-mtext">Dashboard</span>
 						</a>
@@ -312,25 +318,26 @@
 					</li>
 
 					<li class="pc-item">
-						<a asp-controller="Level" asp-action="Index" class="pc-link">
+						<a asp-area="Admin" asp-page="/Levels/Index" class="pc-link">
 							<span class="pc-micon"><i class="bi bi-layers"></i></span>
 							<span class="pc-mtext">Level management</span>
 						</a>
 					</li>
 
 					<li class="pc-item">
-						<a asp-controller="Category" asp-action="Index" class="pc-link">
+						<a asp-area="Admin" asp-page="/Categories/Index" class="pc-link">
 							<span class="pc-micon"><i class="bi bi-tags"></i></span>
 							<span class="pc-mtext">Category management</span>
 						</a>
 					</li>
 
 					<li class="pc-item">
-						<a asp-controller="Faq" asp-action="Index" class="pc-link">
+						<a asp-area="Admin" asp-page="/FAQs/Index" class="pc-link">
 							<span class="pc-micon"><i class="bi bi-question-circle"></i></span>
 							<span class="pc-mtext">FAQ management</span>
 						</a>
 					</li>
+
 
 				</ul>
 			</div>

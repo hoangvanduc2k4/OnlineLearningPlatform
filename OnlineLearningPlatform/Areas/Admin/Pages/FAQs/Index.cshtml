@@ -1,0 +1,141 @@
+﻿@page
+@using X.PagedList 
+@using X.PagedList.Mvc.Core
+@model OnlineLearningPlatform.Areas.Admin.FAQs.IndexModel
+@{
+    ViewData["Title"] = "FAQ Management";
+    Layout = "~/Areas/Admin/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid mt-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-light text-primary d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">FAQ Management</h5>
+            <div class="d-flex">
+                <form method="get" class="d-flex me-2">
+                    <input type="text" name="searchTerm" value="@Model.SearchTerm" class="form-control form-control-sm me-2" placeholder="Search FAQ..." />
+                    <button type="submit" class="btn btn-sm btn-outline-primary">Search</button>
+                </form>
+                <a asp-page="./Create" class="btn btn-sm btn-success"><i class="bi bi-plus-lg"></i> Add New FAQ</a>
+            </div>
+        </div>
+
+        <div class="card-body">
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @TempData["SuccessMessage"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+        </div>
+
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover mb-0">
+                    <thead class="bg-light text-dark">
+                        <tr>
+                            <th style="width: 5%;">ID</th>
+                            <th style="width: 30%;">Question</th>
+                            <th>Answer</th>
+                            <th style="width: 15%;">Status</th>
+                            <th style="width: 15%;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.PagedFAQs != null && Model.PagedFAQs.Any())
+                        {
+                            int seq = (Model.PagedFAQs.PageNumber - 1) * Model.PagedFAQs.PageSize;
+                            foreach (var faq in Model.PagedFAQs)
+                            {
+                                seq++;
+                                <tr>
+                                    <td>@seq</td>
+                                    <td>@faq.Question</td>
+                                    <td>@(faq.Answer != null && faq.Answer.Length > 50 ? faq.Answer.Substring(0, 50) + "..." : faq.Answer)</td>
+                                    <td>
+                                        @switch (faq.CommonStatus)
+                                        {
+                                            case OnlineLearningPlatform.Enums.CommonStatus.Showed:
+                                                <span class="text-success">Show</span>
+                                                ;
+                                                break;
+                                            case OnlineLearningPlatform.Enums.CommonStatus.Hided:
+                                                <span class="text-danger">Hide</span>
+                                                ;
+                                                break;
+                                            default:
+                                                <span class="text-secondary">Private</span>
+                                                ;
+                                                break;
+                                        }
+                                    </td>
+                                    <td>
+                                        <a asp-page="./Update" asp-route-id="@faq.FaqId" class="btn btn-sm btn-warning me-1">
+                                            <i class="bi bi-pencil-fill"></i>
+                                        </a>
+                                        <form method="post" asp-page-handler="Delete" class="d-inline">
+                                            <input type="hidden" name="id" value="@faq.FaqId" />
+                                            <input type="hidden" name="pageNumber" value="@Model.PagedFAQs.PageNumber" />
+                                            <input type="hidden" name="pageSize" value="@Model.PageSize" />
+                                            <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this?')">
+                                                <i class="bi bi-trash-fill"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center py-3 text-muted">No FAQs found.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card-footer bg-white">
+            <nav aria-label="Page navigation" class="d-flex justify-content-center">
+                @Html.PagedListPager(
+                         Model.PagedFAQs,
+                         page => Url.Page("./Index", new { pageNumber = page, pageSize = Model.PageSize, searchTerm = Model.SearchTerm }),
+                         new PagedListRenderOptions
+                {
+                    UlElementClasses = new[] { "pagination pagination-sm mb-0" },
+                    LiElementClasses = new[] { "page-item" },
+                    PageClasses = new[] { "page-link text-primary" }
+                })
+            </nav>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function showSuccess(msg) {
+            iziToast.success({
+                title: 'Success',
+                message: msg,
+                backgroundColor: '#d4edda',
+                titleColor: '#155724',
+                messageColor: '#155724',
+                position: 'topRight'
+            });
+        }
+
+        function showError(msg) {
+            iziToast.error({
+                title: 'Error',
+                message: msg,
+                backgroundColor: '#f8d7da',
+                titleColor: '#721c24',
+                messageColor: '#721c24',
+                position: 'topRight'
+            });
+        }
+    </script>
+}

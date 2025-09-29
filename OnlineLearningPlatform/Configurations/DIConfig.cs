@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using OnlineLearningPlatform.Repositories;
 using OnlineLearningPlatform.Repositories.Implementations;
 using OnlineLearningPlatform.Repositories.Interfaces;
@@ -15,7 +15,11 @@ namespace OnlineLearningPlatform.Configurations
             //User repository
             services.AddScoped<IUserRepository, UserRepository>();
 
-            //Email Service
+            //Add Repository
+            services.AddScoped<IFAQsRepository, FAQsRepository>();
+            services.AddScoped<ILevelRepository, LevelRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+
             services.AddTransient<IEmailSender, EmailSenderService>();
 
             //FAQ
@@ -26,6 +30,8 @@ namespace OnlineLearningPlatform.Configurations
             services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddScoped<IMessageService, MessageService>();
 
+            services.AddScoped<ILevelService, LevelService>();
+            services.AddScoped<ICategoryService, CategoryService>();
 
 
             return services;

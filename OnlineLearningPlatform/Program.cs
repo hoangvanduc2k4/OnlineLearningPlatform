@@ -1,6 +1,5 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using OnlineLearningPlatform.Configurations;
+
 using OnlineLearningPlatform.Data;
 using OnlineLearningPlatform.Hubs;
 using OnlineLearningPlatform.Mappers;
@@ -22,6 +21,7 @@ namespace OnlineLearningPlarform
             builder.Services.AddControllersWithViews();
             builder.Services.AddSignalR();
             builder.Services.ConfigureSession();
+            builder.Services.AddRazorPages();
             builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
             var app = builder.Build();
 
