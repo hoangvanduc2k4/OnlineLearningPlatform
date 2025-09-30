@@ -1,53 +1,80 @@
 ﻿using OnlineLearningPlatform.Models.Entities.UserPart;
 using OnlineLearningPlatform.Services.Interfaces;
+using OnlineLearningPlatform.Repositories.Interfaces;
+using Microsoft.AspNetCore.Http;
 
 namespace OnlineLearningPlatform.Services.Implementations
 {
     public class UserService : IUserService
     {
-        public Task<User> AddUserAsync(User user)
+        private readonly IUserRepository _userRepository;
+
+        public UserService(IUserRepository userRepository)
         {
-            throw new NotImplementedException();
+            _userRepository = userRepository;
         }
 
-        public Task<bool> ChangeAvatarAsync(long userId, IFormFile avatarFile)
+        public async Task<User> AddUserAsync(User user)
         {
-            throw new NotImplementedException();
+            return await _userRepository.AddAsync(user);
         }
 
-        public Task<IEnumerable<User>> GetAllUsersAsync()
+        public async Task<bool> ChangeAvatarAsync(long userId, IFormFile avatarFile)
         {
-            throw new NotImplementedException();
+            var user = await _userRepository.GetByIdAsync(userId);
+            if (user == null || avatarFile == null) return false;
+
+            // Implement avatar upload logic here (e.g., save file, update AvatarUrl)
+            // Example: user.AvatarUrl = await SaveAvatarAsync(avatarFile);
+            // For now, just return false as placeholder
+            return false;
         }
 
-        public Task<User?> GetByEmailAndPasswordAsync(string email, string password)
+        public async Task<bool> DeleteUserAsync(string userId)
         {
-            throw new NotImplementedException();
+            if (userId == null) return false;
+            var user = await _userRepository.GetByIdAsync(userId);
+            if (user == null) return false;
+            user.IsDeleted = true;
+            await _userRepository.UpdateAsync(user);
+            return true;
         }
 
-        public Task<User?> GetUserByEmailAsync(string email)
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
-            throw new NotImplementedException();
+            return await _userRepository.GetAllAsync();
         }
 
-        public Task<User?> GetUserByIdAsync(long? id)
+        public async Task<User?> GetByEmailAndPasswordAsync(string email, string password)
         {
-            throw new NotImplementedException();
+            return await _userRepository.GetByEmailAndPasswordAsync(email, password);
         }
 
-        public Task<string> GetUserHeaderAsync(long? userId)
+        public async Task<User?> GetUserByEmailAsync(string email)
         {
-            throw new NotImplementedException();
+            return await _userRepository.GetByEmailAsync(email);
         }
 
-        public Task<string> GetUserNameByIdAsync(long? userId)
+        public async Task<User?> GetUserByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            return await _userRepository.GetByIdAsync(id);
         }
 
-        public Task UpdateUserAsync(User user)
+        public async Task<string> GetUserHeaderAsync(string userId)
         {
-            throw new NotImplementedException();
+            var user = await GetUserByIdAsync(userId);
+            return user?.FullName ?? string.Empty;
+        }
+
+        public async Task<string> GetUserNameByIdAsync(string userId)
+        {
+            var user = await GetUserByIdAsync(userId);
+            return user?.FullName ?? string.Empty;
+        }
+
+        public async Task UpdateUserAsync(User user)
+        {
+            await _userRepository.UpdateAsync(user);
         }
     }
 }
