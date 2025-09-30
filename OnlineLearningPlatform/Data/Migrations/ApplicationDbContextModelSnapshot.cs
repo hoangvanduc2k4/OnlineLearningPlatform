@@ -464,7 +464,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AnswerQuizzes");
+                    b.ToTable("AnswerQuizzes", (string)null);
 
                     b.HasData(
                         new
@@ -1567,7 +1567,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
 
                     b.HasData(
                         new
@@ -1667,7 +1667,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasIndex("MentorId");
 
-                    b.ToTable("Courses");
+                    b.ToTable("Courses", (string)null);
 
                     b.HasData(
                         new
@@ -1872,7 +1872,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("CourseCategories");
+                    b.ToTable("CourseCategories", (string)null);
 
                     b.HasData(
                         new
@@ -2015,7 +2015,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("CourseEnrollments");
+                    b.ToTable("CourseEnrollments", (string)null);
 
                     b.HasData(
                         new
@@ -2075,7 +2075,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("CourseImageUrls");
+                    b.ToTable("CourseImageUrls", (string)null);
 
                     b.HasData(
                         new
@@ -2343,7 +2343,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasIndex("ModuleId");
 
-                    b.ToTable("Lessons");
+                    b.ToTable("Lessons", (string)null);
 
                     b.HasData(
                         new
@@ -3229,7 +3229,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasKey("LevelId");
 
-                    b.ToTable("Levels");
+                    b.ToTable("Levels", (string)null);
 
                     b.HasData(
                         new
@@ -3284,7 +3284,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("Modules");
+                    b.ToTable("Modules", (string)null);
 
                     b.HasData(
                         new
@@ -3645,7 +3645,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasIndex("QuestionId");
 
-                    b.ToTable("Options");
+                    b.ToTable("Options", (string)null);
 
                     b.HasData(
                         new
@@ -5839,7 +5839,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasIndex("QuizId");
 
-                    b.ToTable("Questions");
+                    b.ToTable("Questions", (string)null);
 
                     b.HasData(
                         new
@@ -6362,7 +6362,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasIndex("ModuleId");
 
-                    b.ToTable("Quizzes");
+                    b.ToTable("Quizzes", (string)null);
 
                     b.HasData(
                         new
@@ -6529,7 +6529,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("QuizResults");
+                    b.ToTable("QuizResults", (string)null);
 
                     b.HasData(
                         new
@@ -6879,7 +6879,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Ratings");
+                    b.ToTable("Ratings", (string)null);
 
                     b.HasData(
                         new
@@ -6989,7 +6989,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("WishLists");
+                    b.ToTable("WishLists", (string)null);
 
                     b.HasData(
                         new
@@ -7066,7 +7066,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("AdminReviewCourses");
+                    b.ToTable("AdminReviewCourses", (string)null);
 
                     b.HasData(
                         new
@@ -7206,7 +7206,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasKey("FaqId");
 
-                    b.ToTable("FAQs");
+                    b.ToTable("FAQs", (string)null);
 
                     b.HasData(
                         new
@@ -7295,7 +7295,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("MentorApplications");
+                    b.ToTable("MentorApplications", (string)null);
 
                     b.HasData(
                         new
@@ -7363,7 +7363,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasIndex("SenderId");
 
-                    b.ToTable("Messages");
+                    b.ToTable("Messages", (string)null);
 
                     b.HasData(
                         new
@@ -7450,7 +7450,7 @@ namespace OnlineLearningPlatform.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("TransactionHistories");
+                    b.ToTable("TransactionHistories", (string)null);
 
                     b.HasData(
                         new

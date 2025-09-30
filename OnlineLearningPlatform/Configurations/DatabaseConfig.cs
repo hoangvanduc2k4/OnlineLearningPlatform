@@ -11,7 +11,13 @@ namespace OnlineLearningPlatform.Configurations
                 ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
             services.AddDbContext<OnlineLearningDBContext>(options =>
-                options.UseSqlServer(connectionString));
+                options.UseSqlServer(
+                    connectionString,
+                    sqlOptions =>
+                    {
+                        sqlOptions.CommandTimeout(60);
+                    }
+                ));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
         }

@@ -1,5 +1,5 @@
 ﻿@page
-@using X.PagedList 
+@using X.PagedList
 @using X.PagedList.Mvc.Core
 @model OnlineLearningPlatform.Areas.Admin.FAQs.IndexModel
 @{
@@ -42,14 +42,14 @@
                             <th style="width: 15%;">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="faqTableBody">
                         @if (Model.PagedFAQs != null && Model.PagedFAQs.Any())
                         {
                             int seq = (Model.PagedFAQs.PageNumber - 1) * Model.PagedFAQs.PageSize;
                             foreach (var faq in Model.PagedFAQs)
                             {
                                 seq++;
-                                <tr>
+                                <tr id="faq_@faq.FaqId">
                                     <td>@seq</td>
                                     <td>@faq.Question</td>
                                     <td>@(faq.Answer != null && faq.Answer.Length > 50 ? faq.Answer.Substring(0, 50) + "..." : faq.Answer)</td>
@@ -58,15 +58,12 @@
                                         {
                                             case OnlineLearningPlatform.Enums.CommonStatus.Showed:
                                                 <span class="text-success">Show</span>
-                                                ;
                                                 break;
                                             case OnlineLearningPlatform.Enums.CommonStatus.Hided:
                                                 <span class="text-danger">Hide</span>
-                                                ;
                                                 break;
                                             default:
                                                 <span class="text-secondary">Private</span>
-                                                ;
                                                 break;
                                         }
                                     </td>
@@ -115,27 +112,89 @@
 </div>
 
 @section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        function showSuccess(msg) {
-            iziToast.success({
-                title: 'Success',
-                message: msg,
-                backgroundColor: '#d4edda',
-                titleColor: '#155724',
-                messageColor: '#155724',
-                position: 'topRight'
-            });
-        }
+        // Hàm tạo HTML cho row
+        function getRowHtml(faq, seq) {
+            let statusHtml = '';
+            switch (faq.commonStatus) {
+                case 'Showed':
+                    statusHtml = '<span class="text-success">Show</span>';
+                    break;
+                case 'Hided':
+                    statusHtml = '<span class="text-danger">Hide</span>';
+                    break;
+                default:
+                    statusHtml = '<span class="text-secondary">Private</span>';
+                    break;
+            }
 
-        function showError(msg) {
-            iziToast.error({
-                title: 'Error',
-                message: msg,
-                backgroundColor: '#f8d7da',
-                titleColor: '#721c24',
-                messageColor: '#721c24',
-                position: 'topRight'
-            });
+            const answer = (faq.answer && faq.answer.length > 50) ? faq.answer.substring(0, 50) + '...' : faq.answer;
+
+            return `
+                <tr id="faq_${faq.faqId}">
+                    <td>${seq}</td>
+                    <td>${faq.question}</td>
+                    <td>${answer}</td>
+                    <td>${statusHtml}</td>
+                    <td>
+                        <a asp-page="./Update" asp-route-id="${faq.faqId}" class="btn btn-sm btn-warning me-1">
+                            <i class="bi bi-pencil-fill"></i>
+                        </a>
+                        <form method="post" asp-page-handler="Delete" class="d-inline">
+                            <input type="hidden" name="id" value="${faq.faqId}" />
+                            <input type="hidden" name="pageNumber" value="@Model.PagedFAQs.PageNumber" />
+                            <input type="hidden" name="pageSize" value="@Model.PageSize" />
+                            <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
+                                <i class="bi bi-trash-fill"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            `;
         }
+        $(function () {
+            const connection = new signalR.HubConnectionBuilder()
+                .withUrl("/crudHub")
+                .withAutomaticReconnect()
+                .build();
+
+            connection.start();
+
+            connection.on("FAQDeleted", function (id) {
+                const row = $("#faq_" + id);
+                if (row.length) {
+                    row.remove();
+                    if ($("#faqTableBody tr").length === 0) {
+                        $("#faqTableBody").append('<tr><td colspan="5" class="text-center py-3 text-muted">No FAQs found.</td></tr>');
+                    }
+                }
+            });
+
+            connection.on("FAQCreated", function (faq) {
+                const tbody = $("#faqTableBody");
+                const currentRows = tbody.find("tr").length;
+                const pageSize = @Model.PageSize;
+                const noDataRow = tbody.find("tr td.text-center.text-muted");
+
+                if (currentRows < pageSize || noDataRow.length) {
+                    const seq = (@Model.PagedFAQs.PageNumber - 1) * pageSize + currentRows + 1;
+                    if (noDataRow.length) {
+                        noDataRow.parent().remove();
+                    }
+                    tbody.append(getRowHtml(faq, seq));
+                }
+            });
+
+            connection.on("FAQUpdated", function (faq) {
+                const row = $("#faq_" + faq.faqId);
+                if (row.length) {
+                    const seq = row.find("td:first").text();
+                    row.replaceWith(getRowHtml(faq, seq));
+                }
+            });
+        });
     </script>
 }

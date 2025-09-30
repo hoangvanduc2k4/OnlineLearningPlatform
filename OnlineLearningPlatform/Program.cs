@@ -1,6 +1,4 @@
 using OnlineLearningPlatform.Configurations;
-
-using OnlineLearningPlatform.Data;
 using OnlineLearningPlatform.Hubs;
 using OnlineLearningPlatform.Mappers;
 using OnlineLearningPlatform.Utils;
@@ -45,6 +43,8 @@ namespace OnlineLearningPlarform
             app.UseAuthorization();
 
             app.MapHub<UserChatHub>("/userChatHub");
+            app.MapHub<CRUDHub>("/crudHub");
+
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -1,10 +1,14 @@
 ﻿@page
 @model AccessDeniedModel
 @{
-    ViewData["Title"] = "Access denied";
+    ViewData["Title"] = "Access Denied";
 }
 
-<header>
-    <h1 class="text-danger">@ViewData["Title"]</h1>
-    <p class="text-danger">You do not have access to this resource.</p>
-</header>
+<main role="main" class="container-fluid container-xl py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <h1 class="text-danger text-center mb-4">@ViewData["Title"]</h1>
+            <p class="text-danger text-center">You do not have access to this resource.</p>
+        </div>
+    </div>
+</main>
