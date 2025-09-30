@@ -33,6 +33,8 @@ namespace OnlineLearningPlatform.Configurations
             services.AddScoped<ILevelService, LevelService>();
             services.AddScoped<ICategoryService, CategoryService>();
 
+            //VnPay
+            services.AddScoped<IVnPayService, VnPayService>();
 
             return services;
         }
