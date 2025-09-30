@@ -15,13 +15,11 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<User> _signInManager;
         private readonly ILogger<LoginModel> _logger;
-        private readonly UserManager<User> _userManager;
 
-        public LoginModel(SignInManager<User> signInManager, ILogger<LoginModel> logger, UserManager<User> userManager)
+        public LoginModel(SignInManager<User> signInManager, ILogger<LoginModel> logger)
         {
             _signInManager = signInManager;
             _logger = logger;
-            _userManager = userManager;
         }
 
         /// <summary>
@@ -110,16 +108,6 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    var user = await _userManager.FindByEmailAsync(Input.Email);
-                    if (user != null)
-                    {
-                        if (await _userManager.IsInRoleAsync(user, "Admin"))
-                        {
-                            return Redirect(Url.Content("~/Admin/FAQs"));
-                        }
-                    }
-
-                    // Nếu không có vai trò cụ thể, quay về trang mặc định
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
