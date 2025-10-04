@@ -36,9 +36,12 @@
                     <thead class="bg-light text-dark">
                         <tr>
                             <th style="width: 5%;">#</th>
-                            <th style="width: 25%;">Email</th>
-                            <th style="width: 25%;">Full Name</th>
-                            <th style="width: 15%;">Created At</th>
+                            <th style="width: 18%;">Email</th>
+                            <th style="width: 15%;">Full Name</th>
+                            <th style="width: 10%;">DOB</th>
+                            <th style="width: 10%;">Gender</th>
+                            <th style="width: 12%;">Phone</th>
+                            <th style="width: 10%;">Created At</th>
                             <th style="width: 15%;">Actions</th>
                         </tr>
                     </thead>
@@ -53,6 +56,18 @@
                                     <td>@seq</td>
                                     <td>@user.Email</td>
                                     <td>@user.FullName</td>
+                                    <td>@(user.Dob.HasValue ? user.Dob.Value.ToString("dd/MM/yyyy") : "-")</td>
+                                    <td>
+                                        @if (user.Gender.HasValue)
+                                        {
+                                            @(user.Gender.Value ? "Male" : "Female")
+                                        }
+                                        else
+                                        {
+                                            <span>-</span>
+                                        }
+                                    </td>
+                                    <td>@(user.Phone ?? "-")</td>
                                     <td>@user.CreatedAt.ToString("dd/MM/yyyy")</td>
                                     <td>
                                         <a asp-page="./Update" asp-route-id="@user.Id" class="btn btn-sm btn-warning me-1">
@@ -74,7 +89,7 @@
                         else
                         {
                             <tr>
-                                <td colspan="5" class="text-center py-3 text-muted">No users found.</td>
+                                <td colspan="8" class="text-center py-3 text-muted">No users found.</td>
                             </tr>
                         }
                     </tbody>

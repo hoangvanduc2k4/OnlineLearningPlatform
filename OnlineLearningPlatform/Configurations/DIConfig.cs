@@ -36,6 +36,9 @@ namespace OnlineLearningPlatform.Configurations
 
             //user
             services.AddScoped<IUserService, UserService>();
+            //role
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IRoleService, RoleService>();
 
 
             return services;
