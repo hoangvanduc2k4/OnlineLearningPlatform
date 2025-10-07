@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using OnlineLearningPlatform.Models.Entities.UserPart;
 using OnlineLearningPlatform.Services.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using X.PagedList;
 using X.PagedList.Extensions;
@@ -23,27 +22,39 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.Users
         public IPagedList<User> PagedUsers { get; set; }
         public int PageSize { get; set; } = 10;
         public string SearchTerm { get; set; }
+        public string FilterType { get; set; } = "all";
 
-        public async Task OnGetAsync(int? pageNumber, int? pageSize, string searchTerm)
+        public async Task OnGetAsync(int? pageNumber, int? pageSize, string searchTerm, string filterType)
         {
             PageSize = pageSize ?? 10;
             SearchTerm = searchTerm;
+            FilterType = filterType ?? "all";
 
-            var allUsers = await _userService.GetAllUsersAsync();
+            IEnumerable<User> users;
 
-            if (!string.IsNullOrWhiteSpace(SearchTerm))
+            switch (FilterType)
             {
-                allUsers = allUsers.Where(u =>
-                    (u.Email != null && u.Email.Contains(SearchTerm, System.StringComparison.OrdinalIgnoreCase)) ||
-                    (u.FullName != null && u.FullName.Contains(SearchTerm, System.StringComparison.OrdinalIgnoreCase))
-                );
+                case "active":
+                    users = await _userService.GetActiveUsersAsync(SearchTerm);
+                    break;
+                case "inactive":
+                    users = await _userService.GetInactiveUsersAsync(SearchTerm);
+                    break;
+                case "deleted":
+                    users = await _userService.GetDeletedUsersAsync(SearchTerm);
+                    break;
+                default:
+                    users = await _userService.GetAllUsersAsync(SearchTerm);
+                    break;
             }
 
             int page = pageNumber ?? 1;
-            PagedUsers = allUsers.OrderByDescending(u => u.CreatedAt).ToPagedList(page, PageSize);
+            PagedUsers = users is not null
+                ? users.OrderByDescending(u => u.CreatedAt).ToPagedList(page, PageSize)
+                : new List<User>().ToPagedList(page, PageSize);
         }
 
-        public async Task OnPostDeleteAsync(string id, int? pageNumber, int? pageSize, string searchTerm)
+        public async Task OnPostDeleteAsync(string id, int? pageNumber, int? pageSize, string searchTerm, string filterType)
         {
             var user = await _userService.GetUserByIdAsync(id);
             if (user != null)
@@ -52,7 +63,7 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.Users
                 TempData["SuccessMessage"] = "Deleted successfully.";
             }
 
-            await OnGetAsync(pageNumber, pageSize, searchTerm);
+            await OnGetAsync(pageNumber, pageSize, searchTerm, filterType);
         }
     }
 }

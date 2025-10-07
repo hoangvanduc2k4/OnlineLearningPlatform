@@ -10,9 +10,30 @@
 <div class="container-fluid mt-4">
     <div class="card shadow-sm border-0">
         <div class="card-header bg-light text-primary d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">User Management</h5>
+            <div class="d-flex align-items-center">
+                <h5 class="mb-0 me-3">User Management</h5>
+                <div class="btn-group" role="group">
+                    <a asp-page="./Index" asp-route-filterType="all" 
+                       class="btn btn-sm @(Model.FilterType == "all" ? "btn-primary" : "btn-outline-primary")">
+                        All Users
+                    </a>
+                    <a asp-page="./Index" asp-route-filterType="active"
+                       class="btn btn-sm @(Model.FilterType == "active" ? "btn-primary" : "btn-outline-primary")">
+                        Active
+                    </a>
+                    <a asp-page="./Index" asp-route-filterType="inactive"
+                       class="btn btn-sm @(Model.FilterType == "inactive" ? "btn-primary" : "btn-outline-primary")">
+                        Inactive
+                    </a>
+                    <a asp-page="./Index" asp-route-filterType="deleted"
+                       class="btn btn-sm @(Model.FilterType == "deleted" ? "btn-primary" : "btn-outline-primary")">
+                        Deleted
+                    </a>
+                </div>
+            </div>
             <div class="d-flex">
                 <form method="get" class="d-flex me-2">
+                    <input type="hidden" name="filterType" value="@Model.FilterType" />
                     <input type="text" name="searchTerm" value="@Model.SearchTerm" class="form-control form-control-sm me-2" placeholder="Search user..." />
                     <button type="submit" class="btn btn-sm btn-outline-primary">Search</button>
                 </form>

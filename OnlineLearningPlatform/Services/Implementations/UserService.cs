@@ -40,14 +40,34 @@ namespace OnlineLearningPlatform.Services.Implementations
             return true;
         }
 
+        public async Task<IEnumerable<User>> GetActiveUsersAsync(string? searchTerm)
+        {
+            return await _userRepository.GetActiveUsersAsync(searchTerm);
+        }
+
         public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
             return await _userRepository.GetAllAsync();
         }
 
+        public async Task<IEnumerable<User>> GetAllUsersAsync(string? searchTerm)
+        {
+            return await _userRepository.GetAllUsersAsync(searchTerm);
+        }
+
         public async Task<User?> GetByEmailAndPasswordAsync(string email, string password)
         {
             return await _userRepository.GetByEmailAndPasswordAsync(email, password);
+        }
+
+        public async Task<IEnumerable<User>> GetDeletedUsersAsync(string? searchTerm)
+        {
+            return await _userRepository.GetDeletedUsersAsync(searchTerm);
+        }
+
+        public async Task<IEnumerable<User>> GetInactiveUsersAsync(string? searchTerm)
+        {
+            return await _userRepository.GetInactiveUsersAsync(searchTerm);
         }
 
         public async Task<User?> GetUserByEmailAsync(string email)
