@@ -33,7 +33,9 @@ namespace OnlineLearningPlatform.Configurations
             services.AddScoped<ILevelService, LevelService>();
             services.AddScoped<ICategoryService, CategoryService>();
 
-
+            //Course
+            services.AddScoped<ICourseRepository, CourseRepository>();
+            services.AddScoped<ICourseService, CourseService>();
             return services;
         }
     }
