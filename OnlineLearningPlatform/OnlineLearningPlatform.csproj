@@ -37,4 +37,8 @@
     <Folder Include="Areas\Mentee\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GeminiServer\GeminiServer.csproj" />
+  </ItemGroup>
+
 </Project>
