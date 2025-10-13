@@ -1,4 +1,5 @@
-﻿using OnlineLearningPlatform.Models.Entities.CoursePart;
+﻿using OnlineLearningPlatform.Enums;
+using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Repositories.Interfaces;
 using OnlineLearningPlatform.Services.Interfaces;
 
@@ -23,12 +24,24 @@ namespace OnlineLearningPlatform.Services
             return await _courseRepository.GetByIdAndMentorIdAsync(courseId, mentorId);
         }
 
-        public async Task<Course> CreateCourseAsync(Course course, string mentorId)
+        public async Task<Course> CreateCourseAsync(Course course, string mentorId, List<long> categoryIds, string? coverImageUrl)
         {
             course.MentorId = mentorId;
             course.CreatedAt = DateTime.Now;
-            course.Status = Enums.CourseStatus.Draft; // Draft
-            return await _courseRepository.AddAsync(course);
+            course.Status = CourseStatus.Draft;
+
+            if (!string.IsNullOrEmpty(coverImageUrl))
+            {
+                course.CourseImageUrls.Add(new CourseImageUrl { Url = coverImageUrl });
+            }
+
+            foreach (var categoryId in categoryIds)
+            {
+                course.CourseCategories.Add(new CourseCategory { CategoryId = categoryId });
+            }
+
+            await _courseRepository.AddAsync(course);
+            return course;
         }
 
         public async Task<bool> UpdateCourseAsync(Course course, string mentorId)

@@ -6,7 +6,7 @@ namespace OnlineLearningPlatform.Services.Interfaces
     {
         Task<IEnumerable<Course>> GetCoursesForMentorAsync(string mentorId);
         Task<Course?> GetCourseByIdAndMentorAsync(long courseId, string mentorId);
-        Task<Course> CreateCourseAsync(Course course, string mentorId);
+        Task<Course> CreateCourseAsync(Course course, string mentorId, List<long> categoryIds, string? coverImageUrl);
         Task<bool> UpdateCourseAsync(Course course, string mentorId);
         Task<bool> DeleteCourseAsync(long courseId, string mentorId);
     }
