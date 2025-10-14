@@ -272,7 +272,7 @@
 </head>
 <body data-pc-preset="preset-1" data-pc-sidebar-caption="true" data-pc-direction="ltr" data-pc-theme="light">
 	<form method="post" id="antiForgeryForm" hidden>
-		<input type="hidden" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" />
+		@Html.AntiForgeryToken()
 	</form>
 	<nav class="pc-sidebar">
 		<div class="navbar-wrapper">
@@ -348,6 +348,6 @@
 			container.classList.toggle('collapsed');
 		});
 	</script>
-
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

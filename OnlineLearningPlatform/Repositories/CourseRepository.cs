@@ -15,7 +15,7 @@ namespace OnlineLearningPlatform.Repositories
         public async Task<IEnumerable<Course>> GetAllByMentorIdAsync(string mentorId)
         {
             return await _dbSet
-                             .Where(c => c.MentorId == mentorId && c.DeletedAt == null && c.Status == Enums.CourseStatus.Approved)
+                             .Where(c => c.MentorId == mentorId && c.Status == Enums.CourseStatus.Approved)
                              .Include(c => c.Level)
                              .ToListAsync();
         }
@@ -23,7 +23,7 @@ namespace OnlineLearningPlatform.Repositories
         public async Task<Course?> GetByIdAndMentorIdAsync(long courseId, string mentorId)
         {
             return await _dbSet
-                             .FirstOrDefaultAsync(c => c.CourseId == courseId && c.MentorId == mentorId && c.DeletedAt == null);
+                             .FirstOrDefaultAsync(c => c.CourseId == courseId && c.MentorId == mentorId && c.Status != Enums.CourseStatus.Deleted);
         }
     }
 }

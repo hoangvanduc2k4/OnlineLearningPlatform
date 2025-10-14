@@ -185,6 +185,28 @@ namespace OnlineLearningPlatform.Areas.Mentor.Controllers
             return "/images/courses/" + uniqueFileName;
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(long id)
+        {
+            var mentorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(mentorId))
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
+            var success = await _courseService.DeleteCourseAsync(id, mentorId);
+
+            if (success)
+            {
+                TempData["SuccessMessage"] = "Course was deleted successfully.";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Error: Course not found or you don't have permission.";
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

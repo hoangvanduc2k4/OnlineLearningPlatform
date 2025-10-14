@@ -74,6 +74,7 @@ namespace OnlineLearningPlatform.Services
             }
 
             courseToDelete.DeletedAt = DateTime.Now;
+            courseToDelete.Status = CourseStatus.Deleted;
             await _courseRepository.UpdateAsync(courseToDelete);
             //  await _courseRepository.Delete(courseToDelete)
 

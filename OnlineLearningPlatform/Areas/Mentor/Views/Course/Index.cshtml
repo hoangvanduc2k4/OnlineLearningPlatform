@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Course Management";
+    Layout = "~/Areas/Mentor/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Your Courses</h1>
@@ -9,6 +10,24 @@
 <p>
     <a asp-action="Create" class="btn btn-primary">Create New Course</a>
 </p>
+
+</p>
+
+@if (TempData["SuccessMessage"] != null)
+{
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+}
+
 
 <table class="table">
     <thead>
@@ -29,11 +48,17 @@
                     <td>@Html.DisplayFor(modelItem => item.Status)</td>
                     <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.CourseId">Edit</a> |
-                        <a asp-action="Manage" asp-route-id="@item.CourseId">Manage</a> |
-                        <a asp-action="Delete" asp-route-id="@item.CourseId">Delete</a>
+                            <a class="btn btn-sm btn-outline-primary" asp-action="Edit" asp-route-id="@item.CourseId">Edit</a> 
+                            <a class="btn btn-sm btn-outline-primary" asp-action="Manage" asp-route-id="@item.CourseId">Manage</a> 
+                            <form method="post" asp-action="Delete" asp-route-id="@item.CourseId" class="d-inline">
+                                <button type="submit" class="btn btn-sm btn-outline-danger" 
+                                    onclick="return confirm('Are you sure you want to delete the course: @item.CourseName?')">
+                                    Delete
+                                 </button>
+                            </form>
                     </td>
                 </tr>
         }
     </tbody>
 </table>
+
