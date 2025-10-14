@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Repositories.Interfaces;
 using OnlineLearningPlatform.Services.Interfaces;
@@ -73,5 +74,11 @@ namespace OnlineLearningPlatform.Services
 
             return vm;
         }
+
+        public async Task<Course?> GetCourseByIdAsync(long courseId)
+        {
+            return await _courseRepository.GetByIdAsync(courseId);
+        }
+
     }
 }

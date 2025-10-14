@@ -30,9 +30,18 @@ namespace OnlineLearningPlatform.Configurations
             services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddScoped<IMessageService, MessageService>();
 
+
             services.AddScoped<ILevelService, LevelService>();
             services.AddScoped<ICategoryService, CategoryService>();
 
+            services.AddScoped<ICourseRepository, CoursesRepository>();
+            services.AddScoped<ICourseService, CoursesService>();
+            services.AddScoped<IRatingRepository, RatingRepository>();
+
+            services.AddScoped<ICourseEnrollmentRepository, CourseEnrollmentRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
+            services.AddScoped<IVnPayService, VnPayService>();
+            services.AddScoped<ITransactionService, TransactionService>();
 
             return services;
         }

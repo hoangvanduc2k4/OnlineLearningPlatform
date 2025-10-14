@@ -2,7 +2,7 @@
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Repositories.Interfaces;
 
-namespace OnlineLearningPlatform.Repositories
+namespace OnlineLearningPlatform.Repositories.Implementations
 {
     public class LevelRepository : BaseRepository<Level>, ILevelRepository
     {

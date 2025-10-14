@@ -1,6 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnlineLearningPlatform.Data;
+using OnlineLearningPlatform.Enums;
+using OnlineLearningPlatform.Models.Entities.Others;
+using OnlineLearningPlatform.Models.Entities.UserPart;
+using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Services.Interfaces;
 
 namespace OnlineLearningPlatform.Controllers
@@ -9,11 +14,16 @@ namespace OnlineLearningPlatform.Controllers
     {
         private readonly ICourseService _courseService;
         private readonly OnlineLearningDBContext _context;
-
-        public CoursesController(ICourseService courseService, OnlineLearningDBContext context)
+        private readonly IVnPayService _vnPayService;
+        private readonly UserManager<User> _userManager;
+        private readonly ITransactionService _transactionService;
+        public CoursesController(ICourseService courseService, OnlineLearningDBContext context, IVnPayService vnPayService, UserManager<User> userManager, ITransactionService transactionService)
         {
             _courseService = courseService;
             _context = context;
+            _vnPayService = vnPayService;
+            _userManager = userManager;
+            _transactionService = transactionService;
         }
 
         public async Task<IActionResult> Index(
@@ -41,7 +51,7 @@ namespace OnlineLearningPlatform.Controllers
             ViewBag.StudyTimeRange = studyTimeRange;
 
             ViewBag.AllCategories = await _context.Categories
-                .Select(c => new { Id = c.CategoryId, Name = c.CategoryName }) 
+                .Select(c => new { Id = c.CategoryId, Name = c.CategoryName })
                 .OrderBy(x => x.Name)
                 .ToListAsync();
 
@@ -58,5 +68,41 @@ namespace OnlineLearningPlatform.Controllers
             if (vm == null) return NotFound();
             return View(vm);
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Checkout(long courseId)
+        {
+            var userId = _userManager.GetUserId(User);
+
+            var course = await _courseService.GetCourseByIdAsync(courseId);
+            if (course == null)
+            {
+                return NotFound("Not found!");
+            }
+
+            var transaction = new TransactionHistory
+            {
+                UserId = userId,
+                CourseId = courseId,
+                Amount = course.Price,
+                Status = TransactionStatus.Pending,
+                Description = "Waiting for checkout",
+                DateCreated = DateTime.Now
+            };
+
+            await _transactionService.AddTransactionAsync(transaction);
+
+            var vnPayModel = new VnPaymentRequestModel
+            {
+                Amount = (double)course.Price,
+                Description = $"Pay for course: {course.CourseName}",
+                OrderId = (int)transaction.TransactionId
+            };
+
+            var paymentUrl = _vnPayService.CreatePaymentUrl(HttpContext, vnPayModel);
+            return Redirect(paymentUrl);
+        }
+
     }
 }
