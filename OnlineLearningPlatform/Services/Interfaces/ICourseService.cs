@@ -1,4 +1,5 @@
-﻿using OnlineLearningPlatform.Models.ViewModels;
+﻿using OnlineLearningPlatform.Models.Entities.CoursePart;
+using OnlineLearningPlatform.Models.ViewModels;
 using X.PagedList;
 
 namespace OnlineLearningPlatform.Services.Interfaces
@@ -16,6 +17,9 @@ namespace OnlineLearningPlatform.Services.Interfaces
         );
 
         Task<CourseDetailsViewModel?> GetCourseDetailsAsync(long id);
+        Task<Course?> GetCourseByIdAsync(long courseId);
+
+
     }
 
 }

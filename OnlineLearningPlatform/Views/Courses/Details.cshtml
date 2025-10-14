@@ -273,7 +273,10 @@
                             </div>
 
                             <div class="action-buttons">
-                                <button class="btn-primary">Enroll Now</button>
+                                <form asp-controller="Courses" asp-action="Checkout" method="post">
+                                    <input type="hidden" name="courseId" value="@Model.CourseId" />
+                                    <button type="submit" class="btn btn-primary">Enroll Now</button>
+                                </form>                              
                                 <button class="btn-secondary">Add to Wishlist</button>
                             </div>
 

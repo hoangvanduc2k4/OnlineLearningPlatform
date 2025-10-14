@@ -2,6 +2,7 @@
 using OnlineLearningPlatform.Data;
 using OnlineLearningPlatform.Enums;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
+using OnlineLearningPlatform.Repositories.Implementations;
 using OnlineLearningPlatform.Repositories.Interfaces;
 using System.Text.RegularExpressions;
 using X.PagedList;

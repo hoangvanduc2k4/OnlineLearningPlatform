@@ -2,7 +2,7 @@
 using OnlineLearningPlatform.Models.Entities.Others;
 using OnlineLearningPlatform.Repositories.Interfaces;
 
-namespace OnlineLearningPlatform.Repositories
+namespace OnlineLearningPlatform.Repositories.Implementations
 {
     public class FAQsRepository : BaseRepository<FAQ>, IFAQsRepository
     {
