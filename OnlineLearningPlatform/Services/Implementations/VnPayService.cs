@@ -116,6 +116,8 @@ namespace OnlineLearningPlatform.Services.Implementations
                             CourseId = (int)transaction.CourseId!,
                             DateCreated = DateTime.Now
                         };
+                        transaction.ModifiedDate = DateTime.Now;
+                        await _transactionRepository.UpdateAsync(transaction);
                         await _courseEnrollmentRepository.AddAsync(enrollment);
                         responseModel.Success = true;
                     }
@@ -123,6 +125,7 @@ namespace OnlineLearningPlatform.Services.Implementations
                     {
                         transaction.Status = TransactionStatus.Failed;
                         transaction.Description = $"Failed. Error Code VNPay is: {vnPayResponseCode}";
+                        transaction.ModifiedDate = DateTime.Now;
                         await _transactionRepository.UpdateAsync(transaction);
                     }
                 }
