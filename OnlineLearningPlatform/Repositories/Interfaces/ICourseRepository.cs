@@ -6,5 +6,6 @@ namespace OnlineLearningPlatform.Repositories.Interfaces
     {
         Task<IEnumerable<Course>> GetAllByMentorIdAsync(string mentorId);
         Task<Course?> GetByIdAndMentorIdAsync(long courseId, string mentorId);
+        Task<Course?> GetCourseForEditAsync(long courseId, string mentorId);
     }
 }

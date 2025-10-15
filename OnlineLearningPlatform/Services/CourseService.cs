@@ -23,7 +23,10 @@ namespace OnlineLearningPlatform.Services
         {
             return await _courseRepository.GetByIdAndMentorIdAsync(courseId, mentorId);
         }
-
+        public async Task<Course?> GetCourseForEditAsync(long courseId, string mentorId)
+        {
+            return await _courseRepository.GetCourseForEditAsync(courseId, mentorId);
+        }
         public async Task<Course> CreateCourseAsync(Course course, string mentorId, List<long> categoryIds, string? coverImageUrl)
         {
             course.MentorId = mentorId;
@@ -44,26 +47,6 @@ namespace OnlineLearningPlatform.Services
             return course;
         }
 
-        public async Task<bool> UpdateCourseAsync(Course course, string mentorId)
-        {
-            var existingCourse = await _courseRepository.GetByIdAndMentorIdAsync(course.CourseId, mentorId);
-            if (existingCourse == null)
-            {
-                return false;
-            }
-
-
-            existingCourse.CourseName = course.CourseName;
-            existingCourse.Description = course.Description;
-            existingCourse.Price = course.Price;
-            existingCourse.Discount = course.Discount;
-            existingCourse.StudyTime = course.StudyTime;
-            existingCourse.LevelId = course.LevelId;
-            existingCourse.UpdatedAt = DateTime.Now;
-
-            await _courseRepository.UpdateAsync(existingCourse);
-            return true;
-        }
 
         public async Task<bool> DeleteCourseAsync(long courseId, string mentorId)
         {
@@ -78,6 +61,37 @@ namespace OnlineLearningPlatform.Services
             await _courseRepository.UpdateAsync(courseToDelete);
             //  await _courseRepository.Delete(courseToDelete)
 
+            return true;
+        }
+
+        public async Task<bool> UpdateCourseAsync(Course courseToUpdate, List<long> categoryIds, string? newCoverImageUrl, CourseStatus newStatus, string? mentorId)
+        {
+            var existingCourse = await _courseRepository.GetCourseForEditAsync(courseToUpdate.CourseId, mentorId);
+            if (existingCourse == null) return false;
+
+            existingCourse.CourseName = courseToUpdate.CourseName;
+            existingCourse.Description = courseToUpdate.Description;
+            existingCourse.StudyTime = courseToUpdate.StudyTime;
+            existingCourse.Price = courseToUpdate.Price;
+            existingCourse.Discount = courseToUpdate.Discount;
+            existingCourse.LevelId = courseToUpdate.LevelId;
+            existingCourse.UpdatedAt = DateTime.Now;
+
+            existingCourse.Status = newStatus;
+
+            if (!string.IsNullOrEmpty(newCoverImageUrl))
+            {
+                existingCourse.CourseImageUrls.Clear();
+                existingCourse.CourseImageUrls.Add(new CourseImageUrl { Url = newCoverImageUrl });
+            }
+
+            existingCourse.CourseCategories.Clear();
+            foreach (var categoryId in categoryIds)
+            {
+                existingCourse.CourseCategories.Add(new CourseCategory { CategoryId = categoryId });
+            }
+
+            await _courseRepository.UpdateAsync(existingCourse);
             return true;
         }
     }

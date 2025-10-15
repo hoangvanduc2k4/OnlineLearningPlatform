@@ -110,8 +110,8 @@ namespace OnlineLearningPlatform.Areas.Mentor.Controllers
 
         private async Task PopulateFormOptions(CourseCreateViewModel viewModel)
         {
-            var levels = await _levelRepository.GetAllAsync();
-            var categories = await _categoryRepository.GetAllAsync();
+            var levels = await _levelRepository.GetAllActiveAsync();
+            var categories = await _categoryRepository.GetAllActiveAsync();
 
             viewModel.Levels = new SelectList(levels, "LevelId", "LevelName", viewModel.LevelId);
             viewModel.AllCategories = categories.Select(c => new CategoryViewModel
@@ -126,39 +126,118 @@ namespace OnlineLearningPlatform.Areas.Mentor.Controllers
         public async Task<IActionResult> Edit(long id)
         {
             var mentorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (mentorId == null) return Unauthorized();
+            if (string.IsNullOrEmpty(mentorId)) return Unauthorized();
 
-            var course = await _courseService.GetCourseByIdAndMentorAsync(id, mentorId);
+            var course = await _courseService.GetCourseForEditAsync(id, mentorId);
+
             if (course == null)
             {
                 return NotFound();
             }
-            return View(course);
+
+            if (course.Status != CourseStatus.Draft && course.Status != CourseStatus.Rejected && course.Status != CourseStatus.Approved)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+
+            var viewModel = new CourseEditViewModel
+            {
+                CourseId = course.CourseId,
+                CourseName = course.CourseName,
+                Description = course.Description,
+                StudyTime = course.StudyTime,
+                Price = course.Price,
+                Discount = course.Discount,
+                LevelId = course.LevelId,
+                SelectedCategoryIds = course.CourseCategories.Select(cc => cc.CategoryId).ToList(),
+                ExistingCoverImageUrl = course.CourseImageUrls.FirstOrDefault()?.Url,
+                CurrentStatus = course.Status
+            };
+
+            await PopulateFormOptions(viewModel);
+            return View(viewModel);
         }
 
         // POST: /Mentor/Course/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, Course course)
+        public async Task<IActionResult> Edit(long id, CourseEditViewModel viewModel, string action)
         {
-            if (id != course.CourseId)
+            var mentorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (id != viewModel.CourseId) return BadRequest();
+
+            if (viewModel.AllCategories != null)
             {
-                return NotFound();
+                viewModel.SelectedCategoryIds = viewModel.AllCategories
+                                                    .Where(c => c.IsSelected)
+                                                    .Select(c => c.Id)
+                                                    .ToList();
+            }
+            if (viewModel.SelectedCategoryIds.Count == 0)
+            {
+                ModelState.AddModelError(nameof(viewModel.AllCategories), "You must select at least one category.");
             }
 
             if (ModelState.IsValid)
             {
-                var mentorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                if (mentorId == null) return Unauthorized();
-
-                var success = await _courseService.UpdateCourseAsync(course, mentorId);
-                if (!success)
+                CourseStatus newStatus;
+                if (action == "submit_review")
                 {
-                    return NotFound();
+                    newStatus = CourseStatus.Pending;
                 }
+                else
+                {
+                    newStatus = CourseStatus.Draft;
+                }
+
+                string? finalImageUrl = viewModel.ExistingCoverImageUrl;
+                if (viewModel.ImageOption == "file" && viewModel.NewCoverImage != null)
+                {
+                    finalImageUrl = await SaveImageAsync(viewModel.NewCoverImage);
+                }
+                else if (viewModel.ImageOption == "url" && !string.IsNullOrEmpty(viewModel.CoverImageUrl))
+                {
+                    finalImageUrl = viewModel.CoverImageUrl;
+                }
+
+                var courseToUpdate = new Course
+                {
+                    CourseId = viewModel.CourseId,
+                    CourseName = viewModel.CourseName,
+                    Description = viewModel.Description,
+                    StudyTime = viewModel.StudyTime,
+                    Price = viewModel.Price,
+                    Discount = viewModel.Discount,
+                    LevelId = viewModel.LevelId
+                };
+
+                await _courseService.UpdateCourseAsync(courseToUpdate, viewModel.SelectedCategoryIds, finalImageUrl, newStatus, mentorId);
+
+                if (newStatus == CourseStatus.Pending)
+                    TempData["SuccessMessage"] = "Course submitted for review successfully!";
+                else
+                    TempData["SuccessMessage"] = "Course saved as draft successfully!";
+
                 return RedirectToAction(nameof(Index));
             }
-            return View(course);
+
+            await PopulateFormOptions(viewModel);
+            return View(viewModel);
+        }
+
+        private async Task PopulateFormOptions(CourseEditViewModel viewModel)
+        {
+            var levels = await _levelRepository.GetAllActiveAsync();
+            var categories = await _categoryRepository.GetAllActiveAsync();
+
+            viewModel.Levels = new SelectList(levels, "LevelId", "LevelName", viewModel.LevelId);
+            viewModel.AllCategories = categories.Select(c => new CategoryViewModel
+            {
+                Id = c.CategoryId,
+                Name = c.CategoryName,
+                IsSelected = viewModel.SelectedCategoryIds.Contains(c.CategoryId)
+            }).ToList();
         }
         private async Task<string?> SaveImageAsync(IFormFile? imageFile)
         {

@@ -4,6 +4,6 @@ namespace OnlineLearningPlatform.Repositories.Interfaces
 {
     public interface ILevelRepository : IBaseRepository<Level>
     {
-
+        Task<IEnumerable<Level>> GetAllActiveAsync();
     }
 }

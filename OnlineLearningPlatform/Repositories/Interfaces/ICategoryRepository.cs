@@ -4,6 +4,7 @@ namespace OnlineLearningPlatform.Repositories.Interfaces
 {
     public interface ICategoryRepository : IBaseRepository<Category>
     {
+        Task<IEnumerable<Category>> GetAllActiveAsync();
     }
 
 }

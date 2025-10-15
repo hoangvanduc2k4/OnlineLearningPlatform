@@ -15,7 +15,7 @@ namespace OnlineLearningPlatform.Repositories
         public async Task<IEnumerable<Course>> GetAllByMentorIdAsync(string mentorId)
         {
             return await _dbSet
-                             .Where(c => c.MentorId == mentorId && c.Status == Enums.CourseStatus.Approved)
+                             .Where(c => c.MentorId == mentorId && c.Status != Enums.CourseStatus.Deleted)
                              .Include(c => c.Level)
                              .ToListAsync();
         }
@@ -24,6 +24,14 @@ namespace OnlineLearningPlatform.Repositories
         {
             return await _dbSet
                              .FirstOrDefaultAsync(c => c.CourseId == courseId && c.MentorId == mentorId && c.Status != Enums.CourseStatus.Deleted);
+        }
+        public async Task<Course?> GetCourseForEditAsync(long courseId, string mentorId)
+        {
+            return await _context.Courses
+                .Include(c => c.CourseCategories)
+                .Include(c => c.CourseImageUrls)
+                .Include(c => c.Level)
+                .FirstOrDefaultAsync(c => c.CourseId == courseId && c.MentorId == mentorId);
         }
     }
 }
