@@ -1,6 +1,5 @@
 ﻿namespace OnlineLearningPlatform.Enums
 {
-   
         public enum CourseStatus
         {
             Draft,
@@ -9,7 +8,4 @@
             Rejected,
             Deleted,
         }
-
-    
-
 }

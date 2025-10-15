@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -17,7 +18,6 @@
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
-
     <!-- Vendor CSS Files -->
     <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -26,17 +26,17 @@
 
     <!-- Main CSS File -->
     <link href="~/css/main.css" rel="stylesheet" asp-append-version="true">
+
+    <!-- Chatbot CSS -->
+    <link href="~/css/chatbot.css" rel="stylesheet" asp-append-version="true">
 </head>
 
 <body>
-
     <header id="header" class="header d-flex align-items-center sticky-top">
         <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-center">
-
             <a class="logo d-flex align-items-center me-auto" asp-controller="Home" asp-action="Index">
                 <h1 class="sitename">KnowHub</h1>
             </a>
-
             <nav id="navmenu" class="navmenu mx-auto">
                 <ul>
                     <li><a asp-controller="Home" asp-action="Index" class="active">Home</a></li>
@@ -47,9 +47,7 @@
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
-
             <partial name="_LoginPartial" />
-
         </div>
     </header>
 
@@ -58,7 +56,6 @@
     </main>
 
     <footer id="footer" class="footer accent-background">
-
         <div class="container footer-top">
             <div class="row gy-4">
                 <div class="col-lg-6 col-md-12 footer-about">
@@ -73,7 +70,6 @@
                         <a href=""><i class="bi bi-linkedin"></i></a>
                     </div>
                 </div>
-
                 <div class="col-lg-3 col-6 footer-links">
                     <h4>Useful Links</h4>
                     <ul>
@@ -82,7 +78,6 @@
                         <li><a href="terms.html">Terms</a></li>
                     </ul>
                 </div>
-
                 <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
                     <h4>Contact Us</h4>
                     <p>A108 Adam Street</p>
@@ -91,11 +86,50 @@
                     <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
                     <p><strong>Email:</strong> <span>info@example.com</span></p>
                 </div>
-
             </div>
         </div>
-
     </footer>
+
+    <!-- Chatbot HTML -->
+    @if (User.Identity.IsAuthenticated && (User.IsInRole("Mentor") || User.IsInRole("Mentee")))
+    {
+        <div id="chat-bubble" style="position: fixed; bottom: 30px; right: 30px; z-index: 2000;">
+            <button id="chat-bubble-btn"
+                    style="background-color: #007bff; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; cursor: pointer; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
+                💬
+            </button>
+        </div>
+        <div id="chat-popup" class="chat-popup d-none">
+            <div class="chat-popup-header">
+                <span>AI Assistant</span>
+                <button id="chat-popup-close" style="background: none; border: none; font-size: 1.2em; cursor: pointer;">&times;</button>
+            </div>
+            <div class="chat-popup-body">
+                <div class="chatbot-buttons">
+                    @if (User.IsInRole("Mentor"))
+                    {
+                        <button type="button" data-function="generate-lesson">Generate Lesson</button>
+                        <button type="button" data-function="generate-quiz">Generate Quiz</button>
+                    }
+                    @if (User.IsInRole("Mentee"))
+                    {
+                        <button type="button" data-function="ask-quiz">Ask Quiz</button>
+                        <button type="button" data-function="summarize">Summarize/Explain</button>
+                    }
+                </div>
+                <div id="chatbot-input" class="d-none">
+                    <textarea id="chatbot-textarea" class="chat-input" placeholder="Enter content."></textarea>
+                    <input id="num-questions" type="number" min="1" max="10" class="d-none" placeholder="Number question">
+                    <select id="summarize-or-explain" class="d-none">
+                        <option value="true">Summarize</option>
+                        <option value="false">Explain</option>
+                    </select>
+                    <button id="submit-chatbot" class="chat-send-btn">Send <span class="spinner d-none">⏳</span></button>
+                </div>
+                <div id="chatbot-response" class="chat-messages"></div>
+            </div>
+        </div>
+    }
 
     <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -116,6 +150,7 @@
     <!-- Original scripts -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/chatbot.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

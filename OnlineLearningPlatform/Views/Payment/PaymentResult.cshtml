@@ -1,0 +1,52 @@
+﻿@model OnlineLearningPlatform.Models.ViewModels.VnPaymentResponseModel;
+
+@{
+    ViewData["Title"] = "Payment Result";
+}
+
+<main class="container py-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow-sm">
+                <div class="card-body text-center p-4">
+                    @if (Model.Success)
+                    {
+                        <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+                        <h1 class="card-title text-success mt-3">Payment Successful!</h1>
+                        <p class="text-muted">Thank you for your purchase. Your transaction has been completed.</p>
+                        <hr>
+                        <div class="text-start p-3 bg-light rounded">
+                            <p><strong>Order ID:</strong> <code>@Model.OrderId</code></p>
+                            <p><strong>Transaction ID:</strong> <code>@Model.TransactionId</code></p>
+                            <p><strong>Amount:</strong> <span>@Model.Amount.ToString("N0") VND</span></p>
+                        </div>
+                    }
+                    else
+                    {
+                        <i class="bi bi-x-circle-fill text-danger" style="font-size: 4rem;"></i>
+                        <h1 class="card-title text-danger mt-3">Payment Failed</h1>
+                        <p class="text-muted">Unfortunately, we were unable to process your payment.</p>
+                        <hr>
+                        <div class="text-start p-3 bg-light rounded">
+                            <p><strong>Order ID:</strong> <code>@Model.OrderId</code></p>
+                            <p><strong>Error Code:</strong> <span class="fw-bold">@Model.VnPayResponseCode</span></p>
+                            <p class="fst-italic text-muted">
+                                @if (Model.VnPayResponseCode == "24")
+                                {
+                                    <span>The transaction was canceled by the user.</span>
+                                }
+                                else
+                                {
+                                    <span>Please check your information or contact support for assistance.</span>
+                                }
+                            </p>
+                        </div>
+                    }
+                    <a asp-controller="Courses" asp-action="Index" class="btn btn-primary mt-4">
+                        <i class="bi bi-arrow-left"></i> Back to Courses
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,327 @@
+﻿@model OnlineLearningPlatform.Models.ViewModels.CourseDetailsViewModel
+@{
+    ViewData["Title"] = Model.CourseName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Func<decimal, string> FormatPrice = price => price == 0 ? "Free" : $"${price:N2}";
+    var discountedPrice = Model.Price - (Model.Price * (decimal)(Model.Discount ?? 0) / 100);
+}
+
+<div class="page-title light-background">
+    <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Course Details</h1>
+        <nav class="breadcrumbs">
+            <ol>
+                <li><a href="/">Home</a></li>
+                <li class="current">@Model.CourseName</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<section id="course-details" class="course-details section">
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row">
+            <div class="col-lg-8">
+
+                <div class="course-hero" data-aos="fade-up" data-aos-delay="200">
+                    <div class="hero-content">
+                        <div class="course-badge">
+                            <span class="category">@(Model.CategoryNames.FirstOrDefault() ?? "General")</span>
+                            <span class="level">@Model.LevelName</span>
+                        </div>
+                        <h1>@Model.CourseName</h1>
+                        <p class="course-subtitle">Master modern web development with React, Node.js, and MongoDB in this comprehensive hands-on course</p>
+
+                        <div class="instructor-card">
+                            <img src="@(Model.MentorAvatarUrl ?? "/images/default-avatar.png")" alt="Instructor" class="instructor-image">
+                            <div class="instructor-details">
+                                <h5>@Model.MentorName</h5>
+                                <span>Senior Full Stack Developer</span>
+                                <div class="instructor-rating">
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        if (i <= Model.AverageRating)
+                                        {
+                                            <i class="bi bi-star-fill"></i>
+                                        }
+                                        else if (i - 0.5 <= Model.AverageRating)
+                                        {
+
+                                            <i class="bi bi-star-half"></i>
+                                        }
+                                        else
+                                        {
+
+                                            <i class="bi bi-star"></i>
+                                        }
+                                    }
+                                    <span>@Model.AverageRating.ToString("0.0") (@Model.FeedbackCount reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="@Model.ImageUrl" alt="Course Preview" class="img-fluid">
+                        <div class="play-overlay">
+                            <button class="play-btn">
+                                <i class="bi bi-play-fill"></i>
+                            </button>
+                            <span>Watch Preview</span>
+                        </div>
+                    </div>
+                </div><div class="course-nav-tabs" data-aos="fade-up" data-aos-delay="300">
+                    <ul class="nav nav-tabs" id="course-detailsCourseTab" role="tablist">
+                        <li class="nav-item">
+                            <button class="nav-link active" id="course-detailsoverview-tab" data-bs-toggle="tab" data-bs-target="#course-detailsoverview" type="button" role="tab">
+                                <i class="bi bi-layout-text-window-reverse"></i>
+                                Overview
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" id="course-detailscurriculum-tab" data-bs-toggle="tab" data-bs-target="#course-detailscurriculum" type="button" role="tab">
+                                <i class="bi bi-list-ul"></i>
+                                Curriculum
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" id="course-detailsreviews-tab" data-bs-toggle="tab" data-bs-target="#course-detailsreviews" type="button" role="tab">
+                                <i class="bi bi-star"></i>
+                                Reviews
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="course-detailsCourseTabContent">
+
+                        <div class="tab-pane fade show active" id="course-detailsoverview" role="tabpanel">
+                            <div class="overview-section">
+                                <h3>Course Description</h3>
+                                <p>@Model.Description</p>
+                            </div>
+                            <div class="skills-grid">
+                                <h3>Skills You'll Gain</h3>
+                                <div class="row">
+                                    <div class="col-md-6">...</div>
+                                </div>
+                            </div>
+                            <div class="requirements-section">
+                                <h3>Requirements</h3>
+                                <ul class="requirements-list">
+                                    <li>...</li>
+                                </ul>
+                            </div>
+                        </div><div class="tab-pane fade" id="course-detailscurriculum" role="tabpanel">
+                            @if (Model.Modules.Any())
+                            {
+                                <div class="curriculum-overview">
+                                    <div class="curriculum-stats">
+                                        <div class="stat">
+                                            <i class="bi bi-collection-play"></i>
+                                            <span>@Model.Modules.Count() Modules</span>
+                                        </div>
+                                        <div class="stat">
+                                            <i class="bi bi-play-circle"></i>
+                                            <span>@(Model.Modules.Sum(m => m.Lessons.Count + m.Quizzes.Count)) Lectures</span>
+                                        </div>
+                                        <div class="stat">
+                                            <i class="bi bi-clock"></i>
+                                            <span>@Model.StudyTime hours</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion" id="curriculumAccordion">
+                                    @foreach (var module in Model.Modules.OrderBy(m => m.ModuleNumber))
+                                    {
+                                        <div class="accordion-item curriculum-module">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#module-@module.ModuleId">
+                                                    <div class="module-info">
+                                                        <span class="module-title">Module @module.ModuleNumber: @module.ModuleName</span>
+                                                        <span class="module-meta">@(module.Lessons.Count + module.Quizzes.Count) lectures • @(module.Lessons.Sum(l => l.Duration ?? 0)) min</span>
+                                                    </div>
+                                                </button>
+                                            </h2>
+                                            <div id="module-@module.ModuleId" class="accordion-collapse collapse" data-bs-parent="#curriculumAccordion">
+                                                <div class="accordion-body">
+                                                    <div class="lessons-list">
+                                                        @foreach (var lesson in module.Lessons.OrderBy(l => l.LessonNumber))
+                                                        {
+                                                            <div class="lesson">
+                                                                <i class="bi bi-play-circle"></i>
+                                                                <span class="lesson-title">@lesson.LessonName</span>
+                                                                <span class="lesson-time">@lesson.Duration min</span>
+                                                            </div>
+                                                        }
+                                                        @foreach (var quiz in module.Quizzes)
+                                                        {
+                                                            <div class="lesson">
+                                                                <i class="bi bi-file-earmark-text"></i>
+                                                                <span class="lesson-title">[Quiz] @quiz.QuizName</span>
+                                                                @if (quiz.QuizTime.HasValue)
+                                                                {
+                                                                    <span class="lesson-time">@quiz.QuizTime min</span>
+                                                                }
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <p>Course curriculum is being updated.</p>
+                            }
+                        </div><div class="tab-pane fade" id="course-detailsreviews" role="tabpanel">
+                            @if (Model.Ratings.Any())
+                            {
+                                <div class="reviews-summary">
+                                    <div class="rating-overview">
+                                        <div class="overall-rating">
+                                            <div class="rating-number">@Model.AverageRating.ToString("0.0")</div>
+                                            <div class="rating-stars">
+                                                @for (int i = 1; i <= 5; i++)
+                                                {
+                                                    if (i <= Model.AverageRating)
+                                                    {
+                                                        <i class="bi bi-star-fill"></i>
+                                                    }
+                                                    else if (i - 0.5 <= Model.AverageRating)
+                                                    {
+
+                                                        <i class="bi bi-star-half"></i>
+                                                    }
+                                                    else
+                                                    {
+
+                                                        <i class="bi bi-star"></i>
+                                                    }
+                                                }
+                                            </div>
+                                            <div class="rating-text">@Model.FeedbackCount reviews</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="reviews-list">
+                                    @foreach (var rating in Model.Ratings)
+                                    {
+                                        <div class="review-item">
+                                            <div class="reviewer-info">
+                                                <img src="@(rating.UserAvatarUrl ?? "/images/default-avatar.png")" alt="Reviewer" class="reviewer-avatar">
+                                                <div class="reviewer-details">
+                                                    <h6>@rating.UserName</h6>
+                                                    <div class="review-rating">
+                                                        @for (int i = 1; i <= 5; i++)
+                                                        {
+                                                            <i class="bi @(i <= rating.RatingValue ? "bi-star-fill" : "bi-star")"></i>
+                                                        }
+                                                    </div>
+                                                </div>
+                                                <span class="review-date">@rating.FeedbackDate.ToString("dd MMM yyyy")</span>
+                                            </div>
+                                            <p class="review-text">@rating.Feedback</p>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <p>There are no reviews for this course yet.</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+
+                <div class="sticky-sidebar-wrapper">
+
+                    <div class="enrollment-card mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card-header">
+                            <div class="price-display">
+                                @if (Model.Discount > 0)
+                                {
+                                    <span class="current-price">@FormatPrice(discountedPrice)</span>
+                                    <span class="original-price">@FormatPrice(Model.Price)</span>
+                                    <span class="discount">@Model.Discount% OFF</span>
+                                }
+                                else
+                                {
+                                    <span class="current-price">@FormatPrice(Model.Price)</span>
+                                }
+                            </div>
+                            <div class="enrollment-count">
+                                <i class="bi bi-0-square"></i>
+                                <span class="detail-value">@Model.StudyTime</span>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="course-highlights">
+                                <div class="highlight-item"><i class="bi bi-trophy"></i><span>@Model.LevelName</span></div>
+                                <div class="highlight-item"><i class="bi bi-clock-history"></i><span>@Model.StudyTime hours of content</span></div>
+                                <div class="highlight-item"><i class="bi bi-download"></i><span>Downloadable resources</span></div>
+                                <div class="highlight-item"><i class="bi bi-infinity"></i><span>Lifetime access</span></div>
+                                <div class="highlight-item"><i class="bi bi-phone"></i><span>Mobile access</span></div>
+                            </div>
+
+                            <div class="action-buttons">
+                                <form asp-controller="Courses" asp-action="Checkout" method="post">
+                                    <input type="hidden" name="courseId" value="@Model.CourseId" />
+                                    <button type="submit" class="btn btn-primary">Enroll Now</button>
+                                </form>                              
+                                <button class="btn-secondary">Add to Wishlist</button>
+                            </div>
+
+                            <div class="guarantee"><i class="bi bi-shield-check"></i><span>30-day money-back guarantee</span></div>
+                        </div>
+                    </div><div class="course-details-card mb-4" data-aos="fade-up" data-aos-delay="300">
+                        <h4>Course Details</h4>
+                        <div class="detail-grid">
+                            <div class="detail-row">
+                                <span class="detail-label">Duration</span>
+                                <span class="detail-value">@Model.StudyTime hours</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Skill Level</span>
+                                <span class="detail-value">@Model.LevelName</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Language</span>
+                                <span class="detail-value">English</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Quizzes</span>
+                                <span class="detail-value">@Model.TotalQuizCount</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Last Updated</span>
+                                <span class="detail-value">@Model.UpdatedAt?.ToString("MMMM yyyy")</span>
+                            </div>
+                        </div>
+                    </div><div class="share-course-card" data-aos="fade-up" data-aos-delay="400">
+                        <h4>Share This Course</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+@section Scripts {
+    <style>
+        .sticky-sidebar-wrapper {
+            position: -webkit-sticky; 
+            position: sticky;
+            top: 20px; 
+        }
+    </style>
+}

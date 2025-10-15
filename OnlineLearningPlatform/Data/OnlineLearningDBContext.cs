@@ -13,7 +13,6 @@ namespace OnlineLearningPlatform.Data
             : base(options)
         {
         }
-
         public DbSet<AnswerQuiz> AnswerQuizzes { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Course> Courses { get; set; }
@@ -40,6 +39,7 @@ namespace OnlineLearningPlatform.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
             builder.Entity<User>(b =>
             {
                 b.ToTable("Users");

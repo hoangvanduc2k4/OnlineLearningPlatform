@@ -42,6 +42,7 @@ namespace OnlineLearningPlatform.Models.Entities.CoursePart
 
         public long? LevelId { get; set; }
 
+
         [Required]
         public CourseStatus Status { get; set; } = CourseStatus.Draft;
 
@@ -50,8 +51,6 @@ namespace OnlineLearningPlatform.Models.Entities.CoursePart
 
         [ForeignKey("Acceptor")]
         public virtual User? AcceptorUser { get; set; }
-
-
         public virtual Level? Level { get; set; }
         public virtual ICollection<CourseImageUrl> CourseImageUrls { get; set; } = new List<CourseImageUrl>();
         public virtual ICollection<CourseCategory> CourseCategories { get; set; } = new List<CourseCategory>();

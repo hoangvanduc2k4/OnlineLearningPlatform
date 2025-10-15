@@ -1,6 +1,8 @@
-using OnlineLearningPlatform.Configurations;
+﻿using OnlineLearningPlatform.Configurations;
 using OnlineLearningPlatform.Hubs;
 using OnlineLearningPlatform.Mappers;
+
+// thêm using cho DI của Course
 using OnlineLearningPlatform.Utils;
 
 namespace OnlineLearningPlarform
@@ -10,9 +12,9 @@ namespace OnlineLearningPlarform
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            // Add services to the container.
+
             builder.Configuration.ConfigureAppSettings(builder);
-            builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+            builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
             builder.Services.ConfigureDatabase(builder.Configuration);
             builder.Services.ConfigureAuthentication(builder.Configuration);
             builder.Services.ConfigureDIRepoService(builder.Configuration);
@@ -21,6 +23,8 @@ namespace OnlineLearningPlarform
             builder.Services.ConfigureSession();
             builder.Services.AddRazorPages();
             builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+            builder.Services.Configure<VnPayConfig>(builder.Configuration.GetSection("VnPay"));
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -31,7 +35,6 @@ namespace OnlineLearningPlarform
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
