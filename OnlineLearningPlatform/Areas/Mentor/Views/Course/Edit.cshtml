@@ -1,0 +1,149 @@
+﻿@model OnlineLearningPlatform.Models.ViewModels.CourseEditViewModel
+
+@{
+    ViewData["Title"] = "Edit Course";
+    Layout = "~/Areas/Mentor/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit Course</h1>
+<h4>@Model.CourseName</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="CourseId" />
+
+            <div class="form-group mb-3">
+                <label asp-for="CourseName" class="control-label"></label>
+                <input asp-for="CourseName" class="form-control" />
+                <span asp-validation-for="CourseName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="StudyTime" class="control-label"></label>
+                <input asp-for="StudyTime" class="form-control" />
+                <span asp-validation-for="StudyTime" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input asp-for="Price" class="form-control" type="number" step="0.01" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mb-3">
+                        <label asp-for="Discount" class="control-label"></label>
+                        <input asp-for="Discount" class="form-control" type="number" step="0.01" />
+                        <span asp-validation-for="Discount" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="LevelId" class="control-label"></label>
+                <select asp-for="LevelId" class="form-control" asp-items="@Model.Levels">
+                    <option value="">-- Select Level --</option>
+                </select>
+                <span asp-validation-for="LevelId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="AllCategories" class="control-label"></label>
+                <div class="border p-2 rounded" style="max-height: 200px; overflow-y: auto;">
+                    @for (var i = 0; i < Model.AllCategories.Count; i++)
+                    {
+                            <div class="form-check">
+                                <input type="hidden" asp-for="@Model.AllCategories[i].Id" />
+                                <input type="hidden" asp-for="@Model.AllCategories[i].Name" />
+                                <input type="checkbox" asp-for="@Model.AllCategories[i].IsSelected" class="form-check-input" />
+                                <label class="form-check-label" asp-for="@Model.AllCategories[i].IsSelected">
+                                @Model.AllCategories[i].Name
+                                </label>
+                            </div>
+                    }
+                </div>
+                <span asp-validation-for="AllCategories" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ExistingCoverImageUrl" class="control-label">Current Image</label>
+                @if (!string.IsNullOrEmpty(Model.ExistingCoverImageUrl))
+                {
+                        <img src="@Model.ExistingCoverImageUrl" class="img-thumbnail mt-2" style="max-width: 200px;" alt="Current Cover Image"/>
+                }
+                else
+                {
+                        <p class="text-muted">No image has been uploaded.</p>
+                }
+            </div>
+
+            <div class="form-group mb-3 border p-3 rounded">
+                <label class="form-label">Update Image Source</label>
+                <div class="form-check">
+                    <input type="radio" asp-for="ImageOption" value="file" class="form-check-input" checked />
+                    <label class="form-check-label">Upload New File</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" asp-for="ImageOption" value="url" class="form-check-input" />
+                    <label class="form-check-label">Enter New URL</label>
+                </div>
+
+                <div id="file-upload-section" class="mt-2">
+                    <label asp-for="NewCoverImage" class="control-label"></label>
+                    <input asp-for="NewCoverImage" class="form-control" type="file" />
+                    <span asp-validation-for="NewCoverImage" class="text-danger"></span>
+                </div>
+
+                <div id="url-input-section" class="mt-2" style="display: none;">
+                    <label asp-for="CoverImageUrl" class="control-label"></label>
+                    <input asp-for="CoverImageUrl" class="form-control" placeholder="https://example.com/image.jpg" />
+                    <span asp-validation-for="CoverImageUrl" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @if (Model.CurrentStatus == CourseStatus.Draft || Model.CurrentStatus == CourseStatus.Rejected || Model.CurrentStatus == CourseStatus.Approved)
+                {
+                        <button type="submit" name="action" value="save_draft" class="btn btn-secondary">Save as Draft</button>
+                        <button type="submit" name="action" value="submit_review" class="btn btn-primary">Submit for Review</button>
+                }
+                <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const imageOptionRadios = document.querySelectorAll('input[name="@Html.NameFor(m => m.ImageOption)"]');
+                const fileUploadSection = document.getElementById('file-upload-section');
+                const urlInputSection = document.getElementById('url-input-section');
+
+                function toggleImageInputs() {
+                    if (document.querySelector('input[name="@Html.NameFor(m => m.ImageOption)"]:checked').value === 'file') {
+                        fileUploadSection.style.display = 'block';
+                        urlInputSection.style.display = 'none';
+                    } else {
+                        fileUploadSection.style.display = 'none';
+                        urlInputSection.style.display = 'block';
+                    }
+                }
+
+                imageOptionRadios.forEach(radio => radio.addEventListener('change', toggleImageInputs));
+
+                // Initial check to set the correct state on page load
+                toggleImageInputs();
+            });
+        </script>
+}

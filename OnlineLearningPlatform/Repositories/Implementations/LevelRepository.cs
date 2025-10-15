@@ -1,4 +1,5 @@
-﻿using OnlineLearningPlatform.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using OnlineLearningPlatform.Data;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Repositories.Interfaces;
 
@@ -8,6 +9,10 @@ namespace OnlineLearningPlatform.Repositories.Implementations
     {
         public LevelRepository(OnlineLearningDBContext context) : base(context)
         {
+        }
+        public async Task<IEnumerable<Level>> GetAllActiveAsync()
+        {
+            return await _context.Levels.Where(l => !l.IsDeleted).ToListAsync();
         }
     }
 

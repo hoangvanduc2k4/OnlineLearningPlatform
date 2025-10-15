@@ -33,7 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Mentor\" />
     <Folder Include="Areas\Mentee\" />
   </ItemGroup>
 
