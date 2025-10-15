@@ -1,5 +1,5 @@
 ﻿using OnlineLearningPlatform.Enums;
-﻿using OnlineLearningPlatform.Models.Entities.CoursePart;
+using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Models.ViewModels;
 using X.PagedList;
 
@@ -13,7 +13,7 @@ namespace OnlineLearningPlatform.Services.Interfaces
         Task<Course> CreateCourseAsync(Course course, string mentorId, List<long> categoryIds, string? coverImageUrl);
         Task<bool> UpdateCourseAsync(Course courseToUpdate, List<long> categoryIds, string? newCoverImageUrl, CourseStatus newStatus, string? mentorId);
         Task<bool> DeleteCourseAsync(long courseId, string mentorId);
-    }
+
         Task<IPagedList<CourseViewModel>> GetCoursesPagedAsync(
             int pageNumber, int pageSize,
             string? searchTerm = null,
