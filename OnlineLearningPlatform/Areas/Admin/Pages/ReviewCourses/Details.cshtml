@@ -33,9 +33,20 @@
                     <hr />
 
                     <div class="row mb-3">
-                        <div class="col-md-4"><strong>Price:</strong> $@Model.CourseToReview.Price.ToString("N2")</div>
-                        <div class="col-md-4"><strong>Level:</strong> @Model.CourseToReview.Level?.LevelName</div>
-                        <div class="col-md-4"><strong>Study Time:</strong> @Model.CourseToReview.StudyTime</div>
+                        <div class="col-md-3"><strong>Price:</strong> $@Model.CourseToReview.Price.ToString("N2")</div>
+                        <div class="col-md-3">
+                            <strong>Discount:</strong>
+                            @if (Model.CourseToReview.Discount.HasValue && Model.CourseToReview.Discount > 0)
+                            {
+                                    <span class="text-danger">$@Model.CourseToReview.Discount.Value.ToString("N2")</span>
+                            }
+                            else
+                            {
+                                    <span class="text-muted">N/A</span>
+                            }
+                        </div>
+                        <div class="col-md-3"><strong>Level:</strong> @Model.CourseToReview.Level?.LevelName</div>
+                        <div class="col-md-3"><strong>Study Time:</strong> @Model.CourseToReview.StudyTime</div>
                     </div>
                     <hr />
 
@@ -45,7 +56,7 @@
                             <div>
                             @foreach (var courseCategory in Model.CourseToReview.CourseCategories)
                             {
-                                        <span class="badge bg-info me-1">@courseCategory.Category.CategoryName</span>
+                                        <span class="badge text-bg-secondary me-1 fs-6">@courseCategory.Category.CategoryName</span>
                             }
                             </div>
                     }
@@ -59,7 +70,6 @@
             <div class="card shadow-sm">
                  <div class="card-header"><h4>Course Content (Modules/Lessons)</h4></div>
                  <div class="card-body">
-                     <p class="text-muted fst-italic">Displaying detailed course content (modules and lessons) requires further development.</p>
                  </div>
             </div>
         </div>
