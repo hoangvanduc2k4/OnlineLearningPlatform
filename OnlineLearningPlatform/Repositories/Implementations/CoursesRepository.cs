@@ -167,5 +167,26 @@ namespace OnlineLearningPlatform.Repositories
                 .FirstOrDefaultAsync(c => c.CourseId == courseId && c.MentorId == mentorId);
         }
 
+        public async Task<Course?> GetCourseForReviewAsync(long courseId)
+        {
+            return await _context.Courses
+                .Include(c => c.CourseCategories).ThenInclude(cc => cc.Category)
+                .Include(c => c.CourseImageUrls)
+                .Include(c => c.Level)
+                .Include(c => c.CreatorUser)
+                .FirstOrDefaultAsync(c => c.CourseId == courseId);
+        }
+
+        public async Task<IPagedList<Course>> GetCoursesByStatusPagedAsync(CourseStatus status, int pageNumber, int pageSize)
+        {
+            var query = _context.Courses
+                                .Include(c => c.CreatorUser)
+                                .Where(c => c.Status == status)
+                                .OrderByDescending(c => c.UpdatedAt ?? c.CreatedAt);
+
+            var allMatchingCourses = await query.ToListAsync();
+
+            return allMatchingCourses.ToPagedList(pageNumber, pageSize);
+        }
     }
 }

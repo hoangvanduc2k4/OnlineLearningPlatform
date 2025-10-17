@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using OnlineLearningPlatform.Enums;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
+using OnlineLearningPlatform.Models.Entities.Others;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Repositories.Interfaces;
 using OnlineLearningPlatform.Services.Interfaces;
@@ -159,6 +160,49 @@ namespace OnlineLearningPlatform.Services
 
             await _courseRepository.UpdateAsync(existingCourse);
             return true;
+        }
+
+        public async Task ReviewCourseAsync(long courseId, string adminId, ReviewStatus reviewStatus, string? notes)
+        {
+            var course = await _courseRepository.GetByIdAsync(courseId);
+            if (course == null || course.Status != CourseStatus.Pending)
+            {
+                return;
+            }
+
+            var review = new AdminReviewCourse
+            {
+                CourseId = courseId,
+                AdminId = adminId,
+                Status = reviewStatus,
+                ReviewNotes = notes,
+                ReviewedAt = DateTime.UtcNow
+            };
+            // await _context.AdminReviewCourses.AddAsync(review);
+
+            if (reviewStatus == ReviewStatus.Approved)
+            {
+                course.Status = CourseStatus.Approved;
+                course.AdminId = adminId;
+                course.PublishedAt = DateTime.UtcNow;
+            }
+            else // Rejected
+            {
+                course.Status = CourseStatus.Rejected;
+                course.AdminId = adminId;
+            }
+
+            await _courseRepository.UpdateAsync(course);
+        }
+
+        public async Task<IPagedList<Course>> GetCoursesByStatusPagedAsync(CourseStatus status, int pageNumber, int pageSize)
+        {
+            return await _courseRepository.GetCoursesByStatusPagedAsync(status, pageNumber, pageSize);
+        }
+
+        public async Task<Course?> GetCourseForReviewAsync(long courseId)
+        {
+            return await _courseRepository.GetCourseForReviewAsync(courseId);
         }
     }
 }
