@@ -45,6 +45,10 @@ namespace OnlineLearningPlatform.Configurations
 
             services.AddScoped<IAdminReviewCourseRepository, AdminReviewCourseRepository>();
 
+
+
+            services.AddScoped<ICourseEnrollmentService, CourseEnrollmentService>();
+
             return services;
         }
     }

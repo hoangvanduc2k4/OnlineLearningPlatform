@@ -273,10 +273,17 @@
                             </div>
 
                             <div class="action-buttons">
-                                <form asp-controller="Courses" asp-action="Checkout" method="post">
+                                @if (TempData["Error"] != null)
+                                {
+                                    <div class="alert alert-danger" role="alert">
+                                        @TempData["Error"]
+                                    </div>
+                                }
+
+                                <form asp-controller="Courses" asp-action="Checkout" method="post" id="checkoutForm">
                                     <input type="hidden" name="courseId" value="@Model.CourseId" />
-                                    <button type="submit" class="btn btn-primary">Enroll Now</button>
-                                </form>                              
+                                    <button type="submit" class="btn btn-primary" id="enrollButton">Enroll Now</button>
+                                </form>
                                 <button class="btn-secondary">Add to Wishlist</button>
                             </div>
 
@@ -324,4 +331,11 @@
             top: 20px; 
         }
     </style>
+    <script>
+        document.getElementById('checkoutForm').addEventListener('submit', function() {
+            var enrollButton = document.getElementById('enrollButton');
+            enrollButton.disabled = true;
+            enrollButton.innerText = 'Processing...';
+        });
+    </script>
 }

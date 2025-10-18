@@ -16,6 +16,10 @@ namespace OnlineLearningPlatform.Repositories.Implementations
             return await _context.TransactionHistories.FirstOrDefaultAsync(x => x.UserId == userId && x.CourseId == courseId);
         }
 
+        public async Task<TransactionHistory> GetTransactionById(long? transactionId)
+        {
+            return await _context.TransactionHistories.Include(x => x.User).FirstOrDefaultAsync(x => x.TransactionId == transactionId);
+        }
 
     }
 
