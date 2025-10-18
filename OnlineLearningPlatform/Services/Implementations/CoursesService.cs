@@ -100,7 +100,7 @@ namespace OnlineLearningPlatform.Services
         }
         public async Task<Course> CreateCourseAsync(Course course, string mentorId, List<long> categoryIds, string? coverImageUrl)
         {
-            course.MentorId = mentorId;
+            course.Creator = mentorId;
             course.CreatedAt = DateTime.Now;
             course.Status = CourseStatus.Draft;
 
@@ -185,13 +185,13 @@ namespace OnlineLearningPlatform.Services
             if (reviewStatus == ReviewStatus.Approved)
             {
                 course.Status = CourseStatus.Approved;
-                course.AdminId = adminId;
+                course.Acceptor = adminId;
                 course.PublishedAt = DateTime.UtcNow;
             }
             else // Rejected
             {
                 course.Status = CourseStatus.Rejected;
-                course.AdminId = adminId;
+                course.Acceptor = adminId;
             }
 
             await _courseRepository.UpdateAsync(course);

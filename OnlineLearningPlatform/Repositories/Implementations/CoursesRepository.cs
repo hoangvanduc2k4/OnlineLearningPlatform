@@ -147,7 +147,7 @@ namespace OnlineLearningPlatform.Repositories
         public async Task<IEnumerable<Course>> GetAllByMentorIdAsync(string mentorId)
         {
             return await _dbSet
-                             .Where(c => c.MentorId == mentorId && c.Status != Enums.CourseStatus.Deleted)
+                             .Where(c => c.Creator == mentorId && c.Status != Enums.CourseStatus.Deleted)
                              .Include(c => c.Level)
                              .ToListAsync();
         }
@@ -155,7 +155,7 @@ namespace OnlineLearningPlatform.Repositories
         public async Task<Course?> GetByIdAndMentorIdAsync(long courseId, string mentorId)
         {
             return await _dbSet
-                             .FirstOrDefaultAsync(c => c.CourseId == courseId && c.MentorId == mentorId && c.Status != Enums.CourseStatus.Deleted);
+                             .FirstOrDefaultAsync(c => c.CourseId == courseId && c.Creator == mentorId && c.Status != Enums.CourseStatus.Deleted);
         }
 
         public async Task<Course?> GetCourseForEditAsync(long courseId, string mentorId)
@@ -164,7 +164,7 @@ namespace OnlineLearningPlatform.Repositories
                 .Include(c => c.CourseCategories)
                 .Include(c => c.CourseImageUrls)
                 .Include(c => c.Level)
-                .FirstOrDefaultAsync(c => c.CourseId == courseId && c.MentorId == mentorId);
+                .FirstOrDefaultAsync(c => c.CourseId == courseId && c.Creator == mentorId);
         }
 
         public async Task<Course?> GetCourseForReviewAsync(long courseId)
