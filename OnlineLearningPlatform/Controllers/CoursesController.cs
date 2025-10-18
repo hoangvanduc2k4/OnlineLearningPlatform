@@ -17,13 +17,15 @@ namespace OnlineLearningPlatform.Controllers
         private readonly IVnPayService _vnPayService;
         private readonly UserManager<User> _userManager;
         private readonly ITransactionService _transactionService;
-        public CoursesController(ICourseService courseService, OnlineLearningDBContext context, IVnPayService vnPayService, UserManager<User> userManager, ITransactionService transactionService)
+        private readonly ICourseEnrollmentService _courseEnrollmentService;
+        public CoursesController(ICourseService courseService, OnlineLearningDBContext context, IVnPayService vnPayService, UserManager<User> userManager, ITransactionService transactionService, ICourseEnrollmentService courseEnrollmentService)
         {
             _courseService = courseService;
             _context = context;
             _vnPayService = vnPayService;
             _userManager = userManager;
             _transactionService = transactionService;
+            _courseEnrollmentService = courseEnrollmentService;
         }
 
         public async Task<IActionResult> Index(
@@ -73,11 +75,30 @@ namespace OnlineLearningPlatform.Controllers
         [HttpPost]
         public async Task<IActionResult> Checkout(long courseId)
         {
-            var userId = _userManager.GetUserId(User);
+            if (TempData["IsProcessingCheckout"] != null && (bool)TempData["IsProcessingCheckout"] == true)
+            {
+                TempData["Error"] = "Payment request is being processed. Please wait.";
+                return RedirectToAction("Details", new { id = courseId });
+            }
+            TempData["IsProcessingCheckout"] = true;
 
+            var userId = _userManager.GetUserId(User);
+            if (string.IsNullOrEmpty(userId))
+            {
+                TempData.Remove("IsProcessingCheckout");
+                return Challenge();
+            }
+            var isEnrolled = await _courseEnrollmentService.CheckCourseEnrollment(userId, courseId);
+            if (isEnrolled)
+            {
+                TempData.Remove("IsProcessingCheckout");
+                TempData["Error"] = "You have already purchased this course";
+                return RedirectToAction("Details", new { id = courseId });
+            }
             var course = await _courseService.GetCourseByIdAsync(courseId);
             if (course == null)
             {
+                TempData.Remove("IsProcessingCheckout");
                 return NotFound("Not found!");
             }
 
@@ -91,16 +112,29 @@ namespace OnlineLearningPlatform.Controllers
                 DateCreated = DateTime.Now
             };
 
-            await _transactionService.AddTransactionAsync(transaction);
+            var addResult = await _transactionService.AddTransactionAsync(transaction);
 
+            if (!addResult)
+            {
+                TempData.Remove("IsProcessingCheckout");
+                TempData["Error"] = "Transaction could not be created. Please try again.";
+                return RedirectToAction("Details", new { id = courseId });
+            }
+            Console.WriteLine($"[DEBUG] Transaction created with ID: {transaction.TransactionId}");
             var vnPayModel = new VnPaymentRequestModel
             {
                 Amount = (double)course.Price,
                 Description = $"Pay for course: {course.CourseName}",
-                OrderId = (int)transaction.TransactionId
+                OrderId = transaction.TransactionId
             };
 
+
+            TempData.Remove("IsProcessingCheckout");
             var paymentUrl = _vnPayService.CreatePaymentUrl(HttpContext, vnPayModel);
+
+            Console.WriteLine($"[DEBUG] Redirecting to VNPay URL: {paymentUrl}");
+
+            Console.WriteLine($"[DEBUG] vnp_TxnRef sent: {transaction.TransactionId}");
             return Redirect(paymentUrl);
         }
 

@@ -6,7 +6,6 @@ using OnlineLearningPlatform.Enums;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Models.Entities.Others;
 using OnlineLearningPlatform.Models.ViewModels;
-using OnlineLearningPlatform.Repositories.Interfaces;
 using OnlineLearningPlatform.Services.Interfaces;
 using OnlineLearningPlatform.Utils;
 
@@ -16,15 +15,15 @@ namespace OnlineLearningPlatform.Services.Implementations
     {
         private readonly VnPayConfig _config;
         private readonly OnlineLearningDBContext _context;
-        private readonly ITransactionRepository _transactionRepository;
-        private readonly ICourseEnrollmentRepository _courseEnrollmentRepository;
+        private readonly ITransactionService _transactionService;
+        private readonly ICourseEnrollmentService _courseEnrollmentService;
 
-        public VnPayService(IOptions<VnPayConfig> config, OnlineLearningDBContext context, ITransactionRepository transactionRepository, ICourseEnrollmentRepository courseEnrollmentRepository)
+        public VnPayService(IOptions<VnPayConfig> config, OnlineLearningDBContext context, ITransactionService transactionService, ICourseEnrollmentService courseEnrollmentService)
         {
             _config = config.Value;
             _context = context;
-            _transactionRepository = transactionRepository;
-            _courseEnrollmentRepository = courseEnrollmentRepository;
+            _transactionService = transactionService;
+            _courseEnrollmentService = courseEnrollmentService;
         }
 
         public string CreatePaymentUrl(HttpContext context, VnPaymentRequestModel model)
@@ -101,24 +100,33 @@ namespace OnlineLearningPlatform.Services.Implementations
 
             try
             {
-                TransactionHistory? transaction = await _transactionRepository.GetByIdAsync(long.Parse(orderId));
-
+                TransactionHistory? transaction = await _transactionService.GetTransactionById(long.Parse(orderId));
                 if (transaction != null)
                 {
+                    if (transaction.Status == TransactionStatus.Completed)
+                    {
+                        responseModel.Success = true;
+                        return responseModel;
+                    }
                     if (newSecureHash.Equals(vnp_SecureHash, StringComparison.InvariantCultureIgnoreCase) && vnPayResponseCode == "00")
                     {
                         transaction.Status = TransactionStatus.Completed;
-                        transaction.Description = $"Successfully pay for Course: {transaction?.Course?.CourseName}";
+                        transaction.Description = $"Successfully pay for Course: {transaction.Course?.CourseName}";
 
-                        var enrollment = new CourseEnrollment
+                        var isEnrolled = await _courseEnrollmentService.CheckCourseEnrollment(transaction.UserId, transaction.CourseId!.Value);
+
+                        if (!isEnrolled)
                         {
-                            UserId = transaction.UserId,
-                            CourseId = (int)transaction.CourseId!,
-                            DateCreated = DateTime.Now
-                        };
+                            var enrollment = new CourseEnrollment
+                            {
+                                UserId = transaction.UserId,
+                                CourseId = transaction.CourseId!.Value,
+                                DateCreated = DateTime.Now
+                            };
+                            await _courseEnrollmentService.AddCourseEnrollmmentAsync(enrollment);
+                        }
+                        await _transactionService.UpdateTransactionAsync(transaction);
                         transaction.ModifiedDate = DateTime.Now;
-                        await _transactionRepository.UpdateAsync(transaction);
-                        await _courseEnrollmentRepository.AddAsync(enrollment);
                         responseModel.Success = true;
                     }
                     else
@@ -126,7 +134,7 @@ namespace OnlineLearningPlatform.Services.Implementations
                         transaction.Status = TransactionStatus.Failed;
                         transaction.Description = $"Failed. Error Code VNPay is: {vnPayResponseCode}";
                         transaction.ModifiedDate = DateTime.Now;
-                        await _transactionRepository.UpdateAsync(transaction);
+                        await _transactionService.UpdateTransactionAsync(transaction);
                     }
                 }
             }
