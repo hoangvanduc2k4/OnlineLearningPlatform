@@ -121,10 +121,12 @@ namespace OnlineLearningPlatform.Controllers
                 return RedirectToAction("Details", new { id = courseId });
             }
             Console.WriteLine($"[DEBUG] Transaction created with ID: {transaction.TransactionId}");
+            var priceAfterDiscount = course.Price - (course.Price * (course.Discount ?? 0) / 100); // Calculate final price
+
             var vnPayModel = new VnPaymentRequestModel
             {
-                Amount = (double)course.Price,
-                Description = $"Pay for course: {course.CourseName}",
+                Amount = (double)priceAfterDiscount,
+                Description = $"Pay for course: {course.CourseName} (after {(course.Discount ?? 0)}% discount)", // Updated description
                 OrderId = transaction.TransactionId
             };
 
