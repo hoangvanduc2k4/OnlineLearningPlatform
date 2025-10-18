@@ -1,7 +1,7 @@
-﻿using OnlineLearningPlatform.Models.Entities.UserPart;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 using OnlineLearningPlatform.Enums;
+using OnlineLearningPlatform.Models.Entities.UserPart;
 
 namespace OnlineLearningPlatform.Models.Entities.CoursePart
 {
@@ -24,9 +24,9 @@ namespace OnlineLearningPlatform.Models.Entities.CoursePart
         public decimal? Discount { get; set; }
 
         [Required]
-        public string MentorId { get; set; }  = string.Empty;
+        public string Creator { get; set; } = string.Empty;
 
-        public string? AdminId { get; set; }
+        public string? Acceptor { get; set; }
 
         [Required]
         public DateTime CreatedAt { get; set; } = DateTime.Now;

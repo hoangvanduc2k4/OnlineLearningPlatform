@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using OnlineLearningPlatform.Enums;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
+using OnlineLearningPlatform.Models.Entities.Others;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Repositories.Interfaces;
 using OnlineLearningPlatform.Services.Interfaces;
@@ -12,13 +13,15 @@ namespace OnlineLearningPlatform.Services
     {
         private readonly ICourseRepository _courseRepository;
         private readonly IRatingRepository _ratingRepository; // Thêm repository này
+        private readonly IAdminReviewCourseRepository _adminReviewCourseRepository;
         private readonly IMapper _mapper;
 
-        public CoursesService(ICourseRepository courseRepository, IRatingRepository ratingRepository, IMapper mapper)
+        public CoursesService(ICourseRepository courseRepository, IRatingRepository ratingRepository, IMapper mapper, IAdminReviewCourseRepository adminReviewCourseRepository)
         {
             _courseRepository = courseRepository;
             _ratingRepository = ratingRepository;
             _mapper = mapper;
+            _adminReviewCourseRepository = adminReviewCourseRepository;
         }
 
 
@@ -97,7 +100,7 @@ namespace OnlineLearningPlatform.Services
         }
         public async Task<Course> CreateCourseAsync(Course course, string mentorId, List<long> categoryIds, string? coverImageUrl)
         {
-            course.MentorId = mentorId;
+            course.Creator = mentorId;
             course.CreatedAt = DateTime.Now;
             course.Status = CourseStatus.Draft;
 
@@ -159,6 +162,49 @@ namespace OnlineLearningPlatform.Services
 
             await _courseRepository.UpdateAsync(existingCourse);
             return true;
+        }
+
+        public async Task ReviewCourseAsync(long courseId, string adminId, ReviewStatus reviewStatus, string? notes)
+        {
+            var course = await _courseRepository.GetByIdAsync(courseId);
+            if (course == null || course.Status != CourseStatus.Pending)
+            {
+                return;
+            }
+
+            var review = new AdminReviewCourse
+            {
+                CourseId = courseId,
+                AdminId = adminId,
+                Status = reviewStatus,
+                ReviewNotes = notes,
+                ReviewedAt = DateTime.UtcNow
+            };
+            await _adminReviewCourseRepository.AddAsync(review);
+
+            if (reviewStatus == ReviewStatus.Approved)
+            {
+                course.Status = CourseStatus.Approved;
+                course.Acceptor = adminId;
+                course.PublishedAt = DateTime.UtcNow;
+            }
+            else // Rejected
+            {
+                course.Status = CourseStatus.Rejected;
+                course.Acceptor = adminId;
+            }
+
+            await _courseRepository.UpdateAsync(course);
+        }
+
+        public async Task<IPagedList<Course>> GetCoursesByStatusPagedAsync(CourseStatus status, int pageNumber, int pageSize)
+        {
+            return await _courseRepository.GetCoursesByStatusPagedAsync(status, pageNumber, pageSize);
+        }
+
+        public async Task<Course?> GetCourseForReviewAsync(long courseId)
+        {
+            return await _courseRepository.GetCourseForReviewAsync(courseId);
         }
     }
 }

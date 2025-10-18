@@ -43,6 +43,8 @@ namespace OnlineLearningPlatform.Configurations
             services.AddScoped<IVnPayService, VnPayService>();
             services.AddScoped<ITransactionService, TransactionService>();
 
+            services.AddScoped<IAdminReviewCourseRepository, AdminReviewCourseRepository>();
+
             return services;
         }
     }

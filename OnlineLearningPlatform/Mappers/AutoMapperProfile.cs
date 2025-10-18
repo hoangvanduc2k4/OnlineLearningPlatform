@@ -32,7 +32,7 @@ namespace OnlineLearningPlatform.Mappers
                     (s.CourseImageUrls != null && s.CourseImageUrls.Any()) ? s.CourseImageUrls.First().Url : null))
                 .ForMember(d => d.Status, opt => opt.MapFrom(s => s.Status.ToString()))
                 .ForMember(d => d.MentorId, opt => opt.MapFrom(s =>
-                    s.MentorId != null ? s.MentorId : (s.CreatorUser != null ? s.CreatorUser.Id : null)))
+                    s.Creator != null ? s.Creator : (s.CreatorUser != null ? s.CreatorUser.Id : null)))
                 .ForMember(d => d.MentorName, opt => opt.MapFrom(s => s.CreatorUser != null ? s.CreatorUser.FullName : null))
                 .ForMember(d => d.MentorAvatarUrl, opt => opt.MapFrom(s => s.CreatorUser != null ? s.CreatorUser.AvatarUrl : null))
                 .ForMember(d => d.LevelName, opt => opt.MapFrom(s => s.Level != null ? s.Level.LevelName : null))
@@ -45,7 +45,7 @@ namespace OnlineLearningPlatform.Mappers
             CreateMap<Course, CourseDetailsViewModel>()
                 .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src =>
                     (src.CourseImageUrls != null && src.CourseImageUrls.Any()) ? src.CourseImageUrls.First().Url : null))
-                .ForMember(dest => dest.MentorId, opt => opt.MapFrom(src => src.MentorId))
+                .ForMember(dest => dest.MentorId, opt => opt.MapFrom(src => src.Creator))
                 .ForMember(dest => dest.MentorName, opt => opt.MapFrom(src =>
                     src.CreatorUser != null ? src.CreatorUser.FullName : null))
                 .ForMember(dest => dest.MentorAvatarUrl, opt => opt.MapFrom(src =>

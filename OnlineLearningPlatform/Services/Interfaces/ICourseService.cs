@@ -27,7 +27,11 @@ namespace OnlineLearningPlatform.Services.Interfaces
         Task<CourseDetailsViewModel?> GetCourseDetailsAsync(long id);
         Task<Course?> GetCourseByIdAsync(long courseId);
 
+        Task ReviewCourseAsync(long courseId, string adminId, ReviewStatus reviewStatus, string? notes);
 
+        Task<IPagedList<Course>> GetCoursesByStatusPagedAsync(CourseStatus status, int pageNumber, int pageSize);
+
+        Task<Course?> GetCourseForReviewAsync(long courseId);
     }
 
 }

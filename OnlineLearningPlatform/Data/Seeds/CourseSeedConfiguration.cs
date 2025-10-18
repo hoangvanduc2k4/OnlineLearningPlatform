@@ -27,8 +27,8 @@ namespace OnlineLearningPlatform.Data.Seeds
                     Description = $"Mô t? ng?n g?n cho khoá h?c s? {i}",
                     Price = 20 + i,                // ví d? giá
                     Discount = (i % 3 == 0) ? 5m : 0m,
-                    MentorId = "2",                   // Mentor seed ? UserSeedConfiguration
-                    AdminId = "1",                   // Admin seed ? UserSeedConfiguration
+                    Creator = "2",                   // Mentor seed ? UserSeedConfiguration
+                    Acceptor = "1",                   // Admin seed ? UserSeedConfiguration
                     CreatedAt = new DateTime(2025, 1, 1),
                     UpdatedAt = new DateTime(2025, 1, 5),
                     PublishedAt = (i <= 8) ? new DateTime(2025, 2, 1) : null,
