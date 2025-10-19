@@ -15,13 +15,14 @@ namespace OnlineLearningPlatform.Services
         private readonly IRatingRepository _ratingRepository; // Thêm repository này
         private readonly IAdminReviewCourseRepository _adminReviewCourseRepository;
         private readonly IMapper _mapper;
-
-        public CoursesService(ICourseRepository courseRepository, IRatingRepository ratingRepository, IMapper mapper, IAdminReviewCourseRepository adminReviewCourseRepository)
+        private readonly ICourseEnrollmentRepository _courseEnrollmentRepository;
+        public CoursesService(ICourseRepository courseRepository, IRatingRepository ratingRepository, IMapper mapper, IAdminReviewCourseRepository adminReviewCourseRepository, ICourseEnrollmentRepository courseEnrollmentRepository)
         {
             _courseRepository = courseRepository;
             _ratingRepository = ratingRepository;
             _mapper = mapper;
             _adminReviewCourseRepository = adminReviewCourseRepository;
+            _courseEnrollmentRepository = courseEnrollmentRepository;
         }
 
 
@@ -206,5 +207,12 @@ namespace OnlineLearningPlatform.Services
         {
             return await _courseRepository.GetCourseForReviewAsync(courseId);
         }
+
+        public async Task<int> GetStudentCountsByMentorIdsAsync(string mentorId)
+        {
+            return await _courseRepository.GetCourseCountsByMentorIdsAsync(mentorId);
+        }
+
+
     }
 }

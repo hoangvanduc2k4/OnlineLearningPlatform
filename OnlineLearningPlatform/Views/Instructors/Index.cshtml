@@ -1,0 +1,126 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<OnlineLearningPlatform.Models.ViewModels.InstructorViewModel>
+
+@{
+    ViewData["Title"] = "Instructors";
+    string currentFilter = ViewData["CurrentFilter"] as string ?? "";
+    string currentSortBy = ViewData["CurrentSortBy"] as string ?? "name"; 
+    string currentOrderBy = ViewData["CurrentOrderBy"] as string ?? "desc";    
+}
+
+<main class="main">
+
+    <div class="page-title light-background">
+        <div class="container d-lg-flex justify-content-between align-items-center">
+            <h1 class="mb-2 mb-lg-0">@ViewData["Title"]</h1>
+            <nav class="breadcrumbs">
+                <ol>
+                    <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="current">@ViewData["Title"]</li>
+                </ol>
+            </nav>
+        </div>
+    </div><section id="instructors" class="instructors section">
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="row mb-4 justify-content-center">
+                <div class="col-lg-10">
+                    <form asp-controller="Instructors" asp-action="Index" method="get" class="row g-2 align-items-center">
+
+                        <div class="col-md-5">
+                            <label for="searchStringInput" class="visually-hidden">Search by Name</label>
+                            <input type="text"
+                                   id="searchStringInput"
+                                   name="searchString"
+                                   class="form-control"
+                                   placeholder="Search by name..."
+                                   value="@currentFilter" />
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="sortBySelect" class="visually-hidden">Sort By</label>
+                            <select id="sortBySelect" name="sortBy" class="form-select">
+                                <option value="created_at" selected="@(currentSortBy == "created_at")">Newest</option>
+                                <option value="name" selected="@(currentSortBy == "name")">Name</option>
+                                <option value="students" selected="@(currentSortBy == "students")">Students</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-2">
+                            <label for="orderBySelect" class="visually-hidden">Order By</label>
+                            <select id="orderBySelect" name="orderBy" class="form-select">
+                                <option value="asc" selected="@(currentOrderBy == "asc")">Ascending</option>
+                                <option value="desc" selected="@(currentOrderBy == "desc")">Descending</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary w-100">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+            <div class="row gy-4">
+                @foreach (var item in Model)
+                {
+                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="instructor-card">
+                            <div class="instructor-image">
+                                <img src="@item.ImageUrl" class="img-fluid" alt="Profile image of @item.FullName">
+                                <div class="overlay-content">
+                                    <div class="course-count">
+                                        <i class="bi bi-play-circle"></i>
+                                        <span>@item.CourseCount Courses</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="instructor-info">
+                                <h5>@item.FullName</h5>
+                                <div class="stats-grid">
+                                    <div class="stat">
+                                        <span class="number">@item.StudentCount</span>
+                                        <span class="label">Students</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                @if (!Model.Any())
+                {
+                    <div class="col-12 text-center">
+                        <p>No instructors found matching your criteria.</p>
+                    </div>
+                }
+            </div>
+
+            @if (Model.PageCount > 1)
+            {
+                <div class="row mt-5">
+                    <div class="col-12">
+                        @Html.PagedListPager(Model, page => Url.Action("Index", "Instructors", new
+                            {
+                                page = page,
+                                searchString = currentFilter,
+                                sortBy = currentSortBy,     
+                                orderBy = currentOrderBy     
+                            }), new PagedListRenderOptions
+               {
+                   LiElementClasses = new[] { "page-item" },
+                   PageClasses = new[] { "page-link" },
+                   UlElementClasses = new[] { "pagination", "justify-content-center" }
+               })
+                    </div>
+                </div>
+            }
+
+        </div>
+
+    </section>
+</main>

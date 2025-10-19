@@ -6,6 +6,6 @@ namespace OnlineLearningPlatform.Services.Interfaces
     {
         Task<bool> AddCourseEnrollmmentAsync(CourseEnrollment courseEnrollment);
         Task<bool> CheckCourseEnrollment(string userId, long courseId);
-
+        Task<int> GetStudentCountByMentorIdAsync(string instructorId);
     }
 }
