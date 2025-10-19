@@ -15,7 +15,6 @@ namespace OnlineLearningPlatform.Controllers
             _courseService = courseService;
         }
 
-        // Trong InstructorsController.cs
         public async Task<IActionResult> Index(
             string? searchString,
             int page = 1,

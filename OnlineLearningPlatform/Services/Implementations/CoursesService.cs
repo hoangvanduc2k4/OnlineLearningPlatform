@@ -51,7 +51,25 @@ namespace OnlineLearningPlatform.Services
             var vmPaged = new StaticPagedList<CourseViewModel>(vmList, pagedEntities.PageNumber, pagedEntities.PageSize, pagedEntities.TotalItemCount);
             return vmPaged;
         }
+        public async Task<List<CourseViewModel>> GetTopNewestCoursesAsync(int count = 3) 
+        {
+            var pagedEntities = await _courseRepository.GetCoursesPagedAsync(
+                pageNumber: 1,
+                pageSize: count,
+                searchTerm: null,
+                status: CourseStatus.Approved, 
+                categories: null,
+                levelIds: null,
+                priceRange: null,
+                studyTimeRange: null,
+                sortBy: "newest"
+            );
 
+            var vmList = pagedEntities
+                            .Select(c => _mapper.Map<CourseViewModel>(c))
+                            .ToList();
+            return vmList;
+        }
 
 
         public async Task<CourseDetailsViewModel?> GetCourseDetailsAsync(long id)

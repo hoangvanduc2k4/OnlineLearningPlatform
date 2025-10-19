@@ -153,7 +153,28 @@ namespace OnlineLearningPlatform.Services.Implementations
         }
 
 
+        public async Task<List<InstructorViewModel>> GetTopMentorsByStudentCountAsync(int count)
+        {
+            var topMentorUsers = await _userRepository.GetTopMentorsByStudentCountFromDbAsync(count);
 
+            var viewModels = new List<InstructorViewModel>();
+            foreach (var user in topMentorUsers)
+            {
+                int courseCount = await _courseService.GetStudentCountsByMentorIdsAsync(user.Id);
+                int studentCount = await _enrollmentService.GetStudentCountByMentorIdAsync(user.Id);// Assuming you keep injecting this
+
+                viewModels.Add(new InstructorViewModel
+                {
+                    Id = user.Id,
+                    FullName = user.FullName ?? "Unnamed mentor",
+                    ImageUrl = user.AvatarUrl ?? "~/uploads/avatars/avatar.png",
+                    CourseCount = courseCount,
+                    StudentCount = studentCount
+                });
+            }
+
+            return viewModels;
+        }
 
 
     }
