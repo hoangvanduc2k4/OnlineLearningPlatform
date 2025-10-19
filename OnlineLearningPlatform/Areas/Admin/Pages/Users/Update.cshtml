@@ -1,4 +1,84 @@
-﻿@page
-@model OnlineLearningPlatform.Areas.Admin.Pages.Users.IndexModel
+﻿@page "{id}"
+@model OnlineLearningPlatform.Areas.Admin.Pages.Users.UpdateModel
 @{
+    ViewData["Title"] = "Update User";
+    Layout = "~/Areas/Admin/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="mb-4">Update User</h2>
+
+@if (Model.ErrorMessage != null)
+{
+    <div class="alert alert-danger">@Model.ErrorMessage</div>
+}
+
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Input.Id" />
+    <div class="mb-3">
+        <label asp-for="Input.AvatarUrl" class="form-label">Profile Picture</label>
+        <div class="mb-2">
+            <img id="avatarPreview" src="@Model.Input.AvatarUrl" alt="Avatar" style="max-width:120px;max-height:120px;border-radius:8px;" />
+        </div>
+        <input type="file" name="AvatarFile" class="form-control" accept="image/*" onchange="previewAvatar(this)" />
+        <span asp-validation-for="Input.AvatarUrl" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Input.Email" class="form-label"></label>
+        <input asp-for="Input.Email" class="form-control" readonly />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Input.FullName" class="form-label"></label>
+        <input asp-for="Input.FullName" class="form-control" />
+        <span asp-validation-for="Input.FullName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Input.Dob" class="form-label"></label>
+        <input asp-for="Input.Dob" class="form-control" type="date" />
+        <span asp-validation-for="Input.Dob" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Input.Gender" class="form-label"></label>
+        <select asp-for="Input.Gender" class="form-select">
+            <option value="">Select gender</option>
+            <option value="true">Male</option>
+            <option value="false">Female</option>
+        </select>
+        <span asp-validation-for="Input.Gender" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Input.Phone" class="form-label"></label>
+        <input asp-for="Input.Phone" class="form-control" />
+        <span asp-validation-for="Input.Phone" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Input.IsActived" class="form-label"></label>
+        <select asp-for="Input.IsActived" class="form-select">
+            <option value="true">Active</option>
+            <option value="false">Inactive</option>
+        </select>
+        <span asp-validation-for="Input.IsActived" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Roles</label>
+        <select asp-for="Input.SelectedRoles" asp-items="Model.AvailableRoles" class="form-select" multiple size="4"></select>
+        <span asp-validation-for="Input.SelectedRoles" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-page="Index" class="btn btn-secondary ms-2">Back</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function previewAvatar(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('avatarPreview').src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 }

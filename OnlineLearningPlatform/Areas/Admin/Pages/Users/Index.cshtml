@@ -10,34 +10,25 @@
 <div class="container-fluid mt-4">
     <div class="card shadow-sm border-0">
         <div class="card-header bg-light text-primary d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center">
-                <h5 class="mb-0 me-3">User Management</h5>
-                <div class="btn-group" role="group">
-                    <a asp-page="./Index" asp-route-filterType="all" 
-                       class="btn btn-sm @(Model.FilterType == "all" ? "btn-primary" : "btn-outline-primary")">
-                        All Users
-                    </a>
-                    <a asp-page="./Index" asp-route-filterType="active"
-                       class="btn btn-sm @(Model.FilterType == "active" ? "btn-primary" : "btn-outline-primary")">
-                        Active
-                    </a>
-                    <a asp-page="./Index" asp-route-filterType="inactive"
-                       class="btn btn-sm @(Model.FilterType == "inactive" ? "btn-primary" : "btn-outline-primary")">
-                        Inactive
-                    </a>
-                    <a asp-page="./Index" asp-route-filterType="deleted"
-                       class="btn btn-sm @(Model.FilterType == "deleted" ? "btn-primary" : "btn-outline-primary")">
-                        Deleted
-                    </a>
-                </div>
-            </div>
+            <h5 class="mb-0">User Management</h5>
             <div class="d-flex">
-                <form method="get" class="d-flex me-2">
-                    <input type="hidden" name="filterType" value="@Model.FilterType" />
+                <form method="get" class="d-flex align-items-center">
+                    <select name="filterType" class="form-select form-select-sm me-2" style="width: 140px;">
+                        <option value="active" selected=@(Model.FilterType == "active")>Active</option>
+                        <option value="inactive" selected=@(Model.FilterType == "inactive")>Inactive</option>
+                        <option value="deleted" selected=@(Model.FilterType == "deleted")>Deleted</option>
+                    </select>
+                    <select name="role" class="form-select form-select-sm me-2" style="width: 140px;">
+                        <option value="">All Roles</option>
+                        @foreach (var role in Model.AvailableRoles)
+                        {
+                            <option value="@role" selected=@(Model.SelectedRole == role  )>@role</option>
+                        }
+                    </select>
                     <input type="text" name="searchTerm" value="@Model.SearchTerm" class="form-control form-control-sm me-2" placeholder="Search user..." />
-                    <button type="submit" class="btn btn-sm btn-outline-primary">Search</button>
+                    <button type="submit" class="btn btn-sm btn-outline-primary">Filter</button>
                 </form>
-                <a asp-page="./Create" class="btn btn-sm btn-success"><i class="bi bi-plus-lg"></i> Add New User</a>
+                <a asp-page="./Create" class="btn btn-sm btn-success ms-2"><i class="bi bi-plus-lg"></i> Add New User</a>
             </div>
         </div>
 
@@ -56,14 +47,15 @@
                 <table class="table table-striped table-hover mb-0">
                     <thead class="bg-light text-dark">
                         <tr>
-                            <th style="width: 5%;">#</th>
+                            <th style="width: 2%;">#</th>
                             <th style="width: 18%;">Email</th>
                             <th style="width: 15%;">Full Name</th>
                             <th style="width: 10%;">DOB</th>
                             <th style="width: 10%;">Gender</th>
                             <th style="width: 12%;">Phone</th>
+                            <th style="width: 10%;">Role</th>
                             <th style="width: 10%;">Created At</th>
-                            <th style="width: 15%;">Actions</th>
+                            <th style="width: 18%;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -89,20 +81,74 @@
                                         }
                                     </td>
                                     <td>@(user.Phone ?? "-")</td>
+                                    <td>
+                                        @if (Model.UserRoles != null && Model.UserRoles.ContainsKey(user.Id))
+                                        {
+                                            @string.Join(", ", Model.UserRoles[user.Id])
+                                        }
+                                        else
+                                        {
+                                            <span>-</span>
+                                        }
+                                    </td>
                                     <td>@user.CreatedAt.ToString("dd/MM/yyyy")</td>
                                     <td>
                                         <a asp-page="./Update" asp-route-id="@user.Id" class="btn btn-sm btn-warning me-1">
                                             <i class="bi bi-pencil-fill"></i>
                                         </a>
-                                        <form method="post" asp-page-handler="Delete" class="d-inline">
-                                            <input type="hidden" name="id" value="@user.Id" />
-                                            <input type="hidden" name="pageNumber" value="@Model.PagedUsers.PageNumber" />
-                                            <input type="hidden" name="pageSize" value="@Model.PageSize" />
-                                            <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
-                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">
-                                                <i class="bi bi-trash-fill"></i>
-                                            </button>
-                                        </form>
+                                        @if (Model.FilterType == "deleted")
+                                        {
+                                            <form method="post" asp-page-handler="Restore" class="d-inline">
+                                                <input type="hidden" name="id" value="@user.Id" />
+                                                <input type="hidden" name="pageNumber" value="@Model.PagedUsers.PageNumber" />
+                                                <input type="hidden" name="pageSize" value="@Model.PageSize" />
+                                                <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
+                                                <input type="hidden" name="filterType" value="@Model.FilterType" />
+                                                <input type="hidden" name="role" value="@Model.SelectedRole" />
+                                                <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('Are you sure you want to restore this user?')">
+                                                    <i class="bi bi-arrow-counterclockwise"></i> 
+                                                </button>
+                                            </form>
+                                        }
+                                        else if(Model.FilterType == "inactive")
+                                        {
+                                            <form method="post" asp-page-handler="Restore" class="d-inline">
+                                                <input type="hidden" name="id" value="@user.Id" />
+                                                <input type="hidden" name="pageNumber" value="@Model.PagedUsers.PageNumber" />
+                                                <input type="hidden" name="pageSize" value="@Model.PageSize" />
+                                                <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
+                                                <input type="hidden" name="filterType" value="@Model.FilterType" />
+                                                <input type="hidden" name="role" value="@Model.SelectedRole" />
+                                                <button type="submit" class="btn btn-sm btn-secondary me-1" onclick="return confirm('Are you sure you want to Activate this user?')">
+                                                    <i class="bi bi-person-x-fill"></i> 
+                                                </button>
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <form method="post" asp-page-handler="Delete" class="d-inline">
+                                                <input type="hidden" name="id" value="@user.Id" />
+                                                <input type="hidden" name="pageNumber" value="@Model.PagedUsers.PageNumber" />
+                                                <input type="hidden" name="pageSize" value="@Model.PageSize" />
+                                                <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
+                                                <input type="hidden" name="filterType" value="@Model.FilterType" />
+                                                <input type="hidden" name="role" value="@Model.SelectedRole" />
+                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">
+                                                    <i class="bi bi-trash-fill"></i>
+                                                </button>
+                                            </form>
+                                            <form method="post" asp-page-handler="Deactivate" class="d-inline">
+                                                <input type="hidden" name="id" value="@user.Id" />
+                                                <input type="hidden" name="pageNumber" value="@Model.PagedUsers.PageNumber" />
+                                                <input type="hidden" name="pageSize" value="@Model.PageSize" />
+                                                <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
+                                                <input type="hidden" name="filterType" value="@Model.FilterType" />
+                                                <input type="hidden" name="role" value="@Model.SelectedRole" />
+                                                <button type="submit" class="btn btn-sm btn-secondary" onclick="return confirm('Are you sure you want to deactivate this user?')">
+                                                    <i class="bi bi-person-x-fill"></i>
+                                                </button>
+                                            </form>
+                                        }
                                     </td>
                                 </tr>
                             }
@@ -110,7 +156,7 @@
                         else
                         {
                             <tr>
-                                <td colspan="8" class="text-center py-3 text-muted">No users found.</td>
+                                <td colspan="9" class="text-center py-3 text-muted">No users found.</td>
                             </tr>
                         }
                     </tbody>
@@ -122,7 +168,7 @@
             <nav aria-label="Page navigation" class="d-flex justify-content-center">
                 @Html.PagedListPager(
                          Model.PagedUsers,
-                         page => Url.Page("./Index", new { pageNumber = page, pageSize = Model.PageSize, searchTerm = Model.SearchTerm }),
+                         page => Url.Page("./Index", new { pageNumber = page, pageSize = Model.PageSize, searchTerm = Model.SearchTerm, filterType = Model.FilterType, role = Model.SelectedRole }),
                          new PagedListRenderOptions
                 {
                     UlElementClasses = new[] { "pagination pagination-sm mb-0" },

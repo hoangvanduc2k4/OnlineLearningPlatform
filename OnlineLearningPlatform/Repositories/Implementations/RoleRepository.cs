@@ -67,5 +67,20 @@ namespace OnlineLearningPlatform.Repositories.Implementations
             if (user == null) return new List<string>();
             return await _userManager.GetRolesAsync(user);
         }
+
+        public Task<IList<string>> GetUserIdsInRoleAsync(string selectedRole)
+        {
+            var usersInRole = _userManager.GetUsersInRoleAsync(selectedRole);
+            return usersInRole.ContinueWith(task =>
+            {
+                var users = task.Result;
+                IList<string> userIds = new List<string>();
+                foreach (var user in users)
+                {
+                    userIds.Add(user.Id);
+                }
+                return userIds;
+            });
+        }
     }
 }

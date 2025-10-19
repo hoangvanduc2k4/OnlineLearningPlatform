@@ -38,5 +38,9 @@ namespace OnlineLearningPlatform.Services.Implementations
 
         public async Task<IList<string>> GetUserRolesAsync(string userId)
             => await _roleRepository.GetUserRolesAsync(userId);
+
+        public async Task<IList<string>> GetUserIdsInRoleAsync(string selectedRole)
+            => await _roleRepository.GetUserIdsInRoleAsync(selectedRole);
+        
     }
 }

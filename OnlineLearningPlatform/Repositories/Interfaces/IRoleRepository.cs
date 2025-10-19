@@ -14,5 +14,6 @@ namespace OnlineLearningPlatform.Repositories.Interfaces
         Task<bool> AddUserToRoleAsync(string userId, string roleName);
         Task<bool> RemoveUserFromRoleAsync(string userId, string roleName);
         Task<IList<string>> GetUserRolesAsync(string userId);
+        Task<IList<string>> GetUserIdsInRoleAsync(string selectedRole);
     }
 }
