@@ -32,5 +32,7 @@ namespace OnlineLearningPlatform.Services.Interfaces
 
         Task<IPagedList<InstructorViewModel>> GetPaginatedMentorsAsync(string searchString, int page, int pageSize, string? sortBy = null, string? orderBy = "desc");
 
+
+        Task<List<InstructorViewModel>> GetTopMentorsByStudentCountAsync(int count);
     }
 }

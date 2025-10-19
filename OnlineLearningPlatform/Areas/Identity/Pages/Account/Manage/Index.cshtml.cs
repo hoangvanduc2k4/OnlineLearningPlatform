@@ -2,13 +2,11 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using System;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using OnlineLearningPlatform.Attributes;
 using OnlineLearningPlatform.Models.Entities.UserPart;
 
 namespace OnlineLearningPlatform.Areas.Identity.Pages.Account.Manage
@@ -17,13 +15,15 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-
+        private readonly IWebHostEnvironment _webHostEnvironment;
         public IndexModel(
             UserManager<User> userManager,
-            SignInManager<User> signInManager)
+            SignInManager<User> signInManager,
+            IWebHostEnvironment webHostEnvironment)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         /// <summary>
@@ -56,12 +56,8 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account.Manage
             public string? AvatarUrl { get; set; }
 
             [Display(Name = "Avatar")]
+            [FileValidate]
             public IFormFile Avatar { get; set; }
-
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Email")]
-            public string Email { get; set; }
 
             [StringLength(255)]
             [Display(Name = "Full name")]
@@ -94,8 +90,7 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account.Manage
                 PhoneNumber = user.PhoneNumber,
                 Gender = user.Gender,
                 AvatarUrl = user.AvatarUrl,
-                Email = user.Email
-                
+
             };
         }
 
@@ -124,7 +119,19 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account.Manage
                 await LoadAsync(user);
                 return Page();
             }
+            if (Input.Avatar != null && Input.Avatar.Length > 0)
+            {
+                var wwwRootPath = _webHostEnvironment.WebRootPath;
+                var fileName = $"{user.Id}_{Path.GetFileName(Input.Avatar.FileName)}";
+                var filePath = Path.Combine(wwwRootPath, "uploads", "avatars", fileName);
+                Directory.CreateDirectory(Path.GetDirectoryName(filePath)!);
 
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await Input.Avatar.CopyToAsync(stream);
+                }
+                user.AvatarUrl = $"/uploads/avatars/{fileName}";
+            }
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
             if (Input.PhoneNumber != phoneNumber)
             {
@@ -136,25 +143,38 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account.Manage
                 }
             }
 
-            if (Input.PhoneNumber != user.PhoneNumber)
+            bool hasChanges = false;
+            if (Input.FullName != user.FullName)
             {
-                user.PhoneNumber = Input.PhoneNumber;
+                user.FullName = Input.FullName;
+                hasChanges = true;
             }
-            if(Input.Gender != Input.Gender)
-            {
-                user.Gender = Input.Gender;
-            }
-            if(Input.FullName != user.FullName)
-            {
-                user.FullName = Input.FullName; 
-            }
-            if(Input.Dob != user.Dob)
+
+            if (Input.Dob != user.Dob)
             {
                 user.Dob = Input.Dob;
+                hasChanges = true;
             }
-            if(Input.AvatarUrl != user.AvatarUrl)
+
+            if (Input.Gender != user.Gender)
             {
-                user.AvatarUrl = Input.AvatarUrl;
+                user.Gender = Input.Gender;
+                hasChanges = true;
+            }
+
+            if (hasChanges || (Input.Avatar != null && Input.Avatar.Length > 0))
+            {
+                var updateResult = await _userManager.UpdateAsync(user);
+                if (!updateResult.Succeeded)
+                {
+                    StatusMessage = "Error: Unexpected error when trying to update profile.";
+                    foreach (var error in updateResult.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                    await LoadAsync(user);
+                    return Page();
+                }
             }
 
 

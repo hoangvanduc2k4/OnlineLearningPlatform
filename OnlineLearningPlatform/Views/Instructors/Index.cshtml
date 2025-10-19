@@ -79,15 +79,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="instructor-info">
-                                <h5>@item.FullName</h5>
-                                <div class="stats-grid">
+                            <div class="instructor-info card shadow-sm border-0 text-center p-3" style="max-width: 300px; border-radius: 15px;">
+                                <h5 class="card-title mb-2">@item.FullName</h5>
+
+                                <div class="stats-grid d-flex justify-content-between align-items-center mt-3 px-2">
                                     <div class="stat">
-                                        <span class="number">@item.StudentCount</span>
-                                        <span class="label">Students</span>
+                                        <span class="number fw-bold fs-5">@item.StudentCount</span><br>
+                                        <span class="label text-muted small">Students</span>
+                                    </div>
+
+                                    <div class="social-links d-flex gap-3">
+                                        <a href="#" class="text-dark" style="font-size: 1.3rem;">
+                                            <i class="bi bi-instagram"></i>
+                                        </a>
+                                        <a href="#" class="text-dark" style="font-size: 1.3rem;">
+                                            <i class="bi bi-facebook"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 }

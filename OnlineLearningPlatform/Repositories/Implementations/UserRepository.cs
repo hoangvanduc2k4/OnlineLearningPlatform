@@ -89,5 +89,29 @@ namespace OnlineLearningPlatform.Repositories.Implementations
             }
             return await query.OrderByDescending(u => u.CreatedAt).ToListAsync();
         }
+
+
+        public async Task<List<User>> GetTopMentorsByStudentCountFromDbAsync(int count)
+        {
+            var mentorsInRole = await _userManager.GetUsersInRoleAsync("Mentor");
+            var mentorIds = mentorsInRole.Select(m => m.Id);
+            var topMentorsQuery = _context.Users
+                .AsNoTracking()
+                .Where(u => mentorIds.Contains(u.Id) && u.IsActived && !u.IsDeleted)
+                .Select(u => new
+                {
+                    User = u,
+                    StudentCount = _context.CourseEnrollments
+                                     .Where(ce => _context.Courses.Any(c => c.CourseId == ce.CourseId && c.Creator == u.Id))
+                                     .Select(ce => ce.UserId)
+                                     .Distinct()
+                                     .Count()
+                })
+                .OrderByDescending(x => x.StudentCount)
+                .Take(count)
+                .Select(x => x.User);
+
+            return await topMentorsQuery.ToListAsync();
+        }
     }
 }

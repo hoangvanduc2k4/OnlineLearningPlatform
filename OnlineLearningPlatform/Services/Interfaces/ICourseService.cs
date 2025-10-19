@@ -13,7 +13,7 @@ namespace OnlineLearningPlatform.Services.Interfaces
         Task<Course> CreateCourseAsync(Course course, string mentorId, List<long> categoryIds, string? coverImageUrl);
         Task<bool> UpdateCourseAsync(Course courseToUpdate, List<long> categoryIds, string? newCoverImageUrl, CourseStatus newStatus, string? mentorId);
         Task<bool> DeleteCourseAsync(long courseId, string mentorId);
-
+        Task<List<CourseViewModel>> GetTopNewestCoursesAsync(int count = 3);
         Task<IPagedList<CourseViewModel>> GetCoursesPagedAsync(
             int pageNumber, int pageSize,
             string? searchTerm = null,
