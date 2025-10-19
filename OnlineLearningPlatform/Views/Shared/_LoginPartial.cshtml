@@ -6,11 +6,28 @@
 @if (SignInManager.IsSignedIn(User))
 {
     var user = await UserManager.GetUserAsync(User);
-    var avatarUrl = user?.AvatarUrl ?? "~/img/person/person-f-1.webp";
-    var userName = user?.FullName ?? user?.Email ?? "User"; 
+    string avatarUrl;
+
+    if (!string.IsNullOrWhiteSpace(user?.AvatarUrl))
+    {
+        avatarUrl = user.AvatarUrl;
+    }
+    else
+    {
+        var scheme = Context.Request.Scheme;
+        var host = Context.Request.Host.Value;
+        var relative = Url.Content("~/img/person/avatar.jpg");
+        avatarUrl = $"{scheme}://{host}{relative}";
+    }
+
+    var userName = user?.FullName ?? user?.Email ?? "User";
 
     <div class="dropdown ms-3">
-        <a class="dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="dropdown-toggle d-flex align-items-center"
+           href="#"
+           role="button"
+           data-bs-toggle="dropdown"
+           aria-expanded="false">
             <img src="@avatarUrl" alt="Avatar" class="rounded-circle" width="40" height="40">
             <span class="ms-2 text-white">Hello @userName</span>
         </a>
@@ -22,53 +39,29 @@
             </li>
             @if (User.IsInRole("Mentee"))
             {
-                <li>
-                    <a class="dropdown-item" asp-controller="Messages" asp-action="Index">
-                        <i class="bi bi-envelope me-2"></i>Message
-                    </a>
-                </li>
-                <li>
-                    <a class="dropdown-item" asp-controller="MyCourses" asp-action="Index">
-                        <i class="bi bi-journal-bookmark me-2"></i>My Learning
-                    </a>
-                </li>
-                <li>
-                    <a class="dropdown-item" asp-controller="ApplyCV" asp-action="Index">
-                        <i class="bi bi-file-earmark-person me-2"></i>Apply CV
-                    </a>
-                </li>
+                <li><a class="dropdown-item" asp-controller="Messages" asp-action="Index"><i class="bi bi-envelope me-2"></i>Message</a></li>
+                <li><a class="dropdown-item" asp-controller="MyCourses" asp-action="Index"><i class="bi bi-journal-bookmark me-2"></i>My Learning</a></li>
+                <li><a class="dropdown-item" asp-controller="ApplyCV" asp-action="Index"><i class="bi bi-file-earmark-person me-2"></i>Apply CV</a></li>
             }
             @if (User.IsInRole("Mentor"))
             {
-                <li>
-                    <a class="dropdown-item" asp-controller="Messages" asp-action="Index">
-                        <i class="bi bi-envelope me-2"></i>Message
-                    </a>
-                </li>
-                <li>
-                    <a class="dropdown-item" asp-area="Mentor" asp-controller="Course" asp-action="Index">
-                        <i class="bi bi-gear me-2"></i>Course Management
-                    </a>
-                </li>
+                <li><a class="dropdown-item" asp-controller="Messages" asp-action="Index"><i class="bi bi-envelope me-2"></i>Message</a></li>
+                <li><a class="dropdown-item" asp-area="Mentor" asp-controller="Course" asp-action="Index"><i class="bi bi-gear me-2"></i>Course Management</a></li>
             }
             @if (User.IsInRole("Admin"))
             {
-                <li>
-                    <a class="dropdown-item" href="@Url.Content("~/Admin/Dashboard")">
-                        <i class="bi bi-speedometer2 me-2"></i>Dashboard
-                    </a>
-                </li>
+                <li><a class="dropdown-item" href="@Url.Content("~/Admin/Dashboard")"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a></li>
             }
             <li><hr class="dropdown-divider"></li>
             <li>
-                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <form asp-area="Identity" asp-page="/Account/Logout"
+                      asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                     <button type="submit" class="dropdown-item">
                         <i class="bi bi-box-arrow-right me-2"></i>Logout
                     </button>
                 </form>
             </li>
         </ul>
-
     </div>
 }
 else

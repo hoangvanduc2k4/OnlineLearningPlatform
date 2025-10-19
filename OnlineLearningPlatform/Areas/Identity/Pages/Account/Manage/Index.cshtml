@@ -11,7 +11,12 @@
     <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
 
     <div class="mb-4 text-center">
-        <img src="@(Model.Input?.AvatarUrl ?? "~/img/person/avatar.jpg")" alt="Avatar" class="rounded-circle img-fluid" style="width:120px;height:120px;object-fit:cover;" />
+        <img src="@( !string.IsNullOrWhiteSpace(Model.Input?.AvatarUrl)
+               ? Model.Input.AvatarUrl
+               : $"{Request.Scheme}://{Request.Host}{Url.Content("~/img/person/avatar.jpg")}" )"
+             alt="Avatar"
+             class="rounded-circle img-fluid"
+             style="width:120px;height:120px;object-fit:cover;" />
     </div>
 
     <div class="mb-3">
