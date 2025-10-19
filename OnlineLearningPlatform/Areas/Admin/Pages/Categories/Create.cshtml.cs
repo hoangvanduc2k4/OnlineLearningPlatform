@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
+using OnlineLearningPlatform.Hubs;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Services.Interfaces;
 
@@ -10,11 +12,15 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.Categories
     public class CreateModel : PageModel
     {
         private readonly ICategoryService _categoryService;
+        private readonly IHubContext<CRUDHub> _hub;
 
-        public CreateModel(ICategoryService categoryService)
+        public CreateModel(ICategoryService categoryService, IHubContext<CRUDHub> hub)
         {
             _categoryService = categoryService;
+            _hub = hub;
+
         }
+
 
         [BindProperty]
         public Category Category { get; set; } = new Category { IsDeleted = false };
@@ -32,6 +38,12 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.Categories
             }
 
             await _categoryService.AddCategoryAsync(Category);
+            await _hub.Clients.All.SendAsync("CategoryCreated", new
+            {
+                categoryId = Category.CategoryId,
+                categoryName = Category.CategoryName,
+                isDeleted = Category.IsDeleted
+            });
             return RedirectToPage("./Index");
         }
     }

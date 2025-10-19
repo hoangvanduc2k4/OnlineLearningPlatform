@@ -1,7 +1,7 @@
-﻿using OnlineLearningPlatform.Models.Entities.UserPart;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 using OnlineLearningPlatform.Enums;
+using OnlineLearningPlatform.Models.Entities.UserPart;
 
 namespace OnlineLearningPlatform.Models.Entities.CoursePart
 {
@@ -24,9 +24,9 @@ namespace OnlineLearningPlatform.Models.Entities.CoursePart
         public decimal? Discount { get; set; }
 
         [Required]
-        public string MentorId { get; set; }  = string.Empty;
+        public string Creator { get; set; } = string.Empty;
 
-        public string? AdminId { get; set; }
+        public string? Acceptor { get; set; }
 
         [Required]
         public DateTime CreatedAt { get; set; } = DateTime.Now;
@@ -42,6 +42,7 @@ namespace OnlineLearningPlatform.Models.Entities.CoursePart
 
         public long? LevelId { get; set; }
 
+
         [Required]
         public CourseStatus Status { get; set; } = CourseStatus.Draft;
 
@@ -50,8 +51,6 @@ namespace OnlineLearningPlatform.Models.Entities.CoursePart
 
         [ForeignKey("Acceptor")]
         public virtual User? AcceptorUser { get; set; }
-
-
         public virtual Level? Level { get; set; }
         public virtual ICollection<CourseImageUrl> CourseImageUrls { get; set; } = new List<CourseImageUrl>();
         public virtual ICollection<CourseCategory> CourseCategories { get; set; } = new List<CourseCategory>();

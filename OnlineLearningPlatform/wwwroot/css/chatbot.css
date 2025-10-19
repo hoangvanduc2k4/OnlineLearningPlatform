@@ -1,0 +1,138 @@
+﻿.chat-popup {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 400px;
+    max-height: 600px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    z-index: 2000;
+}
+
+.chat-popup.d-none {
+    display: none !important;
+}
+
+.chat-popup-header {
+    background: #007bff;
+    color: white;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+}
+
+.chat-popup-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    overflow: hidden;
+}
+
+.chatbot-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+    .chatbot-buttons button {
+        flex: 1 1 48%;
+        padding: 6px;
+        font-size: 0.85em;
+        border: 1px solid #007bff;
+        border-radius: 5px;
+        background: #f8f9fa;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+        .chatbot-buttons button:hover {
+            background: #e9ecef;
+        }
+
+#chatbot-input {
+    margin-top: 8px;
+    flex-shrink: 0;
+}
+
+.chat-messages {
+    flex: 1 1 auto;
+    max-height: none;
+    overflow-y: auto;
+    border: 1px solid #eee;
+    padding: 8px;
+    border-radius: 5px;
+    background: #f9f9f9;
+    margin-bottom: 8px;
+}
+
+.chat-input {
+    width: 100%;
+    resize: vertical;
+    min-height: 50px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.chat-send-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .chat-send-btn:disabled {
+        background: #6c757d;
+        cursor: not-allowed;
+    }
+
+.spinner {
+    display: inline-block;
+    margin-left: 5px;
+    animation: spin 1s linear infinite;
+}
+
+    .spinner.d-none {
+        display: none;
+    }
+
+.message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    white-space: pre-wrap;
+}
+
+.user-message {
+    background-color: #dcf8c6;
+    align-self: flex-end;
+}
+
+.ai-message {
+    background-color: #e1f5fe;
+    align-self: flex-start;
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+}
+
+

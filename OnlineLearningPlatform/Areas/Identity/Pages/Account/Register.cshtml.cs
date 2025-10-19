@@ -2,22 +2,15 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Logging;
 using OnlineLearningPlatform.Models.Entities.UserPart;
 
 namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
@@ -82,7 +75,7 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
 
             [DataType(DataType.Date)]
             [Display(Name = "Date of birth")]
-            public DateOnly? Dob { get; set; }    
+            public DateOnly? Dob { get; set; }
 
             [Phone]
             [StringLength(10)]
@@ -90,7 +83,7 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
             public string? Phone { get; set; }
 
             [Display(Name = "Gender")]
-            public bool? Gender { get; set; }   
+            public bool? Gender { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -123,7 +116,7 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
 
                 user.Phone = Input.Phone;
                 user.PhoneNumber = Input.Phone;
-                user.FullName = Input.FullName; 
+                user.FullName = Input.FullName;
                 user.Email = Input.Email;
                 user.Gender = Input.Gender;
                 user.Dob = Input.Dob.Value;
@@ -138,7 +131,7 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
-
+                    var roleResult = await _userManager.AddToRoleAsync(user, "Mentee");
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -148,9 +141,69 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
+
+                    var emailBody = $@"
+<!DOCTYPE html>
+<html lang=""en"">
+<head>
+    <meta charset=""UTF-8"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+    <title>Confirm Your KnowHub Account</title>
+    <style>
+        body {{
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }}
+        .container {{
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }}
+        h1 {{
+            font-size: 24px;
+            text-align: center;
+            color: #007bff;
+        }}
+        p {{
+            font-size: 16px;
+            text-align: center;
+            margin: 15px 0;
+        }}
+        .btn {{
+            display: inline-block;
+            padding: 10px 20px;
+            background: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }}
+        .footer {{
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin-top: 20px;
+        }}
+    </style>
+</head>
+<body>
+    <div class=""container"">
+        <h1>Welcome to KnowHub!</h1>
+        <p>Please confirm your account by clicking the button below.</p>
+        <p><a href=""{HtmlEncoder.Default.Encode(callbackUrl)}"" class=""btn"">Confirm Account</a></p>
+        <p class=""footer"">&copy; 2025 KnowHub. All Rights Reserved.</p>
+    </div>
+</body>
+</html>";
+
+                    await _emailSender.SendEmailAsync(Input.Email, "Confirm Your KnowHub Account", emailBody);
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });

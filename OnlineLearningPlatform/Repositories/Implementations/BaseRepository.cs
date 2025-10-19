@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using OnlineLearningPlatform.Data;
 using OnlineLearningPlatform.Repositories.Interfaces;
 
-namespace OnlineLearningPlatform.Repositories
+namespace OnlineLearningPlatform.Repositories.Implementations
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {

@@ -13,7 +13,6 @@ namespace OnlineLearningPlatform.Data
             : base(options)
         {
         }
-
         public DbSet<AnswerQuiz> AnswerQuizzes { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Course> Courses { get; set; }
@@ -40,6 +39,7 @@ namespace OnlineLearningPlatform.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
             builder.Entity<User>(b =>
             {
                 b.ToTable("Users");
@@ -53,11 +53,11 @@ namespace OnlineLearningPlatform.Data
                  .OnDelete(DeleteBehavior.SetNull);
                 b.HasMany(u => u.CreatedCourses)
                  .WithOne(c => c.CreatorUser)
-                 .HasForeignKey(c => c.MentorId)
+                 .HasForeignKey(c => c.Creator)
                  .OnDelete(DeleteBehavior.Restrict);
                 b.HasMany(u => u.AcceptedCourses)
                  .WithOne(c => c.AcceptorUser)
-                 .HasForeignKey(c => c.AdminId)
+                 .HasForeignKey(c => c.Acceptor)
                  .OnDelete(DeleteBehavior.SetNull);
             });
             builder.Entity<MentorApplication>(b =>
@@ -162,6 +162,15 @@ namespace OnlineLearningPlatform.Data
                  .WithOne(m => m.Course)
                  .HasForeignKey(m => m.CourseId)
                  .OnDelete(DeleteBehavior.Cascade);
+                b.HasOne(c => c.CreatorUser)
+                 .WithMany(u => u.CreatedCourses)
+                 .HasForeignKey(c => c.Creator)
+                 .OnDelete(DeleteBehavior.Restrict);
+
+                b.HasOne(c => c.AcceptorUser)
+                 .WithMany(u => u.AcceptedCourses)
+                 .HasForeignKey(c => c.Acceptor)
+                 .OnDelete(DeleteBehavior.SetNull);
             });
             builder.Entity<CourseEnrollment>(b =>
             {

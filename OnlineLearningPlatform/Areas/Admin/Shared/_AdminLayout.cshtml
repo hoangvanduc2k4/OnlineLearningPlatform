@@ -311,7 +311,7 @@
 					</li>
 
 					<li class="pc-item">
-						<a asp-controller="ReviewCourse" asp-action="Index" class="pc-link">
+						<a asp-area="Admin" asp-page="/ReviewCourses/Index" class="pc-link">
 							<span class="pc-micon"><i class="bi bi-check2-square"></i></span>
 							<span class="pc-mtext">Review course</span>
 						</a>
@@ -379,7 +379,6 @@
 
 	@await RenderSectionAsync("Scripts", required: false)
 	<script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<!-- Initialize Feather icons and sidebar toggle -->
 	<script>
 		feather.replace();
 

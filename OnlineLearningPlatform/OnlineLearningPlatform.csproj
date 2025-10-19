@@ -33,8 +33,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Mentor\" />
     <Folder Include="Areas\Mentee\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GeminiServer\GeminiServer.csproj" />
   </ItemGroup>
 
 </Project>

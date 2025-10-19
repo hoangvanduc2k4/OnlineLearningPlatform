@@ -31,8 +31,6 @@ namespace OnlineLearningPlatform.Configurations
             services.AddScoped<IMessageService, MessageService>();
 
             //level
-            services.AddScoped<ILevelService, LevelService>();
-            services.AddScoped<ICategoryService, CategoryService>();
 
             //user
             services.AddScoped<IUserService, UserService>();
@@ -40,6 +38,24 @@ namespace OnlineLearningPlatform.Configurations
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IRoleService, RoleService>();
 
+
+            services.AddScoped<ILevelService, LevelService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+
+            services.AddScoped<ICourseRepository, CoursesRepository>();
+            services.AddScoped<ICourseService, CoursesService>();
+            services.AddScoped<IRatingRepository, RatingRepository>();
+
+            services.AddScoped<ICourseEnrollmentRepository, CourseEnrollmentRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
+            services.AddScoped<IVnPayService, VnPayService>();
+            services.AddScoped<ITransactionService, TransactionService>();
+
+            services.AddScoped<IAdminReviewCourseRepository, AdminReviewCourseRepository>();
+
+
+
+            services.AddScoped<ICourseEnrollmentService, CourseEnrollmentService>();
 
             return services;
         }

@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
+using OnlineLearningPlatform.Hubs;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Services.Interfaces;
 
@@ -10,10 +12,12 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.Levels
     public class UpdateModel : PageModel
     {
         private readonly ILevelService _levelService;
+        private readonly IHubContext<CRUDHub> _hub;
 
-        public UpdateModel(ILevelService levelService)
+        public UpdateModel(ILevelService levelService, IHubContext<CRUDHub> hub)
         {
             _levelService = levelService;
+            _hub = hub;
         }
 
         [BindProperty]
@@ -37,6 +41,13 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.Levels
             }
 
             await _levelService.UpdateLevelAsync(Level);
+            await _hub.Clients.All.SendAsync("LevelUpdated", new
+            {
+                levelId = Level.LevelId,
+                levelName = Level.LevelName,
+                isDeleted = Level.IsDeleted
+            });
+
             return RedirectToPage("./Index");
         }
     }
