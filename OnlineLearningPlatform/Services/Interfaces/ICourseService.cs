@@ -32,6 +32,8 @@ namespace OnlineLearningPlatform.Services.Interfaces
         Task<IPagedList<Course>> GetCoursesByStatusPagedAsync(CourseStatus status, int pageNumber, int pageSize);
 
         Task<Course?> GetCourseForReviewAsync(long courseId);
+
+        Task<int> GetStudentCountsByMentorIdsAsync(string mentorId);
     }
 
 }

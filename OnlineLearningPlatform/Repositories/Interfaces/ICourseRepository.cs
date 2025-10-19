@@ -25,5 +25,7 @@ namespace OnlineLearningPlatform.Repositories.Interfaces
         Task<Course?> GetByIdWithDetailsAsync(long id);
 
         Task<IPagedList<Course>> GetCoursesByStatusPagedAsync(CourseStatus status, int pageNumber, int pageSize);
+
+        Task<int> GetCourseCountsByMentorIdsAsync(string mentorId);
     }
 }
