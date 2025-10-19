@@ -53,21 +53,6 @@
         public int? Duration { get; set; }
     }
 
-    public class QuizViewModel
-    {
-        public long QuizId { get; set; }
-        public string QuizName { get; set; } = string.Empty;
-        public int? QuizTime { get; set; }
-        public List<QuestionViewModel> Questions { get; set; } = new List<QuestionViewModel>();
-    }
-
-    public class QuestionViewModel
-    {
-        public long QuestionId { get; set; }
-        public int QuestionNum { get; set; }
-        public string QuestionContent { get; set; } = string.Empty;
-    }
-
     public class RatingViewModel
     {
         public string? UserName { get; set; }

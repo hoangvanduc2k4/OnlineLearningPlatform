@@ -160,7 +160,7 @@
                                                             <div class="lesson">
                                                                 <i class="bi bi-file-earmark-text"></i>
                                                                 <span class="lesson-title">[Quiz] @quiz.QuizName</span>
-                                                                @if (quiz.QuizTime.HasValue)
+                                                                @if (quiz.QuizTime >0)
                                                                 {
                                                                     <span class="lesson-time">@quiz.QuizTime min</span>
                                                                 }

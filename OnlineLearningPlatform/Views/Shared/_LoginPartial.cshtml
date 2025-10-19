@@ -23,7 +23,7 @@
             @if (User.IsInRole("Mentee"))
             {
                 <li>
-                    <a class="dropdown-item" asp-controller="Messages" asp-action="Index">
+                    <a class="dropdown-item" asp-controller="/chat" asp-action="Index">
                         <i class="bi bi-envelope me-2"></i>Message
                     </a>
                 </li>
@@ -41,7 +41,7 @@
             @if (User.IsInRole("Mentor"))
             {
                 <li>
-                    <a class="dropdown-item" asp-controller="Messages" asp-action="Index">
+                    <a class="dropdown-item" asp-controller="/chat" asp-action="Index">
                         <i class="bi bi-envelope me-2"></i>Message
                     </a>
                 </li>

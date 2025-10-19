@@ -30,7 +30,8 @@ namespace OnlineLearningPlatform.Data.Seeds
                     PassScore = 70, // điểm đạt
                     CreatedAt = new DateTime(2025, 1, 1),
                     UpdatedAt = null,
-                    DateCreated = new DateTime(2025, 1, 1)
+                    DateCreated = new DateTime(2025, 1, 1),
+                    Status = OnlineLearningPlatform.Enums.QuizStatus.Active
                 });
             }
 
