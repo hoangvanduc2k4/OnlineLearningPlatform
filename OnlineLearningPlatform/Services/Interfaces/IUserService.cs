@@ -4,8 +4,11 @@ namespace OnlineLearningPlatform.Services.Interfaces
 {
     public interface IUserService
     {
-        Task<User?> GetUserByIdAsync(long? id);
-        Task<IEnumerable<User>> GetAllUsersAsync();
+        Task<User?> GetUserByIdAsync(string id);
+        Task<IEnumerable<User>> GetActiveUsersAsync(string? searchTerm);
+        Task<IEnumerable<User>> GetInactiveUsersAsync(string? searchTerm);
+        Task<IEnumerable<User>> GetDeletedUsersAsync(string? searchTerm);
+        Task<IEnumerable<User>> GetAllUsersAsync(string? searchTerm);
 
         Task<User?> GetByEmailAndPasswordAsync(string email, string password);
 
@@ -15,10 +18,12 @@ namespace OnlineLearningPlatform.Services.Interfaces
 
         Task UpdateUserAsync(User user);
         //Task<bool> UpdateProfileAsync(ProfileDTO profile);
+        Task<bool> DeleteUserAsync(string userId);
+
         Task<bool> ChangeAvatarAsync(long userId, IFormFile avatarFile);
-        Task<string> GetUserHeaderAsync(long? userId);
+        Task<string> GetUserHeaderAsync(string userId);
         //Task<bool> ChangePasswordAsync(long userId, ChangePassDTO changePassDTO);
 
-        Task<string> GetUserNameByIdAsync(long? userId);
+        Task<string> GetUserNameByIdAsync(string userId);
     }
 }

@@ -30,6 +30,14 @@ namespace OnlineLearningPlatform.Configurations
             services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddScoped<IMessageService, MessageService>();
 
+            //level
+
+            //user
+            services.AddScoped<IUserService, UserService>();
+            //role
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IRoleService, RoleService>();
+
 
             services.AddScoped<ILevelService, LevelService>();
             services.AddScoped<ICategoryService, CategoryService>();
