@@ -31,12 +31,14 @@
                     <select asp-for="Quiz.ModuleId" class="form-select" asp-items="Model.AvailableModules">
                         <option value="">-- Select Module --</option>
                     </select>
+                    <span asp-validation-for="Quiz.ModuleId" class="text-danger"></span>
                 </div>
 
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label asp-for="Quiz.QuizTime" class="form-label">Quiz Time</label>
                         <input asp-for="Quiz.QuizTime" type="number" class="form-control" min="1" />
+                        <span asp-validation-for="Quiz.QuizTime" class="text-danger"></span>
                     </div>
 
                     <div class="col-md-4 mb-3">
@@ -50,14 +52,10 @@
                     <div class="col-md-4 mb-3">
                         <label asp-for="Quiz.PassScore" class="form-label">Pass Score</label>
                         <input asp-for="Quiz.PassScore" type="number" class="form-control" min="0" />
+                        <span asp-validation-for="Quiz.PassScore" class="text-danger"></span>
                     </div>
                 </div>
-
-                <div class="form-check mb-3">
-                    <input asp-for="Quiz.IsActived" class="form-check-input" />
-                    <label asp-for="Quiz.IsActived" class="form-check-label">Active</label>
-                </div>
-
+                            
                 <div class="d-flex justify-content-end">
                     <a asp-page="./Index" class="btn btn-outline-secondary me-2">Cancel</a>
                     <button type="submit" class="btn btn-primary">Save Changes</button>
