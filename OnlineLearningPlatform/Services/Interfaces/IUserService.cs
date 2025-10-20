@@ -1,4 +1,6 @@
 ﻿using OnlineLearningPlatform.Models.Entities.UserPart;
+using OnlineLearningPlatform.Models.ViewModels;
+using X.PagedList;
 
 namespace OnlineLearningPlatform.Services.Interfaces
 {
@@ -25,5 +27,12 @@ namespace OnlineLearningPlatform.Services.Interfaces
         //Task<bool> ChangePasswordAsync(long userId, ChangePassDTO changePassDTO);
 
         Task<string> GetUserNameByIdAsync(string userId);
+
+        Task<IEnumerable<User>> GetAllActiveMentorAsync(string? searchTerm);
+
+        Task<IPagedList<InstructorViewModel>> GetPaginatedMentorsAsync(string searchString, int page, int pageSize, string? sortBy = null, string? orderBy = "desc");
+
+
+        Task<List<InstructorViewModel>> GetTopMentorsByStudentCountAsync(int count);
     }
 }

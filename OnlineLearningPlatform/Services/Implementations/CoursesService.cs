@@ -15,13 +15,14 @@ namespace OnlineLearningPlatform.Services
         private readonly IRatingRepository _ratingRepository; // Thêm repository này
         private readonly IAdminReviewCourseRepository _adminReviewCourseRepository;
         private readonly IMapper _mapper;
-
-        public CoursesService(ICourseRepository courseRepository, IRatingRepository ratingRepository, IMapper mapper, IAdminReviewCourseRepository adminReviewCourseRepository)
+        private readonly ICourseEnrollmentRepository _courseEnrollmentRepository;
+        public CoursesService(ICourseRepository courseRepository, IRatingRepository ratingRepository, IMapper mapper, IAdminReviewCourseRepository adminReviewCourseRepository, ICourseEnrollmentRepository courseEnrollmentRepository)
         {
             _courseRepository = courseRepository;
             _ratingRepository = ratingRepository;
             _mapper = mapper;
             _adminReviewCourseRepository = adminReviewCourseRepository;
+            _courseEnrollmentRepository = courseEnrollmentRepository;
         }
 
 
@@ -50,7 +51,25 @@ namespace OnlineLearningPlatform.Services
             var vmPaged = new StaticPagedList<CourseViewModel>(vmList, pagedEntities.PageNumber, pagedEntities.PageSize, pagedEntities.TotalItemCount);
             return vmPaged;
         }
+        public async Task<List<CourseViewModel>> GetTopNewestCoursesAsync(int count = 3) 
+        {
+            var pagedEntities = await _courseRepository.GetCoursesPagedAsync(
+                pageNumber: 1,
+                pageSize: count,
+                searchTerm: null,
+                status: CourseStatus.Approved, 
+                categories: null,
+                levelIds: null,
+                priceRange: null,
+                studyTimeRange: null,
+                sortBy: "newest"
+            );
 
+            var vmList = pagedEntities
+                            .Select(c => _mapper.Map<CourseViewModel>(c))
+                            .ToList();
+            return vmList;
+        }
 
 
         public async Task<CourseDetailsViewModel?> GetCourseDetailsAsync(long id)
@@ -206,5 +225,12 @@ namespace OnlineLearningPlatform.Services
         {
             return await _courseRepository.GetCourseForReviewAsync(courseId);
         }
+
+        public async Task<int> GetStudentCountsByMentorIdsAsync(string mentorId)
+        {
+            return await _courseRepository.GetCourseCountsByMentorIdsAsync(mentorId);
+        }
+
+
     }
 }

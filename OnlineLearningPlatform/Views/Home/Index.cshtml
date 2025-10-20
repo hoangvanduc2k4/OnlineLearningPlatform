@@ -1,8 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@using OnlineLearningPlatform.Models.ViewModels
+@{
+    ViewData["Title"] = "Home Page";
 
-<!-- Courses Hero Section -->
+    var topCourses = ViewBag.TopCourses as List<CourseViewModel> ?? new List<CourseViewModel>();
+    var topMentors = ViewBag.TopMentors as List<InstructorViewModel> ?? new List<InstructorViewModel>();
+}
 <section id="courses-hero" class="courses-hero section light-background">
     <div class="hero-content">
         <div class="container">
@@ -122,201 +127,146 @@
         </div>
     </div>
 </section>
-<!-- /Courses Hero Section -->
-<!-- Featured Courses Section -->
 <section id="featured-courses" class="featured-courses section">
-    <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
         <h2>Featured Courses</h2>
         <p>
-            Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
-            consectetur velit
+            Start learning in-demand skills with our handpicked selection of top-rated programs.
         </p>
     </div>
-    <!-- End Section Title -->
-
     <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-            <div class="col-lg-4 col-md-6"
-                 data-aos="fade-up"
-                 data-aos-delay="200">
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="~/img/education/students-9.webp"
-                             alt="Course"
-                             class="img-fluid" />
-                        <div class="badge featured">Featured</div>
-                        <div class="price-badge">$149</div>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-meta">
-                            <span class="level">Beginner</span>
-                            <span class="duration">8 Weeks</span>
+
+        <div class="d-flex flex-nowrap overflow-x-auto py-3" style="gap: 1.5rem;">
+            @foreach (var course in topCourses)
+            {
+                var cat = (course.CategoryNames != null && course.CategoryNames.Any())
+                ? string.Join(", ", course.CategoryNames)
+                : "Programming";
+
+                var level = !string.IsNullOrWhiteSpace(course.LevelName) ? course.LevelName : "Intermediate";
+
+                var duration = !string.IsNullOrWhiteSpace(course.StudyTime) ? course.StudyTime : "100";
+
+                var students = course.GetType().GetProperty("StudentsCount")?.GetValue(course)?.ToString() ?? "1,000";
+                var rating = course.GetType().GetProperty("Rating")?.GetValue(course)?.ToString() ?? "4.6";
+
+                var instructor = !string.IsNullOrWhiteSpace(course.MentorName) ? course.MentorName
+                : (course.GetType().GetProperty("InstructorName")?.GetValue(course)?.ToString() ?? "Instructor");
+
+                var instructorImgRaw = !string.IsNullOrWhiteSpace(course.MentorAvatarUrl) ? course.MentorAvatarUrl
+                : (course.GetType().GetProperty("InstructorImageUrl")?.GetValue(course)?.ToString() ?? "~/assets/img/person/person-m-3.webp");
+                var instructorImg = Url.Content(instructorImgRaw);
+
+                var badge = course.GetType().GetProperty("Badge")?.GetValue(course)?.ToString() ?? "";
+
+                decimal price = course.Price;
+                decimal? discount = course.Discount;
+
+                bool hasDiscount = discount.HasValue && discount.Value > 0;
+                var discountedPrice = hasDiscount ? (price - discount.Value) : price;
+
+                var priceStr = (discountedPrice <= 0) ? "Free" : discountedPrice.ToString("C");
+                var originalPriceStr = price > 0 ? price.ToString("C") : "Free";
+                var isFree = (badge?.ToLower().Contains("free") == true) || (price <= 0);
+
+                var imgUrlRaw = !string.IsNullOrEmpty(course.ImageUrl) ? course.ImageUrl : "~/assets/img/education/courses-3.webp";
+                var imgUrl = Url.Content(imgUrlRaw);
+
+                <div style="width: 400px; flex-shrink: 0;">
+                    <div class="course-card">
+
+                        <div class="course-image">
+
+                            <img src="@imgUrl" alt="Course" class="img-fluid">
+
+
+                            @if (hasDiscount && !isFree)
+                            {
+                                <div class="course-price">
+                                    <span class="fw-bold">@priceStr</span>
+                                    <small class="text-muted text-decoration-line-through ms-2">
+                                        @originalPriceStr
+                                    </small>
+                                </div>
+                            }
+                            else if (!hasDiscount && !isFree)
+                            {
+                                <div class="course-price">
+                                    @originalPriceStr
+                                </div>
+
+                            }
+                            else if (isFree)
+                            {
+                                <div class="course-price">Free</div>
+                            }
+
                         </div>
-                        <h3><a href="#">Digital Marketing Fundamentals</a></h3>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit sed
-                            do eiusmod tempor incididunt ut labore et dolore magna
-                            aliqua enim ad minim veniam.
-                        </p>
-                        <div class="instructor">
-                            <img src="~/img/person/person-f-3.webp"
-                                 alt="Instructor"
-                                 class="instructor-img" />
-                            <div class="instructor-info">
-                                <h6>Sarah Johnson</h6>
-                                <span>Marketing Expert</span>
+
+                        <div class="course-content card-body d-flex flex-column">
+
+                            <div class="course-meta">
+                                @foreach (var cname in course.CategoryNames)
+                                {
+                                    <span class="category">@cname</span>
+                                }
+                                <span class="level">@level</span>
                             </div>
+
+                            <h3 class="h5">@course.CourseName</h3>
+                            <p class="text-muted mb-3">@course.Description</p>
+
+                            <div class="course-stats d-flex justify-content-between align-items-center small text-muted mb-3">
+                                <div class="stat">
+                                    <i class="bi bi-clock me-1"></i>
+                                    <span>@(string.IsNullOrEmpty(duration) ? "— hours" : duration + " hours")</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="bi bi-people me-1"></i>
+                                    <span>@students students</span>
+                                </div>
+                                <div class="rating">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-half"></i>
+                                    <span class="ms-1">@rating</span>
+                                </div>
+                            </div>
+
+                            <div class="instructor-info d-flex align-items-center mb-3">
+                                <img src="@instructorImg" alt="Instructor" class="instructor-avatar rounded-circle me-2" style="width:40px;height:40px;object-fit:cover;">
+                                <span class="instructor-name small text-muted">@instructor</span>
+                            </div>
+
+                            <a asp-controller="Courses" asp-action="Details" asp-route-id="@course.CourseId" class="btn-course">View Detail</a>
                         </div>
-                        <div class="course-stats">
-                            <div class="rating">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-half"></i>
-                                <span>(4.5)</span>
-                            </div>
-                            <div class="students">
-                                <i class="bi bi-people-fill"></i>
-                                <span>342 students</span>
-                            </div>
-                        </div>
-                        <a href="enroll.html" class="btn-course">Enroll Now</a>
                     </div>
                 </div>
-            </div>
-            <!-- End Course Item -->
 
-            <div class="col-lg-4 col-md-6"
-                 data-aos="fade-up"
-                 data-aos-delay="300">
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="~/img/education/campus-4.webp"
-                             alt="Course"
-                             class="img-fluid" />
-                        <div class="badge new">New</div>
-                        <div class="price-badge">$89</div>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-meta">
-                            <span class="level">Intermediate</span>
-                            <span class="duration">6 Weeks</span>
-                        </div>
-                        <h3><a href="#">Web Development with JavaScript</a></h3>
-                        <p>
-                            Ut enim ad minim veniam quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat duis aute
-                            irure dolor in reprehenderit.
-                        </p>
-                        <div class="instructor">
-                            <img src="~/img/person/person-m-5.webp"
-                                 alt="Instructor"
-                                 class="instructor-img" />
-                            <div class="instructor-info">
-                                <h6>Michael Chen</h6>
-                                <span>Full Stack Developer</span>
-                            </div>
-                        </div>
-                        <div class="course-stats">
-                            <div class="rating">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <span>(5.0)</span>
-                            </div>
-                            <div class="students">
-                                <i class="bi bi-people-fill"></i>
-                                <span>156 students</span>
-                            </div>
-                        </div>
-                        <a href="enroll.html" class="btn-course">Enroll Now</a>
-                    </div>
-                </div>
-            </div>
-            <!-- End Course Item -->
-
-            <div class="col-lg-4 col-md-6"
-                 data-aos="fade-up"
-                 data-aos-delay="400">
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="~/img/education/students-7.webp"
-                             alt="Course"
-                             class="img-fluid" />
-                        <div class="badge certificate">Certificate</div>
-                        <div class="price-badge">Free</div>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-meta">
-                            <span class="level">Beginner</span>
-                            <span class="duration">4 Weeks</span>
-                        </div>
-                        <h3><a href="#">Introduction to Data Science</a></h3>
-                        <p>
-                            Excepteur sint occaecat cupidatat non proident sunt in culpa
-                            qui officia deserunt mollit anim id est laborum sed ut
-                            perspiciatis unde omnis.
-                        </p>
-                        <div class="instructor">
-                            <img src="~/img/person/person-f-7.webp"
-                                 alt="Instructor"
-                                 class="instructor-img" />
-                            <div class="instructor-info">
-                                <h6>Dr. Emily Watson</h6>
-                                <span>Data Scientist</span>
-                            </div>
-                        </div>
-                        <div class="course-stats">
-                            <div class="rating">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star"></i>
-                                <span>(4.2)</span>
-                            </div>
-                            <div class="students">
-                                <i class="bi bi-people-fill"></i>
-                                <span>789 students</span>
-                            </div>
-                        </div>
-                        <a href="enroll.html" class="btn-course">Enroll Now</a>
-                    </div>
-                </div>
-            </div>
-            <!-- End Course Item -->
-        </div>
-
-        <div class="more-courses text-center"
-             data-aos="fade-up"
-             data-aos-delay="500">
-            <a href="courses.html" class="btn-more">View All Courses</a>
+            }
+        </div> <div class="more-courses text-center"
+                    data-aos="fade-up"
+                    data-aos-delay="500">
+            <a asp-controller="Courses" asp-action="Index" class="btn-more">View All Courses</a>
         </div>
     </div>
 </section>
-<!-- /Featured Courses Section -->
-<!-- Course Categories Section -->
 <section id="course-categories" class="course-categories section">
-    <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
         <h2>Course Categories</h2>
         <p>
-            Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
-            consectetur velit
+            Browse our wide range of subjects and find the perfect topic to spark your curiosity.
         </p>
     </div>
-    <!-- End Section Title -->
-
     <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row g-4">
+
             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6"
                  data-aos="zoom-in"
                  data-aos-delay="100">
-                <a href="courses.html" class="category-card category-tech">
+                <a asp-controller="Courses" asp-action="Index" class="category-card category-tech">
                     <div class="category-icon">
                         <i class="bi bi-laptop"></i>
                     </div>
@@ -324,12 +274,10 @@
                     <span class="course-count">24 Courses</span>
                 </a>
             </div>
-            <!-- End Category Item -->
-
             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6"
                  data-aos="zoom-in"
                  data-aos-delay="150">
-                <a href="courses.html" class="category-card category-business">
+                <a asp-controller="Courses" asp-action="Index" class="category-card category-business">
                     <div class="category-icon">
                         <i class="bi bi-briefcase"></i>
                     </div>
@@ -337,12 +285,10 @@
                     <span class="course-count">18 Courses</span>
                 </a>
             </div>
-            <!-- End Category Item -->
-
             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6"
                  data-aos="zoom-in"
                  data-aos-delay="200">
-                <a href="courses.html" class="category-card category-design">
+                <a asp-controller="Courses" asp-action="Index" class="category-card category-design">
                     <div class="category-icon">
                         <i class="bi bi-palette"></i>
                     </div>
@@ -350,12 +296,10 @@
                     <span class="course-count">15 Courses</span>
                 </a>
             </div>
-            <!-- End Category Item -->
-
             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6"
                  data-aos="zoom-in"
                  data-aos-delay="250">
-                <a href="courses.html" class="category-card category-health">
+                <a asp-controller="Courses" asp-action="Index" class="category-card category-health">
                     <div class="category-icon">
                         <i class="bi bi-heart-pulse"></i>
                     </div>
@@ -363,12 +307,10 @@
                     <span class="course-count">12 Courses</span>
                 </a>
             </div>
-            <!-- End Category Item -->
-
             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6"
                  data-aos="zoom-in"
                  data-aos-delay="300">
-                <a href="courses.html" class="category-card category-language">
+                <a asp-controller="Courses" asp-action="Index" class="category-card category-language">
                     <div class="category-icon">
                         <i class="bi bi-globe"></i>
                     </div>
@@ -376,12 +318,10 @@
                     <span class="course-count">21 Courses</span>
                 </a>
             </div>
-            <!-- End Category Item -->
-
             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6"
                  data-aos="zoom-in"
                  data-aos-delay="350">
-                <a href="courses.html" class="category-card category-science">
+                <a asp-controller="Courses" asp-action="Index" class="category-card category-science">
                     <div class="category-icon">
                         <i class="bi bi-diagram-3"></i>
                     </div>
@@ -389,229 +329,55 @@
                     <span class="course-count">16 Courses</span>
                 </a>
             </div>
-            <!-- End Category Item -->
         </div>
     </div>
 </section>
-<!-- /Course Categories Section -->
-<!-- Featured Instructors Section -->
 <section id="featured-instructors" class="featured-instructors section">
-    <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
-        <h2>Featured Instructors</h2>
+        <h2>Featured Mentors</h2>
         <p>
-            Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
-            consectetur velit
+            Meet the top-rated mentors and innovators ready to guide you on your learning journey.
         </p>
     </div>
-    <!-- End Section Title -->
-
     <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-            <div class="col-xl-3 col-lg-4 col-md-6"
-                 data-aos="fade-up"
-                 data-aos-delay="200">
-                <div class="instructor-card">
-                    <div class="instructor-image">
-                        <img src="~/img/education/teacher-2.webp"
-                             class="img-fluid"
-                             alt="" />
-                        <div class="overlay-content">
-                            <div class="rating-stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-half"></i>
-                                <span>4.8</span>
-                            </div>
-                            <div class="course-count">
-                                <i class="bi bi-play-circle"></i>
-                                <span>18 Courses</span>
+        <div class="d-flex flex-nowrap overflow-x-auto py-3" style="gap: 1.5rem;">
+            @foreach (var item in topMentors)
+            {
+                <div data-aos="fade-up" data-aos-delay="200" style="width: 280px; flex-shrink: 0;">
+                    <div class="instructor-card">
+                        <div class="instructor-image">
+                            <img src="@item.ImageUrl" class="img-fluid" alt="Profile image of @item.FullName">
+                            <div class="overlay-content">
+                                <div class="course-count">
+                                    <i class="bi bi-play-circle"></i>
+                                    <span>@item.CourseCount Courses</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="instructor-info">
-                        <h5>Sarah Johnson</h5>
-                        <p class="specialty">Web Development</p>
-                        <p class="description">
-                            Nulla facilisi morbi tempus iaculis urna id volutpat lacus
-                            laoreet non curabitur gravida.
-                        </p>
-                        <div class="stats-grid">
-                            <div class="stat">
-                                <span class="number">2.1k</span>
-                                <span class="label">Students</span>
-                            </div>
-                            <div class="stat">
-                                <span class="number">4.8</span>
-                                <span class="label">Rating</span>
-                            </div>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="btn-view">View Profile</a>
-                            <div class="social-links">
-                                <a href="#"><i class="bi bi-linkedin"></i></a>
-                                <a href="#"><i class="bi bi-twitter"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        <div class="instructor-info card shadow-sm border-0 text-center p-3" style="max-width: 300px; border-radius: 15px;">
+                            <h5 class="card-title mb-2">@item.FullName</h5>
 
-            <div class="col-xl-3 col-lg-4 col-md-6"
-                 data-aos="fade-up"
-                 data-aos-delay="250">
-                <div class="instructor-card">
-                    <div class="instructor-image">
-                        <img src="~/img/education/teacher-7.webp"
-                             class="img-fluid"
-                             alt="" />
-                        <div class="overlay-content">
-                            <div class="rating-stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <span>4.9</span>
-                            </div>
-                            <div class="course-count">
-                                <i class="bi bi-play-circle"></i>
-                                <span>24 Courses</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="instructor-info">
-                        <h5>Michael Chen</h5>
-                        <p class="specialty">Data Science</p>
-                        <p class="description">
-                            Suspendisse potenti nullam ac tortor vitae purus faucibus
-                            ornare suspendisse sed nisi.
-                        </p>
-                        <div class="stats-grid">
-                            <div class="stat">
-                                <span class="number">3.5k</span>
-                                <span class="label">Students</span>
-                            </div>
-                            <div class="stat">
-                                <span class="number">4.9</span>
-                                <span class="label">Rating</span>
-                            </div>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="btn-view">View Profile</a>
-                            <div class="social-links">
-                                <a href="#"><i class="bi bi-github"></i></a>
-                                <a href="#"><i class="bi bi-linkedin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            <div class="stats-grid d-flex justify-content-between align-items-center mt-3 px-2">
+                                <div class="stat">
+                                    <span class="number fw-bold fs-5">@item.StudentCount</span><br>
+                                    <span class="label text-muted small">Students</span>
+                                </div>
 
-            <div class="col-xl-3 col-lg-4 col-md-6"
-                 data-aos="fade-up"
-                 data-aos-delay="300">
-                <div class="instructor-card">
-                    <div class="instructor-image">
-                        <img src="~/img/education/teacher-4.webp"
-                             class="img-fluid"
-                             alt="" />
-                        <div class="overlay-content">
-                            <div class="rating-stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star"></i>
-                                <span>4.6</span>
-                            </div>
-                            <div class="course-count">
-                                <i class="bi bi-play-circle"></i>
-                                <span>15 Courses</span>
+                                <div class="social-links d-flex gap-3">
+                                    <a href="#" class="text-dark" style="font-size: 1.3rem;">
+                                        <i class="bi bi-instagram"></i>
+                                    </a>
+                                    <a href="#" class="text-dark" style="font-size: 1.3rem;">
+                                        <i class="bi bi-facebook"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="instructor-info">
-                        <h5>Amanda Rodriguez</h5>
-                        <p class="specialty">UX Design</p>
-                        <p class="description">
-                            Pellentesque habitant morbi tristique senectus et netus et
-                            malesuada fames ac turpis.
-                        </p>
-                        <div class="stats-grid">
-                            <div class="stat">
-                                <span class="number">1.8k</span>
-                                <span class="label">Students</span>
-                            </div>
-                            <div class="stat">
-                                <span class="number">4.6</span>
-                                <span class="label">Rating</span>
-                            </div>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="btn-view">View Profile</a>
-                            <div class="social-links">
-                                <a href="#"><i class="bi bi-dribbble"></i></a>
-                                <a href="#"><i class="bi bi-behance"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-xl-3 col-lg-4 col-md-6"
-                 data-aos="fade-up"
-                 data-aos-delay="350">
-                <div class="instructor-card">
-                    <div class="instructor-image">
-                        <img src="~/img/education/teacher-9.webp"
-                             class="img-fluid"
-                             alt="" />
-                        <div class="overlay-content">
-                            <div class="rating-stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-half"></i>
-                                <span>4.7</span>
-                            </div>
-                            <div class="course-count">
-                                <i class="bi bi-play-circle"></i>
-                                <span>21 Courses</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="instructor-info">
-                        <h5>David Thompson</h5>
-                        <p class="specialty">Digital Marketing</p>
-                        <p class="description">
-                            Vivamus magna justo lacinia eget consectetur sed convallis
-                            at tellus curabitur non nulla.
-                        </p>
-                        <div class="stats-grid">
-                            <div class="stat">
-                                <span class="number">2.9k</span>
-                                <span class="label">Students</span>
-                            </div>
-                            <div class="stat">
-                                <span class="number">4.7</span>
-                                <span class="label">Rating</span>
-                            </div>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="#" class="btn-view">View Profile</a>
-                            <div class="social-links">
-                                <a href="#"><i class="bi bi-instagram"></i></a>
-                                <a href="#"><i class="bi bi-facebook"></i></a>
-                            </div>
-                        </div>
                     </div>
                 </div>
-            </div>
+
+            }
         </div>
     </div>
 </section>
-<!-- /Featured Instructors Section -->

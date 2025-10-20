@@ -15,5 +15,8 @@ namespace OnlineLearningPlatform.Repositories.Interfaces
 
         Task<IEnumerable<User>> GetDeletedUsersAsync(string? searchTerm);
         Task<IEnumerable<User>> GetInactiveUsersAsync(string? searchTerm);
+
+        Task<IEnumerable<User>> GetAllActiveMentorAsync(string? searchTerm);
+        Task<List<User>> GetTopMentorsByStudentCountFromDbAsync(int count);
     }
 }

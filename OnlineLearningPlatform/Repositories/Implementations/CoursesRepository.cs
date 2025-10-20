@@ -1,5 +1,4 @@
-﻿using System.Text.RegularExpressions;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using OnlineLearningPlatform.Data;
 using OnlineLearningPlatform.Enums;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
@@ -12,7 +11,7 @@ namespace OnlineLearningPlatform.Repositories
 {
     public class CoursesRepository : BaseRepository<Course>, ICourseRepository
     {
-        private readonly OnlineLearningDBContext _context;
+        private new readonly OnlineLearningDBContext _context;
         public CoursesRepository(OnlineLearningDBContext context) : base(context)
         {
             _context = context;
@@ -187,6 +186,13 @@ namespace OnlineLearningPlatform.Repositories
             var allMatchingCourses = await query.ToListAsync();
 
             return allMatchingCourses.ToPagedList(pageNumber, pageSize);
+        }
+
+        public async Task<int> GetCourseCountsByMentorIdsAsync(string mentorId)
+        {
+            return await _context.Courses
+                                 .AsNoTracking()
+                                 .CountAsync(c => c.Creator == mentorId && c.Status == CourseStatus.Approved);
         }
     }
 }

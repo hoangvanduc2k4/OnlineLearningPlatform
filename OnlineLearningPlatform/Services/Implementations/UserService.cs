@@ -1,17 +1,22 @@
 ﻿using OnlineLearningPlatform.Models.Entities.UserPart;
-using OnlineLearningPlatform.Services.Interfaces;
+using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Repositories.Interfaces;
-using Microsoft.AspNetCore.Http;
+using OnlineLearningPlatform.Services.Interfaces;
+using X.PagedList;
+using X.PagedList.Extensions;
 
 namespace OnlineLearningPlatform.Services.Implementations
 {
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-
-        public UserService(IUserRepository userRepository)
+        private readonly ICourseService _courseService;
+        private readonly ICourseEnrollmentService _enrollmentService;
+        public UserService(IUserRepository userRepository, ICourseEnrollmentService courseEnrollmentService, ICourseService courseService)
         {
             _userRepository = userRepository;
+            _enrollmentService = courseEnrollmentService;
+            _courseService = courseService;
         }
 
         public async Task<User> AddUserAsync(User user)
@@ -45,6 +50,11 @@ namespace OnlineLearningPlatform.Services.Implementations
             return await _userRepository.GetActiveUsersAsync(searchTerm);
         }
 
+        public async Task<IEnumerable<User>> GetAllActiveMentorAsync(string? searchTerm)
+        {
+            return await _userRepository.GetAllActiveMentorAsync(searchTerm);
+        }
+
         public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
             return await _userRepository.GetAllAsync();
@@ -68,6 +78,51 @@ namespace OnlineLearningPlatform.Services.Implementations
         public async Task<IEnumerable<User>> GetInactiveUsersAsync(string? searchTerm)
         {
             return await _userRepository.GetInactiveUsersAsync(searchTerm);
+        }
+
+        public async Task<IPagedList<InstructorViewModel>> GetPaginatedMentorsAsync(string searchString, int page, int pageSize, string? sortBy = null, string? orderBy = "desc")
+        {
+            var allMentorsList = await GetAllActiveMentorAsync(searchString);
+
+            var viewModels = new List<InstructorViewModel>();
+
+            foreach (var user in allMentorsList)
+            {
+                int courseCount = await _courseService.GetStudentCountsByMentorIdsAsync(user.Id);
+                int studentCount = await _enrollmentService.GetStudentCountByMentorIdAsync(user.Id);
+
+                viewModels.Add(new InstructorViewModel
+                {
+                    Id = user.Id,
+                    FullName = user.FullName ?? "Unnamed mentor",
+                    ImageUrl = user.AvatarUrl ?? "~/uploads/avatars/avatar.png",
+                    CourseCount = courseCount,
+                    StudentCount = studentCount,
+                });
+            }
+
+            var sortedViewModels = viewModels.AsQueryable();
+            bool isAscending = orderBy?.ToLower() == "asc";
+
+            switch (sortBy?.ToLower())
+            {
+                case "students":
+                    sortedViewModels = isAscending
+                        ? sortedViewModels.OrderBy(vm => vm.StudentCount)
+                        : sortedViewModels.OrderByDescending(vm => vm.StudentCount);
+                    break;
+                case "name":
+                    sortedViewModels = isAscending
+                       ? sortedViewModels.OrderBy(vm => vm.FullName)
+                       : sortedViewModels.OrderByDescending(vm => vm.FullName);
+                    break;
+                default:
+                    break;
+            }
+
+            var pagedViewModel = sortedViewModels.ToPagedList(page, pageSize);
+
+            return pagedViewModel;
         }
 
         public async Task<User?> GetUserByEmailAsync(string email)
@@ -96,5 +151,31 @@ namespace OnlineLearningPlatform.Services.Implementations
         {
             await _userRepository.UpdateAsync(user);
         }
+
+
+        public async Task<List<InstructorViewModel>> GetTopMentorsByStudentCountAsync(int count)
+        {
+            var topMentorUsers = await _userRepository.GetTopMentorsByStudentCountFromDbAsync(count);
+
+            var viewModels = new List<InstructorViewModel>();
+            foreach (var user in topMentorUsers)
+            {
+                int courseCount = await _courseService.GetStudentCountsByMentorIdsAsync(user.Id);
+                int studentCount = await _enrollmentService.GetStudentCountByMentorIdAsync(user.Id);// Assuming you keep injecting this
+
+                viewModels.Add(new InstructorViewModel
+                {
+                    Id = user.Id,
+                    FullName = user.FullName ?? "Unnamed mentor",
+                    ImageUrl = user.AvatarUrl ?? "~/uploads/avatars/avatar.png",
+                    CourseCount = courseCount,
+                    StudentCount = studentCount
+                });
+            }
+
+            return viewModels;
+        }
+
+
     }
 }
