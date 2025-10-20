@@ -3,9 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using OnlineLearningPlatform.Data;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Repositories.Interfaces;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace OnlineLearningPlatform.Repositories
 {
@@ -17,7 +14,6 @@ namespace OnlineLearningPlatform.Repositories
         {
             _context = context;
         }
-
         public async Task<List<Ratings>> GetRatingsByCourseIdAsync(long courseId)
         {
             return await _context.Ratings

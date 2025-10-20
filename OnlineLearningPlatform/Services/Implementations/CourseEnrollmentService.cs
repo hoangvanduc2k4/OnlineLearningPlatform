@@ -22,5 +22,9 @@ namespace OnlineLearningPlatform.Services.Implementations
             return await _courseEnrollmentRepository.CheckUserPurchaseCourseAsync(userId, courseId);
         }
 
+        public async Task<int> GetStudentCountByMentorIdAsync(string mentorId)
+        {
+            return await _courseEnrollmentRepository.GetStudentCountByMentorIdAsync(mentorId);
+        }
     }
 }

@@ -20,5 +20,14 @@ namespace OnlineLearningPlatform.Repositories.Implementations
             return transactionHistory != null;
         }
 
+        public async Task<int> GetStudentCountByMentorIdAsync(string mentorId)
+        {
+            return await _context.CourseEnrollments
+                  .AsNoTracking()
+                  .Where(ce => _context.Courses.Any(c => c.CourseId == ce.CourseId && c.Creator == mentorId))
+                  .Select(ce => ce.UserId)
+                  .Distinct()
+                  .CountAsync();
+        }
     }
 }
