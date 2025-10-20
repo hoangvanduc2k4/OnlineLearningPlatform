@@ -21,13 +21,12 @@ namespace OnlineLearningPlatform.Data.Seeds
             // giả sử mỗi quiz có 5 câu hỏi (theo seed Question)
             int totalQuestions = 5;
 
-            // mỗi quiz có kết quả của 2 user: user 3 và user 4
-            for (long quizId = 1; quizId <= 12; quizId++)
+            for (long quizId = 1; quizId <= 155; quizId++)
             {
                 results.Add(new QuizResult
                 {
                     QuizResultId = quizResultId++,
-                    UserId = "3",
+                    UserId = "5",
                     QuizId = quizId,
                     TotalQuestions = totalQuestions,
                     CorrectAnswers = 4,
@@ -40,7 +39,7 @@ namespace OnlineLearningPlatform.Data.Seeds
                 results.Add(new QuizResult
                 {
                     QuizResultId = quizResultId++,
-                    UserId = "4",
+                    UserId = "6",
                     QuizId = quizId,
                     TotalQuestions = totalQuestions,
                     CorrectAnswers = 3,
@@ -49,8 +48,20 @@ namespace OnlineLearningPlatform.Data.Seeds
                     EndTime = new DateTime(2025, 3, 2, 9, 45, 0),
                     CreatedAt = new DateTime(2025, 3, 2, 9, 45, 0)
                 });
-            }
 
+                results.Add(new QuizResult
+                {
+                    QuizResultId = quizResultId++,
+                    UserId = "7",
+                    QuizId = quizId,
+                    TotalQuestions = totalQuestions,
+                    CorrectAnswers = 5,
+                    Score = 100.00m,
+                    StartTime = new DateTime(2025, 3, 2, 9, 30, 0),
+                    EndTime = new DateTime(2025, 3, 2, 9, 45, 0),
+                    CreatedAt = new DateTime(2025, 3, 2, 9, 45, 0)
+                });
+            }
             return results;
         }
     }

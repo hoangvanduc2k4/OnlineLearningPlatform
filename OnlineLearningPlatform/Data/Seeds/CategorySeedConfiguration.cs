@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
-using System.Collections.Generic;
 
 namespace OnlineLearningPlatform.Data.Seeds
 {
@@ -17,10 +16,15 @@ namespace OnlineLearningPlatform.Data.Seeds
             return new List<Category>
             {
                 new Category { CategoryId = 1, CategoryName = "Programming", IsDeleted = false },
-                new Category { CategoryId = 2, CategoryName = "Design",      IsDeleted = false },
-                new Category { CategoryId = 3, CategoryName = "Marketing",   IsDeleted = false },
-                new Category { CategoryId = 4, CategoryName = "Business",    IsDeleted = false },
-                new Category { CategoryId = 5, CategoryName = "Photography", IsDeleted = false }
+                new Category { CategoryId = 2, CategoryName = "Design", IsDeleted = false },
+                new Category { CategoryId = 3, CategoryName = "Marketing", IsDeleted = false },
+                new Category { CategoryId = 4, CategoryName = "Business", IsDeleted = false },
+                new Category { CategoryId = 5, CategoryName = "Photography", IsDeleted = false },
+                new Category { CategoryId = 6, CategoryName = "Data Science", IsDeleted = false },
+                new Category { CategoryId = 7, CategoryName = "Machine Learning", IsDeleted = false },
+                new Category { CategoryId = 8, CategoryName = "Artificial Intelligence", IsDeleted = false },
+                new Category { CategoryId = 9, CategoryName = "Web Development", IsDeleted = false },
+                new Category { CategoryId = 10, CategoryName = "Mobile Development", IsDeleted = false }
             };
         }
     }

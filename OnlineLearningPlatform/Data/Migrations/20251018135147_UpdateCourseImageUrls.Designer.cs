@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineLearningPlatform.Data;
 
@@ -11,9 +12,11 @@ using OnlineLearningPlatform.Data;
 namespace OnlineLearningPlatform.Data.Migrations
 {
     [DbContext(typeof(OnlineLearningDBContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251018135147_UpdateCourseImageUrls")]
+    partial class UpdateCourseImageUrls
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21499,6 +21502,276 @@ namespace OnlineLearningPlatform.Data.Migrations
                             CategoryId = 10L,
                             CategoryName = "Mobile Development",
                             IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 11L,
+                            CategoryName = "Cybersecurity",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 12L,
+                            CategoryName = "Cloud Computing",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 13L,
+                            CategoryName = "DevOps",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 14L,
+                            CategoryName = "Blockchain",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 15L,
+                            CategoryName = "Game Development",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 16L,
+                            CategoryName = "UI/UX Design",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 17L,
+                            CategoryName = "Digital Marketing",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 18L,
+                            CategoryName = "SEO (Search Engine Optimization)",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 19L,
+                            CategoryName = "Content Marketing",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 20L,
+                            CategoryName = "Social Media Marketing",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 21L,
+                            CategoryName = "Finance",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 22L,
+                            CategoryName = "Accounting",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 23L,
+                            CategoryName = "Entrepreneurship",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 24L,
+                            CategoryName = "Project Management",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 25L,
+                            CategoryName = "Leadership",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 26L,
+                            CategoryName = "Personal Development",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 27L,
+                            CategoryName = "Health & Fitness",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 28L,
+                            CategoryName = "Music",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 29L,
+                            CategoryName = "Language Learning",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 30L,
+                            CategoryName = "History",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 31L,
+                            CategoryName = "Science",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 32L,
+                            CategoryName = "Mathematics",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 33L,
+                            CategoryName = "Writing",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 34L,
+                            CategoryName = "Public Speaking",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 35L,
+                            CategoryName = "Graphic Design",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 36L,
+                            CategoryName = "Video Production",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 37L,
+                            CategoryName = "Animation",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 38L,
+                            CategoryName = "Architecture",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 39L,
+                            CategoryName = "Cooking & Culinary Arts",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 40L,
+                            CategoryName = "Crafts & DIY",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 41L,
+                            CategoryName = "Yoga & Meditation",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 42L,
+                            CategoryName = "Personal Finance & Investing",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 43L,
+                            CategoryName = "Real Estate",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 44L,
+                            CategoryName = "Data Analysis",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 45L,
+                            CategoryName = "Software Testing (QA)",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 46L,
+                            CategoryName = "IT & Networking",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 47L,
+                            CategoryName = "Human Resources",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 48L,
+                            CategoryName = "Sales & Persuasion",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 49L,
+                            CategoryName = "Philosophy",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 50L,
+                            CategoryName = "Psychology",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 51L,
+                            CategoryName = "Creative Writing",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 52L,
+                            CategoryName = "Music Production",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 53L,
+                            CategoryName = "Game Design",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 54L,
+                            CategoryName = "Copywriting",
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            CategoryId = 55L,
+                            CategoryName = "Stock Trading",
+                            IsDeleted = false
                         });
                 });
 
@@ -21579,11 +21852,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 1. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 2L,
-                            MentorId = "3",
+                            MentorId = "4",
                             Price = 21m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "11 hours",
+                            StudyTime = "18 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21595,11 +21868,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 2. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 3L,
-                            MentorId = "4",
+                            MentorId = "3",
                             Price = 22m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "12 hours",
+                            StudyTime = "5 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21615,7 +21888,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Price = 23m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "3 hours",
+                            StudyTime = "8 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21631,7 +21904,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Price = 24m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "8 hours",
+                            StudyTime = "11 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21643,11 +21916,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 5. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 3L,
-                            MentorId = "2",
+                            MentorId = "3",
                             Price = 25m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "29 hours",
+                            StudyTime = "6 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21659,11 +21932,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 6. Learn the fundamentals and advanced concepts.",
                             Discount = 5m,
                             LevelId = 1L,
-                            MentorId = "2",
+                            MentorId = "3",
                             Price = 26m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "6 hours",
+                            StudyTime = "7 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21675,11 +21948,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 7. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 2L,
-                            MentorId = "3",
+                            MentorId = "4",
                             Price = 27m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "17 hours",
+                            StudyTime = "3 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21691,11 +21964,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 8. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 3L,
-                            MentorId = "4",
+                            MentorId = "2",
                             Price = 28m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "4 hours",
+                            StudyTime = "30 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21707,11 +21980,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 9. Learn the fundamentals and advanced concepts.",
                             Discount = 5m,
                             LevelId = 1L,
-                            MentorId = "2",
+                            MentorId = "4",
                             Price = 29m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "13 hours",
+                            StudyTime = "15 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21723,11 +21996,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 10. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 2L,
-                            MentorId = "3",
+                            MentorId = "4",
                             Price = 30m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "27 hours",
+                            StudyTime = "26 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21739,11 +22012,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 11. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 3L,
-                            MentorId = "2",
+                            MentorId = "4",
                             Price = 31m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "18 hours",
+                            StudyTime = "26 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21755,7 +22028,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 12. Learn the fundamentals and advanced concepts.",
                             Discount = 5m,
                             LevelId = 1L,
-                            MentorId = "2",
+                            MentorId = "4",
                             Price = 32m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
@@ -21775,7 +22048,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Price = 33m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "3 hours",
+                            StudyTime = "15 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21803,11 +22076,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 15. Learn the fundamentals and advanced concepts.",
                             Discount = 5m,
                             LevelId = 1L,
-                            MentorId = "4",
+                            MentorId = "2",
                             Price = 35m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "22 hours",
+                            StudyTime = "14 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21819,11 +22092,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 16. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 2L,
-                            MentorId = "3",
+                            MentorId = "2",
                             Price = 36m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "22 hours",
+                            StudyTime = "9 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21835,11 +22108,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 17. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 3L,
-                            MentorId = "3",
+                            MentorId = "4",
                             Price = 37m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "6 hours",
+                            StudyTime = "29 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21851,11 +22124,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 18. Learn the fundamentals and advanced concepts.",
                             Discount = 5m,
                             LevelId = 1L,
-                            MentorId = "4",
+                            MentorId = "3",
                             Price = 38m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "16 hours",
+                            StudyTime = "11 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21867,11 +22140,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 19. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 2L,
-                            MentorId = "2",
+                            MentorId = "3",
                             Price = 39m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "27 hours",
+                            StudyTime = "20 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21887,7 +22160,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Price = 40m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "23 hours",
+                            StudyTime = "28 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21899,11 +22172,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 21. Learn the fundamentals and advanced concepts.",
                             Discount = 5m,
                             LevelId = 1L,
-                            MentorId = "3",
+                            MentorId = "4",
                             Price = 41m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "6 hours",
+                            StudyTime = "29 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21919,7 +22192,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Price = 42m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "3 hours",
+                            StudyTime = "12 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21935,7 +22208,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Price = 43m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "28 hours",
+                            StudyTime = "11 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21947,11 +22220,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 24. Learn the fundamentals and advanced concepts.",
                             Discount = 5m,
                             LevelId = 1L,
-                            MentorId = "3",
+                            MentorId = "2",
                             Price = 44m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "14 hours",
+                            StudyTime = "19 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21963,11 +22236,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 25. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 2L,
-                            MentorId = "4",
+                            MentorId = "2",
                             Price = 45m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "20 hours",
+                            StudyTime = "23 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21983,7 +22256,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Price = 46m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "27 hours",
+                            StudyTime = "5 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -21999,7 +22272,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Price = 47m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "12 hours",
+                            StudyTime = "25 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22011,11 +22284,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 28. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 2L,
-                            MentorId = "2",
+                            MentorId = "3",
                             Price = 48m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "10 hours",
+                            StudyTime = "28 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22027,7 +22300,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 29. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 3L,
-                            MentorId = "2",
+                            MentorId = "4",
                             Price = 49m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
@@ -22043,11 +22316,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 30. Learn the fundamentals and advanced concepts.",
                             Discount = 5m,
                             LevelId = 1L,
-                            MentorId = "4",
+                            MentorId = "3",
                             Price = 50m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "4 hours",
+                            StudyTime = "3 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22063,7 +22336,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Price = 51m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "8 hours",
+                            StudyTime = "4 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22075,11 +22348,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 32. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 3L,
-                            MentorId = "4",
+                            MentorId = "3",
                             Price = 52m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "25 hours",
+                            StudyTime = "29 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22091,11 +22364,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 33. Learn the fundamentals and advanced concepts.",
                             Discount = 5m,
                             LevelId = 1L,
-                            MentorId = "3",
+                            MentorId = "2",
                             Price = 53m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "5 hours",
+                            StudyTime = "30 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22111,7 +22384,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Price = 54m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "27 hours",
+                            StudyTime = "20 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22123,11 +22396,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 35. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 3L,
-                            MentorId = "2",
+                            MentorId = "4",
                             Price = 55m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "15 hours",
+                            StudyTime = "30 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22143,7 +22416,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Price = 56m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "14 hours",
+                            StudyTime = "30 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22155,11 +22428,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 37. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 2L,
-                            MentorId = "3",
+                            MentorId = "2",
                             Price = 57m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "4 hours",
+                            StudyTime = "20 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22171,11 +22444,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 38. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 3L,
-                            MentorId = "3",
+                            MentorId = "4",
                             Price = 58m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "12 hours",
+                            StudyTime = "28 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22187,11 +22460,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 39. Learn the fundamentals and advanced concepts.",
                             Discount = 5m,
                             LevelId = 1L,
-                            MentorId = "4",
+                            MentorId = "3",
                             Price = 59m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "12 hours",
+                            StudyTime = "3 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22203,11 +22476,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 40. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 2L,
-                            MentorId = "3",
+                            MentorId = "4",
                             Price = 60m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "16 hours",
+                            StudyTime = "4 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22223,7 +22496,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Price = 61m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "9 hours",
+                            StudyTime = "28 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22235,11 +22508,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 42. Learn the fundamentals and advanced concepts.",
                             Discount = 5m,
                             LevelId = 1L,
-                            MentorId = "2",
+                            MentorId = "3",
                             Price = 62m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "23 hours",
+                            StudyTime = "11 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22251,11 +22524,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 43. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 2L,
-                            MentorId = "3",
+                            MentorId = "2",
                             Price = 63m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "30 hours",
+                            StudyTime = "24 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22271,7 +22544,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Price = 64m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "15 hours",
+                            StudyTime = "12 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22283,11 +22556,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 45. Learn the fundamentals and advanced concepts.",
                             Discount = 5m,
                             LevelId = 1L,
-                            MentorId = "4",
+                            MentorId = "2",
                             Price = 65m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "26 hours",
+                            StudyTime = "10 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22303,7 +22576,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Price = 66m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "27 hours",
+                            StudyTime = "17 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22315,11 +22588,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 47. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 3L,
-                            MentorId = "3",
+                            MentorId = "4",
                             Price = 67m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "22 hours",
+                            StudyTime = "8 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22347,11 +22620,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 49. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 2L,
-                            MentorId = "3",
+                            MentorId = "4",
                             Price = 69m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "24 hours",
+                            StudyTime = "26 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22367,7 +22640,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Price = 70m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "7 hours",
+                            StudyTime = "16 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22379,11 +22652,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 51. Learn the fundamentals and advanced concepts.",
                             Discount = 5m,
                             LevelId = 1L,
-                            MentorId = "4",
+                            MentorId = "2",
                             Price = 71m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "19 hours",
+                            StudyTime = "3 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22399,7 +22672,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Price = 72m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "17 hours",
+                            StudyTime = "16 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22411,11 +22684,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 53. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 3L,
-                            MentorId = "3",
+                            MentorId = "4",
                             Price = 73m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "22 hours",
+                            StudyTime = "15 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22427,11 +22700,11 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 54. Learn the fundamentals and advanced concepts.",
                             Discount = 5m,
                             LevelId = 1L,
-                            MentorId = "3",
+                            MentorId = "4",
                             Price = 74m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
-                            StudyTime = "22 hours",
+                            StudyTime = "25 hours",
                             UpdatedAt = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -22443,7 +22716,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Description = "A detailed description for course number 55. Learn the fundamentals and advanced concepts.",
                             Discount = 0m,
                             LevelId = 2L,
-                            MentorId = "3",
+                            MentorId = "4",
                             Price = 75m,
                             PublishedAt = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 2,
@@ -22470,102 +22743,147 @@ namespace OnlineLearningPlatform.Data.Migrations
                         new
                         {
                             CourseId = 1L,
-                            CategoryId = 10L
+                            CategoryId = 23L
                         },
                         new
                         {
                             CourseId = 2L,
-                            CategoryId = 7L
+                            CategoryId = 49L
+                        },
+                        new
+                        {
+                            CourseId = 2L,
+                            CategoryId = 36L
                         },
                         new
                         {
                             CourseId = 3L,
-                            CategoryId = 8L
-                        },
-                        new
-                        {
-                            CourseId = 3L,
-                            CategoryId = 6L
-                        },
-                        new
-                        {
-                            CourseId = 3L,
-                            CategoryId = 2L
+                            CategoryId = 53L
                         },
                         new
                         {
                             CourseId = 4L,
-                            CategoryId = 6L
+                            CategoryId = 48L
+                        },
+                        new
+                        {
+                            CourseId = 4L,
+                            CategoryId = 32L
                         },
                         new
                         {
                             CourseId = 5L,
-                            CategoryId = 1L
+                            CategoryId = 30L
+                        },
+                        new
+                        {
+                            CourseId = 5L,
+                            CategoryId = 12L
+                        },
+                        new
+                        {
+                            CourseId = 5L,
+                            CategoryId = 40L
                         },
                         new
                         {
                             CourseId = 6L,
-                            CategoryId = 2L
+                            CategoryId = 53L
                         },
                         new
                         {
                             CourseId = 6L,
-                            CategoryId = 5L
+                            CategoryId = 52L
                         },
                         new
                         {
                             CourseId = 6L,
-                            CategoryId = 8L
+                            CategoryId = 55L
                         },
                         new
                         {
                             CourseId = 7L,
-                            CategoryId = 10L
+                            CategoryId = 30L
+                        },
+                        new
+                        {
+                            CourseId = 7L,
+                            CategoryId = 53L
                         },
                         new
                         {
                             CourseId = 8L,
-                            CategoryId = 6L
+                            CategoryId = 34L
+                        },
+                        new
+                        {
+                            CourseId = 8L,
+                            CategoryId = 30L
+                        },
+                        new
+                        {
+                            CourseId = 8L,
+                            CategoryId = 5L
                         },
                         new
                         {
                             CourseId = 9L,
-                            CategoryId = 5L
+                            CategoryId = 40L
+                        },
+                        new
+                        {
+                            CourseId = 9L,
+                            CategoryId = 27L
+                        },
+                        new
+                        {
+                            CourseId = 9L,
+                            CategoryId = 52L
                         },
                         new
                         {
                             CourseId = 10L,
-                            CategoryId = 1L
+                            CategoryId = 51L
                         },
                         new
                         {
                             CourseId = 10L,
-                            CategoryId = 6L
+                            CategoryId = 24L
+                        },
+                        new
+                        {
+                            CourseId = 10L,
+                            CategoryId = 2L
                         },
                         new
                         {
                             CourseId = 11L,
-                            CategoryId = 5L
-                        },
-                        new
-                        {
-                            CourseId = 11L,
-                            CategoryId = 8L
+                            CategoryId = 46L
                         },
                         new
                         {
                             CourseId = 11L,
                             CategoryId = 9L
+                        },
+                        new
+                        {
+                            CourseId = 11L,
+                            CategoryId = 40L
                         },
                         new
                         {
                             CourseId = 12L,
-                            CategoryId = 4L
+                            CategoryId = 18L
                         },
                         new
                         {
-                            CourseId = 13L,
-                            CategoryId = 7L
+                            CourseId = 12L,
+                            CategoryId = 2L
+                        },
+                        new
+                        {
+                            CourseId = 12L,
+                            CategoryId = 13L
                         },
                         new
                         {
@@ -22575,477 +22893,462 @@ namespace OnlineLearningPlatform.Data.Migrations
                         new
                         {
                             CourseId = 13L,
-                            CategoryId = 2L
+                            CategoryId = 45L
                         },
                         new
                         {
                             CourseId = 14L,
-                            CategoryId = 8L
+                            CategoryId = 51L
+                        },
+                        new
+                        {
+                            CourseId = 14L,
+                            CategoryId = 24L
+                        },
+                        new
+                        {
+                            CourseId = 14L,
+                            CategoryId = 38L
                         },
                         new
                         {
                             CourseId = 15L,
-                            CategoryId = 2L
+                            CategoryId = 46L
                         },
                         new
                         {
                             CourseId = 15L,
-                            CategoryId = 7L
-                        },
-                        new
-                        {
-                            CourseId = 15L,
-                            CategoryId = 8L
+                            CategoryId = 50L
                         },
                         new
                         {
                             CourseId = 16L,
-                            CategoryId = 7L
+                            CategoryId = 20L
+                        },
+                        new
+                        {
+                            CourseId = 16L,
+                            CategoryId = 39L
+                        },
+                        new
+                        {
+                            CourseId = 16L,
+                            CategoryId = 53L
                         },
                         new
                         {
                             CourseId = 17L,
-                            CategoryId = 5L
-                        },
-                        new
-                        {
-                            CourseId = 17L,
-                            CategoryId = 3L
-                        },
-                        new
-                        {
-                            CourseId = 17L,
-                            CategoryId = 2L
+                            CategoryId = 8L
                         },
                         new
                         {
                             CourseId = 18L,
-                            CategoryId = 4L
+                            CategoryId = 51L
                         },
                         new
                         {
-                            CourseId = 19L,
-                            CategoryId = 4L
-                        },
-                        new
-                        {
-                            CourseId = 19L,
+                            CourseId = 18L,
                             CategoryId = 7L
                         },
                         new
                         {
-                            CourseId = 20L,
-                            CategoryId = 4L
+                            CourseId = 19L,
+                            CategoryId = 46L
+                        },
+                        new
+                        {
+                            CourseId = 19L,
+                            CategoryId = 16L
+                        },
+                        new
+                        {
+                            CourseId = 19L,
+                            CategoryId = 37L
                         },
                         new
                         {
                             CourseId = 20L,
-                            CategoryId = 5L
+                            CategoryId = 9L
+                        },
+                        new
+                        {
+                            CourseId = 20L,
+                            CategoryId = 21L
                         },
                         new
                         {
                             CourseId = 21L,
-                            CategoryId = 6L
-                        },
-                        new
-                        {
-                            CourseId = 21L,
-                            CategoryId = 2L
+                            CategoryId = 46L
                         },
                         new
                         {
                             CourseId = 22L,
-                            CategoryId = 2L
+                            CategoryId = 27L
                         },
                         new
                         {
-                            CourseId = 23L,
+                            CourseId = 22L,
                             CategoryId = 1L
                         },
                         new
                         {
+                            CourseId = 22L,
+                            CategoryId = 36L
+                        },
+                        new
+                        {
                             CourseId = 23L,
+                            CategoryId = 50L
+                        },
+                        new
+                        {
+                            CourseId = 23L,
+                            CategoryId = 17L
+                        },
+                        new
+                        {
+                            CourseId = 23L,
+                            CategoryId = 15L
+                        },
+                        new
+                        {
+                            CourseId = 24L,
+                            CategoryId = 45L
+                        },
+                        new
+                        {
+                            CourseId = 25L,
+                            CategoryId = 5L
+                        },
+                        new
+                        {
+                            CourseId = 25L,
+                            CategoryId = 32L
+                        },
+                        new
+                        {
+                            CourseId = 26L,
                             CategoryId = 9L
                         },
                         new
                         {
-                            CourseId = 23L,
-                            CategoryId = 4L
+                            CourseId = 26L,
+                            CategoryId = 24L
                         },
                         new
                         {
-                            CourseId = 24L,
-                            CategoryId = 1L
+                            CourseId = 26L,
+                            CategoryId = 30L
                         },
                         new
                         {
-                            CourseId = 24L,
-                            CategoryId = 2L
-                        },
-                        new
-                        {
-                            CourseId = 24L,
-                            CategoryId = 8L
-                        },
-                        new
-                        {
-                            CourseId = 25L,
-                            CategoryId = 4L
-                        },
-                        new
-                        {
-                            CourseId = 25L,
-                            CategoryId = 8L
-                        },
-                        new
-                        {
-                            CourseId = 25L,
+                            CourseId = 27L,
                             CategoryId = 3L
                         },
                         new
                         {
-                            CourseId = 26L,
-                            CategoryId = 7L
+                            CourseId = 27L,
+                            CategoryId = 53L
                         },
                         new
                         {
-                            CourseId = 26L,
+                            CourseId = 27L,
                             CategoryId = 10L
-                        },
-                        new
-                        {
-                            CourseId = 27L,
-                            CategoryId = 2L
-                        },
-                        new
-                        {
-                            CourseId = 27L,
-                            CategoryId = 6L
-                        },
-                        new
-                        {
-                            CourseId = 27L,
-                            CategoryId = 8L
                         },
                         new
                         {
                             CourseId = 28L,
-                            CategoryId = 9L
-                        },
-                        new
-                        {
-                            CourseId = 29L,
-                            CategoryId = 3L
-                        },
-                        new
-                        {
-                            CourseId = 29L,
-                            CategoryId = 4L
-                        },
-                        new
-                        {
-                            CourseId = 30L,
                             CategoryId = 1L
                         },
                         new
                         {
-                            CourseId = 30L,
-                            CategoryId = 5L
+                            CourseId = 29L,
+                            CategoryId = 42L
+                        },
+                        new
+                        {
+                            CourseId = 29L,
+                            CategoryId = 25L
+                        },
+                        new
+                        {
+                            CourseId = 29L,
+                            CategoryId = 14L
                         },
                         new
                         {
                             CourseId = 30L,
-                            CategoryId = 2L
+                            CategoryId = 50L
+                        },
+                        new
+                        {
+                            CourseId = 30L,
+                            CategoryId = 6L
                         },
                         new
                         {
                             CourseId = 31L,
-                            CategoryId = 8L
+                            CategoryId = 16L
                         },
                         new
                         {
                             CourseId = 31L,
-                            CategoryId = 4L
+                            CategoryId = 14L
                         },
                         new
                         {
                             CourseId = 32L,
-                            CategoryId = 6L
+                            CategoryId = 51L
                         },
                         new
                         {
                             CourseId = 33L,
-                            CategoryId = 7L
+                            CategoryId = 44L
                         },
                         new
                         {
-                            CourseId = 34L,
-                            CategoryId = 9L
-                        },
-                        new
-                        {
-                            CourseId = 34L,
-                            CategoryId = 2L
-                        },
-                        new
-                        {
-                            CourseId = 34L,
-                            CategoryId = 3L
-                        },
-                        new
-                        {
-                            CourseId = 35L,
+                            CourseId = 33L,
                             CategoryId = 1L
                         },
                         new
                         {
-                            CourseId = 35L,
+                            CourseId = 33L,
                             CategoryId = 2L
                         },
                         new
                         {
+                            CourseId = 34L,
+                            CategoryId = 13L
+                        },
+                        new
+                        {
+                            CourseId = 34L,
+                            CategoryId = 45L
+                        },
+                        new
+                        {
+                            CourseId = 34L,
+                            CategoryId = 27L
+                        },
+                        new
+                        {
                             CourseId = 35L,
-                            CategoryId = 4L
+                            CategoryId = 27L
+                        },
+                        new
+                        {
+                            CourseId = 35L,
+                            CategoryId = 25L
+                        },
+                        new
+                        {
+                            CourseId = 35L,
+                            CategoryId = 26L
                         },
                         new
                         {
                             CourseId = 36L,
-                            CategoryId = 9L
+                            CategoryId = 19L
                         },
                         new
                         {
                             CourseId = 36L,
-                            CategoryId = 4L
+                            CategoryId = 48L
                         },
                         new
                         {
                             CourseId = 36L,
-                            CategoryId = 2L
+                            CategoryId = 7L
                         },
                         new
                         {
                             CourseId = 37L,
-                            CategoryId = 10L
+                            CategoryId = 32L
                         },
                         new
                         {
-                            CourseId = 38L,
-                            CategoryId = 10L
-                        },
-                        new
-                        {
-                            CourseId = 38L,
+                            CourseId = 37L,
                             CategoryId = 4L
                         },
                         new
                         {
+                            CourseId = 37L,
+                            CategoryId = 14L
+                        },
+                        new
+                        {
+                            CourseId = 38L,
+                            CategoryId = 20L
+                        },
+                        new
+                        {
+                            CourseId = 38L,
+                            CategoryId = 18L
+                        },
+                        new
+                        {
+                            CourseId = 38L,
+                            CategoryId = 30L
+                        },
+                        new
+                        {
                             CourseId = 39L,
-                            CategoryId = 9L
+                            CategoryId = 47L
                         },
                         new
                         {
                             CourseId = 39L,
                             CategoryId = 3L
+                        },
+                        new
+                        {
+                            CourseId = 39L,
+                            CategoryId = 18L
                         },
                         new
                         {
                             CourseId = 40L,
-                            CategoryId = 1L
+                            CategoryId = 12L
                         },
                         new
                         {
                             CourseId = 41L,
-                            CategoryId = 4L
+                            CategoryId = 23L
                         },
                         new
                         {
                             CourseId = 41L,
-                            CategoryId = 7L
-                        },
-                        new
-                        {
-                            CourseId = 41L,
-                            CategoryId = 9L
+                            CategoryId = 46L
                         },
                         new
                         {
                             CourseId = 42L,
-                            CategoryId = 7L
-                        },
-                        new
-                        {
-                            CourseId = 42L,
-                            CategoryId = 3L
+                            CategoryId = 20L
                         },
                         new
                         {
                             CourseId = 43L,
-                            CategoryId = 9L
+                            CategoryId = 55L
                         },
                         new
                         {
                             CourseId = 43L,
-                            CategoryId = 5L
+                            CategoryId = 18L
                         },
                         new
                         {
                             CourseId = 43L,
-                            CategoryId = 8L
+                            CategoryId = 24L
                         },
                         new
                         {
                             CourseId = 44L,
-                            CategoryId = 2L
+                            CategoryId = 43L
+                        },
+                        new
+                        {
+                            CourseId = 44L,
+                            CategoryId = 10L
                         },
                         new
                         {
                             CourseId = 45L,
-                            CategoryId = 1L
-                        },
-                        new
-                        {
-                            CourseId = 45L,
-                            CategoryId = 9L
-                        },
-                        new
-                        {
-                            CourseId = 45L,
-                            CategoryId = 2L
+                            CategoryId = 30L
                         },
                         new
                         {
                             CourseId = 46L,
-                            CategoryId = 4L
+                            CategoryId = 43L
                         },
                         new
                         {
                             CourseId = 46L,
-                            CategoryId = 10L
-                        },
-                        new
-                        {
-                            CourseId = 46L,
-                            CategoryId = 1L
+                            CategoryId = 13L
                         },
                         new
                         {
                             CourseId = 47L,
-                            CategoryId = 10L
-                        },
-                        new
-                        {
-                            CourseId = 47L,
-                            CategoryId = 4L
-                        },
-                        new
-                        {
-                            CourseId = 47L,
-                            CategoryId = 1L
-                        },
-                        new
-                        {
-                            CourseId = 48L,
-                            CategoryId = 2L
-                        },
-                        new
-                        {
-                            CourseId = 48L,
-                            CategoryId = 10L
-                        },
-                        new
-                        {
-                            CourseId = 48L,
-                            CategoryId = 5L
-                        },
-                        new
-                        {
-                            CourseId = 49L,
-                            CategoryId = 5L
-                        },
-                        new
-                        {
-                            CourseId = 49L,
-                            CategoryId = 9L
-                        },
-                        new
-                        {
-                            CourseId = 49L,
-                            CategoryId = 10L
-                        },
-                        new
-                        {
-                            CourseId = 50L,
-                            CategoryId = 2L
-                        },
-                        new
-                        {
-                            CourseId = 50L,
-                            CategoryId = 10L
-                        },
-                        new
-                        {
-                            CourseId = 51L,
-                            CategoryId = 1L
-                        },
-                        new
-                        {
-                            CourseId = 51L,
-                            CategoryId = 4L
-                        },
-                        new
-                        {
-                            CourseId = 52L,
                             CategoryId = 6L
                         },
                         new
                         {
-                            CourseId = 52L,
-                            CategoryId = 2L
+                            CourseId = 48L,
+                            CategoryId = 10L
                         },
                         new
                         {
-                            CourseId = 52L,
-                            CategoryId = 9L
+                            CourseId = 48L,
+                            CategoryId = 33L
                         },
                         new
                         {
-                            CourseId = 53L,
-                            CategoryId = 2L
+                            CourseId = 49L,
+                            CategoryId = 31L
                         },
                         new
                         {
-                            CourseId = 53L,
+                            CourseId = 50L,
+                            CategoryId = 14L
+                        },
+                        new
+                        {
+                            CourseId = 50L,
+                            CategoryId = 50L
+                        },
+                        new
+                        {
+                            CourseId = 50L,
                             CategoryId = 5L
                         },
                         new
                         {
-                            CourseId = 53L,
+                            CourseId = 51L,
+                            CategoryId = 6L
+                        },
+                        new
+                        {
+                            CourseId = 51L,
                             CategoryId = 8L
                         },
                         new
                         {
-                            CourseId = 54L,
-                            CategoryId = 6L
+                            CourseId = 52L,
+                            CategoryId = 20L
+                        },
+                        new
+                        {
+                            CourseId = 52L,
+                            CategoryId = 48L
+                        },
+                        new
+                        {
+                            CourseId = 52L,
+                            CategoryId = 16L
+                        },
+                        new
+                        {
+                            CourseId = 53L,
+                            CategoryId = 34L
                         },
                         new
                         {
                             CourseId = 54L,
-                            CategoryId = 4L
+                            CategoryId = 18L
                         },
                         new
                         {
                             CourseId = 55L,
-                            CategoryId = 7L
+                            CategoryId = 26L
                         },
                         new
                         {
                             CourseId = 55L,
-                            CategoryId = 9L
+                            CategoryId = 20L
                         },
                         new
                         {
                             CourseId = 55L,
-                            CategoryId = 10L
+                            CategoryId = 35L
                         });
                 });
 
@@ -23072,123 +23375,141 @@ namespace OnlineLearningPlatform.Data.Migrations
                     b.HasData(
                         new
                         {
-                            CourseId = 5L,
-                            UserId = "5",
-                            DateCreated = new DateTime(2025, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 30L,
-                            UserId = "5",
-                            DateCreated = new DateTime(2025, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 12L,
-                            UserId = "5",
-                            DateCreated = new DateTime(2025, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 52L,
-                            UserId = "5",
-                            DateCreated = new DateTime(2025, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 41L,
-                            UserId = "5",
-                            DateCreated = new DateTime(2025, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 43L,
-                            UserId = "5",
-                            DateCreated = new DateTime(2025, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 36L,
-                            UserId = "5",
-                            DateCreated = new DateTime(2025, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 11L,
-                            UserId = "5",
-                            DateCreated = new DateTime(2025, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 37L,
-                            UserId = "5",
-                            DateCreated = new DateTime(2025, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 8L,
-                            UserId = "5",
-                            DateCreated = new DateTime(2025, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 10L,
+                            CourseId = 1L,
                             UserId = "5",
                             DateCreated = new DateTime(2025, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 38L,
-                            UserId = "5",
-                            DateCreated = new DateTime(2025, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             CourseId = 53L,
                             UserId = "5",
-                            DateCreated = new DateTime(2025, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DateCreated = new DateTime(2025, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            CourseId = 44L,
+                            CourseId = 12L,
                             UserId = "5",
-                            DateCreated = new DateTime(2025, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DateCreated = new DateTime(2025, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            CourseId = 26L,
+                            CourseId = 30L,
+                            UserId = "5",
+                            DateCreated = new DateTime(2025, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 5L,
                             UserId = "5",
                             DateCreated = new DateTime(2025, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            CourseId = 2L,
-                            UserId = "6",
-                            DateCreated = new DateTime(2025, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CourseId = 27L,
+                            UserId = "5",
+                            DateCreated = new DateTime(2025, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            CourseId = 3L,
-                            UserId = "6",
+                            CourseId = 41L,
+                            UserId = "5",
+                            DateCreated = new DateTime(2025, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 37L,
+                            UserId = "5",
+                            DateCreated = new DateTime(2025, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 23L,
+                            UserId = "5",
+                            DateCreated = new DateTime(2025, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 40L,
+                            UserId = "5",
+                            DateCreated = new DateTime(2025, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 39L,
+                            UserId = "5",
+                            DateCreated = new DateTime(2025, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 25L,
+                            UserId = "5",
+                            DateCreated = new DateTime(2025, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 17L,
+                            UserId = "5",
                             DateCreated = new DateTime(2025, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            CourseId = 10L,
-                            UserId = "6",
-                            DateCreated = new DateTime(2025, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CourseId = 52L,
+                            UserId = "5",
+                            DateCreated = new DateTime(2025, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            CourseId = 32L,
+                            CourseId = 24L,
+                            UserId = "5",
+                            DateCreated = new DateTime(2025, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 43L,
                             UserId = "6",
-                            DateCreated = new DateTime(2025, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DateCreated = new DateTime(2025, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 34L,
+                            UserId = "6",
+                            DateCreated = new DateTime(2025, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 54L,
+                            UserId = "6",
+                            DateCreated = new DateTime(2025, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             CourseId = 20L,
                             UserId = "6",
-                            DateCreated = new DateTime(2025, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DateCreated = new DateTime(2025, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 50L,
+                            UserId = "6",
+                            DateCreated = new DateTime(2025, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 9L,
+                            UserId = "6",
+                            DateCreated = new DateTime(2025, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 37L,
+                            UserId = "6",
+                            DateCreated = new DateTime(2025, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 36L,
+                            UserId = "6",
+                            DateCreated = new DateTime(2025, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
@@ -23198,145 +23519,127 @@ namespace OnlineLearningPlatform.Data.Migrations
                         },
                         new
                         {
-                            CourseId = 11L,
+                            CourseId = 35L,
                             UserId = "6",
-                            DateCreated = new DateTime(2025, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DateCreated = new DateTime(2025, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            CourseId = 52L,
+                            CourseId = 42L,
                             UserId = "6",
-                            DateCreated = new DateTime(2025, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DateCreated = new DateTime(2025, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            CourseId = 49L,
+                            CourseId = 4L,
                             UserId = "6",
-                            DateCreated = new DateTime(2025, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DateCreated = new DateTime(2025, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            CourseId = 13L,
-                            UserId = "6",
-                            DateCreated = new DateTime(2025, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 45L,
-                            UserId = "6",
-                            DateCreated = new DateTime(2025, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 36L,
-                            UserId = "6",
-                            DateCreated = new DateTime(2025, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 9L,
-                            UserId = "6",
-                            DateCreated = new DateTime(2025, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 5L,
-                            UserId = "6",
-                            DateCreated = new DateTime(2025, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 21L,
+                            CourseId = 32L,
                             UserId = "6",
                             DateCreated = new DateTime(2025, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            CourseId = 14L,
+                            CourseId = 29L,
+                            UserId = "6",
+                            DateCreated = new DateTime(2025, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 21L,
+                            UserId = "6",
+                            DateCreated = new DateTime(2025, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 35L,
                             UserId = "7",
                             DateCreated = new DateTime(2025, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            CourseId = 5L,
+                            CourseId = 30L,
                             UserId = "7",
                             DateCreated = new DateTime(2025, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            CourseId = 21L,
+                            CourseId = 34L,
                             UserId = "7",
-                            DateCreated = new DateTime(2025, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DateCreated = new DateTime(2025, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            CourseId = 13L,
+                            CourseId = 7L,
+                            UserId = "7",
+                            DateCreated = new DateTime(2025, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 27L,
+                            UserId = "7",
+                            DateCreated = new DateTime(2025, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 41L,
+                            UserId = "7",
+                            DateCreated = new DateTime(2025, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 11L,
+                            UserId = "7",
+                            DateCreated = new DateTime(2025, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 15L,
                             UserId = "7",
                             DateCreated = new DateTime(2025, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            CourseId = 22L,
+                            CourseId = 31L,
                             UserId = "7",
-                            DateCreated = new DateTime(2025, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DateCreated = new DateTime(2025, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            CourseId = 48L,
-                            UserId = "7",
-                            DateCreated = new DateTime(2025, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 9L,
-                            UserId = "7",
-                            DateCreated = new DateTime(2025, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 12L,
-                            UserId = "7",
-                            DateCreated = new DateTime(2025, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 38L,
+                            CourseId = 5L,
                             UserId = "7",
                             DateCreated = new DateTime(2025, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            CourseId = 50L,
+                            CourseId = 17L,
                             UserId = "7",
-                            DateCreated = new DateTime(2025, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            DateCreated = new DateTime(2025, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 25L,
+                            UserId = "7",
+                            DateCreated = new DateTime(2025, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 10L,
+                            UserId = "7",
+                            DateCreated = new DateTime(2025, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            CourseId = 53L,
+                            UserId = "7",
+                            DateCreated = new DateTime(2025, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             CourseId = 19L,
-                            UserId = "7",
-                            DateCreated = new DateTime(2025, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 52L,
-                            UserId = "7",
-                            DateCreated = new DateTime(2025, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 1L,
-                            UserId = "7",
-                            DateCreated = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 23L,
-                            UserId = "7",
-                            DateCreated = new DateTime(2025, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            CourseId = 55L,
                             UserId = "7",
                             DateCreated = new DateTime(2025, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
@@ -23368,991 +23671,991 @@ namespace OnlineLearningPlatform.Data.Migrations
                         {
                             Id = 1L,
                             CourseId = 1L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 2L,
                             CourseId = 1L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 3L,
                             CourseId = 1L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 4L,
                             CourseId = 2L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 5L,
                             CourseId = 2L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 6L,
                             CourseId = 2L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 7L,
                             CourseId = 3L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 8L,
                             CourseId = 3L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 9L,
                             CourseId = 3L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 10L,
                             CourseId = 4L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 11L,
                             CourseId = 4L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 12L,
                             CourseId = 4L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 13L,
                             CourseId = 5L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 14L,
                             CourseId = 5L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 15L,
                             CourseId = 5L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 16L,
                             CourseId = 6L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 17L,
                             CourseId = 6L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 18L,
                             CourseId = 6L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 19L,
                             CourseId = 7L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 20L,
                             CourseId = 7L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 21L,
                             CourseId = 7L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 22L,
                             CourseId = 8L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 23L,
                             CourseId = 8L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 24L,
                             CourseId = 8L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 25L,
                             CourseId = 9L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 26L,
                             CourseId = 9L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 27L,
                             CourseId = 9L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 28L,
                             CourseId = 10L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 29L,
                             CourseId = 10L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 30L,
                             CourseId = 10L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 31L,
                             CourseId = 11L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 32L,
                             CourseId = 11L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 33L,
                             CourseId = 11L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 34L,
                             CourseId = 12L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 35L,
                             CourseId = 12L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 36L,
                             CourseId = 12L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 37L,
                             CourseId = 13L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 38L,
                             CourseId = 13L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 39L,
                             CourseId = 13L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 40L,
                             CourseId = 14L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 41L,
                             CourseId = 14L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 42L,
                             CourseId = 14L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 43L,
                             CourseId = 15L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 44L,
                             CourseId = 15L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 45L,
                             CourseId = 15L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 46L,
                             CourseId = 16L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 47L,
                             CourseId = 16L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 48L,
                             CourseId = 16L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 49L,
                             CourseId = 17L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 50L,
                             CourseId = 17L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 51L,
                             CourseId = 17L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 52L,
                             CourseId = 18L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 53L,
                             CourseId = 18L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 54L,
                             CourseId = 18L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 55L,
                             CourseId = 19L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 56L,
                             CourseId = 19L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 57L,
                             CourseId = 19L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 58L,
                             CourseId = 20L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 59L,
                             CourseId = 20L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 60L,
                             CourseId = 20L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 61L,
                             CourseId = 21L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 62L,
                             CourseId = 21L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 63L,
                             CourseId = 21L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 64L,
                             CourseId = 22L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 65L,
                             CourseId = 22L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 66L,
                             CourseId = 22L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 67L,
                             CourseId = 23L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 68L,
                             CourseId = 23L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 69L,
                             CourseId = 23L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 70L,
                             CourseId = 24L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 71L,
                             CourseId = 24L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 72L,
                             CourseId = 24L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 73L,
                             CourseId = 25L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 74L,
                             CourseId = 25L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 75L,
                             CourseId = 25L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 76L,
                             CourseId = 26L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 77L,
                             CourseId = 26L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 78L,
                             CourseId = 26L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 79L,
                             CourseId = 27L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 80L,
                             CourseId = 27L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 81L,
                             CourseId = 27L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 82L,
                             CourseId = 28L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 83L,
                             CourseId = 28L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 84L,
                             CourseId = 28L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 85L,
                             CourseId = 29L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 86L,
                             CourseId = 29L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 87L,
                             CourseId = 29L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 88L,
                             CourseId = 30L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 89L,
                             CourseId = 30L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 90L,
                             CourseId = 30L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 91L,
                             CourseId = 31L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 92L,
                             CourseId = 31L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 93L,
                             CourseId = 31L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 94L,
                             CourseId = 32L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 95L,
                             CourseId = 32L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 96L,
                             CourseId = 32L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 97L,
                             CourseId = 33L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 98L,
                             CourseId = 33L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 99L,
                             CourseId = 33L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 100L,
                             CourseId = 34L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 101L,
                             CourseId = 34L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 102L,
                             CourseId = 34L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 103L,
                             CourseId = 35L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 104L,
                             CourseId = 35L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 105L,
                             CourseId = 35L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 106L,
                             CourseId = 36L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 107L,
                             CourseId = 36L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 108L,
                             CourseId = 36L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 109L,
                             CourseId = 37L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 110L,
                             CourseId = 37L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 111L,
                             CourseId = 37L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 112L,
                             CourseId = 38L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 113L,
                             CourseId = 38L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 114L,
                             CourseId = 38L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 115L,
                             CourseId = 39L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 116L,
                             CourseId = 39L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 117L,
                             CourseId = 39L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 118L,
                             CourseId = 40L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 119L,
                             CourseId = 40L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 120L,
                             CourseId = 40L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 121L,
                             CourseId = 41L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 122L,
                             CourseId = 41L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 123L,
                             CourseId = 41L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 124L,
                             CourseId = 42L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 125L,
                             CourseId = 42L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 126L,
                             CourseId = 42L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 127L,
                             CourseId = 43L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 128L,
                             CourseId = 43L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 129L,
                             CourseId = 43L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 130L,
                             CourseId = 44L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 131L,
                             CourseId = 44L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 132L,
                             CourseId = 44L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 133L,
                             CourseId = 45L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 134L,
                             CourseId = 45L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 135L,
                             CourseId = 45L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 136L,
                             CourseId = 46L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 137L,
                             CourseId = 46L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 138L,
                             CourseId = 46L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 139L,
                             CourseId = 47L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 140L,
                             CourseId = 47L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 141L,
                             CourseId = 47L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 142L,
                             CourseId = 48L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 143L,
                             CourseId = 48L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 144L,
                             CourseId = 48L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 145L,
                             CourseId = 49L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 146L,
                             CourseId = 49L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 147L,
                             CourseId = 49L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 148L,
                             CourseId = 50L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 149L,
                             CourseId = 50L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 150L,
                             CourseId = 50L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 151L,
                             CourseId = 51L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 152L,
                             CourseId = 51L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 153L,
                             CourseId = 51L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 154L,
                             CourseId = 52L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 155L,
                             CourseId = 52L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 156L,
                             CourseId = 52L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 157L,
                             CourseId = 53L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 158L,
                             CourseId = 53L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 159L,
                             CourseId = 53L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 160L,
                             CourseId = 54L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 161L,
                             CourseId = 54L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 162L,
                             CourseId = 54L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         },
                         new
                         {
                             Id = 163L,
                             CourseId = 55L,
-                            Url = "/img/Course/1.png"
+                            Url = "/img/blog/Course/1.png"
                         },
                         new
                         {
                             Id = 164L,
                             CourseId = 55L,
-                            Url = "/img/Course/2.png"
+                            Url = "/img/blog/Course/2.png"
                         },
                         new
                         {
                             Id = 165L,
                             CourseId = 55L,
-                            Url = "/img/Course/3.png"
+                            Url = "/img/blog/Course/3.png"
                         });
                 });
 
@@ -66749,7 +67052,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8709),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8118),
                             UserId = "5"
                         },
                         new
@@ -66762,7 +67065,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8733),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8156),
                             UserId = "6"
                         },
                         new
@@ -66775,7 +67078,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8737),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8160),
                             UserId = "7"
                         },
                         new
@@ -66788,7 +67091,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8740),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8163),
                             UserId = "5"
                         },
                         new
@@ -66801,7 +67104,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8742),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8165),
                             UserId = "6"
                         },
                         new
@@ -66814,7 +67117,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8744),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8169),
                             UserId = "7"
                         },
                         new
@@ -66827,7 +67130,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8746),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8171),
                             UserId = "5"
                         },
                         new
@@ -66840,7 +67143,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8747),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8173),
                             UserId = "6"
                         },
                         new
@@ -66853,7 +67156,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8748),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8174),
                             UserId = "7"
                         },
                         new
@@ -66866,7 +67169,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8751),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8177),
                             UserId = "5"
                         },
                         new
@@ -66879,7 +67182,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8752),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8179),
                             UserId = "6"
                         },
                         new
@@ -66892,7 +67195,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8753),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8180),
                             UserId = "7"
                         },
                         new
@@ -66905,7 +67208,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8755),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8182),
                             UserId = "5"
                         },
                         new
@@ -66918,7 +67221,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8756),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8183),
                             UserId = "6"
                         },
                         new
@@ -66931,7 +67234,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8758),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8185),
                             UserId = "7"
                         },
                         new
@@ -66944,7 +67247,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8759),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8204),
                             UserId = "5"
                         },
                         new
@@ -66957,7 +67260,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8760),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8206),
                             UserId = "6"
                         },
                         new
@@ -66970,7 +67273,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8762),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8209),
                             UserId = "7"
                         },
                         new
@@ -66983,7 +67286,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8763),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8211),
                             UserId = "5"
                         },
                         new
@@ -66996,7 +67299,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8765),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8213),
                             UserId = "6"
                         },
                         new
@@ -67009,7 +67312,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8766),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8215),
                             UserId = "7"
                         },
                         new
@@ -67022,7 +67325,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8767),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8217),
                             UserId = "5"
                         },
                         new
@@ -67035,7 +67338,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8768),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8218),
                             UserId = "6"
                         },
                         new
@@ -67048,7 +67351,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8770),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8219),
                             UserId = "7"
                         },
                         new
@@ -67061,7 +67364,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8771),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8221),
                             UserId = "5"
                         },
                         new
@@ -67074,7 +67377,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8773),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8222),
                             UserId = "6"
                         },
                         new
@@ -67087,7 +67390,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8774),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8224),
                             UserId = "7"
                         },
                         new
@@ -67100,7 +67403,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8785),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8225),
                             UserId = "5"
                         },
                         new
@@ -67113,7 +67416,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8786),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8227),
                             UserId = "6"
                         },
                         new
@@ -67126,7 +67429,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8787),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8228),
                             UserId = "7"
                         },
                         new
@@ -67139,7 +67442,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8789),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8229),
                             UserId = "5"
                         },
                         new
@@ -67152,7 +67455,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8790),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8231),
                             UserId = "6"
                         },
                         new
@@ -67165,7 +67468,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8791),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8232),
                             UserId = "7"
                         },
                         new
@@ -67178,7 +67481,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8793),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8235),
                             UserId = "5"
                         },
                         new
@@ -67191,7 +67494,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8794),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8236),
                             UserId = "6"
                         },
                         new
@@ -67204,7 +67507,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8796),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8238),
                             UserId = "7"
                         },
                         new
@@ -67217,7 +67520,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8797),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8239),
                             UserId = "5"
                         },
                         new
@@ -67230,7 +67533,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8798),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8241),
                             UserId = "6"
                         },
                         new
@@ -67243,7 +67546,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8799),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8242),
                             UserId = "7"
                         },
                         new
@@ -67256,7 +67559,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8801),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8243),
                             UserId = "5"
                         },
                         new
@@ -67269,7 +67572,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8802),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8245),
                             UserId = "6"
                         },
                         new
@@ -67282,7 +67585,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8803),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8246),
                             UserId = "7"
                         },
                         new
@@ -67295,7 +67598,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8805),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8247),
                             UserId = "5"
                         },
                         new
@@ -67308,7 +67611,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8806),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8249),
                             UserId = "6"
                         },
                         new
@@ -67321,7 +67624,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8807),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8250),
                             UserId = "7"
                         },
                         new
@@ -67334,7 +67637,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8808),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8251),
                             UserId = "5"
                         },
                         new
@@ -67347,7 +67650,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8809),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8253),
                             UserId = "6"
                         },
                         new
@@ -67360,7 +67663,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8811),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8254),
                             UserId = "7"
                         },
                         new
@@ -67373,7 +67676,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8812),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8256),
                             UserId = "5"
                         },
                         new
@@ -67386,7 +67689,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8813),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8257),
                             UserId = "6"
                         },
                         new
@@ -67399,7 +67702,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8814),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8258),
                             UserId = "7"
                         },
                         new
@@ -67412,7 +67715,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8815),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8260),
                             UserId = "5"
                         },
                         new
@@ -67425,7 +67728,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8817),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8261),
                             UserId = "6"
                         },
                         new
@@ -67438,7 +67741,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8818),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8262),
                             UserId = "7"
                         },
                         new
@@ -67451,7 +67754,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8819),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8264),
                             UserId = "5"
                         },
                         new
@@ -67464,7 +67767,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8821),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8265),
                             UserId = "6"
                         },
                         new
@@ -67477,7 +67780,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8822),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8266),
                             UserId = "7"
                         },
                         new
@@ -67490,7 +67793,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8823),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8268),
                             UserId = "5"
                         },
                         new
@@ -67503,7 +67806,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8824),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8269),
                             UserId = "6"
                         },
                         new
@@ -67516,7 +67819,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8826),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8271),
                             UserId = "7"
                         },
                         new
@@ -67529,7 +67832,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8827),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8272),
                             UserId = "5"
                         },
                         new
@@ -67542,7 +67845,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8828),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8273),
                             UserId = "6"
                         },
                         new
@@ -67555,7 +67858,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8829),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8275),
                             UserId = "7"
                         },
                         new
@@ -67568,7 +67871,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8831),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8276),
                             UserId = "5"
                         },
                         new
@@ -67581,7 +67884,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8832),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8277),
                             UserId = "6"
                         },
                         new
@@ -67594,7 +67897,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8834),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8280),
                             UserId = "7"
                         },
                         new
@@ -67607,7 +67910,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8836),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8281),
                             UserId = "5"
                         },
                         new
@@ -67620,7 +67923,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8837),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8283),
                             UserId = "6"
                         },
                         new
@@ -67633,7 +67936,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8838),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8294),
                             UserId = "7"
                         },
                         new
@@ -67646,7 +67949,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8839),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8296),
                             UserId = "5"
                         },
                         new
@@ -67659,7 +67962,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8840),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8297),
                             UserId = "6"
                         },
                         new
@@ -67672,7 +67975,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8842),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8299),
                             UserId = "7"
                         },
                         new
@@ -67685,7 +67988,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8843),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8300),
                             UserId = "5"
                         },
                         new
@@ -67698,7 +68001,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8844),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8302),
                             UserId = "6"
                         },
                         new
@@ -67711,7 +68014,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8846),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8303),
                             UserId = "7"
                         },
                         new
@@ -67724,7 +68027,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8847),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8305),
                             UserId = "5"
                         },
                         new
@@ -67737,7 +68040,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8848),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8306),
                             UserId = "6"
                         },
                         new
@@ -67750,7 +68053,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8849),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8308),
                             UserId = "7"
                         },
                         new
@@ -67763,7 +68066,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8850),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8310),
                             UserId = "5"
                         },
                         new
@@ -67776,7 +68079,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8852),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8311),
                             UserId = "6"
                         },
                         new
@@ -67789,7 +68092,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8853),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8313),
                             UserId = "7"
                         },
                         new
@@ -67802,7 +68105,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8854),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8314),
                             UserId = "5"
                         },
                         new
@@ -67815,7 +68118,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8867),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8316),
                             UserId = "6"
                         },
                         new
@@ -67828,7 +68131,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8868),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8318),
                             UserId = "7"
                         },
                         new
@@ -67841,7 +68144,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8869),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8319),
                             UserId = "5"
                         },
                         new
@@ -67854,7 +68157,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8871),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8321),
                             UserId = "6"
                         },
                         new
@@ -67867,7 +68170,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8872),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8323),
                             UserId = "7"
                         },
                         new
@@ -67880,7 +68183,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8873),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8324),
                             UserId = "5"
                         },
                         new
@@ -67893,7 +68196,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8874),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8326),
                             UserId = "6"
                         },
                         new
@@ -67906,7 +68209,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8876),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8327),
                             UserId = "7"
                         },
                         new
@@ -67919,7 +68222,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8877),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8329),
                             UserId = "5"
                         },
                         new
@@ -67932,7 +68235,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8878),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8330),
                             UserId = "6"
                         },
                         new
@@ -67945,7 +68248,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8880),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8331),
                             UserId = "7"
                         },
                         new
@@ -67958,7 +68261,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8881),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8333),
                             UserId = "5"
                         },
                         new
@@ -67971,7 +68274,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8882),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8335),
                             UserId = "6"
                         },
                         new
@@ -67984,7 +68287,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8883),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8336),
                             UserId = "7"
                         },
                         new
@@ -67997,7 +68300,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8884),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8337),
                             UserId = "5"
                         },
                         new
@@ -68010,7 +68313,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8886),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8339),
                             UserId = "6"
                         },
                         new
@@ -68023,7 +68326,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8887),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8340),
                             UserId = "7"
                         },
                         new
@@ -68036,7 +68339,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8888),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8342),
                             UserId = "5"
                         },
                         new
@@ -68049,7 +68352,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8889),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8343),
                             UserId = "6"
                         },
                         new
@@ -68062,7 +68365,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8891),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8344),
                             UserId = "7"
                         },
                         new
@@ -68075,7 +68378,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8892),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8346),
                             UserId = "5"
                         },
                         new
@@ -68088,7 +68391,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8893),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8348),
                             UserId = "6"
                         },
                         new
@@ -68101,7 +68404,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8894),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8349),
                             UserId = "7"
                         },
                         new
@@ -68114,7 +68417,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8895),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8351),
                             UserId = "5"
                         },
                         new
@@ -68127,7 +68430,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8897),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8353),
                             UserId = "6"
                         },
                         new
@@ -68140,7 +68443,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8898),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8354),
                             UserId = "7"
                         },
                         new
@@ -68153,7 +68456,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8899),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8356),
                             UserId = "5"
                         },
                         new
@@ -68166,7 +68469,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8900),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8358),
                             UserId = "6"
                         },
                         new
@@ -68179,7 +68482,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8901),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8359),
                             UserId = "7"
                         },
                         new
@@ -68192,7 +68495,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8903),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8361),
                             UserId = "5"
                         },
                         new
@@ -68205,7 +68508,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8904),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8363),
                             UserId = "6"
                         },
                         new
@@ -68218,7 +68521,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8905),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8365),
                             UserId = "7"
                         },
                         new
@@ -68231,7 +68534,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8906),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8366),
                             UserId = "5"
                         },
                         new
@@ -68244,7 +68547,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8908),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8368),
                             UserId = "6"
                         },
                         new
@@ -68257,7 +68560,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8909),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8370),
                             UserId = "7"
                         },
                         new
@@ -68270,7 +68573,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8910),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8371),
                             UserId = "5"
                         },
                         new
@@ -68283,7 +68586,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8911),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8373),
                             UserId = "6"
                         },
                         new
@@ -68296,7 +68599,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8912),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8375),
                             UserId = "7"
                         },
                         new
@@ -68309,7 +68612,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8914),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8376),
                             UserId = "5"
                         },
                         new
@@ -68322,7 +68625,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8915),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8378),
                             UserId = "6"
                         },
                         new
@@ -68335,7 +68638,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8916),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8380),
                             UserId = "7"
                         },
                         new
@@ -68348,7 +68651,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8917),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8382),
                             UserId = "5"
                         },
                         new
@@ -68361,7 +68664,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8919),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8384),
                             UserId = "6"
                         },
                         new
@@ -68374,7 +68677,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8920),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8385),
                             UserId = "7"
                         },
                         new
@@ -68387,7 +68690,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8921),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8387),
                             UserId = "5"
                         },
                         new
@@ -68400,7 +68703,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8922),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8389),
                             UserId = "6"
                         },
                         new
@@ -68413,7 +68716,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8923),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8390),
                             UserId = "7"
                         },
                         new
@@ -68426,7 +68729,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8926),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8405),
                             UserId = "5"
                         },
                         new
@@ -68439,7 +68742,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8927),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8407),
                             UserId = "6"
                         },
                         new
@@ -68452,7 +68755,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8928),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8409),
                             UserId = "7"
                         },
                         new
@@ -68465,7 +68768,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8929),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8411),
                             UserId = "5"
                         },
                         new
@@ -68478,7 +68781,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8937),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8413),
                             UserId = "6"
                         },
                         new
@@ -68491,7 +68794,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8938),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8415),
                             UserId = "7"
                         },
                         new
@@ -68504,7 +68807,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8939),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8416),
                             UserId = "5"
                         },
                         new
@@ -68517,7 +68820,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8941),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8418),
                             UserId = "6"
                         },
                         new
@@ -68530,7 +68833,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8942),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8420),
                             UserId = "7"
                         },
                         new
@@ -68543,7 +68846,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8943),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8421),
                             UserId = "5"
                         },
                         new
@@ -68556,7 +68859,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8944),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8423),
                             UserId = "6"
                         },
                         new
@@ -68569,7 +68872,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8946),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8425),
                             UserId = "7"
                         },
                         new
@@ -68582,7 +68885,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8947),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8426),
                             UserId = "5"
                         },
                         new
@@ -68595,7 +68898,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8948),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8428),
                             UserId = "6"
                         },
                         new
@@ -68608,7 +68911,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8949),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8430),
                             UserId = "7"
                         },
                         new
@@ -68621,7 +68924,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8950),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8431),
                             UserId = "5"
                         },
                         new
@@ -68634,7 +68937,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8952),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8433),
                             UserId = "6"
                         },
                         new
@@ -68647,7 +68950,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8953),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8435),
                             UserId = "7"
                         },
                         new
@@ -68660,7 +68963,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8954),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8437),
                             UserId = "5"
                         },
                         new
@@ -68673,7 +68976,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8955),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8438),
                             UserId = "6"
                         },
                         new
@@ -68686,7 +68989,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8956),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8440),
                             UserId = "7"
                         },
                         new
@@ -68699,7 +69002,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8958),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8442),
                             UserId = "5"
                         },
                         new
@@ -68712,7 +69015,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8959),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8443),
                             UserId = "6"
                         },
                         new
@@ -68725,7 +69028,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8960),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8445),
                             UserId = "7"
                         },
                         new
@@ -68738,7 +69041,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8962),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8447),
                             UserId = "5"
                         },
                         new
@@ -68751,7 +69054,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8963),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8448),
                             UserId = "6"
                         },
                         new
@@ -68764,7 +69067,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8964),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8450),
                             UserId = "7"
                         },
                         new
@@ -68777,7 +69080,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8965),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8452),
                             UserId = "5"
                         },
                         new
@@ -68790,7 +69093,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8966),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8454),
                             UserId = "6"
                         },
                         new
@@ -68803,7 +69106,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8968),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8455),
                             UserId = "7"
                         },
                         new
@@ -68816,7 +69119,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8969),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8457),
                             UserId = "5"
                         },
                         new
@@ -68829,7 +69132,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8970),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8459),
                             UserId = "6"
                         },
                         new
@@ -68842,7 +69145,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8972),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8460),
                             UserId = "7"
                         },
                         new
@@ -68855,7 +69158,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8973),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8462),
                             UserId = "5"
                         },
                         new
@@ -68868,7 +69171,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8974),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8464),
                             UserId = "6"
                         },
                         new
@@ -68881,7 +69184,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8975),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8465),
                             UserId = "7"
                         },
                         new
@@ -68894,7 +69197,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8976),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8467),
                             UserId = "5"
                         },
                         new
@@ -68907,7 +69210,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8978),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8468),
                             UserId = "6"
                         },
                         new
@@ -68920,7 +69223,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8979),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8470),
                             UserId = "7"
                         },
                         new
@@ -68933,7 +69236,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8980),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8472),
                             UserId = "5"
                         },
                         new
@@ -68946,7 +69249,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8982),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8474),
                             UserId = "6"
                         },
                         new
@@ -68959,7 +69262,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8983),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8475),
                             UserId = "7"
                         },
                         new
@@ -68972,7 +69275,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8984),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8477),
                             UserId = "5"
                         },
                         new
@@ -68985,7 +69288,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8985),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8479),
                             UserId = "6"
                         },
                         new
@@ -68998,7 +69301,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8986),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8480),
                             UserId = "7"
                         },
                         new
@@ -69011,7 +69314,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8988),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8482),
                             UserId = "5"
                         },
                         new
@@ -69024,7 +69327,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8989),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8484),
                             UserId = "6"
                         },
                         new
@@ -69037,7 +69340,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8990),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8485),
                             UserId = "7"
                         },
                         new
@@ -69050,7 +69353,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8991),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8487),
                             UserId = "5"
                         },
                         new
@@ -69063,7 +69366,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8993),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8488),
                             UserId = "6"
                         },
                         new
@@ -69076,7 +69379,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8994),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8490),
                             UserId = "7"
                         },
                         new
@@ -69089,7 +69392,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8995),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8492),
                             UserId = "5"
                         },
                         new
@@ -69102,7 +69405,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8996),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8493),
                             UserId = "6"
                         },
                         new
@@ -69115,7 +69418,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8997),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8495),
                             UserId = "7"
                         },
                         new
@@ -69128,7 +69431,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(8999),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8496),
                             UserId = "5"
                         },
                         new
@@ -69141,7 +69444,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9000),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8498),
                             UserId = "6"
                         },
                         new
@@ -69154,7 +69457,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9001),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8500),
                             UserId = "7"
                         },
                         new
@@ -69167,7 +69470,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9002),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8502),
                             UserId = "5"
                         },
                         new
@@ -69180,7 +69483,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9003),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8511),
                             UserId = "6"
                         },
                         new
@@ -69193,7 +69496,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9005),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8513),
                             UserId = "7"
                         },
                         new
@@ -69206,7 +69509,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9006),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8515),
                             UserId = "5"
                         },
                         new
@@ -69219,7 +69522,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9007),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8517),
                             UserId = "6"
                         },
                         new
@@ -69232,7 +69535,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9009),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8519),
                             UserId = "7"
                         },
                         new
@@ -69245,7 +69548,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9010),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8521),
                             UserId = "5"
                         },
                         new
@@ -69258,7 +69561,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9011),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8522),
                             UserId = "6"
                         },
                         new
@@ -69271,7 +69574,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9012),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8524),
                             UserId = "7"
                         },
                         new
@@ -69284,7 +69587,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9013),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8526),
                             UserId = "5"
                         },
                         new
@@ -69297,7 +69600,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9015),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8527),
                             UserId = "6"
                         },
                         new
@@ -69310,7 +69613,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9016),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8529),
                             UserId = "7"
                         },
                         new
@@ -69323,7 +69626,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9017),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8531),
                             UserId = "5"
                         },
                         new
@@ -69336,7 +69639,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9018),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8532),
                             UserId = "6"
                         },
                         new
@@ -69349,7 +69652,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9019),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8534),
                             UserId = "7"
                         },
                         new
@@ -69362,7 +69665,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9030),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8536),
                             UserId = "5"
                         },
                         new
@@ -69375,7 +69678,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9032),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8537),
                             UserId = "6"
                         },
                         new
@@ -69388,7 +69691,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9033),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8539),
                             UserId = "7"
                         },
                         new
@@ -69401,7 +69704,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9034),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8540),
                             UserId = "5"
                         },
                         new
@@ -69414,7 +69717,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9036),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8542),
                             UserId = "6"
                         },
                         new
@@ -69427,7 +69730,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9037),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8544),
                             UserId = "7"
                         },
                         new
@@ -69440,7 +69743,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9038),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8545),
                             UserId = "5"
                         },
                         new
@@ -69453,7 +69756,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9039),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8547),
                             UserId = "6"
                         },
                         new
@@ -69466,7 +69769,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9040),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8549),
                             UserId = "7"
                         },
                         new
@@ -69479,7 +69782,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9042),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8550),
                             UserId = "5"
                         },
                         new
@@ -69492,7 +69795,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9043),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8552),
                             UserId = "6"
                         },
                         new
@@ -69505,7 +69808,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9044),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8554),
                             UserId = "7"
                         },
                         new
@@ -69518,7 +69821,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9045),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8556),
                             UserId = "5"
                         },
                         new
@@ -69531,7 +69834,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9046),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8557),
                             UserId = "6"
                         },
                         new
@@ -69544,7 +69847,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9048),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8559),
                             UserId = "7"
                         },
                         new
@@ -69557,7 +69860,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9049),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8560),
                             UserId = "5"
                         },
                         new
@@ -69570,7 +69873,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9050),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8562),
                             UserId = "6"
                         },
                         new
@@ -69583,7 +69886,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9051),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8564),
                             UserId = "7"
                         },
                         new
@@ -69596,7 +69899,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9053),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8565),
                             UserId = "5"
                         },
                         new
@@ -69609,7 +69912,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9054),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8567),
                             UserId = "6"
                         },
                         new
@@ -69622,7 +69925,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9055),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8569),
                             UserId = "7"
                         },
                         new
@@ -69635,7 +69938,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9057),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8570),
                             UserId = "5"
                         },
                         new
@@ -69648,7 +69951,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9058),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8572),
                             UserId = "6"
                         },
                         new
@@ -69661,7 +69964,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9059),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8574),
                             UserId = "7"
                         },
                         new
@@ -69674,7 +69977,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9060),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8575),
                             UserId = "5"
                         },
                         new
@@ -69687,7 +69990,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9062),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8577),
                             UserId = "6"
                         },
                         new
@@ -69700,7 +70003,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9063),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8579),
                             UserId = "7"
                         },
                         new
@@ -69713,7 +70016,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9064),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8580),
                             UserId = "5"
                         },
                         new
@@ -69726,7 +70029,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9065),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8582),
                             UserId = "6"
                         },
                         new
@@ -69739,7 +70042,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9067),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8584),
                             UserId = "7"
                         },
                         new
@@ -69752,7 +70055,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9068),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8586),
                             UserId = "5"
                         },
                         new
@@ -69765,7 +70068,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9069),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8587),
                             UserId = "6"
                         },
                         new
@@ -69778,7 +70081,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9070),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8589),
                             UserId = "7"
                         },
                         new
@@ -69791,7 +70094,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9071),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8590),
                             UserId = "5"
                         },
                         new
@@ -69804,7 +70107,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9073),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8592),
                             UserId = "6"
                         },
                         new
@@ -69817,7 +70120,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9074),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8594),
                             UserId = "7"
                         },
                         new
@@ -69830,7 +70133,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9075),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8596),
                             UserId = "5"
                         },
                         new
@@ -69843,7 +70146,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9077),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8597),
                             UserId = "6"
                         },
                         new
@@ -69856,7 +70159,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9078),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8599),
                             UserId = "7"
                         },
                         new
@@ -69869,7 +70172,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9079),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8601),
                             UserId = "5"
                         },
                         new
@@ -69882,7 +70185,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9080),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8602),
                             UserId = "6"
                         },
                         new
@@ -69895,7 +70198,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9081),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8604),
                             UserId = "7"
                         },
                         new
@@ -69908,7 +70211,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9083),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8606),
                             UserId = "5"
                         },
                         new
@@ -69921,7 +70224,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9084),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8607),
                             UserId = "6"
                         },
                         new
@@ -69934,7 +70237,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9085),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8609),
                             UserId = "7"
                         },
                         new
@@ -69947,7 +70250,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9086),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8611),
                             UserId = "5"
                         },
                         new
@@ -69960,7 +70263,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9088),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8612),
                             UserId = "6"
                         },
                         new
@@ -69973,7 +70276,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9089),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8614),
                             UserId = "7"
                         },
                         new
@@ -69986,7 +70289,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9090),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8616),
                             UserId = "5"
                         },
                         new
@@ -69999,7 +70302,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9091),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8617),
                             UserId = "6"
                         },
                         new
@@ -70012,7 +70315,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9092),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8619),
                             UserId = "7"
                         },
                         new
@@ -70025,7 +70328,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9094),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8621),
                             UserId = "5"
                         },
                         new
@@ -70038,7 +70341,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9095),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8622),
                             UserId = "6"
                         },
                         new
@@ -70051,7 +70354,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9096),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8624),
                             UserId = "7"
                         },
                         new
@@ -70064,7 +70367,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9098),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8637),
                             UserId = "5"
                         },
                         new
@@ -70077,7 +70380,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9099),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8639),
                             UserId = "6"
                         },
                         new
@@ -70090,7 +70393,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9108),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8643),
                             UserId = "7"
                         },
                         new
@@ -70103,7 +70406,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9109),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8645),
                             UserId = "5"
                         },
                         new
@@ -70116,7 +70419,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9110),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8647),
                             UserId = "6"
                         },
                         new
@@ -70129,7 +70432,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9112),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8649),
                             UserId = "7"
                         },
                         new
@@ -70142,7 +70445,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9113),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8650),
                             UserId = "5"
                         },
                         new
@@ -70155,7 +70458,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9114),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8652),
                             UserId = "6"
                         },
                         new
@@ -70168,7 +70471,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9115),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8653),
                             UserId = "7"
                         },
                         new
@@ -70181,7 +70484,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9116),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8655),
                             UserId = "5"
                         },
                         new
@@ -70194,7 +70497,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9118),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8657),
                             UserId = "6"
                         },
                         new
@@ -70207,7 +70510,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9119),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8658),
                             UserId = "7"
                         },
                         new
@@ -70220,7 +70523,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9120),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8660),
                             UserId = "5"
                         },
                         new
@@ -70233,7 +70536,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9121),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8662),
                             UserId = "6"
                         },
                         new
@@ -70246,7 +70549,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9122),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8663),
                             UserId = "7"
                         },
                         new
@@ -70259,7 +70562,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9124),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8665),
                             UserId = "5"
                         },
                         new
@@ -70272,7 +70575,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9125),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8667),
                             UserId = "6"
                         },
                         new
@@ -70285,7 +70588,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9126),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8668),
                             UserId = "7"
                         },
                         new
@@ -70298,7 +70601,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9128),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8670),
                             UserId = "5"
                         },
                         new
@@ -70311,7 +70614,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9129),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8671),
                             UserId = "6"
                         },
                         new
@@ -70324,7 +70627,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9130),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8673),
                             UserId = "7"
                         },
                         new
@@ -70337,7 +70640,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9131),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8675),
                             UserId = "5"
                         },
                         new
@@ -70350,7 +70653,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9133),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8676),
                             UserId = "6"
                         },
                         new
@@ -70363,7 +70666,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9134),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8678),
                             UserId = "7"
                         },
                         new
@@ -70376,7 +70679,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9135),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8680),
                             UserId = "5"
                         },
                         new
@@ -70389,7 +70692,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9136),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8682),
                             UserId = "6"
                         },
                         new
@@ -70402,7 +70705,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9137),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8683),
                             UserId = "7"
                         },
                         new
@@ -70415,7 +70718,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9139),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8685),
                             UserId = "5"
                         },
                         new
@@ -70428,7 +70731,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9140),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8686),
                             UserId = "6"
                         },
                         new
@@ -70441,7 +70744,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9141),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8688),
                             UserId = "7"
                         },
                         new
@@ -70454,7 +70757,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9142),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8690),
                             UserId = "5"
                         },
                         new
@@ -70467,7 +70770,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9143),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8691),
                             UserId = "6"
                         },
                         new
@@ -70480,7 +70783,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9145),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8693),
                             UserId = "7"
                         },
                         new
@@ -70493,7 +70796,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9146),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8695),
                             UserId = "5"
                         },
                         new
@@ -70506,7 +70809,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9148),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8706),
                             UserId = "6"
                         },
                         new
@@ -70519,7 +70822,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9149),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8708),
                             UserId = "7"
                         },
                         new
@@ -70532,7 +70835,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9150),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8709),
                             UserId = "5"
                         },
                         new
@@ -70545,7 +70848,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9151),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8711),
                             UserId = "6"
                         },
                         new
@@ -70558,7 +70861,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9152),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8712),
                             UserId = "7"
                         },
                         new
@@ -70571,7 +70874,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9154),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8714),
                             UserId = "5"
                         },
                         new
@@ -70584,7 +70887,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9155),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8716),
                             UserId = "6"
                         },
                         new
@@ -70597,7 +70900,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9156),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8718),
                             UserId = "7"
                         },
                         new
@@ -70610,7 +70913,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9157),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8719),
                             UserId = "5"
                         },
                         new
@@ -70623,7 +70926,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9159),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8721),
                             UserId = "6"
                         },
                         new
@@ -70636,7 +70939,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9160),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8723),
                             UserId = "7"
                         },
                         new
@@ -70649,7 +70952,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9161),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8724),
                             UserId = "5"
                         },
                         new
@@ -70662,7 +70965,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9162),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8726),
                             UserId = "6"
                         },
                         new
@@ -70675,7 +70978,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9164),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8728),
                             UserId = "7"
                         },
                         new
@@ -70688,7 +70991,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9165),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8729),
                             UserId = "5"
                         },
                         new
@@ -70701,7 +71004,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9173),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8731),
                             UserId = "6"
                         },
                         new
@@ -70714,7 +71017,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9174),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8732),
                             UserId = "7"
                         },
                         new
@@ -70727,7 +71030,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9175),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8734),
                             UserId = "5"
                         },
                         new
@@ -70740,7 +71043,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9176),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8736),
                             UserId = "6"
                         },
                         new
@@ -70753,7 +71056,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9177),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8737),
                             UserId = "7"
                         },
                         new
@@ -70766,7 +71069,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9179),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8739),
                             UserId = "5"
                         },
                         new
@@ -70779,7 +71082,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9180),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8740),
                             UserId = "6"
                         },
                         new
@@ -70792,7 +71095,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9181),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8742),
                             UserId = "7"
                         },
                         new
@@ -70805,7 +71108,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9182),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8744),
                             UserId = "5"
                         },
                         new
@@ -70818,7 +71121,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9184),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8745),
                             UserId = "6"
                         },
                         new
@@ -70831,7 +71134,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9185),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8747),
                             UserId = "7"
                         },
                         new
@@ -70844,7 +71147,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9186),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8749),
                             UserId = "5"
                         },
                         new
@@ -70857,7 +71160,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9188),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8750),
                             UserId = "6"
                         },
                         new
@@ -70870,7 +71173,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9189),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8752),
                             UserId = "7"
                         },
                         new
@@ -70883,7 +71186,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9190),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8754),
                             UserId = "5"
                         },
                         new
@@ -70896,7 +71199,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9191),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8755),
                             UserId = "6"
                         },
                         new
@@ -70909,7 +71212,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9192),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8757),
                             UserId = "7"
                         },
                         new
@@ -70922,7 +71225,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9194),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8759),
                             UserId = "5"
                         },
                         new
@@ -70935,7 +71238,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9195),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8760),
                             UserId = "6"
                         },
                         new
@@ -70948,7 +71251,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9196),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8762),
                             UserId = "7"
                         },
                         new
@@ -70961,7 +71264,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9197),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8763),
                             UserId = "5"
                         },
                         new
@@ -70974,7 +71277,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9199),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8765),
                             UserId = "6"
                         },
                         new
@@ -70987,7 +71290,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9200),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8767),
                             UserId = "7"
                         },
                         new
@@ -71000,7 +71303,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9201),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8768),
                             UserId = "5"
                         },
                         new
@@ -71013,7 +71316,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9202),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8770),
                             UserId = "6"
                         },
                         new
@@ -71026,7 +71329,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9203),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8772),
                             UserId = "7"
                         },
                         new
@@ -71039,7 +71342,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9205),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8773),
                             UserId = "5"
                         },
                         new
@@ -71052,7 +71355,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9206),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8775),
                             UserId = "6"
                         },
                         new
@@ -71065,7 +71368,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9207),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8777),
                             UserId = "7"
                         },
                         new
@@ -71078,7 +71381,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9208),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8779),
                             UserId = "5"
                         },
                         new
@@ -71091,7 +71394,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9209),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8780),
                             UserId = "6"
                         },
                         new
@@ -71104,7 +71407,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9211),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8782),
                             UserId = "7"
                         },
                         new
@@ -71117,7 +71420,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9212),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8784),
                             UserId = "5"
                         },
                         new
@@ -71130,7 +71433,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9213),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8785),
                             UserId = "6"
                         },
                         new
@@ -71143,7 +71446,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9215),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8787),
                             UserId = "7"
                         },
                         new
@@ -71156,7 +71459,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9216),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8789),
                             UserId = "5"
                         },
                         new
@@ -71169,7 +71472,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9217),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8791),
                             UserId = "6"
                         },
                         new
@@ -71182,7 +71485,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9218),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8792),
                             UserId = "7"
                         },
                         new
@@ -71195,7 +71498,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9220),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8794),
                             UserId = "5"
                         },
                         new
@@ -71208,7 +71511,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9221),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8796),
                             UserId = "6"
                         },
                         new
@@ -71221,7 +71524,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9222),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8797),
                             UserId = "7"
                         },
                         new
@@ -71234,7 +71537,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9223),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8799),
                             UserId = "5"
                         },
                         new
@@ -71247,7 +71550,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9224),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8800),
                             UserId = "6"
                         },
                         new
@@ -71260,7 +71563,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9226),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8802),
                             UserId = "7"
                         },
                         new
@@ -71273,7 +71576,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9227),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8804),
                             UserId = "5"
                         },
                         new
@@ -71286,7 +71589,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9228),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8805),
                             UserId = "6"
                         },
                         new
@@ -71299,7 +71602,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9230),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8807),
                             UserId = "7"
                         },
                         new
@@ -71312,7 +71615,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9231),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8809),
                             UserId = "5"
                         },
                         new
@@ -71325,7 +71628,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9232),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8810),
                             UserId = "6"
                         },
                         new
@@ -71338,7 +71641,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9233),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8812),
                             UserId = "7"
                         },
                         new
@@ -71351,7 +71654,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9234),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8813),
                             UserId = "5"
                         },
                         new
@@ -71364,7 +71667,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9236),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8815),
                             UserId = "6"
                         },
                         new
@@ -71377,7 +71680,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9237),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8817),
                             UserId = "7"
                         },
                         new
@@ -71390,7 +71693,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9238),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8818),
                             UserId = "5"
                         },
                         new
@@ -71403,7 +71706,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9239),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8829),
                             UserId = "6"
                         },
                         new
@@ -71416,7 +71719,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9240),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8831),
                             UserId = "7"
                         },
                         new
@@ -71429,7 +71732,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9242),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8833),
                             UserId = "5"
                         },
                         new
@@ -71442,7 +71745,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9243),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8835),
                             UserId = "6"
                         },
                         new
@@ -71455,7 +71758,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9244),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8836),
                             UserId = "7"
                         },
                         new
@@ -71468,7 +71771,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9246),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8838),
                             UserId = "5"
                         },
                         new
@@ -71481,7 +71784,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9247),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8840),
                             UserId = "6"
                         },
                         new
@@ -71494,7 +71797,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9248),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8842),
                             UserId = "7"
                         },
                         new
@@ -71507,7 +71810,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9249),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8843),
                             UserId = "5"
                         },
                         new
@@ -71520,7 +71823,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9251),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8845),
                             UserId = "6"
                         },
                         new
@@ -71533,7 +71836,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9252),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8846),
                             UserId = "7"
                         },
                         new
@@ -71546,7 +71849,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9253),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8848),
                             UserId = "5"
                         },
                         new
@@ -71559,7 +71862,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9254),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8850),
                             UserId = "6"
                         },
                         new
@@ -71572,7 +71875,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9255),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8851),
                             UserId = "7"
                         },
                         new
@@ -71585,7 +71888,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9263),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8853),
                             UserId = "5"
                         },
                         new
@@ -71598,7 +71901,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9265),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8855),
                             UserId = "6"
                         },
                         new
@@ -71611,7 +71914,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9266),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8856),
                             UserId = "7"
                         },
                         new
@@ -71624,7 +71927,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9268),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8858),
                             UserId = "5"
                         },
                         new
@@ -71637,7 +71940,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9269),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8859),
                             UserId = "6"
                         },
                         new
@@ -71650,7 +71953,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9270),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8861),
                             UserId = "7"
                         },
                         new
@@ -71663,7 +71966,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9271),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8863),
                             UserId = "5"
                         },
                         new
@@ -71676,7 +71979,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9273),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8864),
                             UserId = "6"
                         },
                         new
@@ -71689,7 +71992,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9274),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8866),
                             UserId = "7"
                         },
                         new
@@ -71702,7 +72005,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9275),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8867),
                             UserId = "5"
                         },
                         new
@@ -71715,7 +72018,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9276),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8869),
                             UserId = "6"
                         },
                         new
@@ -71728,7 +72031,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9277),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8871),
                             UserId = "7"
                         },
                         new
@@ -71741,7 +72044,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9279),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8872),
                             UserId = "5"
                         },
                         new
@@ -71754,7 +72057,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9280),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8874),
                             UserId = "6"
                         },
                         new
@@ -71767,7 +72070,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9281),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8876),
                             UserId = "7"
                         },
                         new
@@ -71780,7 +72083,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9282),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8877),
                             UserId = "5"
                         },
                         new
@@ -71793,7 +72096,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9283),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8879),
                             UserId = "6"
                         },
                         new
@@ -71806,7 +72109,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9285),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8880),
                             UserId = "7"
                         },
                         new
@@ -71819,7 +72122,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9286),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8882),
                             UserId = "5"
                         },
                         new
@@ -71832,7 +72135,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9287),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8884),
                             UserId = "6"
                         },
                         new
@@ -71845,7 +72148,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9288),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8885),
                             UserId = "7"
                         },
                         new
@@ -71858,7 +72161,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9290),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8887),
                             UserId = "5"
                         },
                         new
@@ -71871,7 +72174,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9291),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8889),
                             UserId = "6"
                         },
                         new
@@ -71884,7 +72187,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9292),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8890),
                             UserId = "7"
                         },
                         new
@@ -71897,7 +72200,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9293),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8892),
                             UserId = "5"
                         },
                         new
@@ -71910,7 +72213,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9295),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8894),
                             UserId = "6"
                         },
                         new
@@ -71923,7 +72226,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9296),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8895),
                             UserId = "7"
                         },
                         new
@@ -71936,7 +72239,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9297),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8897),
                             UserId = "5"
                         },
                         new
@@ -71949,7 +72252,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9298),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8899),
                             UserId = "6"
                         },
                         new
@@ -71962,7 +72265,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9299),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8900),
                             UserId = "7"
                         },
                         new
@@ -71975,7 +72278,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9301),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8902),
                             UserId = "5"
                         },
                         new
@@ -71988,7 +72291,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9302),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8903),
                             UserId = "6"
                         },
                         new
@@ -72001,7 +72304,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9303),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8905),
                             UserId = "7"
                         },
                         new
@@ -72014,7 +72317,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9304),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8907),
                             UserId = "5"
                         },
                         new
@@ -72027,7 +72330,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9306),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8908),
                             UserId = "6"
                         },
                         new
@@ -72040,7 +72343,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9307),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8910),
                             UserId = "7"
                         },
                         new
@@ -72053,7 +72356,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9308),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8912),
                             UserId = "5"
                         },
                         new
@@ -72066,7 +72369,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9309),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8913),
                             UserId = "6"
                         },
                         new
@@ -72079,7 +72382,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9310),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8915),
                             UserId = "7"
                         },
                         new
@@ -72092,7 +72395,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9312),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8917),
                             UserId = "5"
                         },
                         new
@@ -72105,7 +72408,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9313),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8919),
                             UserId = "6"
                         },
                         new
@@ -72118,7 +72421,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9314),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8920),
                             UserId = "7"
                         },
                         new
@@ -72131,7 +72434,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9316),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8922),
                             UserId = "5"
                         },
                         new
@@ -72144,7 +72447,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9317),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8923),
                             UserId = "6"
                         },
                         new
@@ -72157,7 +72460,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9318),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8925),
                             UserId = "7"
                         },
                         new
@@ -72170,7 +72473,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9319),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8927),
                             UserId = "5"
                         },
                         new
@@ -72183,7 +72486,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9320),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8928),
                             UserId = "6"
                         },
                         new
@@ -72196,7 +72499,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9322),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8930),
                             UserId = "7"
                         },
                         new
@@ -72209,7 +72512,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9323),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8932),
                             UserId = "5"
                         },
                         new
@@ -72222,7 +72525,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9324),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8933),
                             UserId = "6"
                         },
                         new
@@ -72235,7 +72538,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9325),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8935),
                             UserId = "7"
                         },
                         new
@@ -72248,7 +72551,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9327),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8936),
                             UserId = "5"
                         },
                         new
@@ -72261,7 +72564,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9328),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8938),
                             UserId = "6"
                         },
                         new
@@ -72274,7 +72577,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9329),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8940),
                             UserId = "7"
                         },
                         new
@@ -72287,7 +72590,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9330),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8950),
                             UserId = "5"
                         },
                         new
@@ -72300,7 +72603,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9331),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8951),
                             UserId = "6"
                         },
                         new
@@ -72313,7 +72616,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9333),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8953),
                             UserId = "7"
                         },
                         new
@@ -72326,7 +72629,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9334),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8954),
                             UserId = "5"
                         },
                         new
@@ -72339,7 +72642,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9335),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8956),
                             UserId = "6"
                         },
                         new
@@ -72352,7 +72655,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9336),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8958),
                             UserId = "7"
                         },
                         new
@@ -72365,7 +72668,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9338),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8960),
                             UserId = "5"
                         },
                         new
@@ -72378,7 +72681,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9339),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8961),
                             UserId = "6"
                         },
                         new
@@ -72391,7 +72694,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9340),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8963),
                             UserId = "7"
                         },
                         new
@@ -72404,7 +72707,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9341),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8965),
                             UserId = "5"
                         },
                         new
@@ -72417,7 +72720,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9343),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8966),
                             UserId = "6"
                         },
                         new
@@ -72430,7 +72733,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9344),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8968),
                             UserId = "7"
                         },
                         new
@@ -72443,7 +72746,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9345),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8970),
                             UserId = "5"
                         },
                         new
@@ -72456,7 +72759,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9346),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8972),
                             UserId = "6"
                         },
                         new
@@ -72469,7 +72772,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9354),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8973),
                             UserId = "7"
                         },
                         new
@@ -72482,7 +72785,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9356),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8975),
                             UserId = "5"
                         },
                         new
@@ -72495,7 +72798,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9357),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8976),
                             UserId = "6"
                         },
                         new
@@ -72508,7 +72811,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9358),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8978),
                             UserId = "7"
                         },
                         new
@@ -72521,7 +72824,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9360),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8980),
                             UserId = "5"
                         },
                         new
@@ -72534,7 +72837,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9361),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8982),
                             UserId = "6"
                         },
                         new
@@ -72547,7 +72850,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9362),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8983),
                             UserId = "7"
                         },
                         new
@@ -72560,7 +72863,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9363),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8985),
                             UserId = "5"
                         },
                         new
@@ -72573,7 +72876,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9364),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8986),
                             UserId = "6"
                         },
                         new
@@ -72586,7 +72889,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9366),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8988),
                             UserId = "7"
                         },
                         new
@@ -72599,7 +72902,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9367),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8990),
                             UserId = "5"
                         },
                         new
@@ -72612,7 +72915,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9368),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8992),
                             UserId = "6"
                         },
                         new
@@ -72625,7 +72928,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9369),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8993),
                             UserId = "7"
                         },
                         new
@@ -72638,7 +72941,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9371),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8995),
                             UserId = "5"
                         },
                         new
@@ -72651,7 +72954,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9372),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8996),
                             UserId = "6"
                         },
                         new
@@ -72664,7 +72967,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9373),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(8998),
                             UserId = "7"
                         },
                         new
@@ -72677,7 +72980,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9374),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(9000),
                             UserId = "5"
                         },
                         new
@@ -72690,7 +72993,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9375),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(9001),
                             UserId = "6"
                         },
                         new
@@ -72703,7 +73006,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9377),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(9003),
                             UserId = "7"
                         },
                         new
@@ -72716,7 +73019,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9378),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(9005),
                             UserId = "5"
                         },
                         new
@@ -72729,7 +73032,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9379),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(9006),
                             UserId = "6"
                         },
                         new
@@ -72742,7 +73045,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9380),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(9008),
                             UserId = "7"
                         },
                         new
@@ -72755,7 +73058,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9382),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(9009),
                             UserId = "5"
                         },
                         new
@@ -72768,7 +73071,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9383),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(9011),
                             UserId = "6"
                         },
                         new
@@ -72781,7 +73084,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 100.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 568, DateTimeKind.Local).AddTicks(9384),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 44, 32, DateTimeKind.Local).AddTicks(9013),
                             UserId = "7"
                         });
                 });
@@ -72936,127 +73239,127 @@ namespace OnlineLearningPlatform.Data.Migrations
                         {
                             UserId = "5",
                             CourseId = 43L,
-                            CreatedAt = new DateTime(2025, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            UserId = "5",
-                            CourseId = 17L,
-                            CreatedAt = new DateTime(2025, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            UserId = "5",
-                            CourseId = 24L,
-                            CreatedAt = new DateTime(2025, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CreatedAt = new DateTime(2025, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             UserId = "5",
                             CourseId = 50L,
-                            CreatedAt = new DateTime(2025, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CreatedAt = new DateTime(2025, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             UserId = "5",
-                            CourseId = 32L,
-                            CreatedAt = new DateTime(2025, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CourseId = 23L,
+                            CreatedAt = new DateTime(2025, 4, 24, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UserId = "5",
+                            CourseId = 9L,
+                            CreatedAt = new DateTime(2025, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UserId = "5",
+                            CourseId = 27L,
+                            CreatedAt = new DateTime(2025, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             UserId = "5",
                             CourseId = 29L,
-                            CreatedAt = new DateTime(2025, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CreatedAt = new DateTime(2025, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             UserId = "5",
-                            CourseId = 20L,
-                            CreatedAt = new DateTime(2025, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CourseId = 24L,
+                            CreatedAt = new DateTime(2025, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UserId = "6",
+                            CourseId = 38L,
+                            CreatedAt = new DateTime(2025, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UserId = "6",
+                            CourseId = 42L,
+                            CreatedAt = new DateTime(2025, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UserId = "6",
+                            CourseId = 16L,
+                            CreatedAt = new DateTime(2025, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UserId = "6",
+                            CourseId = 14L,
+                            CreatedAt = new DateTime(2025, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UserId = "6",
+                            CourseId = 32L,
+                            CreatedAt = new DateTime(2025, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UserId = "6",
+                            CourseId = 22L,
+                            CreatedAt = new DateTime(2025, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             UserId = "6",
                             CourseId = 23L,
-                            CreatedAt = new DateTime(2025, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CreatedAt = new DateTime(2025, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            UserId = "6",
-                            CourseId = 27L,
-                            CreatedAt = new DateTime(2025, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            UserId = "6",
-                            CourseId = 25L,
-                            CreatedAt = new DateTime(2025, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            UserId = "6",
+                            UserId = "7",
                             CourseId = 29L,
-                            CreatedAt = new DateTime(2025, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            UserId = "6",
-                            CourseId = 43L,
-                            CreatedAt = new DateTime(2025, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            UserId = "6",
-                            CourseId = 4L,
-                            CreatedAt = new DateTime(2025, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            UserId = "6",
-                            CourseId = 31L,
-                            CreatedAt = new DateTime(2025, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CreatedAt = new DateTime(2025, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             UserId = "7",
-                            CourseId = 49L,
-                            CreatedAt = new DateTime(2025, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            UserId = "7",
-                            CourseId = 22L,
+                            CourseId = 26L,
                             CreatedAt = new DateTime(2025, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             UserId = "7",
-                            CourseId = 33L,
-                            CreatedAt = new DateTime(2025, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CourseId = 40L,
+                            CreatedAt = new DateTime(2025, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             UserId = "7",
-                            CourseId = 23L,
-                            CreatedAt = new DateTime(2025, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CourseId = 45L,
+                            CreatedAt = new DateTime(2025, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             UserId = "7",
-                            CourseId = 28L,
-                            CreatedAt = new DateTime(2025, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CourseId = 5L,
+                            CreatedAt = new DateTime(2025, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             UserId = "7",
-                            CourseId = 29L,
-                            CreatedAt = new DateTime(2025, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CourseId = 8L,
+                            CreatedAt = new DateTime(2025, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             UserId = "7",
-                            CourseId = 2L,
-                            CreatedAt = new DateTime(2025, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CourseId = 43L,
+                            CreatedAt = new DateTime(2025, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -74167,19 +74470,19 @@ namespace OnlineLearningPlatform.Data.Migrations
                         new
                         {
                             MessageId = 1L,
-                            Content = "We have a new course on Advanced C# that you might be interested in. Check it out!",
+                            Content = "Welcome aboard! We're thrilled to have you as part of our learning community.",
                             CreatedAt = new DateTime(2025, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsRead = false,
-                            ReceiverId = "53",
-                            SenderId = "1"
+                            ReceiverId = "25",
+                            SenderId = "2"
                         },
                         new
                         {
                             MessageId = 2L,
-                            Content = "A quick check-in to see how you are enjoying the platform. Any feedback is welcome!",
+                            Content = "Did you know you can download course resources from the 'Materials' tab? Hope this helps!",
                             CreatedAt = new DateTime(2025, 2, 4, 5, 0, 0, 0, DateTimeKind.Unspecified),
                             IsRead = true,
-                            ReceiverId = "14",
+                            ReceiverId = "26",
                             SenderId = "3"
                         },
                         new
@@ -74188,107 +74491,107 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Content = "A quick check-in to see how you are enjoying the platform. Any feedback is welcome!",
                             CreatedAt = new DateTime(2025, 2, 4, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             IsRead = true,
-                            ReceiverId = "23",
+                            ReceiverId = "31",
                             SenderId = "2"
                         },
                         new
                         {
                             MessageId = 4L,
-                            Content = "Just a friendly reminder that a new module has been unlocked in your course.",
+                            Content = "We have a new course on Advanced C# that you might be interested in. Check it out!",
                             CreatedAt = new DateTime(2025, 2, 4, 15, 0, 0, 0, DateTimeKind.Unspecified),
                             IsRead = false,
-                            ReceiverId = "22",
-                            SenderId = "2"
+                            ReceiverId = "37",
+                            SenderId = "3"
                         },
                         new
                         {
                             MessageId = 5L,
-                            Content = "Just a friendly reminder that a new module has been unlocked in your course.",
+                            Content = "Hello! We noticed you're making great progress in your course. Keep up the excellent work!",
                             CreatedAt = new DateTime(2025, 2, 4, 20, 0, 0, 0, DateTimeKind.Unspecified),
                             IsRead = false,
-                            ReceiverId = "49",
-                            SenderId = "1"
+                            ReceiverId = "12",
+                            SenderId = "2"
                         },
                         new
                         {
                             MessageId = 6L,
-                            Content = "Did you know you can download course resources from the 'Materials' tab? Hope this helps!",
+                            Content = "Welcome aboard! We're thrilled to have you as part of our learning community.",
                             CreatedAt = new DateTime(2025, 2, 5, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = true,
-                            ReceiverId = "16",
-                            SenderId = "1"
+                            IsRead = false,
+                            ReceiverId = "55",
+                            SenderId = "2"
                         },
                         new
                         {
                             MessageId = 7L,
-                            Content = "A quick check-in to see how you are enjoying the platform. Any feedback is welcome!",
+                            Content = "We have a new course on Advanced C# that you might be interested in. Check it out!",
                             CreatedAt = new DateTime(2025, 2, 5, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = false,
-                            ReceiverId = "43",
+                            IsRead = true,
+                            ReceiverId = "27",
                             SenderId = "1"
                         },
                         new
                         {
                             MessageId = 8L,
-                            Content = "Do you have any questions or need assistance with your current lesson? We're here to help.",
+                            Content = "Welcome aboard! We're thrilled to have you as part of our learning community.",
                             CreatedAt = new DateTime(2025, 2, 5, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = false,
-                            ReceiverId = "29",
-                            SenderId = "4"
+                            IsRead = true,
+                            ReceiverId = "10",
+                            SenderId = "3"
                         },
                         new
                         {
                             MessageId = 9L,
-                            Content = "We have a new course on Advanced C# that you might be interested in. Check it out!",
+                            Content = "Just a friendly reminder that a new module has been unlocked in your course.",
                             CreatedAt = new DateTime(2025, 2, 5, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = true,
-                            ReceiverId = "5",
+                            IsRead = false,
+                            ReceiverId = "18",
                             SenderId = "2"
                         },
                         new
                         {
                             MessageId = 10L,
-                            Content = "We have a new course on Advanced C# that you might be interested in. Check it out!",
+                            Content = "Welcome aboard! We're thrilled to have you as part of our learning community.",
                             CreatedAt = new DateTime(2025, 2, 5, 21, 0, 0, 0, DateTimeKind.Unspecified),
                             IsRead = true,
-                            ReceiverId = "47",
+                            ReceiverId = "29",
                             SenderId = "4"
                         },
                         new
                         {
                             MessageId = 11L,
-                            Content = "Just a friendly reminder that a new module has been unlocked in your course.",
+                            Content = "Welcome aboard! We're thrilled to have you as part of our learning community.",
                             CreatedAt = new DateTime(2025, 2, 6, 2, 0, 0, 0, DateTimeKind.Unspecified),
                             IsRead = true,
                             ReceiverId = "27",
-                            SenderId = "3"
-                        },
-                        new
-                        {
-                            MessageId = 12L,
-                            Content = "Just a friendly reminder that a new module has been unlocked in your course.",
-                            CreatedAt = new DateTime(2025, 2, 6, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = false,
-                            ReceiverId = "34",
-                            SenderId = "4"
-                        },
-                        new
-                        {
-                            MessageId = 13L,
-                            Content = "Just a friendly reminder that a new module has been unlocked in your course.",
-                            CreatedAt = new DateTime(2025, 2, 6, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = false,
-                            ReceiverId = "16",
                             SenderId = "1"
                         },
                         new
                         {
-                            MessageId = 14L,
-                            Content = "Your learning journey is inspiring! Don't hesitate to reach out to the community for discussions.",
-                            CreatedAt = new DateTime(2025, 2, 6, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            MessageId = 12L,
+                            Content = "Hello! We noticed you're making great progress in your course. Keep up the excellent work!",
+                            CreatedAt = new DateTime(2025, 2, 6, 7, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = false,
+                            ReceiverId = "15",
+                            SenderId = "2"
+                        },
+                        new
+                        {
+                            MessageId = 13L,
+                            Content = "A quick check-in to see how you are enjoying the platform. Any feedback is welcome!",
+                            CreatedAt = new DateTime(2025, 2, 6, 12, 0, 0, 0, DateTimeKind.Unspecified),
                             IsRead = true,
-                            ReceiverId = "45",
+                            ReceiverId = "18",
                             SenderId = "3"
+                        },
+                        new
+                        {
+                            MessageId = 14L,
+                            Content = "Hello! We noticed you're making great progress in your course. Keep up the excellent work!",
+                            CreatedAt = new DateTime(2025, 2, 6, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = false,
+                            ReceiverId = "10",
+                            SenderId = "2"
                         },
                         new
                         {
@@ -74296,323 +74599,323 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Content = "Do you have any questions or need assistance with your current lesson? We're here to help.",
                             CreatedAt = new DateTime(2025, 2, 6, 22, 0, 0, 0, DateTimeKind.Unspecified),
                             IsRead = false,
-                            ReceiverId = "21",
+                            ReceiverId = "49",
                             SenderId = "4"
                         },
                         new
                         {
                             MessageId = 16L,
-                            Content = "Did you know you can download course resources from the 'Materials' tab? Hope this helps!",
+                            Content = "Hello! We noticed you're making great progress in your course. Keep up the excellent work!",
                             CreatedAt = new DateTime(2025, 2, 7, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = false,
-                            ReceiverId = "12",
-                            SenderId = "1"
+                            IsRead = true,
+                            ReceiverId = "9",
+                            SenderId = "3"
                         },
                         new
                         {
                             MessageId = 17L,
-                            Content = "Do you have any questions or need assistance with your current lesson? We're here to help.",
+                            Content = "A quick check-in to see how you are enjoying the platform. Any feedback is welcome!",
                             CreatedAt = new DateTime(2025, 2, 7, 8, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = true,
-                            ReceiverId = "36",
+                            IsRead = false,
+                            ReceiverId = "39",
                             SenderId = "3"
                         },
                         new
                         {
                             MessageId = 18L,
-                            Content = "A quick check-in to see how you are enjoying the platform. Any feedback is welcome!",
+                            Content = "Your learning journey is inspiring! Don't hesitate to reach out to the community for discussions.",
                             CreatedAt = new DateTime(2025, 2, 7, 13, 0, 0, 0, DateTimeKind.Unspecified),
                             IsRead = false,
-                            ReceiverId = "23",
-                            SenderId = "3"
+                            ReceiverId = "43",
+                            SenderId = "1"
                         },
                         new
                         {
                             MessageId = 19L,
                             Content = "A quick check-in to see how you are enjoying the platform. Any feedback is welcome!",
                             CreatedAt = new DateTime(2025, 2, 7, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = true,
+                            IsRead = false,
                             ReceiverId = "39",
-                            SenderId = "4"
+                            SenderId = "3"
                         },
                         new
                         {
                             MessageId = 20L,
-                            Content = "Just a friendly reminder that a new module has been unlocked in your course.",
+                            Content = "A quick check-in to see how you are enjoying the platform. Any feedback is welcome!",
                             CreatedAt = new DateTime(2025, 2, 7, 23, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = false,
-                            ReceiverId = "45",
-                            SenderId = "2"
-                        },
-                        new
-                        {
-                            MessageId = 21L,
-                            Content = "Just a friendly reminder that a new module has been unlocked in your course.",
-                            CreatedAt = new DateTime(2025, 2, 8, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = false,
-                            ReceiverId = "13",
-                            SenderId = "3"
-                        },
-                        new
-                        {
-                            MessageId = 22L,
-                            Content = "Your learning journey is inspiring! Don't hesitate to reach out to the community for discussions.",
-                            CreatedAt = new DateTime(2025, 2, 8, 9, 0, 0, 0, DateTimeKind.Unspecified),
                             IsRead = true,
-                            ReceiverId = "39",
-                            SenderId = "1"
-                        },
-                        new
-                        {
-                            MessageId = 23L,
-                            Content = "Your learning journey is inspiring! Don't hesitate to reach out to the community for discussions.",
-                            CreatedAt = new DateTime(2025, 2, 8, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = true,
-                            ReceiverId = "49",
-                            SenderId = "3"
-                        },
-                        new
-                        {
-                            MessageId = 24L,
-                            Content = "Did you know you can download course resources from the 'Materials' tab? Hope this helps!",
-                            CreatedAt = new DateTime(2025, 2, 8, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = false,
-                            ReceiverId = "44",
-                            SenderId = "3"
-                        },
-                        new
-                        {
-                            MessageId = 25L,
-                            Content = "A quick check-in to see how you are enjoying the platform. Any feedback is welcome!",
-                            CreatedAt = new DateTime(2025, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = false,
-                            ReceiverId = "32",
-                            SenderId = "3"
-                        },
-                        new
-                        {
-                            MessageId = 26L,
-                            Content = "Hello! We noticed you're making great progress in your course. Keep up the excellent work!",
-                            CreatedAt = new DateTime(2025, 2, 9, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = false,
-                            ReceiverId = "13",
-                            SenderId = "4"
-                        },
-                        new
-                        {
-                            MessageId = 27L,
-                            Content = "Welcome aboard! We're thrilled to have you as part of our learning community.",
-                            CreatedAt = new DateTime(2025, 2, 9, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = false,
-                            ReceiverId = "7",
-                            SenderId = "3"
-                        },
-                        new
-                        {
-                            MessageId = 28L,
-                            Content = "Just a friendly reminder that a new module has been unlocked in your course.",
-                            CreatedAt = new DateTime(2025, 2, 9, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = true,
-                            ReceiverId = "46",
-                            SenderId = "2"
-                        },
-                        new
-                        {
-                            MessageId = 29L,
-                            Content = "A quick check-in to see how you are enjoying the platform. Any feedback is welcome!",
-                            CreatedAt = new DateTime(2025, 2, 9, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = true,
-                            ReceiverId = "29",
-                            SenderId = "3"
-                        },
-                        new
-                        {
-                            MessageId = 30L,
-                            Content = "Do you have any questions or need assistance with your current lesson? We're here to help.",
-                            CreatedAt = new DateTime(2025, 2, 10, 1, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = false,
-                            ReceiverId = "42",
-                            SenderId = "4"
-                        },
-                        new
-                        {
-                            MessageId = 31L,
-                            Content = "A quick check-in to see how you are enjoying the platform. Any feedback is welcome!",
-                            CreatedAt = new DateTime(2025, 2, 10, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = true,
-                            ReceiverId = "38",
-                            SenderId = "1"
-                        },
-                        new
-                        {
-                            MessageId = 32L,
-                            Content = "Just a friendly reminder that a new module has been unlocked in your course.",
-                            CreatedAt = new DateTime(2025, 2, 10, 11, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = false,
-                            ReceiverId = "34",
-                            SenderId = "1"
-                        },
-                        new
-                        {
-                            MessageId = 33L,
-                            Content = "Did you know you can download course resources from the 'Materials' tab? Hope this helps!",
-                            CreatedAt = new DateTime(2025, 2, 10, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = false,
-                            ReceiverId = "30",
-                            SenderId = "2"
-                        },
-                        new
-                        {
-                            MessageId = 34L,
-                            Content = "A quick check-in to see how you are enjoying the platform. Any feedback is welcome!",
-                            CreatedAt = new DateTime(2025, 2, 10, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = true,
-                            ReceiverId = "48",
-                            SenderId = "4"
-                        },
-                        new
-                        {
-                            MessageId = 35L,
-                            Content = "A quick check-in to see how you are enjoying the platform. Any feedback is welcome!",
-                            CreatedAt = new DateTime(2025, 2, 11, 2, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = true,
-                            ReceiverId = "31",
-                            SenderId = "1"
-                        },
-                        new
-                        {
-                            MessageId = 36L,
-                            Content = "Do you have any questions or need assistance with your current lesson? We're here to help.",
-                            CreatedAt = new DateTime(2025, 2, 11, 7, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = true,
-                            ReceiverId = "53",
-                            SenderId = "2"
-                        },
-                        new
-                        {
-                            MessageId = 37L,
-                            Content = "Welcome aboard! We're thrilled to have you as part of our learning community.",
-                            CreatedAt = new DateTime(2025, 2, 11, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = false,
-                            ReceiverId = "38",
-                            SenderId = "1"
-                        },
-                        new
-                        {
-                            MessageId = 38L,
-                            Content = "Just a friendly reminder that a new module has been unlocked in your course.",
-                            CreatedAt = new DateTime(2025, 2, 11, 17, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = false,
-                            ReceiverId = "47",
-                            SenderId = "2"
-                        },
-                        new
-                        {
-                            MessageId = 39L,
-                            Content = "Do you have any questions or need assistance with your current lesson? We're here to help.",
-                            CreatedAt = new DateTime(2025, 2, 11, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = false,
-                            ReceiverId = "11",
-                            SenderId = "4"
-                        },
-                        new
-                        {
-                            MessageId = 40L,
-                            Content = "Welcome aboard! We're thrilled to have you as part of our learning community.",
-                            CreatedAt = new DateTime(2025, 2, 12, 3, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = false,
                             ReceiverId = "27",
                             SenderId = "3"
                         },
                         new
                         {
-                            MessageId = 41L,
-                            Content = "Your learning journey is inspiring! Don't hesitate to reach out to the community for discussions.",
-                            CreatedAt = new DateTime(2025, 2, 12, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            MessageId = 21L,
+                            Content = "Did you know you can download course resources from the 'Materials' tab? Hope this helps!",
+                            CreatedAt = new DateTime(2025, 2, 8, 4, 0, 0, 0, DateTimeKind.Unspecified),
                             IsRead = false,
-                            ReceiverId = "26",
-                            SenderId = "2"
-                        },
-                        new
-                        {
-                            MessageId = 42L,
-                            Content = "Your learning journey is inspiring! Don't hesitate to reach out to the community for discussions.",
-                            CreatedAt = new DateTime(2025, 2, 12, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = true,
-                            ReceiverId = "37",
+                            ReceiverId = "28",
                             SenderId = "3"
                         },
                         new
                         {
-                            MessageId = 43L,
-                            Content = "Your learning journey is inspiring! Don't hesitate to reach out to the community for discussions.",
-                            CreatedAt = new DateTime(2025, 2, 12, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            MessageId = 22L,
+                            Content = "Welcome aboard! We're thrilled to have you as part of our learning community.",
+                            CreatedAt = new DateTime(2025, 2, 8, 9, 0, 0, 0, DateTimeKind.Unspecified),
                             IsRead = true,
-                            ReceiverId = "6",
-                            SenderId = "2"
+                            ReceiverId = "33",
+                            SenderId = "3"
                         },
                         new
                         {
-                            MessageId = 44L,
-                            Content = "A quick check-in to see how you are enjoying the platform. Any feedback is welcome!",
-                            CreatedAt = new DateTime(2025, 2, 12, 23, 0, 0, 0, DateTimeKind.Unspecified),
+                            MessageId = 23L,
+                            Content = "Did you know you can download course resources from the 'Materials' tab? Hope this helps!",
+                            CreatedAt = new DateTime(2025, 2, 8, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = false,
+                            ReceiverId = "50",
+                            SenderId = "1"
+                        },
+                        new
+                        {
+                            MessageId = 24L,
+                            Content = "Welcome aboard! We're thrilled to have you as part of our learning community.",
+                            CreatedAt = new DateTime(2025, 2, 8, 19, 0, 0, 0, DateTimeKind.Unspecified),
                             IsRead = true,
-                            ReceiverId = "15",
+                            ReceiverId = "46",
+                            SenderId = "1"
+                        },
+                        new
+                        {
+                            MessageId = 25L,
+                            Content = "Your learning journey is inspiring! Don't hesitate to reach out to the community for discussions.",
+                            CreatedAt = new DateTime(2025, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = false,
+                            ReceiverId = "6",
+                            SenderId = "3"
+                        },
+                        new
+                        {
+                            MessageId = 26L,
+                            Content = "We have a new course on Advanced C# that you might be interested in. Check it out!",
+                            CreatedAt = new DateTime(2025, 2, 9, 5, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = false,
+                            ReceiverId = "48",
                             SenderId = "4"
                         },
                         new
                         {
-                            MessageId = 45L,
+                            MessageId = 27L,
                             Content = "We have a new course on Advanced C# that you might be interested in. Check it out!",
-                            CreatedAt = new DateTime(2025, 2, 13, 4, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = true,
-                            ReceiverId = "6",
-                            SenderId = "2"
-                        },
-                        new
-                        {
-                            MessageId = 46L,
-                            Content = "We have a new course on Advanced C# that you might be interested in. Check it out!",
-                            CreatedAt = new DateTime(2025, 2, 13, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2025, 2, 9, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             IsRead = true,
                             ReceiverId = "22",
                             SenderId = "1"
                         },
                         new
                         {
-                            MessageId = 47L,
+                            MessageId = 28L,
+                            Content = "Welcome aboard! We're thrilled to have you as part of our learning community.",
+                            CreatedAt = new DateTime(2025, 2, 9, 15, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = true,
+                            ReceiverId = "52",
+                            SenderId = "4"
+                        },
+                        new
+                        {
+                            MessageId = 29L,
+                            Content = "Welcome aboard! We're thrilled to have you as part of our learning community.",
+                            CreatedAt = new DateTime(2025, 2, 9, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = false,
+                            ReceiverId = "24",
+                            SenderId = "4"
+                        },
+                        new
+                        {
+                            MessageId = 30L,
+                            Content = "Welcome aboard! We're thrilled to have you as part of our learning community.",
+                            CreatedAt = new DateTime(2025, 2, 10, 1, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = false,
+                            ReceiverId = "32",
+                            SenderId = "4"
+                        },
+                        new
+                        {
+                            MessageId = 31L,
+                            Content = "Your learning journey is inspiring! Don't hesitate to reach out to the community for discussions.",
+                            CreatedAt = new DateTime(2025, 2, 10, 6, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = false,
+                            ReceiverId = "27",
+                            SenderId = "2"
+                        },
+                        new
+                        {
+                            MessageId = 32L,
+                            Content = "Hello! We noticed you're making great progress in your course. Keep up the excellent work!",
+                            CreatedAt = new DateTime(2025, 2, 10, 11, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = true,
+                            ReceiverId = "30",
+                            SenderId = "2"
+                        },
+                        new
+                        {
+                            MessageId = 33L,
+                            Content = "Did you know you can download course resources from the 'Materials' tab? Hope this helps!",
+                            CreatedAt = new DateTime(2025, 2, 10, 16, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = true,
+                            ReceiverId = "18",
+                            SenderId = "2"
+                        },
+                        new
+                        {
+                            MessageId = 34L,
                             Content = "Do you have any questions or need assistance with your current lesson? We're here to help.",
+                            CreatedAt = new DateTime(2025, 2, 10, 21, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = false,
+                            ReceiverId = "37",
+                            SenderId = "4"
+                        },
+                        new
+                        {
+                            MessageId = 35L,
+                            Content = "Just a friendly reminder that a new module has been unlocked in your course.",
+                            CreatedAt = new DateTime(2025, 2, 11, 2, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = false,
+                            ReceiverId = "18",
+                            SenderId = "4"
+                        },
+                        new
+                        {
+                            MessageId = 36L,
+                            Content = "We have a new course on Advanced C# that you might be interested in. Check it out!",
+                            CreatedAt = new DateTime(2025, 2, 11, 7, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = true,
+                            ReceiverId = "45",
+                            SenderId = "3"
+                        },
+                        new
+                        {
+                            MessageId = 37L,
+                            Content = "Did you know you can download course resources from the 'Materials' tab? Hope this helps!",
+                            CreatedAt = new DateTime(2025, 2, 11, 12, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = true,
+                            ReceiverId = "27",
+                            SenderId = "2"
+                        },
+                        new
+                        {
+                            MessageId = 38L,
+                            Content = "A quick check-in to see how you are enjoying the platform. Any feedback is welcome!",
+                            CreatedAt = new DateTime(2025, 2, 11, 17, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = true,
+                            ReceiverId = "51",
+                            SenderId = "1"
+                        },
+                        new
+                        {
+                            MessageId = 39L,
+                            Content = "Do you have any questions or need assistance with your current lesson? We're here to help.",
+                            CreatedAt = new DateTime(2025, 2, 11, 22, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = true,
+                            ReceiverId = "32",
+                            SenderId = "3"
+                        },
+                        new
+                        {
+                            MessageId = 40L,
+                            Content = "Just a friendly reminder that a new module has been unlocked in your course.",
+                            CreatedAt = new DateTime(2025, 2, 12, 3, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = true,
+                            ReceiverId = "27",
+                            SenderId = "3"
+                        },
+                        new
+                        {
+                            MessageId = 41L,
+                            Content = "Welcome aboard! We're thrilled to have you as part of our learning community.",
+                            CreatedAt = new DateTime(2025, 2, 12, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = false,
+                            ReceiverId = "55",
+                            SenderId = "3"
+                        },
+                        new
+                        {
+                            MessageId = 42L,
+                            Content = "Do you have any questions or need assistance with your current lesson? We're here to help.",
+                            CreatedAt = new DateTime(2025, 2, 12, 13, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = false,
+                            ReceiverId = "13",
+                            SenderId = "2"
+                        },
+                        new
+                        {
+                            MessageId = 43L,
+                            Content = "A quick check-in to see how you are enjoying the platform. Any feedback is welcome!",
+                            CreatedAt = new DateTime(2025, 2, 12, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = false,
+                            ReceiverId = "45",
+                            SenderId = "2"
+                        },
+                        new
+                        {
+                            MessageId = 44L,
+                            Content = "Do you have any questions or need assistance with your current lesson? We're here to help.",
+                            CreatedAt = new DateTime(2025, 2, 12, 23, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = false,
+                            ReceiverId = "47",
+                            SenderId = "1"
+                        },
+                        new
+                        {
+                            MessageId = 45L,
+                            Content = "Did you know you can download course resources from the 'Materials' tab? Hope this helps!",
+                            CreatedAt = new DateTime(2025, 2, 13, 4, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = true,
+                            ReceiverId = "49",
+                            SenderId = "4"
+                        },
+                        new
+                        {
+                            MessageId = 46L,
+                            Content = "Do you have any questions or need assistance with your current lesson? We're here to help.",
+                            CreatedAt = new DateTime(2025, 2, 13, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsRead = true,
+                            ReceiverId = "8",
+                            SenderId = "4"
+                        },
+                        new
+                        {
+                            MessageId = 47L,
+                            Content = "Did you know you can download course resources from the 'Materials' tab? Hope this helps!",
                             CreatedAt = new DateTime(2025, 2, 13, 14, 0, 0, 0, DateTimeKind.Unspecified),
                             IsRead = true,
-                            ReceiverId = "7",
-                            SenderId = "2"
+                            ReceiverId = "9",
+                            SenderId = "4"
                         },
                         new
                         {
                             MessageId = 48L,
-                            Content = "A quick check-in to see how you are enjoying the platform. Any feedback is welcome!",
+                            Content = "Just a friendly reminder that a new module has been unlocked in your course.",
                             CreatedAt = new DateTime(2025, 2, 13, 19, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = false,
-                            ReceiverId = "5",
-                            SenderId = "2"
+                            IsRead = true,
+                            ReceiverId = "52",
+                            SenderId = "4"
                         },
                         new
                         {
                             MessageId = 49L,
-                            Content = "A quick check-in to see how you are enjoying the platform. Any feedback is welcome!",
+                            Content = "We have a new course on Advanced C# that you might be interested in. Check it out!",
                             CreatedAt = new DateTime(2025, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = true,
-                            ReceiverId = "23",
-                            SenderId = "2"
+                            IsRead = false,
+                            ReceiverId = "16",
+                            SenderId = "4"
                         },
                         new
                         {
                             MessageId = 50L,
-                            Content = "Just a friendly reminder that a new module has been unlocked in your course.",
+                            Content = "We have a new course on Advanced C# that you might be interested in. Check it out!",
                             CreatedAt = new DateTime(2025, 2, 14, 5, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsRead = true,
-                            ReceiverId = "18",
-                            SenderId = "3"
+                            IsRead = false,
+                            ReceiverId = "43",
+                            SenderId = "4"
                         });
                 });
 
@@ -74659,57 +74962,57 @@ namespace OnlineLearningPlatform.Data.Migrations
                         new
                         {
                             TransactionId = 1L,
-                            Amount = 30.89m,
-                            CourseId = 28L,
+                            Amount = 78.68m,
+                            CourseId = 31L,
                             DateCreated = new DateTime(2025, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 28",
+                            Description = "Purchase of course 31",
                             Status = 1,
                             UserId = "5"
                         },
                         new
                         {
                             TransactionId = 2L,
-                            Amount = 54.96m,
-                            CourseId = 27L,
+                            Amount = 97.29m,
+                            CourseId = 11L,
                             DateCreated = new DateTime(2025, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 27",
+                            Description = "Purchase of course 11",
                             Status = 1,
                             UserId = "5"
                         },
                         new
                         {
                             TransactionId = 3L,
-                            Amount = 26.41m,
-                            CourseId = 23L,
+                            Amount = 24.09m,
+                            CourseId = 16L,
                             DateCreated = new DateTime(2025, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 23",
+                            Description = "Purchase of course 16",
                             Status = 1,
                             UserId = "5"
                         },
                         new
                         {
                             TransactionId = 4L,
-                            Amount = 89.02m,
-                            CourseId = 30L,
+                            Amount = 88.66m,
+                            CourseId = 46L,
                             DateCreated = new DateTime(2025, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 30",
+                            Description = "Purchase of course 46",
                             Status = 1,
                             UserId = "5"
                         },
                         new
                         {
                             TransactionId = 5L,
-                            Amount = 55.51m,
-                            CourseId = 34L,
+                            Amount = 56.19m,
+                            CourseId = 36L,
                             DateCreated = new DateTime(2025, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 34",
+                            Description = "Purchase of course 36",
                             Status = 1,
                             UserId = "5"
                         },
                         new
                         {
                             TransactionId = 6L,
-                            Amount = 96.19m,
+                            Amount = 88.38m,
                             CourseId = 13L,
                             DateCreated = new DateTime(2025, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Purchase of course 13",
@@ -74719,240 +75022,240 @@ namespace OnlineLearningPlatform.Data.Migrations
                         new
                         {
                             TransactionId = 7L,
-                            Amount = 87.27m,
-                            CourseId = 21L,
+                            Amount = 94.69m,
+                            CourseId = 32L,
                             DateCreated = new DateTime(2025, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 21",
+                            Description = "Purchase of course 32",
                             Status = 1,
                             UserId = "5"
                         },
                         new
                         {
                             TransactionId = 8L,
-                            Amount = 35.16m,
-                            CourseId = 42L,
+                            Amount = 41.17m,
+                            CourseId = 6L,
                             DateCreated = new DateTime(2025, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 42",
+                            Description = "Purchase of course 6",
                             Status = 1,
                             UserId = "5"
                         },
                         new
                         {
                             TransactionId = 9L,
-                            Amount = 26.98m,
-                            CourseId = 25L,
+                            Amount = 95.64m,
+                            CourseId = 54L,
                             DateCreated = new DateTime(2025, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 25",
+                            Description = "Purchase of course 54",
                             Status = 1,
                             UserId = "5"
                         },
                         new
                         {
                             TransactionId = 10L,
-                            Amount = 84.03m,
-                            CourseId = 22L,
+                            Amount = 76.33m,
+                            CourseId = 30L,
                             DateCreated = new DateTime(2025, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 22",
+                            Description = "Purchase of course 30",
                             Status = 1,
                             UserId = "5"
                         },
                         new
                         {
                             TransactionId = 11L,
-                            Amount = 49.05m,
-                            CourseId = 41L,
-                            DateCreated = new DateTime(2025, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 41",
-                            Status = 1,
-                            UserId = "6"
-                        },
-                        new
-                        {
-                            TransactionId = 12L,
-                            Amount = 87.00m,
-                            CourseId = 26L,
-                            DateCreated = new DateTime(2025, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 26",
-                            Status = 1,
-                            UserId = "6"
-                        },
-                        new
-                        {
-                            TransactionId = 13L,
-                            Amount = 92.57m,
-                            CourseId = 10L,
-                            DateCreated = new DateTime(2025, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 10",
-                            Status = 1,
-                            UserId = "6"
-                        },
-                        new
-                        {
-                            TransactionId = 14L,
-                            Amount = 22.50m,
-                            CourseId = 50L,
-                            DateCreated = new DateTime(2025, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 50",
-                            Status = 1,
-                            UserId = "6"
-                        },
-                        new
-                        {
-                            TransactionId = 15L,
-                            Amount = 64.16m,
-                            CourseId = 48L,
-                            DateCreated = new DateTime(2025, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 48",
-                            Status = 1,
-                            UserId = "6"
-                        },
-                        new
-                        {
-                            TransactionId = 16L,
-                            Amount = 53.72m,
+                            Amount = 80.31m,
                             CourseId = 37L,
-                            DateCreated = new DateTime(2025, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Purchase of course 37",
                             Status = 1,
                             UserId = "6"
                         },
                         new
                         {
+                            TransactionId = 12L,
+                            Amount = 39.18m,
+                            CourseId = 32L,
+                            DateCreated = new DateTime(2025, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Purchase of course 32",
+                            Status = 1,
+                            UserId = "6"
+                        },
+                        new
+                        {
+                            TransactionId = 13L,
+                            Amount = 64.54m,
+                            CourseId = 43L,
+                            DateCreated = new DateTime(2025, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Purchase of course 43",
+                            Status = 1,
+                            UserId = "6"
+                        },
+                        new
+                        {
+                            TransactionId = 14L,
+                            Amount = 83.84m,
+                            CourseId = 51L,
+                            DateCreated = new DateTime(2025, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Purchase of course 51",
+                            Status = 1,
+                            UserId = "6"
+                        },
+                        new
+                        {
+                            TransactionId = 15L,
+                            Amount = 41.71m,
+                            CourseId = 22L,
+                            DateCreated = new DateTime(2025, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Purchase of course 22",
+                            Status = 1,
+                            UserId = "6"
+                        },
+                        new
+                        {
+                            TransactionId = 16L,
+                            Amount = 31.38m,
+                            CourseId = 46L,
+                            DateCreated = new DateTime(2025, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Purchase of course 46",
+                            Status = 1,
+                            UserId = "6"
+                        },
+                        new
+                        {
                             TransactionId = 17L,
-                            Amount = 81.51m,
-                            CourseId = 24L,
+                            Amount = 37.09m,
+                            CourseId = 19L,
                             DateCreated = new DateTime(2025, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 24",
+                            Description = "Purchase of course 19",
                             Status = 1,
                             UserId = "6"
                         },
                         new
                         {
                             TransactionId = 18L,
-                            Amount = 24.38m,
-                            CourseId = 27L,
+                            Amount = 69.15m,
+                            CourseId = 26L,
                             DateCreated = new DateTime(2025, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 27",
+                            Description = "Purchase of course 26",
                             Status = 1,
                             UserId = "6"
                         },
                         new
                         {
                             TransactionId = 19L,
-                            Amount = 47.63m,
-                            CourseId = 20L,
+                            Amount = 27.14m,
+                            CourseId = 23L,
                             DateCreated = new DateTime(2025, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 20",
+                            Description = "Purchase of course 23",
                             Status = 1,
                             UserId = "6"
                         },
                         new
                         {
                             TransactionId = 20L,
-                            Amount = 26.38m,
-                            CourseId = 3L,
+                            Amount = 72.90m,
+                            CourseId = 28L,
                             DateCreated = new DateTime(2025, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 3",
+                            Description = "Purchase of course 28",
                             Status = 1,
                             UserId = "6"
                         },
                         new
                         {
                             TransactionId = 21L,
-                            Amount = 46.92m,
-                            CourseId = 5L,
+                            Amount = 96.27m,
+                            CourseId = 33L,
                             DateCreated = new DateTime(2025, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 5",
+                            Description = "Purchase of course 33",
                             Status = 1,
                             UserId = "7"
                         },
                         new
                         {
                             TransactionId = 22L,
-                            Amount = 78.32m,
-                            CourseId = 30L,
+                            Amount = 30.37m,
+                            CourseId = 35L,
                             DateCreated = new DateTime(2025, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 30",
+                            Description = "Purchase of course 35",
                             Status = 1,
                             UserId = "7"
                         },
                         new
                         {
                             TransactionId = 23L,
-                            Amount = 99.89m,
-                            CourseId = 9L,
-                            DateCreated = new DateTime(2025, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 9",
-                            Status = 1,
-                            UserId = "7"
-                        },
-                        new
-                        {
-                            TransactionId = 24L,
-                            Amount = 99.39m,
+                            Amount = 67.56m,
                             CourseId = 11L,
-                            DateCreated = new DateTime(2025, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Purchase of course 11",
                             Status = 1,
                             UserId = "7"
                         },
                         new
                         {
-                            TransactionId = 25L,
-                            Amount = 68.22m,
-                            CourseId = 53L,
-                            DateCreated = new DateTime(2025, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 53",
+                            TransactionId = 24L,
+                            Amount = 35.97m,
+                            CourseId = 16L,
+                            DateCreated = new DateTime(2025, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Purchase of course 16",
                             Status = 1,
                             UserId = "7"
                         },
                         new
                         {
-                            TransactionId = 26L,
-                            Amount = 27.93m,
+                            TransactionId = 25L,
+                            Amount = 58.07m,
                             CourseId = 34L,
-                            DateCreated = new DateTime(2025, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Purchase of course 34",
                             Status = 1,
                             UserId = "7"
                         },
                         new
                         {
+                            TransactionId = 26L,
+                            Amount = 38.61m,
+                            CourseId = 47L,
+                            DateCreated = new DateTime(2025, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Purchase of course 47",
+                            Status = 1,
+                            UserId = "7"
+                        },
+                        new
+                        {
                             TransactionId = 27L,
-                            Amount = 63.24m,
-                            CourseId = 24L,
+                            Amount = 69.41m,
+                            CourseId = 25L,
                             DateCreated = new DateTime(2025, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 24",
+                            Description = "Purchase of course 25",
                             Status = 1,
                             UserId = "7"
                         },
                         new
                         {
                             TransactionId = 28L,
-                            Amount = 33.51m,
-                            CourseId = 20L,
+                            Amount = 41.56m,
+                            CourseId = 52L,
                             DateCreated = new DateTime(2025, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 20",
+                            Description = "Purchase of course 52",
                             Status = 1,
                             UserId = "7"
                         },
                         new
                         {
                             TransactionId = 29L,
-                            Amount = 22.46m,
-                            CourseId = 50L,
+                            Amount = 60.57m,
+                            CourseId = 8L,
                             DateCreated = new DateTime(2025, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 50",
+                            Description = "Purchase of course 8",
                             Status = 1,
                             UserId = "7"
                         },
                         new
                         {
                             TransactionId = 30L,
-                            Amount = 88.02m,
-                            CourseId = 27L,
+                            Amount = 76.47m,
+                            CourseId = 4L,
                             DateCreated = new DateTime(2025, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Purchase of course 27",
+                            Description = "Purchase of course 4",
                             Status = 1,
                             UserId = "7"
                         });
@@ -75061,7 +75364,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "1",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/1/200/200",
-                            ConcurrencyStamp = "fcdc0978-de97-4ce0-ac1e-8ae9c80d7c3a",
+                            ConcurrencyStamp = "3a130885-e2f9-499f-9e30-9f27d64a167d",
                             CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(2003, 7, 6),
                             Email = "admin@admin.com",
@@ -75073,12 +75376,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIZfb6fd74/Zlnvl7v7XDx8Gok/ZYEvCqRZEYuSjUcVYWcCbDX9eKZnfjeNicjjNZQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOJGNe5F98B0VFcP+RRua9n3rfgkyh2a/JHJMtNHJ4KRRzjXJ7HORs7JQ2wVan61Xg==",
                             Phone = "0000000000",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f0ecfd07-77bb-4df0-8ca2-6406f829a870",
+                            SecurityStamp = "4c954dc0-c34a-4d4f-bc73-e71cf0d64031",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 6, 329, DateTimeKind.Local).AddTicks(1702),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 40, 791, DateTimeKind.Local).AddTicks(5494),
                             UserName = "admin@admin.com"
                         },
                         new
@@ -75086,7 +75389,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "2",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/2/200/200",
-                            ConcurrencyStamp = "5ac546ba-7422-4e79-b07a-8dabab431108",
+                            ConcurrencyStamp = "2447018e-4780-4e27-b55f-b5b24e3af2e0",
                             CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1990, 1, 1),
                             Email = "mentor1@demo.com",
@@ -75098,12 +75401,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MENTOR1@DEMO.COM",
                             NormalizedUserName = "MENTOR1@DEMO.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEZubzngWA802dA7Lp1IqQiDZxNvRiZ39sB6RIsXk+YonYCpHlRA+5DLOVJNhYrfjg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEIyKjfS60tRc8oud7MGy5ofgRnqPDPW+2pB8y/wdsb4ihFSe5Qr3hgnaGXAZwUIpA==",
                             Phone = "0000000001",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "906dde5f-9f5b-431f-a3bc-f07b3b0fd84c",
+                            SecurityStamp = "79f84a6d-3b33-4a6c-9966-c5d83de6a7c1",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 6, 389, DateTimeKind.Local).AddTicks(5476),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 40, 846, DateTimeKind.Local).AddTicks(8070),
                             UserName = "mentor1@demo.com"
                         },
                         new
@@ -75111,7 +75414,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "3",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/2/200/200",
-                            ConcurrencyStamp = "a5ee4e1a-4cca-48ec-8127-02b35f533920",
+                            ConcurrencyStamp = "d8f544d3-bd5e-49c5-b3fc-dd0f5761f62a",
                             CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1990, 1, 1),
                             Email = "mentor2@demo.com",
@@ -75123,12 +75426,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MENTOR2@DEMO.COM",
                             NormalizedUserName = "MENTOR2@DEMO.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEF2GfhbHdet98FK7OwQmRHDz8kDcpGYBN3n6BQdE1FfW1/AB3sygPP/Mezwuxr2Xtg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDgXQUiG715zpRZJrKMOi+//rZ0tuNmoj+be/U6gPhykFWlKbeVL6xadsE/NsoGMhQ==",
                             Phone = "0000000001",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a89db711-b034-4f12-af0e-3f3940d9c511",
+                            SecurityStamp = "7992771b-7b5c-47bf-beab-1024318a4cda",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 6, 452, DateTimeKind.Local).AddTicks(4573),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 40, 901, DateTimeKind.Local).AddTicks(4978),
                             UserName = "mentor2@demo.com"
                         },
                         new
@@ -75136,7 +75439,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "4",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/2/200/200",
-                            ConcurrencyStamp = "fd2ab18a-5747-493c-b5c0-454d8e9bd079",
+                            ConcurrencyStamp = "43ce08a2-4e00-4182-9f41-96b1703dae8c",
                             CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1990, 1, 1),
                             Email = "mentor3@demo.com",
@@ -75148,12 +75451,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MENTOR3@DEMO.COM",
                             NormalizedUserName = "MENTOR3@DEMO.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGwTZSeH5ElZoeAPT8GHAkOFAu5v64gx3Xcsp4ND3rhn674ypWw9Yc4FTslcv8FsVA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBjbE3mmE3WXWwNQ8uWKIiVgv9D6KooRaDesoKUgGNjEjQowaL0EaKHbde+yaNBfBQ==",
                             Phone = "0000000001",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a4720fae-5f0a-435e-932b-c17379397fe0",
+                            SecurityStamp = "792a0989-c933-40ea-b4cf-507e5bca1b73",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 6, 512, DateTimeKind.Local).AddTicks(9525),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 40, 968, DateTimeKind.Local).AddTicks(9426),
                             UserName = "mentor3@demo.com"
                         },
                         new
@@ -75161,7 +75464,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "5",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/mentee1/200/200",
-                            ConcurrencyStamp = "deeb31d4-e573-4770-b2ba-c42c47c78143",
+                            ConcurrencyStamp = "25e173bb-437c-4910-a90f-f413c0c42ed2",
                             CreatedAt = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1998, 3, 3),
                             Email = "mentee1@example.com",
@@ -75173,12 +75476,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MENTEE1@EXAMPLE.COM",
                             NormalizedUserName = "MENTEE1@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDiAvboW903QWCYoUkUEJZZm/EkajHIgcFC9sIsIYRMPBtbrtRCO4wI4v90i674arw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPb64/+ugt+K6hsl+wW32961E+C7ZluJwKqTine4lVXigtqGAATxu+/+1ANcdDqVUw==",
                             Phone = "0900000003",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9258a17c-b7b2-43c1-b634-1ec03c8949f1",
+                            SecurityStamp = "4eecd7b4-274f-41f8-bbcb-0a49ecdbf4f7",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 6, 586, DateTimeKind.Local).AddTicks(1704),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 41, 33, DateTimeKind.Local).AddTicks(3785),
                             UserName = "mentee1@example.com"
                         },
                         new
@@ -75186,7 +75489,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "6",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/mentee2/200/200",
-                            ConcurrencyStamp = "0a7d004b-ccac-491b-96c8-af28c951d9b4",
+                            ConcurrencyStamp = "7fef04a0-089c-4dbc-81cc-5f6dda8d9609",
                             CreatedAt = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1997, 4, 4),
                             Email = "mentee2@example.com",
@@ -75198,12 +75501,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MENTEE2@EXAMPLE.COM",
                             NormalizedUserName = "MENTEE2@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMEYmaJeUZAObhD+enSl0uSTaoy6BQfL5dOFVyki2QntCBtsNgxW/BZs5RlXHnoYbw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEA1sNPBxvm2CJZT0snDBqJTdX47BvmrRpZtKWOjEPaQEZCOfg7rkwo+MFMNkDUONzg==",
                             Phone = "0900000004",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "85ea980d-acb9-4803-9f6f-c354ec7cdf44",
+                            SecurityStamp = "d8d92a25-03d6-4015-b622-568ef7d6636e",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 6, 643, DateTimeKind.Local).AddTicks(4241),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 41, 88, DateTimeKind.Local).AddTicks(5969),
                             UserName = "mentee2@example.com"
                         },
                         new
@@ -75211,7 +75514,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "7",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/mentee3/200/200",
-                            ConcurrencyStamp = "ee1700f5-e3fd-4fdd-b1f6-11dcbed601b2",
+                            ConcurrencyStamp = "8819e6e7-137f-425f-9d2e-29a0df6138f1",
                             CreatedAt = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1996, 5, 5),
                             Email = "mentee3@example.com",
@@ -75223,12 +75526,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MENTEE3@EXAMPLE.COM",
                             NormalizedUserName = "MENTEE3@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPRB9MmNjKsQCjpHskzsvw10dIDzdYN8QzS8XMruk1+8ONZ2awfwssoAdEuWJcUGrw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEM1U7VIEBcZNuJmwAdpR1ZWPdtcAqPgxahk0tlQtmC65+oCn0VlIqjN24dvZqNc7RA==",
                             Phone = "0900000005",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b4d42c29-b5eb-41e6-990f-24858e8b7e9c",
+                            SecurityStamp = "8668a496-0ab1-4ddb-a6d0-7fc114d2bf95",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 6, 702, DateTimeKind.Local).AddTicks(3899),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 41, 163, DateTimeKind.Local).AddTicks(4603),
                             UserName = "mentee3@example.com"
                         },
                         new
@@ -75236,7 +75539,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "8",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/8/200/200",
-                            ConcurrencyStamp = "ba67243e-1ee8-40ef-b094-a03e0a5613d4",
+                            ConcurrencyStamp = "90d620b2-fc13-4766-b3d1-e56a41e00ea1",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1992, 1, 1),
                             Email = "user8@example.com",
@@ -75248,12 +75551,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER8@EXAMPLE.COM",
                             NormalizedUserName = "USER8@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAECFBBDTn1PwgRqcYzqPnfxbKDfE4RUYgHhZzqsvYHXavbU/hY5p1VydGrusEz8cWUA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFzsZqoqUCbGCALzNq1yBbFqpgiU9YCnYX0CNQ0Y2fwGdsgAxK0IoKPreWr9MGs00w==",
                             Phone = "0900000008",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8847dcea-1ae6-43cd-b0ed-6e849318591a",
+                            SecurityStamp = "dc6cebca-dfd8-47ca-923e-e3c52d113ae8",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 6, 764, DateTimeKind.Local).AddTicks(5813),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 41, 245, DateTimeKind.Local).AddTicks(9314),
                             UserName = "user8@example.com"
                         },
                         new
@@ -75261,7 +75564,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "9",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/9/200/200",
-                            ConcurrencyStamp = "4b188695-f666-4ad7-ba5d-bb7cc6420887",
+                            ConcurrencyStamp = "04241c18-e442-4e3c-b894-befa201e9dbe",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1991, 1, 1),
                             Email = "user9@example.com",
@@ -75273,12 +75576,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER9@EXAMPLE.COM",
                             NormalizedUserName = "USER9@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEI4Fm1Bkh2fwPsBILgQgzuLchlOXFBtyr0S1FyKzBz1G9TgJgxm34g/sbruiSP9kvw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKznNz5m5oIXwI5tmasRcCxH2rIzUoBTZ5HvgktGedmKtPaye4r1xM7Zo7LWs8WyFw==",
                             Phone = "0900000009",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7be90cc9-c267-4dd9-8712-b14502f6cb5c",
+                            SecurityStamp = "fbb6c364-6940-4d09-9fd9-914d536d538f",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 6, 821, DateTimeKind.Local).AddTicks(7421),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 41, 301, DateTimeKind.Local).AddTicks(9917),
                             UserName = "user9@example.com"
                         },
                         new
@@ -75286,7 +75589,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "10",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/10/200/200",
-                            ConcurrencyStamp = "9b2a4e75-f704-48d1-a463-91a9f81eefbb",
+                            ConcurrencyStamp = "1cac5338-4eef-42b0-aef5-f9d39102ea31",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1990, 1, 1),
                             Email = "user10@example.com",
@@ -75298,12 +75601,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER10@EXAMPLE.COM",
                             NormalizedUserName = "USER10@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBLVrbAvoXOp1xbGoLgaVCmp9pRuUuQjC8xiszYyqqBXrH/KcpDMiFp/76BdB2fs8A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOOSj/+eRO0TypiaZ5U4EKdTwNNQ+APfnQJtgifHDQnA73mmWkJHXQckIs7KSwnRxA==",
                             Phone = "0900000010",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ceb31e18-42ae-4788-b784-fe38e9b727d9",
+                            SecurityStamp = "5b5bdf9e-402a-4e29-a68b-24b0d567b27a",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 6, 878, DateTimeKind.Local).AddTicks(6750),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 41, 358, DateTimeKind.Local).AddTicks(1458),
                             UserName = "user10@example.com"
                         },
                         new
@@ -75311,7 +75614,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "11",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/11/200/200",
-                            ConcurrencyStamp = "c5806daf-4577-485e-8e89-15d257394c11",
+                            ConcurrencyStamp = "87c15a7c-12f5-424d-a211-16bbc12a408d",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1989, 1, 1),
                             Email = "user11@example.com",
@@ -75323,12 +75626,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER11@EXAMPLE.COM",
                             NormalizedUserName = "USER11@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAENXX+lLCUGI7tkzlGHrZyh40ESNJD00vzpVUZQv2tnRnDX88M3lJVpKa3JfgckkZZA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECYtBmOsxhVTX8FcJvPlShPR9ZX8NQhZt6Zo3h36lG6DAEDDkLS/E5yIrXeS9A74pQ==",
                             Phone = "0900000011",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1f03e79d-16e4-4ff2-8326-b37ff9d8beb0",
+                            SecurityStamp = "cc982502-c203-4604-bc0f-dcdc222f9d73",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 6, 937, DateTimeKind.Local).AddTicks(3979),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 41, 413, DateTimeKind.Local).AddTicks(7425),
                             UserName = "user11@example.com"
                         },
                         new
@@ -75336,7 +75639,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "12",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/12/200/200",
-                            ConcurrencyStamp = "b659c74a-a941-459c-9c7a-1d93fedddcad",
+                            ConcurrencyStamp = "52d9b21a-57aa-4779-bbb4-c8bf63f43e0d",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1988, 1, 1),
                             Email = "user12@example.com",
@@ -75348,12 +75651,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER12@EXAMPLE.COM",
                             NormalizedUserName = "USER12@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEP2Dgx5+7HyXMnmkZ2KI4cqDowlR2AlcOa8P4ZbjxCfEsxK9GciClzUR788rgjLfew==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEMFzBnRObCc2sAnYE7eACaIZiJiqYC62FFd/BVFnE4/5ZhrXrBjWHO/wEKAFEUX+Q==",
                             Phone = "0900000012",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c52532dc-713c-4d8f-8059-95890328f1ef",
+                            SecurityStamp = "c92901a4-2387-433d-b67c-bc0de6b07b49",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 7, 1, DateTimeKind.Local).AddTicks(6602),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 41, 472, DateTimeKind.Local).AddTicks(7937),
                             UserName = "user12@example.com"
                         },
                         new
@@ -75361,7 +75664,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "13",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/13/200/200",
-                            ConcurrencyStamp = "8e7a150e-e5bb-4c30-9c6d-132f5759971c",
+                            ConcurrencyStamp = "cf559745-dd1c-4889-a378-d29e9925ec21",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1987, 1, 1),
                             Email = "user13@example.com",
@@ -75373,12 +75676,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER13@EXAMPLE.COM",
                             NormalizedUserName = "USER13@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEC7Q3ishtv2+DcfefXzQJ/OdJFwV4PmsBak8Lj7+/m34NoH784H7m98UWDFlPUxP5g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHP/RQeA7L+MGGypm8QjHwrQOzM0yT+yDlm4L+XmpFj9jMnrmzr9R+LBdpMRDXmAlg==",
                             Phone = "0900000013",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c5c0e3e2-84a2-4eeb-89aa-ecae60b6f141",
+                            SecurityStamp = "fcaceb49-2c56-4e08-8df0-ec3b39ca8338",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 7, 59, DateTimeKind.Local).AddTicks(8359),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 41, 535, DateTimeKind.Local).AddTicks(9811),
                             UserName = "user13@example.com"
                         },
                         new
@@ -75386,7 +75689,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "14",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/14/200/200",
-                            ConcurrencyStamp = "499cb15b-2a02-4009-b0e6-d2724a1f5839",
+                            ConcurrencyStamp = "663bcaeb-eefd-4a63-8d19-cf97724d8fb3",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1986, 1, 1),
                             Email = "user14@example.com",
@@ -75398,12 +75701,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER14@EXAMPLE.COM",
                             NormalizedUserName = "USER14@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPxpIASEKCqq4MicumbJ3WWAGGpQIxJqbUnUIPaXq55G4E8svQRUs24UPmJ7N6sXTA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEgRsSYYhlEejT3cwsJeSsfYEZhiYbKeV5l3COnGNCpl6zdRYUR0nMtHHaqW0VJHOQ==",
                             Phone = "0900000014",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a25b8860-43d8-4129-a460-b1222609411c",
+                            SecurityStamp = "2668656d-e8dd-4966-bcb1-e76c63138426",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 7, 118, DateTimeKind.Local).AddTicks(1721),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 41, 593, DateTimeKind.Local).AddTicks(612),
                             UserName = "user14@example.com"
                         },
                         new
@@ -75411,7 +75714,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "15",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/15/200/200",
-                            ConcurrencyStamp = "28892de5-c481-4425-9545-c4b96f3468de",
+                            ConcurrencyStamp = "42886ba1-34b8-41ca-a749-eb029a8778f2",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1985, 1, 1),
                             Email = "user15@example.com",
@@ -75423,12 +75726,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER15@EXAMPLE.COM",
                             NormalizedUserName = "USER15@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEmKyXyysqrNpCkdb7k4DWTIWQvJpPN6mlI/I8lVH3NN7NlSpqLVTfaAlG0wtdYTuw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMVfbAzgRr3sy0o/W052zqBHYagjsHkessP1tcIGCKU2GCQRs+5KVQRBW79z1SxWqA==",
                             Phone = "0900000015",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c90cee2f-c8a1-473f-a130-e05a5f782f78",
+                            SecurityStamp = "d5287be1-c7c0-4a75-b0c1-381b561523c1",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 7, 176, DateTimeKind.Local).AddTicks(4038),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 41, 649, DateTimeKind.Local).AddTicks(1012),
                             UserName = "user15@example.com"
                         },
                         new
@@ -75436,7 +75739,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "16",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/16/200/200",
-                            ConcurrencyStamp = "853a820b-954e-46e5-bb75-937cf9f2033f",
+                            ConcurrencyStamp = "d0f22a8f-2be9-445c-a3ab-84751944c3a4",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1984, 1, 1),
                             Email = "user16@example.com",
@@ -75448,12 +75751,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER16@EXAMPLE.COM",
                             NormalizedUserName = "USER16@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMpBctKOJm2lZ/b2iWb1NMDd5v8qwNBrdHxgpPT907FTl0u8HnGxzkOUtR6p3n1s7w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJN9CKITr6izdU9Y6wgjd+qvL+Ne4nCDKv8PDTEcfhMl5HTu8q2tkELHWMVTq/Auog==",
                             Phone = "0900000016",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d0437274-3f04-431b-8ad2-78df6caaa448",
+                            SecurityStamp = "63c1640e-e96d-4bd0-a263-4402cada4148",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 7, 234, DateTimeKind.Local).AddTicks(7230),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 41, 705, DateTimeKind.Local).AddTicks(3037),
                             UserName = "user16@example.com"
                         },
                         new
@@ -75461,7 +75764,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "17",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/17/200/200",
-                            ConcurrencyStamp = "06c10ccc-3faa-4849-a439-bf9aaefb5616",
+                            ConcurrencyStamp = "26415738-8a42-4ac8-8b74-a9f13c944fa8",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1983, 1, 1),
                             Email = "user17@example.com",
@@ -75473,12 +75776,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER17@EXAMPLE.COM",
                             NormalizedUserName = "USER17@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOEpYuATd+QF9u/Pc4BOigIayvisb6n4leiuVivT9nSMGcb0wibQpYAxSWWBV3mmaw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDK8xOcVA8sBc7vjj0tyoDqEXvHvwZnowE1KUCoqgW1+PjPXmMqetRt+FUUOxwF4zA==",
                             Phone = "0900000017",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ce614cd4-a9e8-4977-a736-4e18e74daca4",
+                            SecurityStamp = "edab0aa3-ab0a-43ea-95a2-6abf0fbb5cf4",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 7, 290, DateTimeKind.Local).AddTicks(8586),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 41, 762, DateTimeKind.Local).AddTicks(3124),
                             UserName = "user17@example.com"
                         },
                         new
@@ -75486,7 +75789,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "18",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/18/200/200",
-                            ConcurrencyStamp = "c25007dd-c33e-4bbe-a8e8-e3d0433919de",
+                            ConcurrencyStamp = "6efa7615-d3dd-4c9a-a7a2-d54342b7e4a8",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1982, 1, 1),
                             Email = "user18@example.com",
@@ -75498,12 +75801,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER18@EXAMPLE.COM",
                             NormalizedUserName = "USER18@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBvxpDBHs6ZISf3eySttM+35JSX1V7Cn9LyBxvB4Qp0pFaSg+Ybq9L7amsY10X89Kw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEH5ehCVyiUga5QdMWGPaX1Vq5XIsE9f6NQEC8TMVZQ9R6AsGlKQ2vd1Tik1pwut6Ww==",
                             Phone = "0900000018",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "54d7f0d3-638c-40a3-88a6-afe70d5bcff0",
+                            SecurityStamp = "c17d5c4e-3693-4434-acd4-93ba436ab005",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 7, 348, DateTimeKind.Local).AddTicks(4309),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 41, 819, DateTimeKind.Local).AddTicks(9394),
                             UserName = "user18@example.com"
                         },
                         new
@@ -75511,7 +75814,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "19",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/19/200/200",
-                            ConcurrencyStamp = "2e94dd2b-2496-4948-9e96-b262ca817173",
+                            ConcurrencyStamp = "d3e7af9d-bc23-4b68-a6ad-9efddd0a3929",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1981, 1, 1),
                             Email = "user19@example.com",
@@ -75523,12 +75826,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER19@EXAMPLE.COM",
                             NormalizedUserName = "USER19@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMK8WhNUy0y1VlDtdCD8Qp+uuu9YtZf0XcjRxXk6CCsvS8Dkt4+Q0/RMlShap6gQew==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJTdSZk1005Lyunh4ct7rFS8fmD4RsjEUzf6DI7LuVPBbHGoajucKmGN9koIW2UH3g==",
                             Phone = "0900000019",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0064fb93-5b25-4345-80d9-3a05e53b5b60",
+                            SecurityStamp = "a870a4e3-a335-44de-a76f-4aa6631fc856",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 7, 409, DateTimeKind.Local).AddTicks(426),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 41, 879, DateTimeKind.Local).AddTicks(595),
                             UserName = "user19@example.com"
                         },
                         new
@@ -75536,7 +75839,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "20",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/20/200/200",
-                            ConcurrencyStamp = "3baa2dda-dbd1-416f-9612-6b3c12b9aaf9",
+                            ConcurrencyStamp = "c5bbc7f2-083d-4cb4-adfc-1094e30920b1",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1980, 1, 1),
                             Email = "user20@example.com",
@@ -75548,12 +75851,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER20@EXAMPLE.COM",
                             NormalizedUserName = "USER20@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFBmyCKO1zE82k0S+NIDGzNJpg9v4LIJu6lS/7dQlW1BJhx+oCnYaszsZjar5/W3Gg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPfK8WkjMBMrl6FGQbbzXiOmTQ6d+Mk+PiaeApfujTB2xA9/ykhqfqmKto4jyjIWOw==",
                             Phone = "0900000020",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f5eb199d-77f3-45ca-86b2-012bbfec8186",
+                            SecurityStamp = "3303d913-060e-486f-8678-538bccedf8ca",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 7, 466, DateTimeKind.Local).AddTicks(7894),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 41, 934, DateTimeKind.Local).AddTicks(4182),
                             UserName = "user20@example.com"
                         },
                         new
@@ -75561,7 +75864,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "21",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/21/200/200",
-                            ConcurrencyStamp = "414758a8-b6a1-4b32-9915-37e06d4bf257",
+                            ConcurrencyStamp = "75c3c242-6520-47df-8ad4-74b874ebe357",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1979, 1, 1),
                             Email = "user21@example.com",
@@ -75573,12 +75876,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER21@EXAMPLE.COM",
                             NormalizedUserName = "USER21@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIovU2az7B5xJPHEJf3tvqCaeZEZasiuPr0Q9dvHTZAJzQLr14VgMIsnkibeN+mBbw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEL1Z2+tl5Sj1Av43Q23O/8CuJw5lDgXSsyKkJrCW+082KVboqOGP8kCGr5qn9lbzoA==",
                             Phone = "0900000021",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "68711941-9836-4b66-a395-3e9d15453b36",
+                            SecurityStamp = "bb6c89a6-c009-4160-850f-64ac6891ed7c",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 7, 524, DateTimeKind.Local).AddTicks(6872),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 41, 991, DateTimeKind.Local).AddTicks(9459),
                             UserName = "user21@example.com"
                         },
                         new
@@ -75586,7 +75889,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "22",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/22/200/200",
-                            ConcurrencyStamp = "3f1697d4-1610-4c69-b502-3d4894df722d",
+                            ConcurrencyStamp = "6bb7db93-201c-4e8c-9717-3a2e1b37c383",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1978, 1, 1),
                             Email = "user22@example.com",
@@ -75598,12 +75901,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER22@EXAMPLE.COM",
                             NormalizedUserName = "USER22@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHvnTg0nAtEXzD5bLui+uBGZtUjs7PFPHiDWgWA+YrAcpfNT05RmrkxsV7PtPJX/Lw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEMpyMVexRbXpsRRZntJJYIkPiZ/XniJ3BAmZUKnS1nlKpzPVYrsNLvmxuPZqKRzMQ==",
                             Phone = "0900000022",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3cc9f6d6-e472-4f58-907e-e9085bed8345",
+                            SecurityStamp = "72f457ab-ed9a-4869-93a0-5ff8d83d32a0",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 7, 582, DateTimeKind.Local).AddTicks(9521),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 42, 47, DateTimeKind.Local).AddTicks(5061),
                             UserName = "user22@example.com"
                         },
                         new
@@ -75611,7 +75914,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "23",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/23/200/200",
-                            ConcurrencyStamp = "75049e14-5d51-43cb-af85-e6239486e2ed",
+                            ConcurrencyStamp = "eaba89cd-1988-4a5d-85a6-b635a092420f",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1977, 1, 1),
                             Email = "user23@example.com",
@@ -75623,12 +75926,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER23@EXAMPLE.COM",
                             NormalizedUserName = "USER23@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAECSwSlpFfYnK8A2BT+dZgh8fvtbwyBzRpw2n00kqLBbPHDNoGBYMxVmfxRzGzhe5Jg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJE0nsBHgpAjdQBp+J5h4EbYHgYPUkoB5h7EkHfz43H/y3qF519JwEodro/5eSa1jA==",
                             Phone = "0900000023",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3111a40c-ee6d-4934-b643-fd3bec9f0b4a",
+                            SecurityStamp = "691022a5-1dad-4d17-82c3-7de88b05b497",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 7, 640, DateTimeKind.Local).AddTicks(8360),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 42, 106, DateTimeKind.Local).AddTicks(1021),
                             UserName = "user23@example.com"
                         },
                         new
@@ -75636,7 +75939,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "24",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/24/200/200",
-                            ConcurrencyStamp = "1caa9979-edf1-43e9-a005-99d6f640525c",
+                            ConcurrencyStamp = "f0233414-c0b2-4508-9d32-2708e3aa27db",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1976, 1, 1),
                             Email = "user24@example.com",
@@ -75648,12 +75951,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER24@EXAMPLE.COM",
                             NormalizedUserName = "USER24@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKaUSuqGmlW6H4iywtUNRNepB2DwiFz/Sd5EDtWWnaOjzgypA3XMbl/9NNibyLZ4FA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELT/YXke4yD/mAU3h0RMDE0ghE9SYdG9YEVwMjCo0i6fPkSMYrLLXDuue5TwfWBnPQ==",
                             Phone = "0900000024",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1b824899-cd11-4f5a-958e-50c49709cfa1",
+                            SecurityStamp = "7dfc7e7f-acb7-4463-a5db-4948a8394b3b",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 7, 699, DateTimeKind.Local).AddTicks(1),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 42, 162, DateTimeKind.Local).AddTicks(2743),
                             UserName = "user24@example.com"
                         },
                         new
@@ -75661,7 +75964,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "25",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/25/200/200",
-                            ConcurrencyStamp = "f0f63cb5-8ae9-46b0-9629-83ef712d3e06",
+                            ConcurrencyStamp = "394af055-4f0d-4bba-88ce-29063cc2a44a",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1975, 1, 1),
                             Email = "user25@example.com",
@@ -75673,12 +75976,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER25@EXAMPLE.COM",
                             NormalizedUserName = "USER25@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHfrMSbnHn8CvzplRJDqbk+sJnPnLaILHpjmUcIRGGogFjC2e3kQQR71/lQVqH2ZfQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECLbEP8Z8OSDK+8wZNygYmRUg855GqqMWTpYa/PxcIDuWD/oQOYl/6kC0U8m+s7ncg==",
                             Phone = "0900000025",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "31e1579c-684d-40d0-96ea-04ce8fbd2848",
+                            SecurityStamp = "d45d94b0-cef2-4748-ae51-0e9cd47fae5b",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 7, 759, DateTimeKind.Local).AddTicks(2026),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 42, 220, DateTimeKind.Local).AddTicks(2086),
                             UserName = "user25@example.com"
                         },
                         new
@@ -75686,7 +75989,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "26",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/26/200/200",
-                            ConcurrencyStamp = "d0d5d1c3-95d2-4183-b4f8-905ba08bd8b3",
+                            ConcurrencyStamp = "5e96a422-6925-48f7-ab7c-ca64a39eb54e",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1974, 1, 1),
                             Email = "user26@example.com",
@@ -75698,12 +76001,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER26@EXAMPLE.COM",
                             NormalizedUserName = "USER26@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGek1gtMtWQ4Wrxrrs7dMN5L+v17SuexlYaE+nwv35/7GW7IMiSgwQ6pQiwmSnvPRQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEP1h89F23KsIS8Ii+dOr25KRsmKr4h0vkncmsLyYtjnfSm1JXUsIKxTwjdyQh/iYdA==",
                             Phone = "0900000026",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c9247231-efdf-4feb-9661-6d13a7f1dab2",
+                            SecurityStamp = "775455e2-4479-4313-8661-d29a901a8695",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 7, 816, DateTimeKind.Local).AddTicks(3602),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 42, 275, DateTimeKind.Local).AddTicks(6646),
                             UserName = "user26@example.com"
                         },
                         new
@@ -75711,7 +76014,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "27",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/27/200/200",
-                            ConcurrencyStamp = "eb0bfc1a-d918-4709-9ea1-72e34f6e4d6d",
+                            ConcurrencyStamp = "a3996737-9c46-438a-bfaa-c48b73b1bfc0",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1973, 1, 1),
                             Email = "user27@example.com",
@@ -75723,12 +76026,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER27@EXAMPLE.COM",
                             NormalizedUserName = "USER27@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPTlP7kHL2v2ynMvR5T6pl0sCrJDCfvVOOC8JpY2qhI85DJMtFyN4u5d0RURjOPcuA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHEHalJonVaUI253MwnLx9kJslTgpzjvHeSIIG/H3h3NtjQ8rqlS2J1vaLzjhl+X0g==",
                             Phone = "0900000027",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "86681898-cec9-41b3-b7b8-a2e23d6e0263",
+                            SecurityStamp = "b0b6a67b-8fb5-45a3-bd1b-fa47e03d1a10",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 7, 874, DateTimeKind.Local).AddTicks(2550),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 42, 335, DateTimeKind.Local).AddTicks(1967),
                             UserName = "user27@example.com"
                         },
                         new
@@ -75736,7 +76039,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "28",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/28/200/200",
-                            ConcurrencyStamp = "c68e323f-963e-4ea6-80be-d11e3d735a39",
+                            ConcurrencyStamp = "9e2f32c0-2498-488d-b724-f53b8f502fb5",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1972, 1, 1),
                             Email = "user28@example.com",
@@ -75748,12 +76051,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER28@EXAMPLE.COM",
                             NormalizedUserName = "USER28@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEDAENCW5J3N38z5yMR6Qcm0+f3nG3Ibv4+i1JdzW6Top6YgKuEZuJfx2t96m0fZyw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECZErJR+ahdM/nbrGPjcIw0EMcFFnKkcOwj4HGs7hd8VRtDRYSNI7SwXkNUZ00oQfA==",
                             Phone = "0900000028",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0aac0e09-adcf-4aed-b197-5181ff8b8a1a",
+                            SecurityStamp = "b5a6b94e-7477-4c66-9d27-9d041f0cf085",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 7, 931, DateTimeKind.Local).AddTicks(1856),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 42, 391, DateTimeKind.Local).AddTicks(3637),
                             UserName = "user28@example.com"
                         },
                         new
@@ -75761,7 +76064,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "29",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/29/200/200",
-                            ConcurrencyStamp = "26199504-d8cc-4d41-91bc-8b666d8a5423",
+                            ConcurrencyStamp = "a61ffea7-62ab-40df-aacd-f463ce2bfd0f",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1971, 1, 1),
                             Email = "user29@example.com",
@@ -75773,12 +76076,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER29@EXAMPLE.COM",
                             NormalizedUserName = "USER29@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMUL/gHOVJHhhjaUyekllxAzgW5RoZ/Cer8rOwwonp1zaaxZsV7gS7knHkBiBM3D5w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFdZaD67v5lp6f/cG1veyog7J19X5Lm26iGjJt0lnSEBY6Joh+HvzJNH2F1LiNi/tw==",
                             Phone = "0900000029",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "178de4ec-415a-4cca-a325-531f1b16e220",
+                            SecurityStamp = "75d335b6-4837-4df9-8e9a-521cce397b47",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 7, 992, DateTimeKind.Local).AddTicks(1742),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 42, 450, DateTimeKind.Local).AddTicks(9852),
                             UserName = "user29@example.com"
                         },
                         new
@@ -75786,7 +76089,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "30",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/30/200/200",
-                            ConcurrencyStamp = "ff82e5fb-ff2d-4235-8941-802d372197cf",
+                            ConcurrencyStamp = "3dd35a9b-95ac-490b-bd59-9c6a59a0323f",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1970, 1, 1),
                             Email = "user30@example.com",
@@ -75798,12 +76101,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER30@EXAMPLE.COM",
                             NormalizedUserName = "USER30@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAENm8H2iAIj6KMg82P0zxDtzPUa9DqqjYvwOA3WmYbFAICCHidEaXl/rHsfj3LiBu0g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFDRnPaPPMH8hYN2jw44UCo5PBSu2w2rIj5hlQ7vYb6zIesUGU4XfU2Ydk6KPLDgrA==",
                             Phone = "0900000030",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e2c8d359-51d1-4ac8-a945-346cb0fff55c",
+                            SecurityStamp = "a7f21914-5c63-46fc-b8dc-abcacd99e79c",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 8, 50, DateTimeKind.Local).AddTicks(905),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 42, 507, DateTimeKind.Local).AddTicks(6826),
                             UserName = "user30@example.com"
                         },
                         new
@@ -75811,7 +76114,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "31",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/31/200/200",
-                            ConcurrencyStamp = "d54d05b5-2bb4-492f-b19c-7b48b54178f9",
+                            ConcurrencyStamp = "3043ad6c-b88d-4c9f-82ab-7cee60929f44",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1969, 1, 1),
                             Email = "user31@example.com",
@@ -75823,12 +76126,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER31@EXAMPLE.COM",
                             NormalizedUserName = "USER31@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFBV7nW/PBCGS+49dhn1aRy/ojFOeatheKkWdtpBEOeXlOfqU/T5R9ktLs5q1OpvNg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELITn+zmTOKIW89wgNP2F4MTduZjByLpna+jWLhHpuVPWSmudE5B0cWAS33fENwQfw==",
                             Phone = "0900000031",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0231d7c6-1bea-4dc1-b7b1-90da0628a9bf",
+                            SecurityStamp = "65819a7b-acf4-4e68-bfd3-e1375f87c18c",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 8, 108, DateTimeKind.Local).AddTicks(8867),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 42, 565, DateTimeKind.Local).AddTicks(8812),
                             UserName = "user31@example.com"
                         },
                         new
@@ -75836,7 +76139,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "32",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/32/200/200",
-                            ConcurrencyStamp = "794dae0b-71bb-4341-ad18-7bf80022925f",
+                            ConcurrencyStamp = "47623761-2727-4bde-bd0b-b2001ed5807d",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1968, 1, 1),
                             Email = "user32@example.com",
@@ -75848,12 +76151,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER32@EXAMPLE.COM",
                             NormalizedUserName = "USER32@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDCnOPRuRA+5UY3Xz+UX2IokqR+bCiNQeLWsTW54vdcl48A0s3UYMSF6puKEB2Ap6w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMhD4eG9ZGNbY5BgHph/lF4geZregx86PViuWExavSnSIho/eja9x6CFOI5gNRxLow==",
                             Phone = "0900000032",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ce72f310-d2b2-4e59-a9e1-0a96d02dd1cb",
+                            SecurityStamp = "2ed237da-40f2-4aa0-8cb7-8d74d4360355",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 8, 165, DateTimeKind.Local).AddTicks(3862),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 42, 624, DateTimeKind.Local).AddTicks(971),
                             UserName = "user32@example.com"
                         },
                         new
@@ -75861,7 +76164,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "33",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/33/200/200",
-                            ConcurrencyStamp = "0971ff20-ba43-413a-ae69-c0193dbcc92a",
+                            ConcurrencyStamp = "da82f5c3-cd06-4c03-81d5-d7f8c8310ee5",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1967, 1, 1),
                             Email = "user33@example.com",
@@ -75873,12 +76176,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER33@EXAMPLE.COM",
                             NormalizedUserName = "USER33@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAECPheYYJCtLLbg8PWC5vYZi+/Trg0eeU96fbxgmujiKb9NhcVdhJtVstfrkfF0xsow==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIQH1ybNcvTxneRRsS1RBvyVpJHZMUM6N7EmCXrvc5ToOHPeRxpk14ft0wrtZuqNYQ==",
                             Phone = "0900000033",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0d8c5697-9781-4d4c-8009-daa06006935e",
+                            SecurityStamp = "30e7bb5a-3bba-4595-bebc-c9347b15a8e6",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 8, 223, DateTimeKind.Local).AddTicks(5419),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 42, 681, DateTimeKind.Local).AddTicks(7119),
                             UserName = "user33@example.com"
                         },
                         new
@@ -75886,7 +76189,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "34",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/34/200/200",
-                            ConcurrencyStamp = "7c53c474-06c9-460a-b8a4-b1c00c631f06",
+                            ConcurrencyStamp = "7c502f0d-a2a3-43c9-982f-ab8ca48fb502",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1966, 1, 1),
                             Email = "user34@example.com",
@@ -75898,12 +76201,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER34@EXAMPLE.COM",
                             NormalizedUserName = "USER34@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJv0jcvRUFahlHWaUFs6AumIEVuR5cwHk0nuXfiutK9GwC2vxTmebD93BpR3hulQUA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMq2g/6k5B4BE2iV7q9VlkfUFVPn4fNoBX63JA39wcUPjWQUzzPjLe5nezLZdIylfA==",
                             Phone = "0900000034",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b454410c-2386-46e9-8f31-d97f69f9ecef",
+                            SecurityStamp = "51da5a5e-1f05-4f4b-b666-a524355c727a",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 8, 282, DateTimeKind.Local).AddTicks(3864),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 42, 737, DateTimeKind.Local).AddTicks(5301),
                             UserName = "user34@example.com"
                         },
                         new
@@ -75911,7 +76214,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "35",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/35/200/200",
-                            ConcurrencyStamp = "1f12e260-4ba1-415e-b7ff-298c03093d3d",
+                            ConcurrencyStamp = "3bb71519-ece5-46f9-95c6-85e6ec435553",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1965, 1, 1),
                             Email = "user35@example.com",
@@ -75923,12 +76226,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER35@EXAMPLE.COM",
                             NormalizedUserName = "USER35@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGcWhSlY3LIdYO5x2SHU9D/VCwk0UfRgY2Eyzap6LzcBQx0wsx5WmxqBIS2/VKAlrg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEG2yA4dl86uVwrP8ec1u9gNBr9KesBFEW4Atg/81WqlfAW28BJG5OQAdgrjFaE001Q==",
                             Phone = "0900000035",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8d98c793-44cd-4cb2-8f93-5bff950efd23",
+                            SecurityStamp = "460a7e1f-428b-4f9a-b7aa-f87b9d26e72e",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 8, 342, DateTimeKind.Local).AddTicks(1914),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 42, 793, DateTimeKind.Local).AddTicks(2533),
                             UserName = "user35@example.com"
                         },
                         new
@@ -75936,7 +76239,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "36",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/36/200/200",
-                            ConcurrencyStamp = "5f53bdf0-9799-4b03-a99b-9744b419631f",
+                            ConcurrencyStamp = "a5a5d026-e4fb-4afc-95c2-cd121a0d779f",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1964, 1, 1),
                             Email = "user36@example.com",
@@ -75948,12 +76251,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER36@EXAMPLE.COM",
                             NormalizedUserName = "USER36@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMtiXVgUdFpQehtsza2D/w0xknhoIYHWzn4aBKMILR5Xav4gQT3MqX9YEfdRL1KhnQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMgfzqwS4Zy3zy8NOkKWS140+tt3bwr80JskADqlFeB3CFK6s/Rh0B5/L1UkzU+cFg==",
                             Phone = "0900000036",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "11cccff0-56cd-4be0-b34a-43327ca57d89",
+                            SecurityStamp = "67b8ffdb-08a2-432f-a5a0-0fb13a0241a8",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 8, 401, DateTimeKind.Local).AddTicks(8673),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 42, 849, DateTimeKind.Local).AddTicks(9566),
                             UserName = "user36@example.com"
                         },
                         new
@@ -75961,7 +76264,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "37",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/37/200/200",
-                            ConcurrencyStamp = "926f15e2-bbd8-416f-922c-dc180f7e1fe0",
+                            ConcurrencyStamp = "7dd159ed-de49-4f6a-b90b-92302f7d9ed9",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1963, 1, 1),
                             Email = "user37@example.com",
@@ -75973,12 +76276,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER37@EXAMPLE.COM",
                             NormalizedUserName = "USER37@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEG9cAtaCVSc5gTvs9ZQ9ZY5lfrb5FwBLkXsFRmw0IfV1M6+uE9b1xqGtBhkFfGA/sw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOKCfE5isgIJsODJD44qi1z10u9xc22VgJ+LzIZANBlAEIarXEujYsXxArauIqyeBg==",
                             Phone = "0900000037",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1bd6dcd8-e0c1-4302-ad5a-06b50d4b254d",
+                            SecurityStamp = "bfd989fe-327d-4854-9c21-a19c4b181bc4",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 8, 459, DateTimeKind.Local).AddTicks(4448),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 42, 906, DateTimeKind.Local).AddTicks(3569),
                             UserName = "user37@example.com"
                         },
                         new
@@ -75986,7 +76289,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "38",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/38/200/200",
-                            ConcurrencyStamp = "9b2748ea-4eb2-42c0-b8ae-6c15bccdf362",
+                            ConcurrencyStamp = "c47dcb30-febf-42d2-8eb0-12be40219ebf",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1962, 1, 1),
                             Email = "user38@example.com",
@@ -75998,12 +76301,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER38@EXAMPLE.COM",
                             NormalizedUserName = "USER38@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBsRP9AEiu0KREe2o1feoonGuuycS/pbqyoo9gBFWc0tivevrpTDXPHTZrpO++4MTw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEtOv0Lqh2/7aHA2xcQoV3CXRRN4yU7kvL2XqAJHbDnlKHpZ9cHloLL0fXpjo7zwcw==",
                             Phone = "0900000038",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c00d18f4-9bfa-4e0c-a0ff-9aad1b3eb859",
+                            SecurityStamp = "dd2722af-950b-4366-8a6e-967de8f70ce9",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 8, 515, DateTimeKind.Local).AddTicks(8531),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 42, 962, DateTimeKind.Local).AddTicks(9030),
                             UserName = "user38@example.com"
                         },
                         new
@@ -76011,7 +76314,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "39",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/39/200/200",
-                            ConcurrencyStamp = "4e81bdfa-a34b-4e85-b0b1-3b7cf94a2c55",
+                            ConcurrencyStamp = "2c8938ec-06ce-4545-8988-a6292d9a7ede",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1961, 1, 1),
                             Email = "user39@example.com",
@@ -76023,12 +76326,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER39@EXAMPLE.COM",
                             NormalizedUserName = "USER39@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK40vgPiy45r3+yTJkPRYzonZwzTycfVdtYSCvZhcfHlmpfdf0jtdbSrAFyU4mR1Dg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDybP/0io9QhThkzsC9N+2cK13Xf34vOjxqAn+rLHE59UWaLOZ1u38B5dkZQQ9SH/A==",
                             Phone = "0900000039",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "693e6a71-e2c4-4658-8b84-a102431b9500",
+                            SecurityStamp = "28ffefd2-6e5a-4464-8d63-2bb462b62dcf",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 8, 573, DateTimeKind.Local).AddTicks(8105),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 43, 18, DateTimeKind.Local).AddTicks(8028),
                             UserName = "user39@example.com"
                         },
                         new
@@ -76036,7 +76339,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "40",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/40/200/200",
-                            ConcurrencyStamp = "344eaa18-2752-4996-986f-bf5a333a9776",
+                            ConcurrencyStamp = "5a2fa8c6-7208-4a7f-8280-d6089e2240d3",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1960, 1, 1),
                             Email = "user40@example.com",
@@ -76048,12 +76351,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER40@EXAMPLE.COM",
                             NormalizedUserName = "USER40@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEH2iuDICvdB/rQfdxVGjLIeP3Jz49diBCo7ELyFYuJKwfhW8345pyBeJ+3CaSJLwzA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEN3IspI/K4FSwUuLKejsqS8Rx8Pi0x1+DIr/TrEZFPtgs6oNteQdrhYWb3aSRItP7Q==",
                             Phone = "0900000040",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2987cbd0-1b25-4702-8a26-f6cfdc163146",
+                            SecurityStamp = "9158c4c3-7e9b-48e4-8418-abf7a504c418",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 8, 633, DateTimeKind.Local).AddTicks(3022),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 43, 76, DateTimeKind.Local).AddTicks(9271),
                             UserName = "user40@example.com"
                         },
                         new
@@ -76061,7 +76364,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "41",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/41/200/200",
-                            ConcurrencyStamp = "dee6c316-9933-44c7-819c-eaff32342b67",
+                            ConcurrencyStamp = "d8e31705-a635-4a06-ae23-7785419fa06c",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1959, 1, 1),
                             Email = "user41@example.com",
@@ -76073,12 +76376,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER41@EXAMPLE.COM",
                             NormalizedUserName = "USER41@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEF86JJkncCAUkiXFrIHoqlVI80i4/5Aov95bgphXPHoi+dshX3yCdU+StTfVRYiBhg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEvsE2+HXG9EMRQPTxWVE+4aOLuuSP+WEpE9ZkmjKgNRtusPQIg9n9fx5jgOIez7Xg==",
                             Phone = "0900000041",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "88929b53-c06b-4bcd-8524-b0dc5803a009",
+                            SecurityStamp = "6eeb14ea-2167-41a9-81c6-05fa519ba480",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 8, 691, DateTimeKind.Local).AddTicks(3795),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 43, 134, DateTimeKind.Local).AddTicks(7610),
                             UserName = "user41@example.com"
                         },
                         new
@@ -76086,7 +76389,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "42",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/42/200/200",
-                            ConcurrencyStamp = "05064aaf-c475-4ff2-810f-d0bb778b1d1f",
+                            ConcurrencyStamp = "6f45cc4a-d11b-4a7b-a6eb-7c164ce2065c",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1958, 1, 1),
                             Email = "user42@example.com",
@@ -76098,12 +76401,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER42@EXAMPLE.COM",
                             NormalizedUserName = "USER42@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEM10Rm89MJtF4q9+F/Q39SiKvfuGzxms65EI3yU+eemJCpq8Ikb3sOG1Ph0erFMJZw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPG0cPk1zNzs7nu1HFSF6krW0gEoozNEN402bSfMyTLySWC91eGEJOJXqAsKdHKukw==",
                             Phone = "0900000042",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "099a65e0-d082-4516-b5fd-e507b30c1d5d",
+                            SecurityStamp = "93254ae6-db56-4ed6-844b-c0f178bfaa86",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 8, 750, DateTimeKind.Local).AddTicks(6250),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 43, 190, DateTimeKind.Local).AddTicks(8818),
                             UserName = "user42@example.com"
                         },
                         new
@@ -76111,7 +76414,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "43",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/43/200/200",
-                            ConcurrencyStamp = "6414d3af-e19a-4ac5-9182-414992af6cdd",
+                            ConcurrencyStamp = "702413bf-b324-407c-933b-cf68312bdaeb",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1957, 1, 1),
                             Email = "user43@example.com",
@@ -76123,12 +76426,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER43@EXAMPLE.COM",
                             NormalizedUserName = "USER43@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJ4urGU4Gr5EEJMyGNpg75Ry3lnu771LNEGeYhvJ4oM5syR2mOQ9TQUE7WrvSFa5TQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHdzbhmOoP3A/aYYZSz/fF8ndYoC+quuU/vhsXrhavezUkPsw8ciKjKPt+dVmtJakA==",
                             Phone = "0900000043",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a7b898c9-c878-4044-835e-348dff61617a",
+                            SecurityStamp = "519395ac-38f3-4b82-bc00-e8e27eb534f6",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 8, 808, DateTimeKind.Local).AddTicks(8788),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 43, 250, DateTimeKind.Local).AddTicks(2729),
                             UserName = "user43@example.com"
                         },
                         new
@@ -76136,7 +76439,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "44",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/44/200/200",
-                            ConcurrencyStamp = "5ac713e3-183a-4e3d-bc3a-e0884cd47c54",
+                            ConcurrencyStamp = "cbab3eb8-658b-4cf2-9b22-b1705d093a87",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1956, 1, 1),
                             Email = "user44@example.com",
@@ -76148,12 +76451,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER44@EXAMPLE.COM",
                             NormalizedUserName = "USER44@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEpXheuUMl9kQF3x6Zlu0Q7g15kYz7QsbpqHUoZUaN/QQuyfvCmbO9oQQbcO1rhFZQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKTTcKDcyk0dGE5pVXg1kZ/1+yBycxC2w7L8OQZghbxPcWa+PpTQA4X6dD7kUW4X/w==",
                             Phone = "0900000044",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "21103905-7e61-4fca-8697-04033d219113",
+                            SecurityStamp = "720e4ba8-ac31-4be6-ab6a-29e193eb7bbf",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 8, 867, DateTimeKind.Local).AddTicks(368),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 43, 305, DateTimeKind.Local).AddTicks(6436),
                             UserName = "user44@example.com"
                         },
                         new
@@ -76161,7 +76464,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "45",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/45/200/200",
-                            ConcurrencyStamp = "f4416ce4-d78c-4799-b653-092d8064a700",
+                            ConcurrencyStamp = "44a2a812-b758-4bdc-9d57-40de62db9590",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1955, 1, 1),
                             Email = "user45@example.com",
@@ -76173,12 +76476,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER45@EXAMPLE.COM",
                             NormalizedUserName = "USER45@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEP/riD6Y6bo7saEqzMkuKjjsJyoBXecTRQzZPUMbNrtl7dvN0OfQacfYCwAd0EVZpw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMyQ0gh9E1uZK+0RlT8aSHhdXgKl8nOcgO1y98zEhdbmCRyKo5Bmop4pqeFFKAlsQg==",
                             Phone = "0900000045",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cecc4c74-ca15-475b-8799-bf368ed6a0e0",
+                            SecurityStamp = "556173a7-ac5b-43ae-beee-a89f291f08ac",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 8, 924, DateTimeKind.Local).AddTicks(2714),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 43, 365, DateTimeKind.Local).AddTicks(1631),
                             UserName = "user45@example.com"
                         },
                         new
@@ -76186,7 +76489,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "46",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/46/200/200",
-                            ConcurrencyStamp = "0c6ca65c-0c5e-4686-b766-794529524c5a",
+                            ConcurrencyStamp = "1db70e61-20a5-4205-ad6d-99f25a222854",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1954, 1, 1),
                             Email = "user46@example.com",
@@ -76198,12 +76501,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER46@EXAMPLE.COM",
                             NormalizedUserName = "USER46@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEC63Rmt1s08Ha0I7HmfjlBHRs9zrkWvyKZ3ZsgDH+bFlp+9sZUrUbZU8SZppMnUI7A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAED56vdNYqBxv7I3e0hatcqkqvCBn37sgstfP57+jRdk0pnPER4U//EZ+4HWSosfEmw==",
                             Phone = "0900000046",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7e3e3a5d-9ca7-4713-83ef-3866d4213dd8",
+                            SecurityStamp = "d4a0ba51-edb5-4270-aeb5-db6bfcfc9a74",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 8, 981, DateTimeKind.Local).AddTicks(2483),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 43, 423, DateTimeKind.Local).AddTicks(4817),
                             UserName = "user46@example.com"
                         },
                         new
@@ -76211,7 +76514,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "47",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/47/200/200",
-                            ConcurrencyStamp = "342d25bb-be72-4613-b8aa-ba18a731b22d",
+                            ConcurrencyStamp = "2119459d-fdf3-49d3-90b9-39d5728d8526",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1953, 1, 1),
                             Email = "user47@example.com",
@@ -76223,12 +76526,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER47@EXAMPLE.COM",
                             NormalizedUserName = "USER47@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKYcuuIkx9caM1pGcMN2j6KFzl/kfPyf12FeduM0Dc8Whx14kC5njcYWKkGnUtcw9Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDe1lEPay2+11S1ymu1kWnC56B9lPHnUFUQGRyP6crHJ/6dCjcOBTAavQ4MexS5NcQ==",
                             Phone = "0900000047",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "317d2957-dc5c-46b7-b485-85dfdece0cbb",
+                            SecurityStamp = "3d4f2ff1-10a0-489e-bf2f-5a3569206cf4",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 37, DateTimeKind.Local).AddTicks(3164),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 43, 480, DateTimeKind.Local).AddTicks(8173),
                             UserName = "user47@example.com"
                         },
                         new
@@ -76236,7 +76539,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "48",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/48/200/200",
-                            ConcurrencyStamp = "7a93465e-83c8-4ca8-aff4-cc3b2ec36344",
+                            ConcurrencyStamp = "19ea1832-32e1-4d69-bc98-7cce2f02f400",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1952, 1, 1),
                             Email = "user48@example.com",
@@ -76248,12 +76551,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER48@EXAMPLE.COM",
                             NormalizedUserName = "USER48@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOkS8RS9YskChv2AJNgkMOci5NdKQ8t8Rafvhl/DwUssIF8D6gaoOc+4Ub1ju45cCQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAMiKD0+DMkThLv7OGSHXRnP3xHAUugbijWGqdN8z3bA8/COaBjalAT3M66KlPouOA==",
                             Phone = "0900000048",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e9d68d22-697f-4d06-ba1d-0b637ed53bfe",
+                            SecurityStamp = "24e4efaf-d2c0-4cd2-b0a4-614ac9f4fbe4",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 97, DateTimeKind.Local).AddTicks(6101),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 43, 538, DateTimeKind.Local).AddTicks(5837),
                             UserName = "user48@example.com"
                         },
                         new
@@ -76261,7 +76564,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "49",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/49/200/200",
-                            ConcurrencyStamp = "a9dc0bdb-e8be-49f0-a3f2-83f772d4f6cb",
+                            ConcurrencyStamp = "c79a7b60-7606-475b-bfaf-c803471509ad",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1951, 1, 1),
                             Email = "user49@example.com",
@@ -76273,12 +76576,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER49@EXAMPLE.COM",
                             NormalizedUserName = "USER49@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDYYBGSX67IoZYynuYrKzl7NNKCAw1mgQJZA/cI94T1Qzm5Mwg5Dop7BzmD3/9xyWA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIxUkrz6F4XIBcCrwZdyQkZ6shkMInSzrRPW57JbbNusNNmVEfY69QoB0Bketsav3w==",
                             Phone = "0900000049",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e2d0cec9-777f-4513-9ff7-4d37af85eae6",
+                            SecurityStamp = "69d255b0-0ff3-4c6e-b6fd-d06d50052525",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 157, DateTimeKind.Local).AddTicks(6528),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 43, 601, DateTimeKind.Local).AddTicks(92),
                             UserName = "user49@example.com"
                         },
                         new
@@ -76286,7 +76589,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "50",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/50/200/200",
-                            ConcurrencyStamp = "42b98179-e182-4686-97d8-df37ae2747a1",
+                            ConcurrencyStamp = "018e13a6-924a-47c9-bf86-53eecbf45502",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1950, 1, 1),
                             Email = "user50@example.com",
@@ -76298,12 +76601,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER50@EXAMPLE.COM",
                             NormalizedUserName = "USER50@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEM1S6rv54xTrPyrI3wR2PF4NEtltstTT8pf02JXEI64MmS3fhL86nXBzJvvkq0XSVg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEL0/OSiubonb1C27nog8xmsDn+asL1bVAj/tHeA3rq0pINCRJ5CmQ/92l4gLkmfnTg==",
                             Phone = "0900000050",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9449c6cd-f03a-43cb-bee2-08e9c7b565b4",
+                            SecurityStamp = "fb2aa41a-c212-4bc1-a5bc-5f35b41903db",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 217, DateTimeKind.Local).AddTicks(3098),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 43, 667, DateTimeKind.Local).AddTicks(5837),
                             UserName = "user50@example.com"
                         },
                         new
@@ -76311,7 +76614,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "51",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/51/200/200",
-                            ConcurrencyStamp = "7f11b428-1db6-4086-8e3e-f66507c75300",
+                            ConcurrencyStamp = "cc05f09f-2208-4fd2-9d7c-083c39f56bbf",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1949, 1, 1),
                             Email = "user51@example.com",
@@ -76323,12 +76626,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER51@EXAMPLE.COM",
                             NormalizedUserName = "USER51@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBeLuvI6A/WZtJ3R02R/LSy39hZ/+lKlTo55APrkbY9v9G6VGwlCodLOaN7AS1Y5jA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMbjTopphvl20tELWjl8Jsj5x0/BSt27VSUD8vXUaQpY53ueJxZHgCdhq6X4uCj7hg==",
                             Phone = "0900000051",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "906b82cd-e529-4bec-9910-28c38817b12e",
+                            SecurityStamp = "bd7599f0-acff-4cee-8728-25d95240e398",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 277, DateTimeKind.Local).AddTicks(6215),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 43, 727, DateTimeKind.Local).AddTicks(4003),
                             UserName = "user51@example.com"
                         },
                         new
@@ -76336,7 +76639,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "52",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/52/200/200",
-                            ConcurrencyStamp = "67dfe65c-1fbc-4332-bc5d-333514bcd8d0",
+                            ConcurrencyStamp = "77dfc26f-8f91-4cce-998a-5e0ae4615eb4",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1948, 1, 1),
                             Email = "user52@example.com",
@@ -76348,12 +76651,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER52@EXAMPLE.COM",
                             NormalizedUserName = "USER52@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOrVcRXc+z/F6MHPr4YJVHzRmKPB9wx5QDzPnoe+9zfd3pcfween5KnKrdhpgZ5rpA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENRwA6OY8aXGKV4kebE0XISQdePKyIAbX5ZGdO0dSq0b4HIyXRw7F9O+LF5MmaRTgQ==",
                             Phone = "0900000052",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "de0ce23e-dc56-44ff-a893-600e68f8fbc5",
+                            SecurityStamp = "2e0b9949-49d1-4202-aa51-6902a75f032e",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 335, DateTimeKind.Local).AddTicks(6731),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 43, 783, DateTimeKind.Local).AddTicks(5890),
                             UserName = "user52@example.com"
                         },
                         new
@@ -76361,7 +76664,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "53",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/53/200/200",
-                            ConcurrencyStamp = "ee51c70f-fd2a-4ee2-930f-c4b117643af2",
+                            ConcurrencyStamp = "75dba93d-b559-48d8-97f0-fa8c7aafe316",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1947, 1, 1),
                             Email = "user53@example.com",
@@ -76373,12 +76676,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER53@EXAMPLE.COM",
                             NormalizedUserName = "USER53@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGgp8gpHEZKkSy0zATBI0+crZZ4qW3KlBZrjATXa4xMDNMq2zX4shSE/9vSAc/R9TA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAIs9SIUKFGMK20XaNf2YVOCMeEJV3ubDXoZm8IW7AMOTznVIx2mCzqgFfAZ8r+54A==",
                             Phone = "0900000053",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0706c8c1-b82b-4e32-a056-2f65cf50c575",
+                            SecurityStamp = "bd4910bf-a901-4f39-b769-95a6b442fee4",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 392, DateTimeKind.Local).AddTicks(8586),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 43, 844, DateTimeKind.Local).AddTicks(5865),
                             UserName = "user53@example.com"
                         },
                         new
@@ -76386,7 +76689,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "54",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/54/200/200",
-                            ConcurrencyStamp = "14afeca9-2edf-4d6c-b942-b46ee12fb990",
+                            ConcurrencyStamp = "aaeef688-eab4-47e7-a0d1-729bbecb0827",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1946, 1, 1),
                             Email = "user54@example.com",
@@ -76398,12 +76701,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER54@EXAMPLE.COM",
                             NormalizedUserName = "USER54@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAGrSoacQw2kZqhwOm8j4S+nGSFAvljjwBlOeTFItTO7yvTNzTvOopZp6WHXpA7LMg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGHQMT7gorYKBqRaNml0JYv5NFiUbOv2GHuxc+H0EB4tF4+PqA/yvhn/97HoXzojOw==",
                             Phone = "0900000054",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f7ede164-8196-48cd-9057-c4f72c550cd8",
+                            SecurityStamp = "75f6072e-5664-46ac-a766-ecb64aa195e2",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 450, DateTimeKind.Local).AddTicks(5028),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 43, 908, DateTimeKind.Local).AddTicks(6849),
                             UserName = "user54@example.com"
                         },
                         new
@@ -76411,7 +76714,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "55",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/55/200/200",
-                            ConcurrencyStamp = "26d4047b-46a2-422f-9dd9-df99f11854a6",
+                            ConcurrencyStamp = "6d27f7c0-8c8b-4653-bb5a-d3fc91c8aa39",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1945, 1, 1),
                             Email = "user55@example.com",
@@ -76423,12 +76726,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER55@EXAMPLE.COM",
                             NormalizedUserName = "USER55@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOuA282NHLRjFRyJGroqmoM9VVYmBxw76v7kBuYmUpN8NgSL+oacG4jPNR9n3IzHqg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDNXcAkp2uxhxavqSBZXH/WgZGJt4Jhqv/EWbGHYOlbWKg1PYULkin+V4EKJb0XteQ==",
                             Phone = "0900000055",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "608e7a49-4d1f-4e47-9140-6be6111090f7",
+                            SecurityStamp = "a75422f7-3e55-4045-9c4f-ab9b7952643a",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 10, 18, 21, 38, 9, 506, DateTimeKind.Local).AddTicks(7284),
+                            UpdatedAt = new DateTime(2025, 10, 18, 20, 51, 43, 970, DateTimeKind.Local).AddTicks(1141),
                             UserName = "user55@example.com"
                         });
                 });

@@ -18,8 +18,7 @@ namespace OnlineLearningPlatform.Data.Seeds
             var quizzes = new List<Quiz>();
             long quizId = 1;
 
-            // Tạo quiz cho 12 module đầu tiên
-            for (long moduleId = 1; moduleId <= 12; moduleId++)
+            for (long moduleId = 1; moduleId <= 155; moduleId++)
             {
                 quizzes.Add(new Quiz
                 {
@@ -27,13 +26,11 @@ namespace OnlineLearningPlatform.Data.Seeds
                     ModuleId = moduleId,
                     QuizName = $"Quiz for Module {moduleId}",
                     QuizTime = 20, // 20 phút thi
-                    PassScore = 70, // điểm đạt
+                    PassScore = 80, // điểm đạt
                     CreatedAt = new DateTime(2025, 1, 1),
-                    UpdatedAt = null,
-                    DateCreated = new DateTime(2025, 1, 1)
+                    UpdatedAt = new DateTime(2025, 1, 2)
                 });
             }
-
             return quizzes;
         }
     }

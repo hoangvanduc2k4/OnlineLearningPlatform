@@ -64,12 +64,7 @@
                     </div>
                     <div class="hero-image">
                         <img src="@Model.ImageUrl" alt="Course Preview" class="img-fluid">
-                        <div class="play-overlay">
-                            <button class="play-btn">
-                                <i class="bi bi-play-fill"></i>
-                            </button>
-                            <span>Watch Preview</span>
-                        </div>
+                     
                     </div>
                 </div><div class="course-nav-tabs" data-aos="fade-up" data-aos-delay="300">
                     <ul class="nav nav-tabs" id="course-detailsCourseTab" role="tablist">
@@ -100,18 +95,7 @@
                                 <h3>Course Description</h3>
                                 <p>@Model.Description</p>
                             </div>
-                            <div class="skills-grid">
-                                <h3>Skills You'll Gain</h3>
-                                <div class="row">
-                                    <div class="col-md-6">...</div>
-                                </div>
-                            </div>
-                            <div class="requirements-section">
-                                <h3>Requirements</h3>
-                                <ul class="requirements-list">
-                                    <li>...</li>
-                                </ul>
-                            </div>
+                           
                         </div><div class="tab-pane fade" id="course-detailscurriculum" role="tabpanel">
                             @if (Model.Modules.Any())
                             {
@@ -245,6 +229,7 @@
 
                     <div class="enrollment-card mb-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="card-header">
+
                             <div class="price-display">
                                 @if (Model.Discount > 0)
                                 {
@@ -257,19 +242,37 @@
                                     <span class="current-price">@FormatPrice(Model.Price)</span>
                                 }
                             </div>
-                            <div class="enrollment-count">
-                                <i class="bi bi-0-square"></i>
-                                <span class="detail-value">@Model.StudyTime</span>
-                            </div>
+                           
                         </div>
 
                         <div class="card-body">
-                            <div class="course-highlights">
-                                <div class="highlight-item"><i class="bi bi-trophy"></i><span>@Model.LevelName</span></div>
-                                <div class="highlight-item"><i class="bi bi-clock-history"></i><span>@Model.StudyTime hours of content</span></div>
-                                <div class="highlight-item"><i class="bi bi-download"></i><span>Downloadable resources</span></div>
-                                <div class="highlight-item"><i class="bi bi-infinity"></i><span>Lifetime access</span></div>
-                                <div class="highlight-item"><i class="bi bi-phone"></i><span>Mobile access</span></div>
+
+
+                            <div class="course-details-card no-border-card" data-aos="fade-up" data-aos-delay="300">
+                                <h4>Course Details</h4>
+
+                                <div class="detail-grid">
+                                    <div class="detail-row">
+                                        <span class="detail-label">Duration</span>
+                                        <span class="detail-value">@Model.StudyTime hours</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">Skill Level</span>
+                                        <span class="detail-value">@Model.LevelName</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">Language</span>
+                                        <span class="detail-value">English</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">Quizzes</span>
+                                        <span class="detail-value">@Model.TotalQuizCount</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">Last Updated</span>
+                                        <span class="detail-value">@Model.UpdatedAt?.ToString("MMMM yyyy")</span>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="action-buttons">
@@ -282,33 +285,28 @@
 
                             <div class="guarantee"><i class="bi bi-shield-check"></i><span>30-day money-back guarantee</span></div>
                         </div>
-                    </div><div class="course-details-card mb-4" data-aos="fade-up" data-aos-delay="300">
-                        <h4>Course Details</h4>
-                        <div class="detail-grid">
-                            <div class="detail-row">
-                                <span class="detail-label">Duration</span>
-                                <span class="detail-value">@Model.StudyTime hours</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="detail-label">Skill Level</span>
-                                <span class="detail-value">@Model.LevelName</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="detail-label">Language</span>
-                                <span class="detail-value">English</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="detail-label">Quizzes</span>
-                                <span class="detail-value">@Model.TotalQuizCount</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="detail-label">Last Updated</span>
-                                <span class="detail-value">@Model.UpdatedAt?.ToString("MMMM yyyy")</span>
-                            </div>
-                        </div>
-                    </div><div class="share-course-card" data-aos="fade-up" data-aos-delay="400">
-                        <h4>Share This Course</h4>
+
                     </div>
+               
+
+                    <div class="share-course-card" data-aos="fade-up" data-aos-delay="400">
+                        <h4>Share This Course</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link facebook">
+                                <i class="bi bi-facebook"></i>
+                            </a>
+                            <a href="#" class="social-link twitter">
+                                <i class="bi bi-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link linkedin">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                            <a href="#" class="social-link email">
+                                <i class="bi bi-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -318,10 +316,112 @@
 
 @section Scripts {
     <style>
+        /* CSS cho sticky sidebar */
         .sticky-sidebar-wrapper {
-            position: -webkit-sticky; 
+            position: -webkit-sticky;
             position: sticky;
-            top: 20px; 
+            top: 20px;
         }
+
+        /* CSS để loại bỏ viền của card details (nếu có) */
+        .course-details-card.no-border-card {
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            border: none !important;
+        }
+
+        /* --- CSS MỚI ĐỂ CHỈNH CÁC NÚT VÀ COURSE DETAILS --- */
+
+        /* 1. Loại bỏ padding mặc định của Bootstrap card-body và thêm lại padding tùy chỉnh */
+        .enrollment-card .card-body {
+            /* Padding trên có thể để 0 hoặc ít hơn nếu muốn sát ngay dưới giá */
+            padding: 0 15px 15px 15px !important;
+        }
+
+        /* 2. CSS cho tiêu đề "Course Details" */
+        .course-details-card h4 {
+            padding: 15px 15px 10px 15px; /* Padding cho tiêu đề */
+            margin-bottom: 0;
+        }
+
+        /* 3. Thẻ bọc ngoài nội dung chi tiết (Course Details) */
+        .course-details-card {
+            width: 100%;
+            padding: 0; /* Đảm bảo không có padding thừa bên trong thẻ này */
+        }
+
+        /* 4. Bố cục chứa các hàng chi tiết (Duration, Skill Level,...) */
+        .detail-grid {
+            width: 100%;
+            /* Padding cho detail-grid (nếu .card-body đã có padding rồi thì có thể bỏ padding này) */
+            /* padding: 0 15px 15px 15px; */
+        }
+
+        /* 5. Quan trọng nhất: Đẩy label và value ra hai đầu hàng */
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 8px;
+        }
+
+        /* --- CSS CHO CÁC NÚT "Enroll Now" và "Add to Wishlist" --- */
+        .action-buttons {
+            display: flex;
+            flex-direction: column; /* Sắp xếp dọc */
+            gap: 10px; /* Khoảng cách giữa các nút */
+            width: 100%; /* Chiếm toàn bộ chiều rộng */
+            margin-top: 15px; /* Khoảng cách từ phần Course Details */
+            /* Các padding của .card-body sẽ tự động tạo khoảng cách hai bên cho .action-buttons */
+        }
+
+            .action-buttons form {
+                width: 100%; /* Đảm bảo form cũng chiếm 100% để nút bên trong kéo dài */
+            }
+
+            .action-buttons .btn {
+                width: 100%; /* Các nút kéo dài hết cỡ */
+                padding: 12px 20px; /* Kích thước nút */
+                font-size: 1rem; /* Kích thước chữ */
+                font-weight: 500; /* Độ đậm chữ */
+                border-radius: 8px; /* Bo góc nhẹ cho nút */
+                transition: all 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
+            }
+
+            .action-buttons .btn-primary {
+                background-color: #007bff; /* Màu nền xanh */
+                border-color: #007bff; /* Màu viền xanh */
+                color: white; /* Chữ trắng */
+            }
+
+                .action-buttons .btn-primary:hover {
+                    background-color: #0056b3; /* Màu xanh đậm hơn khi hover */
+                    border-color: #0056b3;
+                }
+
+            .action-buttons .btn-secondary {
+                background-color: transparent; /* Nền trong suốt */
+                border: 1px solid #007bff; /* Viền xanh */
+                color: #007bff; /* Chữ xanh */
+            }
+
+                .action-buttons .btn-secondary:hover {
+                    background-color: #e0e0e0; /* Nền xám nhạt khi hover */
+                    border-color: #007bff;
+                }
+
+        /* CSS cho phần "30-day money-back guarantee" */
+        .guarantee {
+            text-align: center;
+            margin-top: 15px; /* Khoảng cách từ các nút */
+            font-size: 0.9em;
+            color: #6c757d; /* Màu chữ xám */
+        }
+
+            .guarantee i {
+                margin-right: 5px; /* Khoảng cách giữa icon và chữ */
+                color: #28a745; /* Màu xanh lá cho icon */
+            }
+
     </style>
 }

@@ -40,8 +40,6 @@ namespace OnlineLearningPlatform.Mappers
                     s.CourseCategories != null ? s.CourseCategories.Select(cc => cc.Category.CategoryName).ToList() : new List<string>()))
                 .ForMember(d => d.StudyTime, opt => opt.MapFrom(s => s.StudyTime));
 
-
-
             CreateMap<Course, CourseDetailsViewModel>()
                 .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src =>
                     (src.CourseImageUrls != null && src.CourseImageUrls.Any()) ? src.CourseImageUrls.First().Url : null))
@@ -65,7 +63,7 @@ namespace OnlineLearningPlatform.Mappers
      .ForMember(dest => dest.UserName, opt => opt.MapFrom(src =>
          src.User != null ? src.User.FullName : "Anonymous"))
      .ForMember(dest => dest.UserAvatarUrl, opt => opt.MapFrom(src =>
-         src.User != null ? src.User.AvatarUrl : null)) // <-- Thêm dòng này
+         src.User != null ? src.User.AvatarUrl : null))
      .ForMember(dest => dest.RatingValue, opt => opt.MapFrom(src =>
          src.Rating))
      .ForMember(dest => dest.Feedback, opt => opt.MapFrom(src =>

@@ -19,8 +19,7 @@ namespace OnlineLearningPlatform.Data.Seeds
             var options = new List<Option>();
             long optionId = 1;
 
-            // Tổng số câu hỏi = 12 quiz * 5 câu hỏi = 60
-            for (long questionId = 1; questionId <= 60; questionId++)
+            for (long questionId = 1; questionId <= 775; questionId++)
             {
                 for (int o = 1; o <= 4; o++)
                 {

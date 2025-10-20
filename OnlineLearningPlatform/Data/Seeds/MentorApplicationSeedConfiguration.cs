@@ -21,7 +21,7 @@ namespace OnlineLearningPlatform.Data.Seeds
                 new MentorApplication
                 {
                     Id = 1,
-                    UserId = "3",
+                    UserId = "5",
                     CvUrl = "https://example.com/cv/3.pdf",
                     Note = "Experienced developer",
                     Status = ApplicationStatus.Approved,
@@ -32,7 +32,7 @@ namespace OnlineLearningPlatform.Data.Seeds
                 new MentorApplication
                 {
                     Id = 2,
-                    UserId = "4",
+                    UserId = "6",
                     CvUrl = "https://example.com/cv/4.pdf",
                     Note = "UI/UX designer",
                     Status = ApplicationStatus.Pending,
@@ -43,13 +43,13 @@ namespace OnlineLearningPlatform.Data.Seeds
                 new MentorApplication
                 {
                     Id = 3,
-                    UserId = "5",
+                    UserId = "7",
                     CvUrl = "https://example.com/cv/5.pdf",
                     Note = "Data analyst background",
                     Status = ApplicationStatus.Rejected,
                     SubmittedAt = DateTime.Parse("2025-02-20"),
                     ReviewedAt = DateTime.Parse("2025-02-25"),
-                    AdminReviewerId = "2"
+                    AdminReviewerId = "1"
                 }
             };
         }

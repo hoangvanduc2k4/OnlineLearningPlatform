@@ -270,29 +270,44 @@ namespace OnlineLearningPlatform.Data
             });
 
 
-            builder.ApplyConfiguration(new FAQSeedConfiguration());
-            builder.ApplyConfiguration(new MessageSeedConfiguration());
-            builder.ApplyConfiguration(new MentorApplicationSeedConfiguration());
-            builder.ApplyConfiguration(new QuizResultSeedConfiguration());
-            builder.ApplyConfiguration(new AnswerQuizSeedConfiguration());
-            builder.ApplyConfiguration(new OptionSeedConfiguration());
-            builder.ApplyConfiguration(new QuestionSeedConfiguration());
-            builder.ApplyConfiguration(new QuizSeedConfiguration());
-            builder.ApplyConfiguration(new LessonSeedConfiguration());
-            builder.ApplyConfiguration(new ModuleSeedConfiguration());
-            builder.ApplyConfiguration(new AdminReviewCourseSeedConfiguration());
-            builder.ApplyConfiguration(new TransactionHistorySeedConfiguration());
-            builder.ApplyConfiguration(new RatingSeedConfiguration());
+            // ===== BƯỚC 1: SEED CÁC BẢNG GỐC (KHÔNG PHỤ THUỘC) =====
+            // Các bảng này là "móng", không cần ID từ bất kỳ bảng nào khác.
+            builder.ApplyConfiguration(new RoleSeedConfiguration());
+            builder.ApplyConfiguration(new UserSeedConfiguration());
+            builder.ApplyConfiguration(new LevelSeedConfiguration());
             builder.ApplyConfiguration(new CategorySeedConfiguration());
+            builder.ApplyConfiguration(new FAQSeedConfiguration());
+
+            // ===== BƯỚC 2: SEED CÁC BẢNG PHỤ THUỘC CẤP 1 =====
+            // Các bảng này cần ID từ các bảng ở Bước 1.
+            builder.ApplyConfiguration(new UserRoleSeedConfiguration()); // Cần RoleId và UserId
+            builder.ApplyConfiguration(new CourseSeedConfiguration());    // Cần UserId (Mentor), LevelId
+            builder.ApplyConfiguration(new MentorApplicationSeedConfiguration()); // Cần UserId
+
+            // ===== BƯỚC 3: SEED CÁC BẢNG NỐI VÀ DỮ LIỆU LIÊN QUAN ĐẾN COURSE/USER =====
+            // Các bảng này cần CourseId và/hoặc UserId đã được tạo ở trên.
             builder.ApplyConfiguration(new CourseCategorySeedConfiguration());
             builder.ApplyConfiguration(new CourseEnrollmentSeedConfiguration());
             builder.ApplyConfiguration(new CourseImageUrlSeedConfiguration());
-            builder.ApplyConfiguration(new CourseSeedConfiguration());
-            builder.ApplyConfiguration(new LevelSeedConfiguration());
-            builder.ApplyConfiguration(new RoleSeedConfiguration());
-            builder.ApplyConfiguration(new UserSeedConfiguration());
+            builder.ApplyConfiguration(new MessageSeedConfiguration());
+            builder.ApplyConfiguration(new RatingSeedConfiguration());
+            builder.ApplyConfiguration(new TransactionHistorySeedConfiguration());
             builder.ApplyConfiguration(new WishListSeedConfiguration());
-            builder.ApplyConfiguration(new UserRoleSeedConfiguration());
+            builder.ApplyConfiguration(new AdminReviewCourseSeedConfiguration());
+
+            // ===== BƯỚC 4: SEED NỘI DUNG CHI TIẾT CỦA KHÓA HỌC (THEO THỨ TỰ LỒNG NHAU) =====
+            // Phải seed theo đúng cấu trúc: Module -> Lesson -> Quiz -> Question -> Option
+            builder.ApplyConfiguration(new ModuleSeedConfiguration());
+            builder.ApplyConfiguration(new LessonSeedConfiguration());
+            builder.ApplyConfiguration(new QuizSeedConfiguration());
+            builder.ApplyConfiguration(new QuestionSeedConfiguration());
+            builder.ApplyConfiguration(new OptionSeedConfiguration());
+
+            // ===== BƯỚC 5: SEED DỮ LIỆU LIÊN QUAN ĐẾN QUIZ (SAU KHI ĐÃ CÓ QUESTION/OPTION) =====
+            builder.ApplyConfiguration(new AnswerQuizSeedConfiguration());
+            builder.ApplyConfiguration(new QuizResultSeedConfiguration());
+
+
 
 
 

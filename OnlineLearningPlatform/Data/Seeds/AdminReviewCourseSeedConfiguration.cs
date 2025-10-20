@@ -19,14 +19,14 @@ namespace OnlineLearningPlatform.Data.Seeds
             var reviews = new List<AdminReviewCourse>();
 
             long id = 1;
-            for (long courseId = 1; courseId <= 12; courseId++)
+            for (long courseId = 1; courseId <= 55; courseId++)
             {
                 reviews.Add(new AdminReviewCourse
                 {
                     ReviewId = id++,
                     CourseId = courseId,
-                    AdminId = "1", // Admin seed trong UserSeedConfiguration
-                    Status = (courseId % 2 == 0) ? ReviewStatus.Rejected : ReviewStatus.Approved,
+                    AdminId = "1",
+                    Status = ReviewStatus.Approved,
                     ReviewNotes = (courseId % 2 == 0) ? "Needs improvement before publishing" : "Approved for publishing",
                     ReviewedAt = new DateTime(2025, 2, 1).AddDays(courseId)
                 });

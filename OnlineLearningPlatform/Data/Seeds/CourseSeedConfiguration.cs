@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -17,24 +17,34 @@ namespace OnlineLearningPlatform.Data.Seeds
         private static List<Course> GetCourses()
         {
             var courses = new List<Course>();
+            var random = new Random();
 
-            for (long i = 1; i <= 12; i++)
+            for (long i = 1; i <= 55; i++)
             {
+                // Tạo số giờ ngẫu nhiên
+                int hours = random.Next(3, 31);
+                string studyTimeString = $"{hours} hours";
+
+                // Tạo MentorId ngẫu nhiên từ 2, 3, hoặc 4
+                string randomMentorId = random.Next(2, 5).ToString(); // random.Next(min, max) -> min <= result < max
+
                 courses.Add(new Course
                 {
                     CourseId = i,
                     CourseName = $"Demo Course {i}",
-                    Description = $"M� t? ng?n g?n cho kho� h?c s? {i}",
-                    Price = 20 + i,                // v� d? gi�
+                    Description = $"A detailed description for course number {i}. Learn the fundamentals and advanced concepts.",
+                    Price = 20 + i,
                     Discount = (i % 3 == 0) ? 5m : 0m,
-                    MentorId = "2",                   // Mentor seed ? UserSeedConfiguration
-                    AdminId = "1",                   // Admin seed ? UserSeedConfiguration
+
+                    // Gán MentorId ngẫu nhiên
+                    MentorId = randomMentorId,
+                    AdminId = "1",
                     CreatedAt = new DateTime(2025, 1, 1),
                     UpdatedAt = new DateTime(2025, 1, 5),
-                    PublishedAt = (i <= 8) ? new DateTime(2025, 2, 1) : null,
-                    StudyTime = "5 hours",
-                    LevelId = (i % 3) + 1,           // gi? s? b?n ?� seed LevelId 1..3
-                    Status = CourseStatus.Draft     // enum trong OnlineLearningPlatform.Enums
+                    PublishedAt = new DateTime(2025, 2, 1),
+                    StudyTime = studyTimeString,
+                    LevelId = (i % 3) + 1,
+                    Status = CourseStatus.Approved
                 });
             }
 

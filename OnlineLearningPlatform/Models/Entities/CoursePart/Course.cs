@@ -24,7 +24,7 @@ namespace OnlineLearningPlatform.Models.Entities.CoursePart
         public decimal? Discount { get; set; }
 
         [Required]
-        public string MentorId { get; set; }  = string.Empty;
+        public string MentorId { get; set; } = string.Empty;
 
         public string? AdminId { get; set; }
 
@@ -41,7 +41,6 @@ namespace OnlineLearningPlatform.Models.Entities.CoursePart
         public string? StudyTime { get; set; }
 
         public long? LevelId { get; set; }
-
 
         [Required]
         public CourseStatus Status { get; set; } = CourseStatus.Draft;

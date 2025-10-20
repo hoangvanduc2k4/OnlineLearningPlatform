@@ -19,7 +19,7 @@ namespace OnlineLearningPlatform.Data.Seeds
             long questionId = 1;
 
             // Mỗi quiz có 5 câu hỏi
-            for (long quizId = 1; quizId <= 12; quizId++)
+            for (long quizId = 1; quizId <= 155; quizId++)
             {
                 for (int q = 1; q <= 5; q++)
                 {
@@ -29,7 +29,8 @@ namespace OnlineLearningPlatform.Data.Seeds
                         QuestionNum = q,
                         QuizId = quizId,
                         QuestionContent = $"Question {q} for Quiz {quizId}",
-                        DateCreated = new DateTime(2025, 1, 1)
+                        DateCreated = new DateTime(2025, 1, 1),
+                        ModifiedDate = new DateTime(2025, 1, 2)
                     });
                 }
             }

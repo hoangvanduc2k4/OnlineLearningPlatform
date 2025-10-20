@@ -4,9 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace OnlineLearningPlatform.Data.Seeds
 {
-    /// <summary>
-    /// Gán quyền cho các user đã seed sẵn.
-    /// </summary>
+
     public class UserRoleSeedConfiguration : IEntityTypeConfiguration<IdentityUserRole<string>>
     {
         public void Configure(EntityTypeBuilder<IdentityUserRole<string>> builder)
@@ -26,11 +24,23 @@ namespace OnlineLearningPlatform.Data.Seeds
                 {
                     UserId = "2",
                     RoleId = "mentor-role"
+                },
+                  // --- Mentor demo ---
+                new IdentityUserRole<string>
+                {
+                    UserId = "3",
+                    RoleId = "mentor-role"
+                },
+                  // --- Mentor demo ---
+                new IdentityUserRole<string>
+                {
+                    UserId = "4",
+                    RoleId = "mentor-role"
                 }
+
             };
 
-            // Gán Mentee cho tất cả user còn lại (Id 3-12)
-            for (int i = 3; i <= 50; i++)
+            for (int i = 5; i <= 55; i++)
             {
                 userRoles.Add(new IdentityUserRole<string>
                 {

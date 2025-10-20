@@ -10,56 +10,52 @@ namespace OnlineLearningPlatform.Data.Seeds
     {
         public void Configure(EntityTypeBuilder<WishList> builder)
         {
+            // Bảng này thường có khóa chính kết hợp (composite key)
+            // Nếu chưa định nghĩa ở file khác, bạn có thể thêm ở đây:
+            builder.HasKey(w => new { w.UserId, w.CourseId });
+
             builder.HasData(GetWishlists().ToArray());
         }
 
         private static List<WishList> GetWishlists()
         {
-            return new List<WishList>
+            var wishlists = new List<WishList>();
+            var random = new Random();
+
+            // ===== CÁC THAM SỐ CẤU HÌNH =====
+            var userIds = new List<string> { "5", "6", "7" };
+            const int totalCourses = 55;
+            const int coursesPerUser = 7;
+
+            // ===== LOGIC TẠO DỮ LIỆU TỰ ĐỘNG =====
+            foreach (var userId in userIds)
             {
-                new WishList
+                // Dùng HashSet để đảm bảo mỗi user không có khóa học trùng lặp trong wishlist
+                var addedCourseIds = new HashSet<int>();
+
+                for (int i = 0; i < coursesPerUser; i++)
                 {
-                    CourseId = 1,
-                    UserId = "3",
-                    CreatedAt = new DateTime(2025, 3, 1)
-                },
-                new WishList
-                {
-                    CourseId = 2,
-                    UserId = "4",
-                    CreatedAt = new DateTime(2025, 3, 2)
-                },
-                new WishList
-                {
-                    CourseId = 3,
-                    UserId = "5",
-                    CreatedAt = new DateTime(2025, 3, 3)
-                },
-                new WishList
-                {
-                    CourseId = 4,
-                    UserId = "6",
-                    CreatedAt = new DateTime(2025, 3, 4)
-                },
-                new WishList
-                {
-                    CourseId = 5,
-                    UserId = "3",
-                    CreatedAt = new DateTime(2025, 3, 5)
-                },
-                new WishList
-                {
-                    CourseId = 2,
-                    UserId = "5",
-                    CreatedAt = new DateTime(2025, 3, 6)
-                },
-                new WishList
-                {
-                    CourseId = 1,
-                    UserId = "6",
-                    CreatedAt = new DateTime(2025, 3, 7)
+                    int courseId;
+                    // Chọn ngẫu nhiên một CourseId cho đến khi tìm được một khóa học chưa có trong list
+                    do
+                    {
+                        courseId = random.Next(1, totalCourses + 1);
+                    } while (addedCourseIds.Contains(courseId));
+
+                    // Thêm khóa học vừa chọn vào danh sách đã có để kiểm tra trùng lặp
+                    addedCourseIds.Add(courseId);
+
+                    wishlists.Add(new WishList
+                    {
+                        UserId = userId,
+                        CourseId = courseId,
+                        // Thêm một chút ngẫu nhiên vào ngày tạo để dữ liệu đa dạng hơn
+                        CreatedAt = new DateTime(2025, 3, 1).AddDays(random.Next(0, 60))
+                    });
                 }
-            };
+            }
+
+            return wishlists;
         }
     }
 }

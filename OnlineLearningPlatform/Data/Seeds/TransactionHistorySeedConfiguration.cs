@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using OnlineLearningPlatform.Enums;
-using OnlineLearningPlatform.Models.Entities.Others;
+using OnlineLearningPlatform.Models.Entities.Others; // Đảm bảo namespace này đúng
+using System;
+using System.Collections.Generic;
 
 namespace OnlineLearningPlatform.Data.Seeds
 {
@@ -14,77 +16,49 @@ namespace OnlineLearningPlatform.Data.Seeds
 
         private static List<TransactionHistory> GetTransactions()
         {
-            var list = new List<TransactionHistory>();
-            long id = 1;
+            var transactionsList = new List<TransactionHistory>();
+            var random = new Random();
+            long currentTransactionId = 1;
+            var transactionDate = new DateTime(2025, 3, 1);
 
-            // 6 giao dịch mẫu cho userId = 3
-            list.Add(new TransactionHistory
+            // ===== CÁC THAM SỐ CẤU HÌNH =====
+            var userIds = new List<string> { "5", "6", "7" };
+            const int totalCourses = 55;
+            const int transactionsPerUser = 10;
+
+            // ===== LOGIC TẠO DỮ LIỆU TỰ ĐỘNG =====
+            foreach (var userId in userIds)
             {
-                TransactionId = id++,
-                UserId = "3",
-                CourseId = 1,
-                Amount = 19.99m,
-                Status = TransactionStatus.Completed,
-                Description = "Purchase course 1",
-                DateCreated = new DateTime(2025, 3, 10)
-            });
+                // Sử dụng HashSet để đảm bảo mỗi user không mua trùng một khóa học
+                var purchasedCourseIds = new HashSet<int>();
 
-            list.Add(new TransactionHistory
-            {
-                TransactionId = id++,
-                UserId = "3",
-                CourseId = 2,
-                Amount = 29.99m,
-                Status = TransactionStatus.Completed,
-                Description = "Purchase course 2",
-                DateCreated = new DateTime(2025, 3, 11)
-            });
+                for (int i = 0; i < transactionsPerUser; i++)
+                {
+                    // Chọn một CourseId ngẫu nhiên và đảm bảo chưa được mua bởi user này
+                    int courseId;
+                    do
+                    {
+                        courseId = random.Next(1, totalCourses + 1);
+                    } while (purchasedCourseIds.Contains(courseId));
+                    purchasedCourseIds.Add(courseId);
 
-            list.Add(new TransactionHistory
-            {
-                TransactionId = id++,
-                UserId = "3",
-                CourseId = 3,
-                Amount = 24.99m,
-                Status = TransactionStatus.Pending,
-                Description = "Pending payment for course 3",
-                DateCreated = new DateTime(2025, 3, 12)
-            });
+                    // Tạo một giá tiền ngẫu nhiên cho khóa học
+                    decimal amount = Math.Round((decimal)(20.0 + random.NextDouble() * 80.0), 2);
 
-            list.Add(new TransactionHistory
-            {
-                TransactionId = id++,
-                UserId = "3",
-                CourseId = 4,
-                Amount = 34.99m,
-                Status = TransactionStatus.Completed,
-                Description = "Purchase course 4",
-                DateCreated = new DateTime(2025, 3, 13)
-            });
+                    transactionsList.Add(new TransactionHistory
+                    {
+                        TransactionId = currentTransactionId++,
+                        UserId = userId,
+                        CourseId = courseId,
+                        Amount = amount,
+                        Status = TransactionStatus.Completed, // Luôn luôn thành công
+                        Description = $"Purchase of course {courseId}", // Mô tả tự động
+                        DateCreated = transactionDate.AddDays(currentTransactionId) // Ngày tháng tăng dần
+                    });
+                }
+            }
 
-            list.Add(new TransactionHistory
-            {
-                TransactionId = id++,
-                UserId = "3",
-                CourseId = 5,
-                Amount = 39.99m,
-                Status = TransactionStatus.Failed,
-                Description = "Failed transaction for course 5",
-                DateCreated = new DateTime(2025, 3, 14)
-            });
-
-            list.Add(new TransactionHistory
-            {
-                TransactionId = id++,
-                UserId = "3",
-                CourseId = 6,
-                Amount = 44.99m,
-                Status = TransactionStatus.Completed,
-                Description = "Purchase course 6",
-                DateCreated = new DateTime(2025, 3, 15)
-            });
-
-            return list;
+            return transactionsList;
         }
     }
 }

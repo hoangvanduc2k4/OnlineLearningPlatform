@@ -17,13 +17,18 @@ namespace OnlineLearningPlatform.Controllers
         private readonly IVnPayService _vnPayService;
         private readonly UserManager<User> _userManager;
         private readonly ITransactionService _transactionService;
-        public CoursesController(ICourseService courseService, OnlineLearningDBContext context, IVnPayService vnPayService, UserManager<User> userManager, ITransactionService transactionService)
+        private readonly ICategoryService _categoryService;
+        private readonly ILevelService _levelService;
+
+        public CoursesController(ICourseService courseService, IVnPayService vnPayService, UserManager<User> userManager, ITransactionService transactionService, ICategoryService categoryService, ILevelService levelService)
         {
             _courseService = courseService;
-            _context = context;
             _vnPayService = vnPayService;
             _userManager = userManager;
             _transactionService = transactionService;
+            _categoryService = categoryService;
+            _levelService = levelService;
+
         }
 
         public async Task<IActionResult> Index(
@@ -50,12 +55,9 @@ namespace OnlineLearningPlatform.Controllers
             ViewBag.PriceRange = priceRange;
             ViewBag.StudyTimeRange = studyTimeRange;
 
-            ViewBag.AllCategories = await _context.Categories
-                .Select(c => new { Id = c.CategoryId, Name = c.CategoryName })
-                .OrderBy(x => x.Name)
-                .ToListAsync();
+            ViewBag.AllCategories = await _categoryService.GetAllCategoryAysnc();
 
-            ViewBag.AllLevels = await _context.Levels.OrderBy(l => l.LevelName).ToListAsync();
+            ViewBag.AllLevels = await _levelService.GetAllLevelAysnc();
 
             return View(paged);
         }

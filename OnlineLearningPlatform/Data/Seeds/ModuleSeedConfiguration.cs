@@ -18,7 +18,7 @@ namespace OnlineLearningPlatform.Data.Seeds
             long id = 1;
 
             // Mỗi course có 3 module
-            for (long courseId = 1; courseId <= 12; courseId++)
+            for (long courseId = 1; courseId <= 55; courseId++)
             {
                 for (int m = 1; m <= 3; m++)
                 {
