@@ -1,0 +1,188 @@
+﻿@page
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes.IndexModel
+@using OnlineLearningPlatform
+@using OnlineLearningPlatform.Models
+@using OnlineLearningPlatform.Enums
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Quiz Management";
+    Layout = "~/Areas/Mentor/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid mt-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-light text-primary d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Quiz Management</h5>
+            <div class="d-flex">
+                <form method="get" class="d-flex align-items-center">
+                    <select name="filterType" class="form-select form-select-sm me-2" style="width: 140px;">
+                        <option value="active" selected="@(Model.FilterType == "active")">Active</option>
+                        <option value="inactive" selected="@(Model.FilterType == "inactive")">Inactive</option>
+                    </select>
+
+                    <select name="moduleId" class="form-select form-select-sm me-2" style="width: 180px;"
+                            asp-items="@(new SelectList(Model.AvailableModules, "ModuleId", "ModuleName", Model.SelectedModule?.ModuleId))">
+                        <option value="0">All modules</option>
+                    </select>
+
+
+
+                    <input type="text" name="searchTerm" value="@Model.SearchTerm" class="form-control form-control-sm me-2" placeholder="Search quiz..." />
+                    <a asp-page="./Index"
+                       asp-route-pageNumber="1"
+                       asp-route-pageSize="@Model.PageSize"
+                       asp-route-filterType="active"
+                       asp-route-moduleId="0"
+                       class="btn btn-sm btn-outline-secondary ms-2 mx-1">
+                        Reset
+                    </a>
+                    <button type="submit" class="btn btn-sm btn-outline-primary">Filter</button>
+                </form>
+                <a asp-page="./Create" class="btn btn-sm btn-success ms-2"><i class="bi bi-plus-lg"></i> Add New Quiz</a>
+            </div>
+        </div>
+
+        <div class="card-body">
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @TempData["SuccessMessage"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @TempData["ErrorMessage"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+        </div>
+
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover mb-0">
+                    <thead class="bg-light text-dark">
+                        <tr>
+                            <th style="width: 3%;">#</th>
+                            <th style="width: 25%;">Quiz Name</th>
+                            <th style="width: 15%;">Module</th>
+                            <th style="width: 12%;">Quiz Time</th>
+                            <th style="width: 8%;">Pass</th>
+                            <th style="width: 11%;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.PagedQuizzes != null && Model.PagedQuizzes.Any())
+                        {
+                            int seq = (Model.PagedQuizzes.PageNumber - 1) * Model.PagedQuizzes.PageSize;
+                            foreach (var quiz in Model.PagedQuizzes)
+                            {
+                                seq++;
+                                <tr>
+                                    <td>@seq</td>
+                                    <td>@(quiz.QuizName ?? "-")</td>
+                                    <td>@(quiz.ModuleName ?? "-")</td>
+                                    <td>@(quiz.QuizTime > 0 ? $"{quiz.QuizTime} {quiz.TimeUnit}" : "-")</td>
+                                    <td>@(quiz.PassScore > 0 ? quiz.PassScore.ToString() : "-")</td>
+                                    <td>
+                                        <a asp-page="./Update" asp-route-id="@quiz.QuizId" class="btn btn-sm btn-warning me-1" title="Edit">
+                                            <i class="bi bi-pencil-fill"></i>
+                                        </a>
+
+                                        @if (Model.FilterType == "inactive")
+                                        {
+                                            <form method="post" asp-page-handler="Activate" class="d-inline">
+                                                <input type="hidden" name="id" value="@quiz.QuizId" />
+                                                <input type="hidden" name="pageNumber" value="@Model.PagedQuizzes.PageNumber" />
+                                                <input type="hidden" name="pageSize" value="@Model.PageSize" />
+                                                <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
+                                                <input type="hidden" name="filterType" value="@Model.FilterType" />
+                                                <input type="hidden" name="moduleId" value="@(Model.SelectedModule?.ModuleId ?? 0)" />
+                                                <button type="submit" class="btn btn-sm btn-secondary me-1" onclick="return confirm('Are you sure you want to activate this quiz?')" title="Activate">
+                                                    <i class="bi bi-check-circle-fill"></i>
+                                                </button>
+                                            </form>
+                                            <form method="post" asp-page-handler="Delete" class="d-inline">
+                                                <input type="hidden" name="id" value="@quiz.QuizId" />
+                                                <input type="hidden" name="pageNumber" value="@Model.PagedQuizzes.PageNumber" />
+                                                <input type="hidden" name="pageSize" value="@Model.PageSize" />
+                                                <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
+                                                <input type="hidden" name="filterType" value="@Model.FilterType" />
+                                                <input type="hidden" name="moduleId" value="@(Model.SelectedModule?.ModuleId ?? 0)" />
+                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this quiz?')" title="Delete">
+                                                    <i class="bi bi-trash-fill"></i>
+                                                </button>
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <form method="post" asp-page-handler="Deactivate" class="d-inline" >
+                                                <input type="hidden" name="id" value="@quiz.QuizId" />
+                                                <input type="hidden" name="pageNumber" value="@Model.PagedQuizzes.PageNumber" />
+                                                <input type="hidden" name="pageSize" value="@Model.PageSize" />
+                                                <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
+                                                <input type="hidden" name="filterType" value="@Model.FilterType" />
+                                                <input type="hidden" name="moduleId" value="@(Model.SelectedModule?.ModuleId ?? 0)" />
+                                                <button type="submit" class="btn btn-sm btn-secondary" onclick="return confirm('Are you sure you want to deactivate this quiz?')" title="Deactivate">
+                                                    <i class="bi bi-slash-circle"></i>
+                                                </button>
+                                            </form>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="9" class="text-center py-3 text-muted">No quizzes found.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card-footer bg-white">
+            <nav aria-label="Page navigation" class="d-flex justify-content-center">
+                @Html.PagedListPager(
+                Model.PagedQuizzes,
+                                page => Url.Page("./Index", new { pageNumber = page, pageSize = Model.PageSize, searchTerm = Model.SearchTerm, filterType = Model.FilterType, moduleId = Model.SelectedModule?.ModuleId ?? 0 }),
+                                new PagedListRenderOptions
+                                {
+                                    UlElementClasses = new[] { "pagination pagination-sm mb-0" },
+                                    LiElementClasses = new[] { "page-item" },
+                                    PageClasses = new[] { "page-link text-primary" }
+                                })
+            </nav>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function showSuccess(msg) {
+            iziToast.success({
+                title: 'Success',
+                message: msg,
+                backgroundColor: '#d4edda',
+                titleColor: '#155724',
+                messageColor: '#155724',
+                position: 'topRight'
+            });
+        }
+
+        function showError(msg) {
+            iziToast.error({
+                title: 'Error',
+                message: msg,
+                backgroundColor: '#f8d7da',
+                titleColor: '#721c24',
+                messageColor: '#721c24',
+                position: 'topRight'
+            });
+        }
+    </script>
+}
