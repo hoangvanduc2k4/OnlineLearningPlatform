@@ -1,4 +1,5 @@
-﻿using OnlineLearningPlatform.Enums;
+﻿using MailKit.Search;
+using OnlineLearningPlatform.Enums;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Repositories.Interfaces;
@@ -7,8 +8,15 @@ using OnlineLearningPlatform.Services.Interfaces;
 namespace OnlineLearningPlatform.Services.Implementations
 {
     public class QuizService : IQuizService
+
     {
+
         private readonly IQuizRepository _quizRepository;
+
+        public QuizService(IQuizRepository quizRepository)
+        {
+            _quizRepository = quizRepository;
+        }
 
         public async Task<Quiz> CreateQuizAsync(QuizViewModel quizDTO)
         {
@@ -44,6 +52,7 @@ namespace OnlineLearningPlatform.Services.Implementations
             existingQuiz.ModuleId = quizDTO.ModuleId;
             existingQuiz.QuizTime = quizDTO.QuizTime;
             existingQuiz.PassScore = quizDTO.PassScore;
+            existingQuiz.Status = quizDTO.IsActived? QuizStatus.Active:QuizStatus.Inactive;
             existingQuiz.UpdatedAt = DateTime.Now;
 
             // Lưu thay đổi
@@ -76,12 +85,13 @@ namespace OnlineLearningPlatform.Services.Implementations
                 PassScore = q.PassScore ?? 0
             });
         }
+        
 
         public async Task<IEnumerable<QuizViewModel>> GetQuizzesByModuleIdAsync(long moduleId)
         {
             var quizzes = await _quizRepository.GetAllAsync();
             return quizzes
-                .Where(q => q.ModuleId == moduleId)
+                .Where(q => q.ModuleId == moduleId && q.Status == QuizStatus.Active)
                 .Select(q => new QuizViewModel
                 {
                     QuizId = q.QuizId,
@@ -99,12 +109,55 @@ namespace OnlineLearningPlatform.Services.Implementations
 
             return new QuizViewModel
             {
+                IsActived = quiz.Status == QuizStatus.Active,
                 QuizId = quiz.QuizId,
                 QuizName = quiz.QuizName,
                 ModuleId = quiz.ModuleId,
                 QuizTime = quiz.QuizTime ?? 0,
                 PassScore = quiz.PassScore ?? 0
             };
+        }
+
+        public async Task<IEnumerable<QuizViewModel>> GetActiveQuizzesAsync(string? searchTerm)
+        {
+            var quizzes = await _quizRepository.GetAllAsync();
+
+            var filtered = quizzes
+                .Where(q => q.Status == QuizStatus.Active &&
+                            (string.IsNullOrEmpty(searchTerm) ||
+                             q.QuizName.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))) 
+                .Select(q => new QuizViewModel
+                {
+                    QuizId = q.QuizId,
+                    QuizName = q.QuizName,
+                    ModuleId = q.ModuleId,
+                    QuizTime = q.QuizTime ?? 0,
+                    PassScore = q.PassScore ?? 0,
+                    ModuleName = q.Module?.ModuleName ?? "-",
+                });
+
+            return filtered;
+        }
+
+        public async Task<IEnumerable<QuizViewModel>> GetInactiveQuizzesAsync(string? searchTerm)
+        {
+            var quizzes = await _quizRepository.GetAllAsync();
+
+            var filtered = quizzes
+                .Where(q => q.Status != QuizStatus.Active &&
+                            (string.IsNullOrEmpty(searchTerm) ||
+                             q.QuizName.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)))
+                .Select(q => new QuizViewModel
+                {
+                    QuizId = q.QuizId,
+                    QuizName = q.QuizName,
+                    ModuleId = q.ModuleId,
+                    QuizTime = q.QuizTime ?? 0,
+                    PassScore = q.PassScore ?? 0,
+                    ModuleName = q.Module?.ModuleName ?? "-",
+                });
+
+            return filtered;
         }
     }
 }

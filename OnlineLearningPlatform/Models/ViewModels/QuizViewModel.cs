@@ -6,7 +6,7 @@ namespace OnlineLearningPlatform.Models.ViewModels
     {
         public int LessonNumber { get; set; }
         public int ModuleNumber { get; set; }
-        public int ModuleName { get; set; }
+        public string ModuleName { get; set; }
         public int CourseId { get; set; }
       
         //[Required]
@@ -24,6 +24,7 @@ namespace OnlineLearningPlatform.Models.ViewModels
         public int QuizTime { get; set; }
 
         public string TimeUnit { get; set; }
+        public bool IsActived { get; set; }
 
         [Required(ErrorMessage = "Pass score not blank.")]
         [Range(1, 10, ErrorMessage = "Pass score must be greater than 0.")]
