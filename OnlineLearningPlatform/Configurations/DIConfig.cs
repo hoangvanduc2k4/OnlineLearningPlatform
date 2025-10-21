@@ -60,6 +60,9 @@ namespace OnlineLearningPlatform.Configurations
             //quiz
             services.AddScoped<IQuizRepository, QuizRepository>();
             services.AddScoped<IQuizService, QuizService>();
+            // question
+            services.AddScoped<IQuestionRepository, QuestionRepository>();
+            services.AddScoped<IQuestionService, QuestionService>();
 
             return services;
         }
