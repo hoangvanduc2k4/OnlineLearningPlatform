@@ -42,8 +42,7 @@ namespace OnlineLearningPlatform.Areas.Mentee.Pages.MentorApplications
         {
             if (!ModelState.IsValid)
                 return Page();
-
-            var user = await _userService.GetUserByIdAsync(User.Identity!.Name!);
+            var user = await _userService.GetUserByNameAsync(User.Identity!.Name!);
             if (user == null)
             {
                 ErrorMessage = "User not found.";

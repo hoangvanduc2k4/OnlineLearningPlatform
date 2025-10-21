@@ -23,7 +23,7 @@ namespace OnlineLearningPlatform.Areas.Mentee.Pages.MentorApplications
 
         public async Task OnGetAsync()
         {
-            var user = await _userService.GetUserByIdAsync(User.Identity!.Name!);
+            var user = await _userService.GetUserByNameAsync(User.Identity!.Name!);
             if (user != null)
             {
                 var apps = await _mentorApplicationService.GetByUserIdAsync(user.Id);

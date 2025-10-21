@@ -7,6 +7,7 @@ namespace OnlineLearningPlatform.Services.Interfaces
     public interface IUserService
     {
         Task<User?> GetUserByIdAsync(string id);
+        Task<User?> GetUserByNameAsync(string userName);
         Task<IEnumerable<User>> GetActiveUsersAsync(string? searchTerm);
         Task<IEnumerable<User>> GetInactiveUsersAsync(string? searchTerm);
         Task<IEnumerable<User>> GetDeletedUsersAsync(string? searchTerm);

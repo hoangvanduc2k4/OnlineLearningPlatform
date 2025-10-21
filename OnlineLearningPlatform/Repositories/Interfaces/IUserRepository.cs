@@ -18,5 +18,6 @@ namespace OnlineLearningPlatform.Repositories.Interfaces
 
         Task<IEnumerable<User>> GetAllActiveMentorAsync(string? searchTerm);
         Task<List<User>> GetTopMentorsByStudentCountFromDbAsync(int count);
+        Task<User?> GetByUserNameAsync(string userName);
     }
 }
