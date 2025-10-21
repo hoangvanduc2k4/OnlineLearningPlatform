@@ -1,0 +1,79 @@
+﻿@page "{questionId:long?}/{quizId:long?}"
+@model OnlineLearningPlatform.Areas.Mentor.Pages.Questions.UpdateModel
+@using OnlineLearningPlatform.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Update Question";
+    Layout = "~/Areas/Mentor/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Question</h2>
+
+<form method="post" onsubmit="return validateForm()">
+    <input type="hidden" asp-for="Question.QuestionId" />
+    <input type="hidden" asp-for="Question.QuizId" />
+
+    <div class="mb-3">
+        <label>Question:</label>
+        <input type="text" class="form-control" asp-for="Question.QuestionContent" id="questionContent" />
+        <span class="text-danger" id="questionError"></span>
+    </div>
+
+    <div id="answers-container">
+        @for (int i = 0; i < Model.Question.Options.Count; i++)
+        {
+            <div class="d-flex mb-2 align-items-center answer-row">
+                <input type="text" name="Question.Options[@i].OptionText" value="@Model.Question.Options[i].OptionText" class="form-control me-2" />
+                <input type="checkbox" name="Question.Options[@i].IsCorrect" value="true" @(Model.Question.Options[i].IsCorrect ? "checked" : "") class="form-check-input me-2" />
+                <input type="hidden" name="Question.Options[@i].IsCorrect" value="false" />
+                <input type="hidden" name="Question.Options[@i].OptionId" value="@Model.Question.Options[i].OptionId" />
+                <button type="button" class="btn btn-danger btn-sm" onclick="$(this).parent().remove()">×</button>
+            </div>
+        }
+    </div>
+
+    <button type="button" class="btn btn-secondary mb-2" id="add-answer">Add Answer</button>
+    <button type="submit" class="btn btn-success">Update</button>
+</form>
+
+@section Scripts {
+    <script>
+        let answerIndex = @Model.Question.Options.Count;
+
+        $('#add-answer').click(function () {
+            const container = $('#answers-container');
+            const row = $(`
+                <div class="d-flex mb-2 align-items-center answer-row">
+                    <input type="text" name="Question.Options[${answerIndex}].OptionText" class="form-control me-2" placeholder="Answer" />
+                    <input type="checkbox" name="Question.Options[${answerIndex}].IsCorrect" value="true" class="form-check-input me-2" />
+                    <input type="hidden" name="Question.Options[${answerIndex}].IsCorrect" value="false" />
+                    <button type="button" class="btn btn-danger btn-sm">×</button>
+                </div>
+            `);
+            row.find('button').click(function () { row.remove(); });
+            container.append(row);
+            answerIndex++;
+        });
+
+        function validateForm() {
+            let valid = true;
+            if ($('#questionContent').val().trim() === '') {
+                $('#questionError').text('Question cannot be empty');
+                valid = false;
+            } else $('#questionError').text('');
+
+            const answers = $('#answers-container .answer-row');
+            if (answers.length === 0) {
+                alert('Add at least one answer');
+                valid = false;
+            }
+
+            if (answers.find('input[type=checkbox]:checked').length === 0) {
+                alert('Select at least one correct answer');
+                valid = false;
+            }
+
+            return valid;
+        }
+    </script>
+}

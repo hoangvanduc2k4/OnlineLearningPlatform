@@ -1,0 +1,52 @@
+﻿@page
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model OnlineLearningPlatform.Areas.Mentor.Pages.Questions.IndexModel
+@using OnlineLearningPlatform
+@using OnlineLearningPlatform.Models
+@using OnlineLearningPlatform.Enums
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Question Management";
+    Layout = "~/Areas/Mentor/Views/Shared/_Layout.cshtml";
+}
+<h2>Questions for @Model.QuizName</h2>
+<a class="btn btn-success mb-2"
+   asp-area="Mentor"
+   asp-page="/Questions/Create"
+   asp-route-quizId="@Model.QuizId">
+    Add Question
+</a>
+@if (Model.Questions != null && Model.Questions.Any())
+{
+    <ul class="list-group">
+        @foreach (var q in Model.Questions)
+        {
+            <li class="list-group-item">
+                <strong>@q.QuestionContent</strong>
+                <ul>
+                    @foreach (var o in q.Options)
+                    {
+                        <li class="@((o.IsCorrect ? "text-success" : ""))">@o.OptionText</li>
+                    }
+                </ul>
+                <a class="btn btn-primary" asp-page="Update"
+                   asp-route-questionId="@q.QuestionId"
+                   asp-route-quizId="@Model.QuizId">Edit</a>
+
+                <form method="post" asp-page-handler="Delete" class="d-inline">
+                    <input type="hidden" name="questionId" value="@q.QuestionId" />
+                    <input type="hidden" name="quizId" value="@Model.QuizId" />
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">
+                        Delete
+                    </button>
+                </form>
+
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <div class="alert alert-info">No questions yet.</div>
+}
