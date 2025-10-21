@@ -14,17 +14,20 @@ namespace OnlineLearningPlatform.Services.Interfaces
         Task<bool> UpdateCourseAsync(Course courseToUpdate, List<long> categoryIds, string? newCoverImageUrl, CourseStatus newStatus, string? mentorId);
         Task<bool> DeleteCourseAsync(long courseId, string mentorId);
         Task<List<CourseViewModel>> GetTopNewestCoursesAsync(int count = 3);
+
         Task<IPagedList<CourseViewModel>> GetCoursesPagedAsync(
-            int pageNumber, int pageSize,
-            string? searchTerm = null,
-            List<string>? categories = null,
-            List<long>? levelIds = null,
-            string? priceRange = null,
-            string? studyTimeRange = null,
-            string? sortBy = null
-        );
+                    int pageNumber, int pageSize,
+                    string? searchTerm = null,
+                    List<string>? categories = null,
+                    List<long>? levelIds = null,
+                    string? priceRange = null,
+                    string? studyTimeRange = null,
+                    string? sortBy = null
+                );
 
         Task<CourseDetailsViewModel?> GetCourseDetailsAsync(long id);
+
+
         Task<Course?> GetCourseByIdAsync(long courseId);
 
         Task ReviewCourseAsync(long courseId, string adminId, ReviewStatus reviewStatus, string? notes);

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using OnlineLearningPlatform.Enums;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Models.Entities.Others;
@@ -6,13 +7,14 @@ using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Repositories.Interfaces;
 using OnlineLearningPlatform.Services.Interfaces;
 using X.PagedList;
+using X.PagedList.Extensions;
 
 namespace OnlineLearningPlatform.Services
 {
     public class CoursesService : ICourseService
     {
         private readonly ICourseRepository _courseRepository;
-        private readonly IRatingRepository _ratingRepository; // Thêm repository này
+        private readonly IRatingRepository _ratingRepository;
         private readonly IAdminReviewCourseRepository _adminReviewCourseRepository;
         private readonly IMapper _mapper;
         private readonly ICourseEnrollmentRepository _courseEnrollmentRepository;
@@ -25,49 +27,134 @@ namespace OnlineLearningPlatform.Services
             _courseEnrollmentRepository = courseEnrollmentRepository;
         }
 
-
         public async Task<IPagedList<CourseViewModel>> GetCoursesPagedAsync(
-                                        int pageNumber, int pageSize,
-                                        string? searchTerm = null,
-                                        List<string>? categories = null,
-                                        List<long>? levelIds = null,
-                                        string? priceRange = null,
-                                        string? studyTimeRange = null,
-                                        string? sortBy = null)
+                    int pageNumber, int pageSize,
+                    string? searchTerm = null,
+                    List<string>? categories = null,
+                    List<long>? levelIds = null,
+                    string? priceRange = null,
+                    string? studyTimeRange = null,
+                    string? sortBy = null)
         {
+            var query = _courseRepository.GetCoursesQuery();
 
-            var pagedEntities = await _courseRepository.GetCoursesPagedAsync(
-              pageNumber,
-              pageSize,
-              searchTerm,
-              status: null,
-              categories: categories,
-              levelIds: levelIds,
-              priceRange: priceRange,
-              studyTimeRange: studyTimeRange,
-              sortBy: sortBy
-            );
+            query = query.Where(c => c.Status == CourseStatus.Approved);
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                var lower = searchTerm.Trim().ToLower();
+                query = query.Where(c =>
+                    (!string.IsNullOrEmpty(c.CourseName) && c.CourseName.ToLower().Contains(lower)) ||
+                    (!string.IsNullOrEmpty(c.Description) && c.Description.ToLower().Contains(lower))
+                );
+            }
+
+            if (categories != null && categories.Any() && !categories.Contains("All"))
+            {
+                var cats = categories.Select(x => x.Trim()).ToList();
+                query = query.Where(c => c.CourseCategories.Any(cc => cats.Contains(cc.Category.CategoryName)));
+            }
+
+            if (levelIds != null && levelIds.Any())
+            {
+                query = query.Where(c => c.LevelId.HasValue && levelIds.Contains(c.LevelId.Value));
+            }
+
+            if (!string.IsNullOrEmpty(priceRange))
+            {
+                switch (priceRange)
+                {
+                    case "under50":
+                        query = query.Where(c => c.Price < 50m);
+                        break;
+                    case "50to200":
+                        query = query.Where(c => c.Price >= 50m && c.Price <= 200m);
+                        break;
+                    case "200to500":
+                        query = query.Where(c => c.Price > 200m && c.Price <= 500m);
+                        break;
+                    case "500plus":
+                        query = query.Where(c => c.Price > 500m);
+                        break;
+                }
+            }
+
+            switch (sortBy)
+            {
+                case "newest":
+                    query = query.OrderByDescending(c => c.PublishedAt ?? c.CreatedAt);
+                    break;
+                case "priceAsc":
+                    query = query.OrderBy(c => c.Price);
+                    break;
+                case "priceDesc":
+                    query = query.OrderByDescending(c => c.Price);
+                    break;
+                default:
+                    query = query.OrderByDescending(c => c.PublishedAt ?? c.CreatedAt).ThenByDescending(c => c.CourseId);
+                    break;
+            }
+
+            var filteredCourses = await query.ToListAsync();
+
+            IEnumerable<Course> finalFilteredList = filteredCourses;
+
+            if (!string.IsNullOrEmpty(studyTimeRange))
+            {
+                Func<Course, bool> studyFilter = c =>
+                {
+                    if (string.IsNullOrWhiteSpace(c.StudyTime)) return false;
+
+                    // Cố gắng parse số giờ từ chuỗi
+                    var digits = new string(c.StudyTime.Where(ch => char.IsDigit(ch) || ch == '.').ToArray());
+                    if (!decimal.TryParse(digits, out var hours)) return false;
+
+                    switch (studyTimeRange)
+                    {
+                        case "under5": return hours < 5m;
+                        case "5to20": return hours >= 5m && hours <= 20m;
+                        case "20plus": return hours > 20m;
+                        default: return true;
+                    }
+                };
+                finalFilteredList = finalFilteredList.Where(studyFilter);
+            }
+
+            // Xử lý sắp xếp theo thời gian học (durationAsc) trong memory
+            if (sortBy == "durationAsc")
+            {
+                finalFilteredList = finalFilteredList.OrderBy(c =>
+                {
+                    var digits = new string((c.StudyTime ?? "").Where(char.IsDigit).ToArray());
+                    decimal.TryParse(digits, out var duration);
+                    return duration;
+                });
+            }
+
+            var pagedEntities = finalFilteredList.ToPagedList(pageNumber, pageSize);
+
             var vmList = pagedEntities.Select(c => _mapper.Map<CourseViewModel>(c)).ToList();
-            var vmPaged = new StaticPagedList<CourseViewModel>(vmList, pagedEntities.PageNumber, pagedEntities.PageSize, pagedEntities.TotalItemCount);
+
+            var vmPaged = new StaticPagedList<CourseViewModel>(vmList, pagedEntities.GetMetaData());
+
             return vmPaged;
         }
-        public async Task<List<CourseViewModel>> GetTopNewestCoursesAsync(int count = 3) 
-        {
-            var pagedEntities = await _courseRepository.GetCoursesPagedAsync(
-                pageNumber: 1,
-                pageSize: count,
-                searchTerm: null,
-                status: CourseStatus.Approved, 
-                categories: null,
-                levelIds: null,
-                priceRange: null,
-                studyTimeRange: null,
-                sortBy: "newest"
-            );
 
-            var vmList = pagedEntities
+
+        public async Task<List<CourseViewModel>> GetTopNewestCoursesAsync(int count = 3)
+        {
+            var query = _courseRepository.GetCoursesQuery();
+
+            var newestCourses = await query
+                .Where(c => c.Status == CourseStatus.Approved)
+                .OrderByDescending(c => c.PublishedAt ?? c.CreatedAt)
+                .Take(count)
+                .ToListAsync();
+
+            var vmList = newestCourses
                             .Select(c => _mapper.Map<CourseViewModel>(c))
                             .ToList();
+
             return vmList;
         }
 
