@@ -1,4 +1,5 @@
 ﻿using Microsoft.CodeAnalysis.Options;
+using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Repositories.Interfaces;
 using OnlineLearningPlatform.Services.Interfaces;
@@ -102,6 +103,45 @@ namespace OnlineLearningPlatform.Services.Implementations
 
             return result;
         }
+
+        public async Task<List<QuestionWithOptionsViewModel>> GetAllQuestionsWithOptionsByQuizIdAsync(long quizId, string searchTerm)
+        {
+            // Xử lý null an toàn
+            searchTerm = searchTerm?.ToLower() ?? "";
+
+            var questions = await _questionRepository.GetAllAsync() ?? new List<Question>();
+
+            questions = questions
+                .Where(q => q.QuizId == quizId &&
+                            (q.QuestionContent ?? string.Empty).ToLower().Contains(searchTerm))
+                .ToList();
+
+            var result = new List<QuestionWithOptionsViewModel>();
+
+            foreach (var question in questions)
+            {
+                var options = await _questionRepository.GetOptionsByQuestionIdAsync(question.QuestionId) ?? new List<Option>();
+
+                var questionWithOptions = new QuestionWithOptionsViewModel
+                {
+                    QuestionId = question.QuestionId,
+                    QuizId = question.QuizId,
+                    QuestionContent = question.QuestionContent,
+                    Options = options.Select(o => new OptionsViewModel
+                    {
+                        OptionId = o.OptionId,
+                        QuestionId = o.QuestionId,
+                        OptionText = o.OptionText,
+                        IsCorrect = o.IsCorrect
+                    }).ToList()
+                };
+
+                result.Add(questionWithOptions);
+            }
+
+            return result;
+        }
+
 
         public async Task<QuestionWithOptionsViewModel> GetQuestionWithOptionsById(long questionId)
         {

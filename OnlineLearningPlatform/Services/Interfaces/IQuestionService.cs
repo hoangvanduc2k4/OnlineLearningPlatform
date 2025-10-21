@@ -14,5 +14,6 @@ namespace OnlineLearningPlatform.Services.Interfaces
         Task<List<QuestionWithOptionsViewModel>> GetAllQuestionsWithOptionsAsync();
         Task<QuestionWithOptionsViewModel> GetQuestionWithOptionsById(long questionId);
         Task<List<QuestionWithOptionsViewModel>> GetAllQuestionsWithOptionsByQuizIdAsync(long quizId);
+        Task<List<QuestionWithOptionsViewModel>> GetAllQuestionsWithOptionsByQuizIdAsync(long quizId,string searchTerm);
     }
 }

@@ -10,37 +10,74 @@
     Layout = "~/Areas/Mentor/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Add Question to Quiz: @Model.QuizName</h2>
+<div class="container mt-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-light text-primary d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">
+                <i class="bi bi-plus-circle"></i> Add Question to Quiz: <span class="fw-bold">@Model.QuizName</span>
+            </h5>
+            <a asp-page="./Index" asp-route-quizId="@Model.Question.QuizId"
+               class="btn btn-sm btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Back
+            </a>
+        </div>
 
-<form method="post" onsubmit="return validateForm()">
-    <input type="hidden" asp-for="Question.QuizId" />
+        <div class="card-body">
+            <form method="post" onsubmit="return validateForm()">
+                <input type="hidden" asp-for="Question.QuizId" />
 
-    <div class="mb-3">
-        <label>Question:</label>
-        <input type="text" class="form-control" asp-for="Question.QuestionContent" id="questionContent" />
-        <span class="text-danger" id="questionError"></span>
+                <!-- Question content -->
+                <div class="mb-3">
+                    <label asp-for="Question.QuestionContent" class="form-label">Question</label>
+                    <input type="text" asp-for="Question.QuestionContent" class="form-control" id="questionContent" placeholder="Enter your question..." />
+                    <span class="text-danger" id="questionError"></span>
+                </div>
+
+                <!-- Answer list -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Answers</label>
+                    <div id="answers-container"></div>
+                    <button type="button" class="btn btn-sm btn-outline-primary mt-2" id="add-answer">
+                        <i class="bi bi-plus-lg"></i> Add Answer
+                    </button>
+                </div>
+
+                <!-- Action buttons -->
+                <div class="d-flex justify-content-end mt-4">
+                    <a asp-page="./Index" asp-route-quizId="@Model.Question.QuizId" class="btn btn-outline-secondary me-2">Cancel</a>
+
+
+                    <button type="submit" class="btn btn-primary">
+                        Save Question
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
-
-    <div id="answers-container">
-        <!-- dynamically added options -->
-    </div>
-
-    <button type="button" class="btn btn-secondary mb-2" id="add-answer">Add Answer</button>
-    <button type="submit" class="btn btn-success">Save</button>
-</form>
+</div>
 
 @section Scripts {
+    <partial name="_ValidationScriptsPartial" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script>
         let answerIndex = 0;
+
         $('#add-answer').click(function () {
             const container = $('#answers-container');
             const row = $(`
-                <div class="d-flex mb-2 align-items-center answer-row">
-                    <input type="text" name="Question.Options[${answerIndex}].OptionText" class="form-control me-2" placeholder="Answer">
-                    <input type="checkbox" name="Question.Options[${answerIndex}].IsCorrect" value="true" class="form-check-input me-2">
-                    <input type="hidden" name="Question.Options[${answerIndex}].IsCorrect" value="false">
-                    <button type="button" class="btn btn-danger btn-sm">×</button>
+                <div class="d-flex align-items-center mb-2 answer-row border rounded p-2 bg-light">
+                    <input type="text" name="Question.Options[${answerIndex}].OptionText"
+                           class="form-control me-2" placeholder="Answer text..." />
+                    <div class="form-check me-2">
+                        <input type="checkbox" name="Question.Options[${answerIndex}].IsCorrect"
+                               value="true" class="form-check-input" id="chk${answerIndex}">
+                        <label for="chk${answerIndex}" class="form-check-label">Correct</label>
+                    </div>
+                    <input type="hidden" name="Question.Options[${answerIndex}].IsCorrect" value="false" />
+                    <button type="button" class="btn btn-sm btn-outline-danger">
+                        <i class="bi bi-x"></i>
+                    </button>
                 </div>
             `);
             row.find('button').click(() => row.remove());
@@ -50,6 +87,8 @@
 
         function validateForm() {
             let valid = true;
+
+            // Kiểm tra nội dung câu hỏi
             if ($('#questionContent').val().trim() === '') {
                 $('#questionError').text('Question cannot be empty');
                 valid = false;
@@ -57,13 +96,17 @@
                 $('#questionError').text('');
             }
 
-            if ($('#answers-container .answer-row').length === 0) {
-                alert('Add at least one answer');
+            // Kiểm tra có ít nhất 1 đáp án
+            const answers = $('#answers-container .answer-row');
+            if (answers.length === 0) {
+                alert('Please add at least one answer.');
                 valid = false;
             }
 
-            if ($('#answers-container .answer-row input[type=checkbox]:checked').length === 0) {
-                alert('Select at least one correct answer');
+            // Kiểm tra có ít nhất 1 đáp án đúng
+            const correctAnswers = answers.find('input[type=checkbox]:checked');
+            if (correctAnswers.length === 0) {
+                alert('Please select at least one correct answer.');
                 valid = false;
             }
 

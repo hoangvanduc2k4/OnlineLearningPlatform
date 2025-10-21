@@ -38,10 +38,18 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Questions
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        // ✅ Cần quizId trong route để giữ đúng context khi Post
+        public async Task<IActionResult> OnPostAsync(long quizId)
         {
+            // Gắn lại quizId (phòng trường hợp bị mất)
+            Question.QuizId = quizId;
+
             if (!ModelState.IsValid)
+            {
+                var quiz = await _quizService.GetQuizByIdAsync(quizId);
+                QuizName = quiz?.QuizName ?? "";
                 return Page();
+            }
 
             await _questionService.CreateQuestionWithOptionsAsync(
                 new QuestionViewModel
@@ -53,7 +61,9 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Questions
                 new QuizViewModel { QuizId = Question.QuizId }
             );
 
-            // ✅ Redirect lại đúng quiz
+            TempData["SuccessMessage"] = "Question created successfully.";
+
+            // ✅ Quay lại đúng quiz khi xong
             return RedirectToPage("Index", new { quizId = Question.QuizId });
         }
     }
