@@ -48,12 +48,10 @@
                                         }
                                         else if (i - 0.5 <= Model.AverageRating)
                                         {
-
                                             <i class="bi bi-star-half"></i>
                                         }
                                         else
                                         {
-
                                             <i class="bi bi-star"></i>
                                         }
                                     }
@@ -64,7 +62,6 @@
                     </div>
                     <div class="hero-image">
                         <img src="@Model.ImageUrl" alt="Course Preview" class="img-fluid">
-                        
                     </div>
                 </div><div class="course-nav-tabs" data-aos="fade-up" data-aos-delay="300">
                     <ul class="nav nav-tabs" id="course-detailsCourseTab" role="tablist">
@@ -95,7 +92,6 @@
                                 <h3>Course Description</h3>
                                 <p>@Model.Description</p>
                             </div>
-                           
                         </div>
                         <div class="tab-pane fade" id="course-detailscurriculum" role="tabpanel">
                             @if (Model.Modules.Any())
@@ -145,7 +141,7 @@
                                                             <div class="lesson">
                                                                 <i class="bi bi-file-earmark-text"></i>
                                                                 <span class="lesson-title">[Quiz] @quiz.QuizName</span>
-                                                                @if (quiz.QuizTime >0)
+                                                                @if (quiz.QuizTime > 0)
                                                                 {
                                                                     <span class="lesson-time">@quiz.QuizTime min</span>
                                                                 }
@@ -178,12 +174,10 @@
                                                     }
                                                     else if (i - 0.5 <= Model.AverageRating)
                                                     {
-
                                                         <i class="bi bi-star-half"></i>
                                                     }
                                                     else
                                                     {
-
                                                         <i class="bi bi-star"></i>
                                                     }
                                                 }
@@ -225,13 +219,9 @@
             </div>
 
             <div class="col-lg-4">
-
                 <div class="sticky-sidebar-wrapper">
-
                     <div class="enrollment-card mb-4" data-aos="fade-up" data-aos-delay="200">
-
                         <div class="card-header">
-
                             <div class="price-display">
                                 @if (Model.Discount > 0)
                                 {
@@ -244,14 +234,10 @@
                                     <span class="current-price">@FormatPrice(Model.Price)</span>
                                 }
                             </div>
-
                         </div>
-
                         <div class="card-body">
-
                             <div class="course-details-card no-border-card" data-aos="fade-up" data-aos-delay="300">
                                 <h4>Course Details</h4>
-
                                 <div class="detail-grid">
                                     <div class="detail-row">
                                         <span class="detail-label">Duration</span>
@@ -275,7 +261,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="action-buttons">
                                 @if (TempData["Error"] != null)
                                 {
@@ -283,43 +268,30 @@
                                         @TempData["Error"]
                                     </div>
                                 }
-
                                 <form asp-controller="Courses" asp-action="Checkout" method="post" id="checkoutForm">
                                     <input type="hidden" name="courseId" value="@Model.CourseId" />
                                     <button type="submit" class="btn btn-primary" id="enrollButton">Enroll Now</button>
                                 </form>
                                 <button class="btn-secondary">Add to Wishlist</button>
                             </div>
-
                             <div class="guarantee"><i class="bi bi-shield-check"></i><span>30-day money-back guarantee</span></div>
+
+                            <div class="share-section">
+                                <hr>
+                                <h4 class="share-title">Share This Course</h4>
+                                <div class="social-links">
+                                    <a href="#" class="social-link facebook"><i class="bi bi-facebook"></i></a>
+                                    <a href="#" class="social-link twitter"><i class="bi bi-twitter"></i></a>
+                                    <a href="#" class="social-link linkedin"><i class="bi bi-linkedin"></i></a>
+                                    <a href="#" class="social-link email"><i class="bi bi-envelope"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                   
-                    <div class="share-course-card" data-aos="fade-up" data-aos-delay="400">
-                        <h4>Share This Course</h4>
-                        <div class="social-links">
-                            <a href="#" class="social-link facebook">
-                                <i class="bi bi-facebook"></i>
-                            </a>
-                            <a href="#" class="social-link twitter">
-                                <i class="bi bi-twitter"></i>
-                            </a>
-                            <a href="#" class="social-link linkedin">
-                                <i class="bi bi-linkedin"></i>
-                            </a>
-                            <a href="#" class="social-link email">
-                                <i class="bi bi-envelope"></i>
-                            </a>
-                        </div>
-                    </div>
-
-
                 </div>
             </div>
         </div>
     </div>
-
 </section>
 
 @section Scripts {
@@ -414,6 +386,60 @@
             .guarantee i {
                 margin-right: 5px;
                 color: #28a745;
+            }
+
+        .share-section {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+            .share-section hr {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            .share-section .share-title {
+                margin-bottom: 15px;
+                font-size: 1rem;
+                font-weight: 600;
+            }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 18px;
+            transition: opacity 0.3s ease;
+        }
+
+            .social-link:hover {
+                opacity: 0.8;
+            }
+
+            .social-link.facebook {
+                background-color: #3b5998;
+            }
+
+            .social-link.twitter {
+                background-color: #1da1f2;
+            }
+
+            .social-link.linkedin {
+                background-color: #0077b5;
+            }
+
+            .social-link.email {
+                background-color: #7f8c8d;
             }
     </style>
     <script>

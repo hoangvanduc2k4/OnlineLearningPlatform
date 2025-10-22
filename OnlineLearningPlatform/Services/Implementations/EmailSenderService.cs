@@ -21,12 +21,12 @@ namespace OnlineLearningPlatform.Services
         {
             var emailMessage = new MimeMessage();
 
-            emailMessage.From.Add(new MailboxAddress(_emailSettings.FromName, _emailSettings.FromEmail));
+            emailMessage.From.Add(new MailboxAddress(_emailSettings.FromName, _emailSettings.FromEmail.Trim()));
 
             var emailList = email.Split(",");
             foreach (var e in emailList)
             {
-                emailMessage.To.Add(new MailboxAddress("", e));
+                emailMessage.To.Add(new MailboxAddress("", e.Trim()));
             }
 
             emailMessage.Subject = subject;
