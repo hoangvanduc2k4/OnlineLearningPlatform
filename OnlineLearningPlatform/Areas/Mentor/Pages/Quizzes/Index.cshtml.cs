@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
 using OnlineLearningPlatform.Data;
 using OnlineLearningPlatform.Enums;
+using OnlineLearningPlatform.Hubs;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
+using OnlineLearningPlatform.Models.Entities.Others;
 using OnlineLearningPlatform.Models.Entities.UserPart;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Services;
@@ -14,15 +17,16 @@ using X.PagedList.Extensions;
 
 namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
 {
-    //[Authorize(Roles = "Mentor")]
+    [Authorize(Roles = "Mentor")]
     public class IndexModel : PageModel
     {
         private readonly IQuizService _quizService;
-
-        public IndexModel(IQuizService quizService, OnlineLearningDBContext context)
+        private readonly IHubContext<CRUDHub> _hub;
+        public IndexModel(IQuizService quizService, OnlineLearningDBContext context, IHubContext<CRUDHub> hub)
         {
             _quizService = quizService;
             _context = context;
+            _hub = hub;
         }
 
         public IPagedList<QuizViewModel> PagedQuizzes { get; set; }
@@ -71,6 +75,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
             if (quiz != null)
             {
                 await _quizService.DeleteQuizByIdAsync(quiz.QuizId);
+                await _hub.Clients.All.SendAsync("loadQuizzes");
                 TempData["SuccessMessage"] = "Quiz deleted successfully.";
             }
             else
@@ -89,6 +94,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
             {
                 quiz.IsActived = false;
                 await _quizService.UpdateQuizAsync(quiz);
+                await _hub.Clients.All.SendAsync("loadQuizzes");
                 TempData["SuccessMessage"] = "Quiz deactivated successfully.";
             }
             else
@@ -106,6 +112,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
             {
                 quiz.IsActived = true;
                 await _quizService.UpdateQuizAsync(quiz);
+                await _hub.Clients.All.SendAsync("loadQuizzes");
                 TempData["SuccessMessage"] = "Quiz activated successfully.";
             }
             else
