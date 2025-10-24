@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Models.ViewModels;
@@ -6,6 +7,7 @@ using OnlineLearningPlatform.Services.Interfaces;
 
 namespace OnlineLearningPlatform.Areas.Mentor.Pages.Questions
 {
+    [Authorize(Roles = "Mentor")]
     public class UpdateModel : PageModel
     {
         private readonly IQuestionService _questionService;

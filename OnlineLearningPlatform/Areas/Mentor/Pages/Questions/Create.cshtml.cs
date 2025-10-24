@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Services.Interfaces;
 
 namespace OnlineLearningPlatform.Areas.Mentor.Pages.Questions
 {
+    [Authorize(Roles = "Mentor")]
     public class CreateModel : PageModel
     {
         private readonly IQuestionService _questionService;

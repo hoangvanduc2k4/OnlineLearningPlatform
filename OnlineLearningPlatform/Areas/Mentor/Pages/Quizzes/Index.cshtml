@@ -73,7 +73,7 @@
                             <th style="width: 11%;">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="quizTable">
                         @if (Model.PagedQuizzes != null && Model.PagedQuizzes.Any())
                         {
                             int seq = (Model.PagedQuizzes.PageNumber - 1) * Model.PagedQuizzes.PageSize;
@@ -195,5 +195,33 @@
                 position: 'topRight'
             });
         }
+    </script>
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/crudHub")
+            .withAutomaticReconnect()
+            .build();
+
+        connection.start()
+            .then(() => console.log("Connected to SignalR Hub"))
+            .catch(err => console.error(err.toString()));
+
+        connection.on("loadQuizzes", function () {
+            // Lấy URL hiện tại kèm query string (pageNumber, pageSize, searchTerm, filterType, moduleId)
+            const url = window.location.pathname + window.location.search;
+
+            fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+                .then(response => response.text())
+                .then(html => {
+                    // Parse partial table từ HTML server trả về
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const table = doc.querySelector('#quizTable');
+                    if (table) {
+                        document.querySelector('#quizTable').innerHTML = table.innerHTML;
+                    }
+                })
+                .catch(err => console.error(err));
+        });
     </script>
 }

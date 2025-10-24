@@ -1,4 +1,5 @@
 using MailKit.Search;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow.ValueContentAnalysis;
@@ -10,6 +11,7 @@ using X.PagedList.Extensions;
 
 namespace OnlineLearningPlatform.Areas.Mentor.Pages.Questions
 {
+    [Authorize(Roles = "Mentor")]
     public class IndexModel : PageModel
     {
         private readonly IQuestionService _questionService;
