@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
+using OnlineLearningPlatform.Hubs;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Services.Interfaces;
@@ -12,11 +14,13 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Questions
     {
         private readonly IQuestionService _questionService;
         private readonly IQuizService _quizService;
+        private readonly IHubContext<CRUDHub> _hub;
 
-        public UpdateModel(IQuestionService questionService, IQuizService quizService)
+        public UpdateModel(IQuestionService questionService, IQuizService quizService, IHubContext<CRUDHub> hub)
         {
             _questionService = questionService;
             _quizService = quizService;
+            _hub = hub;
         }
 
         [BindProperty]
@@ -64,7 +68,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Questions
                 },
                 Question.Options
             );
-
+            await _hub.Clients.All.SendAsync("loadQuestions");
             TempData["SuccessMessage"] = "Question updated successfully!";
             return RedirectToPage("Index", new { quizId = Question.QuizId });
         }

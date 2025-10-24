@@ -61,7 +61,7 @@
 
             @if (Model.PagedQuestions != null && Model.PagedQuestions.Any())
             {
-                <ul class="list-group">
+                <ul id="questionList" class="list-group">
                     @foreach (var q in Model.PagedQuestions)
                     {
                         <li class="list-group-item d-flex justify-content-between align-items-start flex-column flex-md-row">
@@ -153,5 +153,33 @@
                 position: 'topRight'
             });
         }
+    </script>
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/crudHub")
+            .withAutomaticReconnect()
+            .build();
+
+        connection.start()
+            .then(() => console.log("Connected to SignalR Hub"))
+            .catch(err => console.error(err.toString()));
+
+        connection.on("loadQuestions", function () {
+            // Lấy URL hiện tại kèm query string (pageNumber, pageSize, searchTerm, filterType, moduleId)
+            const url = window.location.pathname + window.location.search;
+
+            fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+                .then(response => response.text())
+                .then(html => {
+                    // Parse partial table từ HTML server trả về
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const table = doc.querySelector('#questionList');
+                    if (table) {
+                        document.querySelector('#questionList').innerHTML = table.innerHTML;
+                    }
+                })
+                .catch(err => console.error(err));
+        });
     </script>
 }
