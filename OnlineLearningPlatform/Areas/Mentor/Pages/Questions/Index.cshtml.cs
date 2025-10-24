@@ -2,8 +2,10 @@ using MailKit.Search;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow.ValueContentAnalysis;
 using Microsoft.EntityFrameworkCore;
+using OnlineLearningPlatform.Hubs;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Services.Interfaces;
 using X.PagedList;
@@ -16,11 +18,13 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Questions
     {
         private readonly IQuestionService _questionService;
         private readonly IQuizService _quizService;
+        private readonly IHubContext<CRUDHub> _hub;
 
-        public IndexModel(IQuestionService questionService, IQuizService quizService)
+        public IndexModel(IQuestionService questionService, IQuizService quizService, IHubContext<CRUDHub> hub)
         {
             _questionService = questionService;
             _quizService = quizService;
+            _hub = hub;
         }
         public long QuizId { get; set; }
         public string QuizName { get; set; } = "";
@@ -62,6 +66,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Questions
             else
             {
                 await _questionService.DeleteQuestionAsync(questionId);
+                await _hub.Clients.All.SendAsync("loadQuestions");
                 TempData["SuccessMessage"] = "Question deleted successfully.";
             }
 
