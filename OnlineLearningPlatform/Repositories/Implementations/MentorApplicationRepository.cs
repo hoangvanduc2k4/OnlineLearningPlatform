@@ -11,6 +11,13 @@ namespace OnlineLearningPlatform.Repositories.Implementations
         {
         }
 
+        public new async Task<IEnumerable<MentorApplication>> GetAllAsync()
+        {
+            return await _context.MentorApplications
+                .Include(ma => ma.User)
+                .Include(ma => ma.AdminReviewer)
+                .ToListAsync();
+        }
         public async Task<IEnumerable<MentorApplication>> FindAsync(string userId)
         {
             var query = _context.MentorApplications.AsQueryable();

@@ -22,6 +22,8 @@ namespace OnlineLearningPlatform.Models.Entities.Others
 
         [StringLength(4000)]
         public string? Note { get; set; }
+        [StringLength(4000)]
+        public string? Feedback { get; set; }
 
         public ApplicationStatus Status { get; set; } = ApplicationStatus.Pending;
 

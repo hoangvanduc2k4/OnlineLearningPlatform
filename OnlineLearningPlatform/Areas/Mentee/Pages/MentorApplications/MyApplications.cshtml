@@ -22,6 +22,7 @@ else
                 <th>Status</th>
                 <th>Submitted At</th>
                 <th>Reviewed At</th>
+                <th>Feedback</th>
             </tr>
         </thead>
         <tbody>
@@ -50,6 +51,7 @@ else
                 </td>
                 <td>@app.SubmittedAt.ToString("dd/MM/yyyy HH:mm")</td>
                 <td>@(app.ReviewedAt.HasValue ? app.ReviewedAt.Value.ToString("dd/MM/yyyy HH:mm") : "-")</td>
+                    <td>@(string.IsNullOrEmpty(app.Feedback) ? "-" : app.Feedback)</td>
             </tr>
         }
         </tbody>

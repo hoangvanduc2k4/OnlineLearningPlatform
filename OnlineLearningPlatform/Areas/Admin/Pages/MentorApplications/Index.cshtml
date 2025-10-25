@@ -1,0 +1,203 @@
+﻿@page
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model OnlineLearningPlatform.Areas.Admin.Pages.MentorApplications.IndexModel
+@{
+    ViewData["Title"] = "Mentor Applications Management";
+    Layout = "~/Areas/Admin/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="mb-4">Mentor Applications</h2>
+
+@if (!string.IsNullOrEmpty(Model.SuccessMessage))
+{
+    <div class="alert alert-success">@Model.SuccessMessage</div>
+}
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger">@Model.ErrorMessage</div>
+}
+
+<form method="get" class="row g-2 mb-3 align-items-center">
+    <div class="col-auto">
+        <input type="text" name="SearchTerm" value="@Model.SearchTerm" class="form-control" placeholder="Search by name or email..." />
+    </div>
+    <div class="col-auto">
+        <select name="Status" class="form-select">
+            <option value="">All Status</option>
+            <option value="Pending" selected="@(Model.Status == OnlineLearningPlatform.Enums.ApplicationStatus.Pending)">Pending</option>
+            <option value="Approved" selected="@(Model.Status == OnlineLearningPlatform.Enums.ApplicationStatus.Approved)">Approved</option>
+            <option value="Rejected" selected="@(Model.Status == OnlineLearningPlatform.Enums.ApplicationStatus.Rejected)">Rejected</option>
+        </select>
+    </div>
+    <div class="col-auto">
+        <select name="pageSizeParam" class="form-select">
+            <option value="10" selected="@(Model.PageSize == 10)">10</option>
+            <option value="20" selected="@(Model.PageSize == 20)">20</option>
+            <option value="30" selected="@(Model.PageSize == 30)">30</option>
+            <option value="50" selected="@(Model.PageSize == 50)">50</option>
+        </select>
+    </div>
+    <div class="col-auto">
+        <input type="hidden" name="pageNumber" value="@Model.PagedApplications?.PageNumber ?? 1" />
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </div>
+</form>
+
+@if (Model.PagedApplications == null || !Model.PagedApplications.Any())
+{
+    <div class="alert alert-info">No mentor applications found.</div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>#</th>
+                    <th>Applicant</th>
+                    <th>Email</th>
+                    <th>CV</th>
+                    <th>Note</th>
+                    <th>Status</th>
+                    <th>Submitted At</th>
+                    <th>Reviewed At</th>
+                    <th>Feedback</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (Model.PagedApplications != null)
+            {
+                int seq = (Model.PagedApplications.PageNumber - 1) * Model.PagedApplications.PageSize;
+                foreach (var app in Model.PagedApplications)
+                {
+                    seq++;
+                    <tr>
+                        <td>@seq</td>
+                        <td>@app.User?.FullName</td>
+                        <td>@app.User?.Email</td>
+                        <td><a href="@app.CvUrl" target="_blank">View CV</a></td>
+                        <td>@app.Note</td>
+                        <td>
+                            @switch (app.Status)
+                            {
+                                case OnlineLearningPlatform.Enums.ApplicationStatus.Pending:
+                                    <span class="badge bg-warning text-dark">Pending</span>
+                                    break;
+                                case OnlineLearningPlatform.Enums.ApplicationStatus.Approved:
+                                    <span class="badge bg-success">Approved</span>
+                                    break;
+                                case OnlineLearningPlatform.Enums.ApplicationStatus.Rejected:
+                                    <span class="badge bg-danger">Rejected</span>
+                                    break;
+                            }
+                        </td>
+                        <td>@app.SubmittedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@(app.ReviewedAt.HasValue ? app.ReviewedAt.Value.ToString("dd/MM/yyyy HH:mm") : "-")</td>
+                        <td>@app.Feedback</td>
+                        <td>
+                            @if (app.Status == OnlineLearningPlatform.Enums.ApplicationStatus.Pending)
+                            {
+                                <button type="button" class="btn btn-sm btn-success mb-1" data-bs-toggle="modal" data-bs-target="#approveModal" data-id="@app.Id">Approve</button>
+                                <button type="button" class="btn btn-sm btn-danger mb-1" data-bs-toggle="modal" data-bs-target="#rejectModal" data-id="@app.Id">Reject</button>
+                            }
+                            else
+                            {
+                                <span class="text-muted">-</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer bg-white">
+        <nav aria-label="Page navigation" class="d-flex justify-content-center">
+            @Html.PagedListPager(
+                Model.PagedApplications,
+                page => Url.Page("./Index", new { pageNumber = page, pageSize = Model.PageSize, SearchTerm = Model.SearchTerm, Status = Model.Status }),
+                new PagedListRenderOptions
+                {
+                    UlElementClasses = new[] { "pagination pagination-sm mb-0" },
+                    LiElementClasses = new[] { "page-item" },
+                    PageClasses = new[] { "page-link text-primary" }
+                })
+        </nav>
+    </div>
+}
+
+<!-- Approve Modal -->
+<div class="modal fade" id="approveModal" tabindex="-1" aria-labelledby="approveModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="approveModalLabel">Approve Application</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="selectedId" id="approveSelectedId" />
+                    <input type="hidden" name="pageNumber" value="@Model.PagedApplications?.PageNumber ?? 1" />
+                    <input type="hidden" name="pageSize" value="@Model.PageSize" />
+                    <input type="hidden" name="SearchTerm" value="@Model.SearchTerm" />
+                    <input type="hidden" name="Status" value="@Model.Status" />
+                    <div class="mb-3">
+                        <label for="approveFeedback" class="form-label">Feedback (optional)</label>
+                        <textarea name="feedback" id="approveFeedback" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-success" formaction="?handler=Approve">Approve</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Reject Modal -->
+<div class="modal fade" id="rejectModal" tabindex="-1" aria-labelledby="rejectModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rejectModalLabel">Reject Application</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="selectedId" id="rejectSelectedId" />
+                    <input type="hidden" name="pageNumber" value="@Model.PagedApplications?.PageNumber ?? 1" />
+                    <input type="hidden" name="pageSize" value="@Model.PageSize" />
+                    <input type="hidden" name="SearchTerm" value="@Model.SearchTerm" />
+                    <input type="hidden" name="Status" value="@Model.Status" />
+                    <div class="mb-3">
+                        <label for="rejectFeedback" class="form-label">Feedback (optional)</label>
+                        <textarea name="feedback" id="rejectFeedback" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger" formaction="?handler=Reject">Reject</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        var approveModal = document.getElementById('approveModal');
+        approveModal && approveModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var id = button.getAttribute('data-id');
+            document.getElementById('approveSelectedId').value = id;
+        });
+        var rejectModal = document.getElementById('rejectModal');
+        rejectModal && rejectModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var id = button.getAttribute('data-id');
+            document.getElementById('rejectSelectedId').value = id;
+        });
+    </script>
+}
