@@ -50,7 +50,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="dropdown-item" asp-controller="ApplyCV" asp-action="Index">
+                    <a class="dropdown-item" asp-area="Mentee" asp-page="/MentorApplications/Apply">
                         <i class="bi bi-file-earmark-person me-2"></i>Apply CV
                     </a>
                 </li>
@@ -69,12 +69,6 @@
                 </li>
                 <li><a class="dropdown-item" asp-controller="Messages" asp-action="Index"><i class="bi bi-envelope me-2"></i>Message</a></li>
                 <li><a class="dropdown-item" asp-controller="MyCourses" asp-action="Index"><i class="bi bi-journal-bookmark me-2"></i>My Learning</a></li>
-                <li><a class="dropdown-item" asp-controller="ApplyCV" asp-action="Index"><i class="bi bi-file-earmark-person me-2"></i>Apply CV</a></li>
-            }
-            @if (User.IsInRole("Mentor"))
-            {
-                <li><a class="dropdown-item" asp-controller="Messages" asp-action="Index"><i class="bi bi-envelope me-2"></i>Message</a></li>
-                <li><a class="dropdown-item" asp-area="Mentor" asp-controller="Course" asp-action="Index"><i class="bi bi-gear me-2"></i>Course Management</a></li>
             }
             @if (User.IsInRole("Admin"))
             {

@@ -1,0 +1,35 @@
+﻿@page
+@model OnlineLearningPlatform.Areas.Mentee.Pages.MentorApplications.ApplyModel
+@{
+    ViewData["Title"] = "Apply to be a Mentor";
+    Layout = "~/Areas/Mentee/Shared/_MenteeLayout.cshtml";
+}
+
+<h2>Apply to be a Mentor</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+@if (Model.ErrorMessage != null)
+{
+    <div class="alert alert-danger">@Model.ErrorMessage</div>
+}
+
+<form method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label class="form-label">Upload CV (PDF, DOCX...)</label>
+        <input asp-for="Input.CvFile" class="form-control" type="file" accept=".pdf,.doc,.docx" required />
+        <span asp-validation-for="Input.CvFile" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Note (optional)</label>
+        <textarea asp-for="Input.Note" class="form-control"></textarea>
+        <span asp-validation-for="Input.Note" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Application</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

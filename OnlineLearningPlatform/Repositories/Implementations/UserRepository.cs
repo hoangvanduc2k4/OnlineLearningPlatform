@@ -113,5 +113,11 @@ namespace OnlineLearningPlatform.Repositories.Implementations
 
             return await topMentorsQuery.ToListAsync();
         }
+
+        public Task<User?> GetByUserNameAsync(string userName)
+        {
+            var query = _dbSet.AsNoTracking().Where(u => u.UserName == userName);
+            return query.FirstOrDefaultAsync();
+        }
     }
 }

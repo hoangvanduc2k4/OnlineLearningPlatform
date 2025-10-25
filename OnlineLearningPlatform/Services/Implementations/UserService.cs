@@ -176,6 +176,9 @@ namespace OnlineLearningPlatform.Services.Implementations
             return viewModels;
         }
 
-
+        public async Task<User?> GetUserByNameAsync(string userName)
+        {
+            return await _userRepository.GetByUserNameAsync(userName);
+        }
     }
 }
