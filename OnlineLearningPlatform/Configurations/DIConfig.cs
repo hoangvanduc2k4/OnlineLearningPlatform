@@ -63,6 +63,9 @@ namespace OnlineLearningPlatform.Configurations
             //mentorApllication
             services.AddScoped<IMentorApplicationRepository, MentorApplicationRepository>();
             services.AddScoped<IMentorApplicationService, MentorApplicationService>();
+            // question
+            services.AddScoped<IQuestionRepository, QuestionRepository>();
+            services.AddScoped<IQuestionService, QuestionService>();
 
             return services;
         }

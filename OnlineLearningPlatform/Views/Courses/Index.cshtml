@@ -6,7 +6,6 @@
     ViewData["Title"] = "Courses";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    // Read ViewBag values safely
     var selCats = ViewBag.SelectedCategories as List<string> ?? new List<string>();
     var selLevels = ViewBag.SelectedLevels as List<long> ?? new List<long>();
     var allCats = ViewBag.AllCategories as IEnumerable<dynamic> ?? Enumerable.Empty<dynamic>();
@@ -31,6 +30,7 @@
         </div>
     </div><!-- End Page Title -->
 
+
     <section id="courses-2" class="courses-2 section">
         <div class="container py-5" data-aos="fade-up" data-aos-delay="100">
 
@@ -40,11 +40,15 @@
                         <h4 class="filter-title">Filter Courses</h4>
 
                         <form method="get" asp-controller="Courses" asp-action="Index" id="filtersForm">
+
                             <div class="filter-group">
                                 <h5>Category</h5>
                                 <div class="filter-options">
                                     <label class="filter-checkbox d-block">
-                                        <input type="checkbox" name="categories" value="All" @(selCats.Contains("All") ? "checked" : "") />
+                                        @{
+                                            var isAllChecked = !selCats.Any() || selCats.Contains("All");
+                                        }
+                                        <input type="checkbox" name="categories" value="All" @(isAllChecked ? "checked" : "") />
                                         <span class="checkmark"></span>
                                         All Categories
                                     </label>
@@ -53,7 +57,7 @@
                                     {
                                         foreach (var cat in allCats)
                                         {
-                                            var catName = cat.Name ?? cat.CategoryName ?? cat.Title ?? cat.ToString();
+                                            var catName = cat.CategoryName;
                                             <label class="filter-checkbox d-block">
                                                 <input type="checkbox" name="categories" value="@catName" @(selCats.Contains(catName.ToString()) ? "checked" : "") />
                                                 <span class="checkmark"></span>
@@ -61,76 +65,57 @@
                                             </label>
                                         }
                                     }
-                                    else
-                                    {
-                                        // fallback static options (kept from original)
-                                        <label class="filter-checkbox d-block">
-                                            <input type="checkbox" name="categories" value="Programming" @(selCats.Contains("Programming") ? "checked" : "") />
-                                            <span class="checkmark"></span>
-                                            Programming
-                                        </label>
-                                        <label class="filter-checkbox d-block">
-                                            <input type="checkbox" name="categories" value="Design" @(selCats.Contains("Design") ? "checked" : "") />
-                                            <span class="checkmark"></span>
-                                            Design
-                                        </label>
-                                        <label class="filter-checkbox d-block">
-                                            <input type="checkbox" name="categories" value="Business" @(selCats.Contains("Business") ? "checked" : "") />
-                                            <span class="checkmark"></span>
-                                            Business
-                                        </label>
-                                        <label class="filter-checkbox d-block">
-                                            <input type="checkbox" name="categories" value="Marketing" @(selCats.Contains("Marketing") ? "checked" : "") />
-                                            <span class="checkmark"></span>
-                                            Marketing
-                                        </label>
-                                    }
                                 </div>
                             </div>
 
+
                             <div class="filter-group mt-3">
+
                                 <h5>Level</h5>
+
                                 <div class="filter-options">
+
                                     <label class="filter-checkbox d-block">
+
                                         <input type="checkbox" name="levels" value="All" @(selLevels.Count == 0 || selLevels.Contains(0) ? "checked" : "") />
+
                                         <span class="checkmark"></span>
+
                                         All Levels
+
                                     </label>
 
                                     @if (allLevels.Any())
+
                                     {
+
                                         foreach (var lvl in allLevels)
+
                                         {
+
                                             var lvlId = lvl.LevelId ?? lvl.Id ?? 0;
-                                            var lvlName = lvl.LevelName ?? lvl.Name ?? lvl.Title ?? lvl.ToString();
+
+                                            var lvlName = lvl.LevelName;
+
                                             <label class="filter-checkbox d-block">
+
                                                 <input type="checkbox" name="levels" value="@lvlId" @(selLevels.Contains((long)lvlId) ? "checked" : "") />
+
                                                 <span class="checkmark"></span>
+
                                                 @lvlName
+
                                             </label>
+
                                         }
+
                                     }
-                                    else
-                                    {
-                                        // fallback static options (kept from original)
-                                        <label class="filter-checkbox d-block">
-                                            <input type="checkbox" name="levels" value="Beginner" @(selLevels.Contains(-1) ? "checked" : "") />
-                                            <span class="checkmark"></span>
-                                            Beginner
-                                        </label>
-                                        <label class="filter-checkbox d-block">
-                                            <input type="checkbox" name="levels" value="Intermediate" @(selLevels.Contains(-2) ? "checked" : "") />
-                                            <span class="checkmark"></span>
-                                            Intermediate
-                                        </label>
-                                        <label class="filter-checkbox d-block">
-                                            <input type="checkbox" name="levels" value="Advanced" @(selLevels.Contains(-3) ? "checked" : "") />
-                                            <span class="checkmark"></span>
-                                            Advanced
-                                        </label>
-                                    }
+
                                 </div>
+
                             </div>
+
+
 
                             <div class="filter-group mt-3">
                                 <h5>Duration</h5>
@@ -158,10 +143,10 @@
                                 </div>
                             </div>
 
+
                             <div class="filter-group mt-3">
                                 <h5>Price</h5>
                                 <div class="filter-options">
-                                    @* Use radio inputs for single price range selection. Name priceRange *@
                                     <label class="filter-checkbox d-block">
                                         <input type="radio" name="priceRange" value="under50" @(currentPrice == "under50" ? "checked" : "") />
                                         <span class="checkmark"></span>
@@ -191,25 +176,27 @@
                             </div>
 
                             <div class="mt-3">
-                                <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+                                <button type="submit" class="btn btn-primary w-100">Filters</button>
                             </div>
 
                         </form>
                     </div><!-- End Course Filters -->
                 </div>
 
+
                 <!-- Courses (right) -->
                 <div class="col-lg-9">
+
                     <div class="courses-header d-lg-flex align-items-center justify-content-between mb-4" data-aos="fade-left" data-aos-delay="100">
 
-
-                        <form method="get" asp-controller="Courses" asp-action="Index" class="d-flex w-100 align-items-center" id="headerForm">
+                        <form method="get" asp-controller="Courses" asp-action="Index"
+                              class="d-flex w-100 align-items-center justify-content-between" id="headerForm">
                             <div class="search-box me-3 d-flex align-items-center w-100">
                                 <i class="bi bi-search me-2"></i>
                                 <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" placeholder="Input Course Name or Description..." class="form-control" onkeydown="if(event.key==='Enter'){ submitHeaderForm(); return false; }" />
                             </div>
 
-                            <div class="sort-dropdown ms-3">
+                            <div class="sort-dropdown">
                                 <select name="sortBy" class="form-select" onchange="submitHeaderForm()">
                                     <option value="">Sort by: Most Popular</option>
                                     <option value="newest" selected="@(currentSort == "newest" ? "selected" : null)">Newest First</option>
@@ -219,21 +206,18 @@
                                     <option value="durationDesc" selected="@(currentSort == "durationDesc" ? "selected" : null)">Duration: Long to Short</option>
                                 </select>
                             </div>
-
-
-
                         </form>
 
                     </div>
+
+
                     <div class="courses-grid" data-aos="fade-up" data-aos-delay="200">
 
                         <div class="row">
                             @foreach (var course in Model)
                             {
                                 // nếu dùng List<string> CategoryNames
-                                var cat = (course.CategoryNames != null && course.CategoryNames.Any())
-                                ? string.Join(", ", course.CategoryNames)
-                                : "Programming";
+                                var cat = (course.CategoryNames != null && course.CategoryNames.Any()) ? string.Join(", ", course.CategoryNames) : "Programming";
 
                                 var level = !string.IsNullOrWhiteSpace(course.LevelName) ? course.LevelName : "Intermediate";
 
@@ -245,7 +229,6 @@
                                 var instructor = !string.IsNullOrWhiteSpace(course.MentorName) ? course.MentorName
                                 : (course.GetType().GetProperty("InstructorName")?.GetValue(course)?.ToString() ?? "Instructor");
 
-                                // Mentor avatar: use MentorAvatarUrl from CourseViewModel if available, otherwise fallback
                                 var instructorImgRaw = !string.IsNullOrWhiteSpace(course.MentorAvatarUrl) ? course.MentorAvatarUrl
                                 : (course.GetType().GetProperty("InstructorImageUrl")?.GetValue(course)?.ToString() ?? "~/assets/img/person/person-m-3.webp");
                                 var instructorImg = Url.Content(instructorImgRaw);
@@ -271,6 +254,7 @@
                                     <div class="course-card">
 
                                         <div class="course-image">
+
 
                                             <img src="@imgUrl" alt="Course" class="img-fluid">
 
@@ -347,42 +331,43 @@
                     <div class="pagination-wrapper" data-aos="fade-up" data-aos-delay="300">
                         <nav aria-label="Courses pagination">
                             @Html.PagedListPager(
-                                     Model,
-                                     page => Url.Action("Index", new
-                                     {
-                                         pageNumber = page,
-                                         pageSize = Model.PageSize,
-                                         searchTerm = ViewBag.SearchTerm,
-                                         sortBy = ViewBag.SortBy,
-                                         // pass filters to pagination links so paging preserves selection
-                                         categories = ViewBag.SelectedCategories,
-                                         levels = ViewBag.SelectedLevels,
-                                         priceRange = ViewBag.PriceRange,
-                                         studyTimeRange = ViewBag.StudyTimeRange
-                                     }),
-                                     new PagedListRenderOptions
+                            Model,
+                            page => Url.Action("Index", new
                             {
-                                UlElementClasses = new[] { "pagination", "justify-content-center" },
-                                LiElementClasses = new[] { "page-item" },
-                                PageClasses = new[] { "page-link" },
-                                ActiveLiElementClass = "active",
-                                MaximumPageNumbersToDisplay = 5,
-                                DisplayLinkToFirstPage = PagedListDisplayMode.IfNeeded,
-                                DisplayLinkToLastPage = PagedListDisplayMode.IfNeeded,
-                                DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
-                                DisplayLinkToNextPage = PagedListDisplayMode.Always
-                            }
-                                     )
+                                pageNumber = page,
+                                pageSize = Model.PageSize,
+                                searchTerm = ViewBag.SearchTerm,
+                                sortBy = ViewBag.SortBy,
+                                categories = ViewBag.SelectedCategories,
+                                levels = ViewBag.SelectedLevels,
+                                priceRange = ViewBag.PriceRange,
+                                studyTimeRange = ViewBag.StudyTimeRange
+                            }),
+                                                        new PagedListRenderOptions
+                                                        {
+                                                            UlElementClasses = new[] { "pagination", "justify-content-center" },
+                                                            LiElementClasses = new[] { "page-item" },
+                                                            PageClasses = new[] { "page-link" },
+                                                            ActiveLiElementClass = "active",
+                                                            MaximumPageNumbersToDisplay = 5,
+                                                            DisplayLinkToFirstPage = PagedListDisplayMode.IfNeeded,
+                                                            DisplayLinkToLastPage = PagedListDisplayMode.IfNeeded,
+                                                            DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                                                            DisplayLinkToNextPage = PagedListDisplayMode.Always
+                                                        }
+                                                        )
                         </nav>
                     </div>
 
                 </div>
+
             </div>
 
         </div>
     </section>
 
 </main>
+
 
 @section Scripts {
     <script>

@@ -48,12 +48,10 @@
                                         }
                                         else if (i - 0.5 <= Model.AverageRating)
                                         {
-
                                             <i class="bi bi-star-half"></i>
                                         }
                                         else
                                         {
-
                                             <i class="bi bi-star"></i>
                                         }
                                     }
@@ -64,12 +62,6 @@
                     </div>
                     <div class="hero-image">
                         <img src="@Model.ImageUrl" alt="Course Preview" class="img-fluid">
-                        <div class="play-overlay">
-                            <button class="play-btn">
-                                <i class="bi bi-play-fill"></i>
-                            </button>
-                            <span>Watch Preview</span>
-                        </div>
                     </div>
                 </div><div class="course-nav-tabs" data-aos="fade-up" data-aos-delay="300">
                     <ul class="nav nav-tabs" id="course-detailsCourseTab" role="tablist">
@@ -100,19 +92,8 @@
                                 <h3>Course Description</h3>
                                 <p>@Model.Description</p>
                             </div>
-                            <div class="skills-grid">
-                                <h3>Skills You'll Gain</h3>
-                                <div class="row">
-                                    <div class="col-md-6">...</div>
-                                </div>
-                            </div>
-                            <div class="requirements-section">
-                                <h3>Requirements</h3>
-                                <ul class="requirements-list">
-                                    <li>...</li>
-                                </ul>
-                            </div>
-                        </div><div class="tab-pane fade" id="course-detailscurriculum" role="tabpanel">
+                        </div>
+                        <div class="tab-pane fade" id="course-detailscurriculum" role="tabpanel">
                             @if (Model.Modules.Any())
                             {
                                 <div class="curriculum-overview">
@@ -160,7 +141,7 @@
                                                             <div class="lesson">
                                                                 <i class="bi bi-file-earmark-text"></i>
                                                                 <span class="lesson-title">[Quiz] @quiz.QuizName</span>
-                                                                @if (quiz.QuizTime >0)
+                                                                @if (quiz.QuizTime > 0)
                                                                 {
                                                                     <span class="lesson-time">@quiz.QuizTime min</span>
                                                                 }
@@ -193,12 +174,10 @@
                                                     }
                                                     else if (i - 0.5 <= Model.AverageRating)
                                                     {
-
                                                         <i class="bi bi-star-half"></i>
                                                     }
                                                     else
                                                     {
-
                                                         <i class="bi bi-star"></i>
                                                     }
                                                 }
@@ -240,9 +219,7 @@
             </div>
 
             <div class="col-lg-4">
-
                 <div class="sticky-sidebar-wrapper">
-
                     <div class="enrollment-card mb-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="card-header">
                             <div class="price-display">
@@ -257,21 +234,33 @@
                                     <span class="current-price">@FormatPrice(Model.Price)</span>
                                 }
                             </div>
-                            <div class="enrollment-count">
-                                <i class="bi bi-0-square"></i>
-                                <span class="detail-value">@Model.StudyTime</span>
-                            </div>
                         </div>
-
                         <div class="card-body">
-                            <div class="course-highlights">
-                                <div class="highlight-item"><i class="bi bi-trophy"></i><span>@Model.LevelName</span></div>
-                                <div class="highlight-item"><i class="bi bi-clock-history"></i><span>@Model.StudyTime hours of content</span></div>
-                                <div class="highlight-item"><i class="bi bi-download"></i><span>Downloadable resources</span></div>
-                                <div class="highlight-item"><i class="bi bi-infinity"></i><span>Lifetime access</span></div>
-                                <div class="highlight-item"><i class="bi bi-phone"></i><span>Mobile access</span></div>
+                            <div class="course-details-card no-border-card" data-aos="fade-up" data-aos-delay="300">
+                                <h4>Course Details</h4>
+                                <div class="detail-grid">
+                                    <div class="detail-row">
+                                        <span class="detail-label">Duration</span>
+                                        <span class="detail-value">@Model.StudyTime hours</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">Skill Level</span>
+                                        <span class="detail-value">@Model.LevelName</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">Language</span>
+                                        <span class="detail-value">English</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">Quizzes</span>
+                                        <span class="detail-value">@Model.TotalQuizCount</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">Last Updated</span>
+                                        <span class="detail-value">@Model.UpdatedAt?.ToString("MMMM yyyy")</span>
+                                    </div>
+                                </div>
                             </div>
-
                             <div class="action-buttons">
                                 @if (TempData["Error"] != null)
                                 {
@@ -279,57 +268,179 @@
                                         @TempData["Error"]
                                     </div>
                                 }
-
                                 <form asp-controller="Courses" asp-action="Checkout" method="post" id="checkoutForm">
                                     <input type="hidden" name="courseId" value="@Model.CourseId" />
                                     <button type="submit" class="btn btn-primary" id="enrollButton">Enroll Now</button>
                                 </form>
                                 <button class="btn-secondary">Add to Wishlist</button>
                             </div>
-
                             <div class="guarantee"><i class="bi bi-shield-check"></i><span>30-day money-back guarantee</span></div>
-                        </div>
-                    </div><div class="course-details-card mb-4" data-aos="fade-up" data-aos-delay="300">
-                        <h4>Course Details</h4>
-                        <div class="detail-grid">
-                            <div class="detail-row">
-                                <span class="detail-label">Duration</span>
-                                <span class="detail-value">@Model.StudyTime hours</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="detail-label">Skill Level</span>
-                                <span class="detail-value">@Model.LevelName</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="detail-label">Language</span>
-                                <span class="detail-value">English</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="detail-label">Quizzes</span>
-                                <span class="detail-value">@Model.TotalQuizCount</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="detail-label">Last Updated</span>
-                                <span class="detail-value">@Model.UpdatedAt?.ToString("MMMM yyyy")</span>
+
+                            <div class="share-section">
+                                <hr>
+                                <h4 class="share-title">Share This Course</h4>
+                                <div class="social-links">
+                                    <a href="#" class="social-link facebook"><i class="bi bi-facebook"></i></a>
+                                    <a href="#" class="social-link twitter"><i class="bi bi-twitter"></i></a>
+                                    <a href="#" class="social-link linkedin"><i class="bi bi-linkedin"></i></a>
+                                    <a href="#" class="social-link email"><i class="bi bi-envelope"></i></a>
+                                </div>
                             </div>
                         </div>
-                    </div><div class="share-course-card" data-aos="fade-up" data-aos-delay="400">
-                        <h4>Share This Course</h4>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </section>
 
 @section Scripts {
     <style>
         .sticky-sidebar-wrapper {
-            position: -webkit-sticky; 
+            position: -webkit-sticky;
             position: sticky;
-            top: 20px; 
+            top: 20px;
         }
+
+        .course-details-card.no-border-card {
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            border: none !important;
+        }
+
+        .enrollment-card .card-body {
+            padding: 0 15px 15px 15px !important;
+        }
+
+        .course-details-card h4 {
+            padding: 15px 15px 10px 15px;
+            margin-bottom: 0;
+        }
+
+        .course-details-card {
+            width: 100%;
+            padding: 0;
+        }
+
+        .detail-grid {
+            width: 100%;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 8px;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+            .action-buttons form {
+                width: 100%;
+            }
+
+            .action-buttons .btn {
+                width: 100%;
+                padding: 12px 20px;
+                font-size: 1rem;
+                font-weight: 500;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+            }
+
+            .action-buttons .btn-primary {
+                background-color: #007bff;
+                border-color: #007bff;
+                color: white;
+            }
+
+                .action-buttons .btn-primary:hover {
+                    background-color: #0056b3;
+                    border-color: #0056b3;
+                }
+
+            .action-buttons .btn-secondary {
+                background-color: transparent;
+                border: 1px solid #007bff;
+                color: #007bff;
+            }
+
+                .action-buttons .btn-secondary:hover {
+                    background-color: #e0e0e0;
+                    border-color: #007bff;
+                }
+
+        .guarantee {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+            .guarantee i {
+                margin-right: 5px;
+                color: #28a745;
+            }
+
+        .share-section {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+            .share-section hr {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            .share-section .share-title {
+                margin-bottom: 15px;
+                font-size: 1rem;
+                font-weight: 600;
+            }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 18px;
+            transition: opacity 0.3s ease;
+        }
+
+            .social-link:hover {
+                opacity: 0.8;
+            }
+
+            .social-link.facebook {
+                background-color: #3b5998;
+            }
+
+            .social-link.twitter {
+                background-color: #1da1f2;
+            }
+
+            .social-link.linkedin {
+                background-color: #0077b5;
+            }
+
+            .social-link.email {
+                background-color: #7f8c8d;
+            }
     </style>
     <script>
         document.getElementById('checkoutForm').addEventListener('submit', function() {

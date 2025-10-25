@@ -73,7 +73,7 @@
                             <th style="width: 11%;">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="quizTable">
                         @if (Model.PagedQuizzes != null && Model.PagedQuizzes.Any())
                         {
                             int seq = (Model.PagedQuizzes.PageNumber - 1) * Model.PagedQuizzes.PageSize;
@@ -90,7 +90,13 @@
                                         <a asp-page="./Update" asp-route-id="@quiz.QuizId" class="btn btn-sm btn-warning me-1" title="Edit">
                                             <i class="bi bi-pencil-fill"></i>
                                         </a>
-
+                                        <a asp-area="Mentor"
+                                           asp-page="/Questions/Index"
+                                           asp-route-quizId="@quiz.QuizId"
+                                           class="btn btn-sm btn-info me-1"
+                                           title="Manage Questions">
+                                            <i class="bi bi-journal-text"></i>
+                                        </a>
                                         @if (Model.FilterType == "inactive")
                                         {
                                             <form method="post" asp-page-handler="Activate" class="d-inline">
@@ -115,6 +121,8 @@
                                                     <i class="bi bi-trash-fill"></i>
                                                 </button>
                                             </form>
+                             
+
                                         }
                                         else
                                         {
@@ -128,7 +136,10 @@
                                                 <button type="submit" class="btn btn-sm btn-secondary" onclick="return confirm('Are you sure you want to deactivate this quiz?')" title="Deactivate">
                                                     <i class="bi bi-slash-circle"></i>
                                                 </button>
+                                              
                                             </form>
+                                            
+
                                         }
                                     </td>
                                 </tr>
@@ -184,5 +195,33 @@
                 position: 'topRight'
             });
         }
+    </script>
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/crudHub")
+            .withAutomaticReconnect()
+            .build();
+
+        connection.start()
+            .then(() => console.log("Connected to SignalR Hub"))
+            .catch(err => console.error(err.toString()));
+
+        connection.on("loadQuizzes", function () {
+            // Lấy URL hiện tại kèm query string (pageNumber, pageSize, searchTerm, filterType, moduleId)
+            const url = window.location.pathname + window.location.search;
+
+            fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+                .then(response => response.text())
+                .then(html => {
+                    // Parse partial table từ HTML server trả về
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const table = doc.querySelector('#quizTable');
+                    if (table) {
+                        document.querySelector('#quizTable').innerHTML = table.innerHTML;
+                    }
+                })
+                .catch(err => console.error(err));
+        });
     </script>
 }
