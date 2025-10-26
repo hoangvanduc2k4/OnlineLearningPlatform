@@ -8,20 +8,22 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 	<script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
 	<script src="https://unpkg.com/feather-icons"></script>
-	<!-- Favicons -->
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/9.0.6/signalr.min.js" integrity="sha512-kkMt8UThSmWcdXLYFaGZ/U6vyWSNLZMUWQ5SMeF80pGqrEkH5ei9D/3MbVQpB8p7D5C3A4vlX7BpsWTT2BfB6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 	<link href="~/img/favicon.png" rel="icon">
 	<link href="~/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com" rel="preconnect">
 	<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
-	<!-- Vendor CSS Files -->
 	<link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Main CSS File -->
 	<link href="~/css/main.css" rel="stylesheet" asp-append-version="true">
+
+	<link href="~/css/chatbot.css" rel="stylesheet" asp-append-version="true">
+
 	<style>
 		/* Root variables for theming */
 		:root {
@@ -278,7 +280,6 @@
 	<form method="post" id="antiForgeryForm" hidden>
 		<input type="hidden" name="__RequestVerificationToken" value="@Html.AntiForgeryToken()" />
 	</form>
-	<!-- [ Sidebar Menu ] start -->
 	<nav class="pc-sidebar">
 		<div class="navbar-wrapper">
 			<div class="m-header">
@@ -307,8 +308,6 @@
 			</div>
 		</div>
 	</nav>
-	<!-- [ Sidebar Menu ] end -->
-	<!-- [ Header Topbar ] start -->
 	<header class="pc-header">
 		<div class="header-wrapper">
 			<div class="me-auto pc-mob-drp">
@@ -320,12 +319,9 @@
 			<partial name="_LoginPartial" />
 		</div>
 	</header>
-	<!-- [ Header ] end -->
-	<!-- [ Main Content ] start -->
 	<div class="pc-container">
 		@RenderBody()
 	</div>
-	<!-- [ Main Content ] end -->
 	<footer class="pc-footer">
 		<div class="footer-wrapper container-fluid">
 			<div class="row">
@@ -341,8 +337,15 @@
 		</div>
 	</footer>
 
-	@await RenderSectionAsync("Scripts", required: false)
+	<partial name="_ChatbotPartial" />
+
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
 	<script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<script src="~/js/chatbot.js" asp-append-version="true"></script>
+
 	<script>
 		feather.replace();
 
@@ -357,6 +360,8 @@
 			container.classList.toggle('collapsed');
 		});
 	</script>
+
+	@await RenderSectionAsync("Scripts", required: false)
 
 </body>
 </html>
