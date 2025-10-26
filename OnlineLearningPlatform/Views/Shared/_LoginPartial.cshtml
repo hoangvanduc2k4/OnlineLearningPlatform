@@ -37,13 +37,16 @@
                     <i class="bi bi-person me-2"></i>Account
                 </a>
             </li>
-            @if (User.IsInRole("Mentee"))
+            @if (User.IsInRole("Mentee") || User.IsInRole("Mentor"))
             {
                 <li>
-                    <a class="dropdown-item" asp-controller="/chat" asp-action="Index">
+                    <a class="dropdown-item" asp-area="" asp-controller="Chat" asp-action="Index">
                         <i class="bi bi-envelope me-2"></i>Message
                     </a>
                 </li>
+            }
+            @if (User.IsInRole("Mentee"))
+            {
                 <li>
                     <a class="dropdown-item" asp-controller="MyCourses" asp-action="Index">
                         <i class="bi bi-journal-bookmark me-2"></i>My Learning
@@ -58,16 +61,10 @@
             @if (User.IsInRole("Mentor"))
             {
                 <li>
-                    <a class="dropdown-item" asp-controller="/chat" asp-action="Index">
-                        <i class="bi bi-envelope me-2"></i>Message
-                    </a>
-                </li>
-                <li>
                     <a class="dropdown-item" asp-area="Mentor" asp-controller="Course" asp-action="Index">
                         <i class="bi bi-gear me-2"></i>Course Management
                     </a>
                 </li>
-                <li><a class="dropdown-item" asp-controller="Messages" asp-action="Index"><i class="bi bi-envelope me-2"></i>Message</a></li>
                 <li><a class="dropdown-item" asp-controller="MyCourses" asp-action="Index"><i class="bi bi-journal-bookmark me-2"></i>My Learning</a></li>
             }
             @if (User.IsInRole("Admin"))
