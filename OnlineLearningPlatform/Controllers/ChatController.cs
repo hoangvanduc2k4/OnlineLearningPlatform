@@ -10,11 +10,10 @@ using OnlineLearningPlatform.Services.Interfaces;
 
 namespace OnlineLearningPlatform.Controllers
 {
-    //[Authorize(Roles = $"{nameof(RoleType.MENTOR)},{nameof(RoleType.MENTEE)}")]
+    [Authorize(Roles = "Mentor,Mentee")]
     public class ChatController : Controller
     {
         private readonly IMessageService _messageService;
-        //private readonly IUserService _userService;
         private readonly IHubContext<UserChatHub> _userChatHubContext;
         UserManager<User> _userManager;
 
@@ -25,8 +24,6 @@ namespace OnlineLearningPlatform.Controllers
             _userChatHubContext = userChatHubContext;
         }
 
-        //private readonly IUserRoleService _userRoleService;
-        //private readonly IHubContext<UserChatHub> _userChatHubContext;
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(User);

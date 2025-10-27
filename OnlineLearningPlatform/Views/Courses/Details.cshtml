@@ -273,6 +273,13 @@
                                     <button type="submit" class="btn btn-primary" id="enrollButton">Enroll Now</button>
                                 </form>
                                 <button class="btn-secondary">Add to Wishlist</button>
+                                    <a class="btn btn-tertiary"
+                                       asp-controller="Chat"
+                                       asp-action="ChatWithMentor"
+                                       asp-route-mentorId="@Model.MentorId"
+                                       id="chatButton">
+                                        <i class="bi bi-chat-dots-fill"></i> Chat with Mentor
+                                    </a>
                             </div>
                             <div class="guarantee"><i class="bi bi-shield-check"></i><span>30-day money-back guarantee</span></div>
 
