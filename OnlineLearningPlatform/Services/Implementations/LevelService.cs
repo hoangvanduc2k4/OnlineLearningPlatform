@@ -13,10 +13,16 @@ namespace OnlineLearningPlatform.Services
             _levelRepository = levelRepository;
         }
 
+        public async Task<IEnumerable<Level>> GetAllActiveLevelAysnc()
+        {
+            return await _levelRepository.GetAllActiveAsync();
+        }
+
         public async Task<IEnumerable<Level>> GetAllLevelAysnc()
         {
             return await _levelRepository.GetAllAsync();
         }
+
         public async Task<Level> GetLevelByIdAsync(long id)
         {
             return await _levelRepository.GetByIdAsync(id);

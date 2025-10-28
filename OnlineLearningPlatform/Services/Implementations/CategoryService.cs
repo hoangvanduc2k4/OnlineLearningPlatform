@@ -21,6 +21,11 @@ namespace OnlineLearningPlatform.Services
             return await _categoryRepository.GetAllAsync();
         }
 
+        public async Task<IEnumerable<Category>> GetAllActiveCategoryAysnc()
+        {
+            return await _categoryRepository.GetAllActiveAsync();
+        }
+
         public async Task<Category> GetCategoryByIdAsync(long id)
         {
             return await _categoryRepository.GetByIdAsync(id);

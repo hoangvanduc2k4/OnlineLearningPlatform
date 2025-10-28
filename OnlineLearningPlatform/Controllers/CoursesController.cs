@@ -54,10 +54,8 @@ namespace OnlineLearningPlatform.Controllers
             ViewBag.SelectedLevels = levelList ?? new List<long>();
             ViewBag.PriceRange = priceRange;
             ViewBag.StudyTimeRange = studyTimeRange;
-
-            ViewBag.AllCategories = await _categoryService.GetAllCategoryAysnc();
-
-            ViewBag.AllLevels = await _levelService.GetAllLevelAysnc();
+            ViewBag.AllCategories = await _categoryService.GetAllActiveCategoryAysnc();
+            ViewBag.AllLevels = await _levelService.GetAllActiveLevelAysnc();
             return View(paged);
         }
 

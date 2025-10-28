@@ -6,6 +6,8 @@ namespace OnlineLearningPlatform.Services.Interfaces
     public interface ICategoryService
     {
         Task<IEnumerable<Category>> GetAllCategoryAysnc();
+
+        Task<IEnumerable<Category>> GetAllActiveCategoryAysnc();
         Task<Category> GetCategoryByIdAsync(long id);
         Task AddCategoryAsync(Category category);
         Task UpdateCategoryAsync(Category category);

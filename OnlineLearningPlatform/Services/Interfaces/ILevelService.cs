@@ -5,6 +5,7 @@ namespace OnlineLearningPlatform.Services.Interfaces
     public interface ILevelService
     {
         Task<IEnumerable<Level>> GetAllLevelAysnc();
+        Task<IEnumerable<Level>> GetAllActiveLevelAysnc();
         Task<Level> GetLevelByIdAsync(long id);
         Task AddLevelAsync(Level level);
         Task UpdateLevelAsync(Level level);
