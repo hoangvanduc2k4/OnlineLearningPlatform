@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
 using OnlineLearningPlatform.Data;
 using OnlineLearningPlatform.Enums;
 using OnlineLearningPlatform.Hubs;
@@ -20,13 +22,15 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
     [Authorize(Roles = "Mentor")]
     public class IndexModel : PageModel
     {
+        UserManager<User> _userManager;
         private readonly IQuizService _quizService;
         private readonly IHubContext<CRUDHub> _hub;
-        public IndexModel(IQuizService quizService, OnlineLearningDBContext context, IHubContext<CRUDHub> hub)
+        public IndexModel(UserManager<User> userManager, IQuizService quizService, OnlineLearningDBContext context, IHubContext<CRUDHub> hub)
         {
             _quizService = quizService;
             _context = context;
             _hub = hub;
+            _userManager = userManager;
         }
 
         public IPagedList<QuizViewModel> PagedQuizzes { get; set; }
@@ -41,6 +45,10 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
 
         public async Task OnGetAsync(int? pageNumber, int? pageSize, string searchTerm, string filterType, int moduleId)
         {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = await _userManager.GetUserIdAsync(user);
+            var role = (await _userManager.GetRolesAsync(user)).FirstOrDefault() ?? "Mentor";
+
             PageSize = pageSize ?? 10;
             SearchTerm = searchTerm;
             FilterType = string.IsNullOrWhiteSpace(filterType) ? "active" : filterType;
@@ -48,15 +56,20 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
             // Lấy danh sách module (để hiển thị trong dropdown filter) -- giả sử service có method này
             // dung dbcontext tạm, sau này bảo long làm xong repository rồi sửa lại
             //var modules = await _quizService.GetAllModulesAsync();
-             AvailableModules = _context.Modules.ToList();
-            SelectedModule = moduleId > 0 ? _context.Modules.FirstOrDefault(m => m.ModuleId == moduleId) : null;
+            AvailableModules = await _context.Modules
+    .Include(m => m.Course)
+    .Where(m => m.Course.Creator == userId)
+    .ToListAsync();
+            SelectedModule = moduleId > 0
+    ? AvailableModules.FirstOrDefault(m => m.ModuleId == moduleId)
+    : null;
 
 
             // Lấy quiz theo filter type
             IEnumerable<QuizViewModel> quizzes = FilterType switch
             {
-                "inactive" => await _quizService.GetInactiveQuizzesAsync(SearchTerm),
-                _ => await _quizService.GetActiveQuizzesAsync(SearchTerm),
+                "inactive" => await _quizService.GetInactiveQuizzesAsync(searchTerm, userId, role),
+                _ => await _quizService.GetActiveQuizzesAsync(searchTerm, userId, role),
             };
 
             if (SelectedModule != null)
@@ -66,61 +79,106 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
 
             int page = pageNumber ?? 1;
             PagedQuizzes = quizzes
-                .OrderByDescending(q => q.QuizId) 
+                .OrderByDescending(q => q.QuizId)
                 .ToPagedList(page, PageSize);
         }
         public async Task OnPostDeleteAsync(long id, int? pageNumber, int? pageSize, string searchTerm, string filterType, int moduleId)
         {
-            var quiz = await _quizService.GetQuizByIdAsync(id);
-            if (quiz != null)
+            var mentor = await _userManager.GetUserAsync(User);
+            var mentorId = await _userManager.GetUserIdAsync(mentor);
+
+            try
             {
-                await _quizService.DeleteQuizByIdAsync(quiz.QuizId);
-                await _hub.Clients.All.SendAsync("loadQuizzes");
-                TempData["SuccessMessage"] = "Quiz deleted successfully.";
+                var quiz = await _quizService.GetQuizByIdAsync(id, mentorId);
+                if (quiz != null)
+                {
+                    await _quizService.DeleteQuizByIdAsync(quiz.QuizId);
+                    await _hub.Clients.All.SendAsync("loadQuizzes");
+                    TempData["SuccessMessage"] = "Quiz deleted successfully.";
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "Quiz not found.";
+                }
             }
-            else
+            catch (UnauthorizedAccessException ex)
             {
-                TempData["ErrorMessage"] = "Quiz not found.";
+                TempData["ErrorMessage"] = ex.Message;
+            }
+            catch (Exception)
+            {
+                TempData["ErrorMessage"] = "Đã xảy ra lỗi khi xóa quiz.";
             }
 
             await OnGetAsync(pageNumber, pageSize, searchTerm, filterType, moduleId);
         }
+
 
 
         public async Task OnPostDeactivateAsync(long id, int? pageNumber, int? pageSize, string searchTerm, string filterType, int moduleId)
         {
-            var quiz = await _quizService.GetQuizByIdAsync(id);
-            if (quiz != null)
+            var mentor = await _userManager.GetUserAsync(User);
+            var mentorId = await _userManager.GetUserIdAsync(mentor);
+
+            try
             {
-                quiz.IsActived = false;
-                await _quizService.UpdateQuizAsync(quiz);
-                await _hub.Clients.All.SendAsync("loadQuizzes");
-                TempData["SuccessMessage"] = "Quiz deactivated successfully.";
+                var quiz = await _quizService.GetQuizByIdAsync(id, mentorId);
+                if (quiz != null)
+                {
+                    quiz.IsActived = false;
+                    await _quizService.UpdateQuizAsync(quiz);
+                    await _hub.Clients.All.SendAsync("loadQuizzes");
+                    TempData["SuccessMessage"] = "Quiz deactivated successfully.";
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "Quiz not found.";
+                }
             }
-            else
+            catch (UnauthorizedAccessException ex)
             {
-                TempData["ErrorMessage"] = "Quiz not found.";
+                TempData["ErrorMessage"] = ex.Message;
+            }
+            catch (Exception)
+            {
+                TempData["ErrorMessage"] = "Đã xảy ra lỗi khi vô hiệu hóa quiz.";
             }
 
             await OnGetAsync(pageNumber, pageSize, searchTerm, filterType, moduleId);
         }
+
 
         public async Task OnPostActivateAsync(long id, int? pageNumber, int? pageSize, string searchTerm, string filterType, int moduleId)
         {
-            var quiz = await _quizService.GetQuizByIdAsync(id);
-            if (quiz != null)
+            var mentor = await _userManager.GetUserAsync(User);
+            var mentorId = await _userManager.GetUserIdAsync(mentor);
+
+            try
             {
-                quiz.IsActived = true;
-                await _quizService.UpdateQuizAsync(quiz);
-                await _hub.Clients.All.SendAsync("loadQuizzes");
-                TempData["SuccessMessage"] = "Quiz activated successfully.";
+                var quiz = await _quizService.GetQuizByIdAsync(id, mentorId);
+                if (quiz != null)
+                {
+                    quiz.IsActived = true;
+                    await _quizService.UpdateQuizAsync(quiz);
+                    await _hub.Clients.All.SendAsync("loadQuizzes");
+                    TempData["SuccessMessage"] = "Quiz activated successfully.";
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "Quiz not found.";
+                }
             }
-            else
+            catch (UnauthorizedAccessException ex)
             {
-                TempData["ErrorMessage"] = "Quiz not found.";
+                TempData["ErrorMessage"] = ex.Message;
+            }
+            catch (Exception)
+            {
+                TempData["ErrorMessage"] = "Đã xảy ra lỗi khi kích hoạt quiz.";
             }
 
             await OnGetAsync(pageNumber, pageSize, searchTerm, filterType, moduleId);
         }
+
     }
 }

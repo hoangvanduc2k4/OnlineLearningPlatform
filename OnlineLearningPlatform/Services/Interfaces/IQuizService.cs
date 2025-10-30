@@ -11,8 +11,8 @@ namespace OnlineLearningPlatform.Services.Interfaces
         Task DeleteQuizByIdAsync(long quizId);
         Task<IEnumerable<QuizViewModel>> GetAllQuizAsync();
         Task<IEnumerable<QuizViewModel>> GetQuizzesByModuleIdAsync(long moduleId);
-        Task<QuizViewModel> GetQuizByIdAsync(long quizId);
-        Task<IEnumerable<QuizViewModel>> GetActiveQuizzesAsync(string? searchTerm);
-        Task<IEnumerable<QuizViewModel>> GetInactiveQuizzesAsync(string? searchTerm);
+        Task<QuizViewModel> GetQuizByIdAsync(long quizId,string currentUserId);
+        Task<IEnumerable<QuizViewModel>> GetActiveQuizzesAsync(string? searchTerm, string currentUserId, string role);
+        Task<IEnumerable<QuizViewModel>> GetInactiveQuizzesAsync(string? searchTerm, string currentUserId, string role);
     }
 }
