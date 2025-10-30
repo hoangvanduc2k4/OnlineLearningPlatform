@@ -1,6 +1,8 @@
 ﻿using MailKit.Search;
+using Microsoft.AspNetCore.Identity;
 using OnlineLearningPlatform.Enums;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
+using OnlineLearningPlatform.Models.Entities.UserPart;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Repositories.Interfaces;
 using OnlineLearningPlatform.Services.Interfaces;
@@ -10,12 +12,15 @@ namespace OnlineLearningPlatform.Services.Implementations
     public class QuizService : IQuizService
 
     {
+        UserManager<User> _userManager;
 
         private readonly IQuizRepository _quizRepository;
 
-        public QuizService(IQuizRepository quizRepository)
+        public QuizService(IQuizRepository quizRepository, UserManager<User> userManager)
         {
             _quizRepository = quizRepository;
+            _userManager = userManager;
+
         }
 
         public async Task<Quiz> CreateQuizAsync(QuizViewModel quizDTO)
@@ -102,11 +107,13 @@ namespace OnlineLearningPlatform.Services.Implementations
                 });
         }
 
-        public async Task<QuizViewModel> GetQuizByIdAsync(long quizId)
+        public async Task<QuizViewModel> GetQuizByIdAsync(long quizId, string currentUserId)
         {
-            var quiz = await _quizRepository.GetByIdAsync(quizId);
+            var quiz = await _quizRepository.GetByIdWithCourseAsync(quizId);
             if (quiz == null) return null;
 
+            if (quiz.Module.Course.Creator != currentUserId)
+                throw new UnauthorizedAccessException("You do not have permission to access this quiz.");
             return new QuizViewModel
             {
                 IsActived = quiz.Status == QuizStatus.Active,
@@ -114,18 +121,24 @@ namespace OnlineLearningPlatform.Services.Implementations
                 QuizName = quiz.QuizName,
                 ModuleId = quiz.ModuleId,
                 QuizTime = quiz.QuizTime ?? 0,
-                PassScore = quiz.PassScore ?? 0
+                PassScore = quiz.PassScore ?? 0,
+                
             };
         }
 
-        public async Task<IEnumerable<QuizViewModel>> GetActiveQuizzesAsync(string? searchTerm)
+        public async Task<IEnumerable<QuizViewModel>> GetActiveQuizzesAsync(string? searchTerm, string currentUserId, string role)
         {
-            var quizzes = await _quizRepository.GetAllAsync();
+            var quizzes = await _quizRepository.GetAllWithModuleAndCourseAsync();
+
+            if (role == "Mentor")
+            {
+                quizzes = quizzes.Where(q => q.Module.Course.Creator == currentUserId);
+            }
 
             var filtered = quizzes
                 .Where(q => q.Status == QuizStatus.Active &&
                             (string.IsNullOrEmpty(searchTerm) ||
-                             q.QuizName.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))) 
+                             q.QuizName.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)))
                 .Select(q => new QuizViewModel
                 {
                     QuizId = q.QuizId,
@@ -139,9 +152,15 @@ namespace OnlineLearningPlatform.Services.Implementations
             return filtered;
         }
 
-        public async Task<IEnumerable<QuizViewModel>> GetInactiveQuizzesAsync(string? searchTerm)
+
+        public async Task<IEnumerable<QuizViewModel>> GetInactiveQuizzesAsync(string? searchTerm, string currentUserId, string role)
         {
-            var quizzes = await _quizRepository.GetAllAsync();
+            var quizzes = await _quizRepository.GetAllWithModuleAndCourseAsync();
+
+            if (role == "Mentor")
+            {
+                quizzes = quizzes.Where(q => q.Module.Course.Creator == currentUserId);
+            }
 
             var filtered = quizzes
                 .Where(q => q.Status != QuizStatus.Active &&
@@ -159,5 +178,7 @@ namespace OnlineLearningPlatform.Services.Implementations
 
             return filtered;
         }
+
+
     }
 }
