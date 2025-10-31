@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
 using OnlineLearningPlatform.Data;
 using OnlineLearningPlatform.Hubs;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Services.Interfaces;
+using System.Security.Claims;
 
 namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
 {
@@ -32,12 +34,24 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
 
         public void OnGet()
         {
-            AvailableModules = new SelectList(_context.Modules.ToList(), "ModuleId", "ModuleName");
+            var mentorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var modules = _context.Modules
+                .Include(m => m.Course)
+                .Where(m => m.Course.Creator == mentorId) 
+                .ToList();
+
+            AvailableModules = new SelectList(modules, "ModuleId", "ModuleName");
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            AvailableModules = new SelectList(_context.Modules.ToList(), "ModuleId", "ModuleName");
+            var mentorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var modules = _context.Modules
+               .Include(m => m.Course)
+               .Where(m => m.Course.Creator == mentorId)
+               .ToList();
+
+            AvailableModules = new SelectList(modules, "ModuleId", "ModuleName");
 
             if (!ModelState.IsValid)
             {
