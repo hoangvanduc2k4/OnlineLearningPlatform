@@ -6,5 +6,6 @@ namespace OnlineLearningPlatform.Repositories.Interfaces
     {
         Task<TransactionHistory> GetTransactionByUserIdAndCourseId(string userId, long? courseId);
         Task<TransactionHistory> GetTransactionById(long? transactionId);
+        Task<List<TransactionHistory>> GetSuccessfulTransactionsByDateRangeAsync(DateTime? startDate, DateTime? endDate);
     }
 }

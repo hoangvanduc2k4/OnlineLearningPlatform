@@ -1,9 +1,10 @@
 ﻿@model OnlineLearningPlatform.Models.ViewModels.CourseDetailsViewModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
 @{
     ViewData["Title"] = Model.CourseName;
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    Func<decimal, string> FormatPrice = price => price == 0 ? "Free" : $"${price:N2}";
+    Func<decimal, string> FormatPrice = price => price == 0 ? "Free" : $"{price:N0} VNĐ";
     var discountedPrice = Model.Price - (Model.Price * (decimal)(Model.Discount ?? 0) / 100);
 }
 
@@ -272,14 +273,25 @@
                                     <input type="hidden" name="courseId" value="@Model.CourseId" />
                                     <button type="submit" class="btn btn-primary" id="enrollButton">Enroll Now</button>
                                 </form>
-                                <button class="btn-secondary">Add to Wishlist</button>
-                                    <a class="btn btn-tertiary"
-                                       asp-controller="Chat"
-                                       asp-action="ChatWithMentor"
-                                       asp-route-mentorId="@Model.MentorId"
-                                       id="chatButton">
-                                        <i class="bi bi-chat-dots-fill"></i> Chat with Mentor
-                                    </a>
+
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    var btnClass = Model.IsInWishlist ? "btn-danger" : "btn-secondary";
+                                    var iconClass = Model.IsInWishlist ? "bi-heart-fill" : "bi-heart";
+                                    var btnText = Model.IsInWishlist ? "Remove from Wishlist" : "Add to Wishlist";
+
+                                    <button id="wishlist-btn" class="btn @btnClass" data-course-id="@Model.CourseId">
+                                        <i class="bi @iconClass"></i> @btnText
+                                    </button>
+                                }
+
+                                <a class="btn btn-tertiary"
+                                   asp-controller="Chat"
+                                   asp-action="ChatWithMentor"
+                                   asp-route-mentorId="@Model.MentorId"
+                                   id="chatButton">
+                                    <i class="bi bi-chat-dots-fill"></i> Chat with Mentor
+                                </a>
                             </div>
                             <div class="guarantee"><i class="bi bi-shield-check"></i><span>30-day money-back guarantee</span></div>
 
@@ -383,6 +395,19 @@
                     border-color: #007bff;
                 }
 
+            /* Class mới cho nút khi đã trong wishlist */
+            .action-buttons .btn-danger {
+                background-color: #dc3545;
+                border-color: #dc3545;
+                color: white;
+            }
+
+                .action-buttons .btn-danger:hover {
+                    background-color: #c82333;
+                    border-color: #bd2130;
+                }
+
+
         .guarantee {
             text-align: center;
             margin-top: 15px;
@@ -454,6 +479,62 @@
             var enrollButton = document.getElementById('enrollButton');
             enrollButton.disabled = true;
             enrollButton.innerText = 'Processing...';
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const wishlistBtn = document.getElementById('wishlist-btn');
+
+            if (wishlistBtn) {
+                wishlistBtn.addEventListener('click', function () {
+                    const courseId = this.dataset.courseId;
+                    const button = this;
+
+                    const url = '/Mentee/WishList/Toggle';
+
+                    fetch(url, {
+                        method: 'POST',
+                        headers: {
+
+        'RequestVerificationToken': '@Xsrf.GetAndStoreTokens(Context).RequestToken'
+                        },
+                        body: new URLSearchParams({
+                            'courseId': courseId
+                        })
+                    })
+                    .then(response => {
+                        if (response.status === 401) {
+                            window.location.href = '/Identity/Account/Login?ReturnUrl=' + window.location.pathname;
+                            return;
+                        }
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data) {
+                            const icon = button.querySelector('i');
+                            if (data.isInWishlist) {
+                                button.classList.remove('btn-secondary');
+                                button.classList.add('btn-danger');
+                                icon.classList.remove('bi-heart');
+                                icon.classList.add('bi-heart-fill');
+                                button.childNodes[2].nodeValue = ' Remove from Wishlist';
+                            } else {
+                                button.classList.remove('btn-danger');
+                                button.classList.add('btn-secondary');
+                                icon.classList.remove('bi-heart-fill');
+                                icon.classList.add('bi-heart');
+                                button.childNodes[2].nodeValue = ' Add to Wishlist';
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error('There was a problem with the fetch operation:', error);
+                    });
+                });
+            }
         });
     </script>
 }

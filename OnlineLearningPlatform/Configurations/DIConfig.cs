@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Identity.UI.Services;
+﻿using Microsoft.AspNetCore.Identity.UI.Services;
 using OnlineLearningPlatform.Repositories;
 using OnlineLearningPlatform.Repositories.Implementations;
 using OnlineLearningPlatform.Repositories.Interfaces;
@@ -52,9 +52,6 @@ namespace OnlineLearningPlatform.Configurations
             services.AddScoped<ITransactionService, TransactionService>();
 
             services.AddScoped<IAdminReviewCourseRepository, AdminReviewCourseRepository>();
-
-
-
             services.AddScoped<ICourseEnrollmentService, CourseEnrollmentService>();
 
             //quiz
@@ -66,6 +63,13 @@ namespace OnlineLearningPlatform.Configurations
             // question
             services.AddScoped<IQuestionRepository, QuestionRepository>();
             services.AddScoped<IQuestionService, QuestionService>();
+
+            // statistic
+            services.AddScoped<IStatisticService, StatisticService>();
+
+            // wishlist
+            services.AddScoped<IWishlistRepository, WishlistRepository>();
+            services.AddScoped<IWishlistService, WishlistService>();
 
             return services;
         }

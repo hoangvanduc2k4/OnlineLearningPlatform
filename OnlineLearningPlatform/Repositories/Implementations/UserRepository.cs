@@ -119,5 +119,15 @@ namespace OnlineLearningPlatform.Repositories.Implementations
             var query = _dbSet.AsNoTracking().Where(u => u.UserName == userName);
             return query.FirstOrDefaultAsync();
         }
+
+        public async Task<int> GetTotalUsersCountAsync()
+        {
+            return await _userManager.Users.CountAsync();
+        }
+
+        public async Task<int> GetNewUsersCountOnDateAsync(DateTime date)
+        {
+            return await _userManager.Users.CountAsync(u => u.CreatedAt.Date == date.Date);
+        }
     }
 }

@@ -6,6 +6,7 @@ using OnlineLearningPlatform.Enums;
 using OnlineLearningPlatform.Models.Entities.Others;
 using OnlineLearningPlatform.Models.Entities.UserPart;
 using OnlineLearningPlatform.Models.ViewModels;
+using OnlineLearningPlatform.Services.Implementations;
 using OnlineLearningPlatform.Services.Interfaces;
 
 namespace OnlineLearningPlatform.Controllers
@@ -19,8 +20,9 @@ namespace OnlineLearningPlatform.Controllers
         private readonly ICourseEnrollmentService _courseEnrollmentService;
         private readonly ICategoryService _categoryService;
         private readonly ILevelService _levelService;
+        private readonly IWishlistService _wishlistService;
 
-        public CoursesController(ICourseService courseService, IVnPayService vnPayService, UserManager<User> userManager, ITransactionService transactionService, ICourseEnrollmentService courseEnrollmentService, ICategoryService categoryService, ILevelService levelService)
+        public CoursesController(ICourseService courseService, IVnPayService vnPayService, UserManager<User> userManager, ITransactionService transactionService, ICourseEnrollmentService courseEnrollmentService, ICategoryService categoryService, ILevelService levelService, IWishlistService wishlistService)
         {
             _courseService = courseService;
             _vnPayService = vnPayService;
@@ -29,6 +31,7 @@ namespace OnlineLearningPlatform.Controllers
             _courseEnrollmentService = courseEnrollmentService;
             _categoryService = categoryService;
             _levelService = levelService;
+            _wishlistService = wishlistService;
         }
 
         public async Task<IActionResult> Index(
@@ -58,13 +61,25 @@ namespace OnlineLearningPlatform.Controllers
             ViewBag.AllLevels = await _levelService.GetAllActiveLevelAysnc();
             return View(paged);
         }
-
-
-
         public async Task<IActionResult> Details(long id)
         {
             var vm = await _courseService.GetCourseDetailsAsync(id);
-            if (vm == null) return NotFound();
+            if (vm == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user != null)
+            {
+                vm.IsInWishlist = await _wishlistService.IsInWishlistAsync(user.Id, id);
+            }
+            else
+            {
+                vm.IsInWishlist = false;
+            }
+
             return View(vm);
         }
 

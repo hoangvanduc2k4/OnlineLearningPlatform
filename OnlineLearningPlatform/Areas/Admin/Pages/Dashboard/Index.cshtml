@@ -1,44 +1,385 @@
 ﻿@page
 @model OnlineLearningPlatform.Areas.Admin.Pages.Dashboard.IndexModel
+@using System.Text.Json
 @{
     ViewData["Title"] = "Dashboard";
     Layout = "~/Areas/Admin/Shared/_AdminLayout.cshtml";
 }
 
-<div class="pc-content p-4" style="background-color: #f8f9fa;">
-    <!-- Breadcrumb -->
-    <div class="page-header mb-4">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <h5 class="mb-0 fw-bold text-primary">Home</h5>
-            </div>
-            <div class="col-md-6 text-md-end">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-0 justify-content-end bg-transparent">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item"><a href="javascript:;">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Home</li>
-                    </ol>
-                </nav>
-            </div>
+<style>
+    :root {
+        --primary-color: #4e73df;
+        --success-color: #1cc88a;
+        --info-color: #36b9cc;
+        --warning-color: #f6c23e;
+        --secondary-color: #858796;
+        --background-color: #f8f9fc;
+        --card-bg-color: #ffffff;
+        --text-dark-color: #3a3b45;
+        --text-light-color: #858796;
+        --border-color: #e3e6f0;
+        --card-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.07);
+        --card-hover-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.1);
+        --border-radius: 0.75rem;
+    }
+
+    body {
+        background-color: var(--background-color) !important;
+    }
+
+    .container-fluid {
+        padding: 2rem;
+    }
+
+    h1.mt-4 {
+        color: var(--text-dark-color);
+        font-weight: 700;
+        margin-bottom: 2.5rem !important;
+    }
+
+    .card {
+        border: none;
+        border-radius: var(--border-radius);
+        box-shadow: var(--card-shadow);
+        transition: all 0.3s ease-in-out;
+        margin-bottom: 1.75rem;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+    .card-header {
+        background-color: var(--card-bg-color);
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem 1.5rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+    }
+
+        .card-header .fas {
+            color: var(--primary-color);
+            margin-right: 0.75rem;
+        }
+
+        .card-header h6 {
+            color: var(--primary-color);
+            margin-bottom: 0;
+        }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .form-control {
+        border-radius: 0.5rem;
+    }
+
+    .btn-primary {
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+
+    .kpi-card .card-body {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .kpi-card .kpi-content .text-xs {
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 0.35rem;
+    }
+
+    .kpi-card .kpi-content .h5 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--text-dark-color);
+    }
+
+    .kpi-card .kpi-icon {
+        font-size: 2.5rem;
+        opacity: 0.2;
+    }
+
+    .list-group-flush > .list-group-item {
+        border-width: 0 0 1px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+</style>
+
+<div class="container-fluid">
+    <h1 class="mt-4">Dashboard</h1>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-filter"></i>
+            <h6 class="m-0 font-weight-bold">Filters</h6>
+        </div>
+        <div class="card-body">
+            <form method="get">
+                <div class="row">
+                    <div class="col-md-5">
+                        <label for="StartDate" class="form-label">From Date</label>
+                        <input type="date" asp-for="StartDate" class="form-control" />
+                    </div>
+                    <div class="col-md-5">
+                        <label for="EndDate" class="form-label">To Date</label>
+                        <input type="date" asp-for="EndDate" class="form-control" />
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary w-100">Filter</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
-    <div class="row g-4">
-        <!-- Embed revenue -->
-        <div class="col-12">
-            <div class="card shadow-sm">
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card kpi-card">
                 <div class="card-body">
-                    <h4 class="card-title mb-3">Revenue Overview</h4>
-                    <iframe width="100%" height="550" src="@Model.DashboardEmbedUrl"
-                            frameborder="0" style="border: 1px solid #dee2e6; border-radius: .25rem;"
-                            allowfullscreen></iframe>
+                    <div class="kpi-content">
+                        <div class="text-xs text-primary">Total Revenue</div>
+                        <div class="h5 mb-0">@Model.Statistics.TotalRevenue.ToString("N0") VNĐ</div>
+                    </div>
+                    <div class="kpi-icon text-primary">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card kpi-card">
+                <div class="card-body">
+                    <div class="kpi-content">
+                        <div class="text-xs text-success">Today's Revenue</div>
+                        <div class="h5 mb-0">@Model.Statistics.RevenueToday.ToString("N0") VNĐ</div>
+                    </div>
+                    <div class="kpi-icon text-success">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card kpi-card">
+                <div class="card-body">
+                    <div class="kpi-content">
+                        <div class="text-xs text-info">This Month's Revenue</div>
+                        <div class="h5 mb-0">@Model.Statistics.RevenueThisMonth.ToString("N0") VNĐ</div>
+                    </div>
+                    <div class="kpi-icon text-info">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card kpi-card">
+                <div class="card-body">
+                    <div class="kpi-content">
+                        <div class="text-xs text-warning">Total Transactions</div>
+                        <div class="h5 mb-0">@Model.Statistics.TotalSuccessfulTransactions</div>
+                    </div>
+                    <div class="kpi-icon text-warning">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card kpi-card">
+                <div class="card-body">
+                    <div class="kpi-content">
+                        <div class="text-xs text-secondary">Total Users</div>
+                        <div class="h5 mb-0">@Model.Statistics.TotalUsers</div>
+                    </div>
+                    <div class="kpi-icon text-secondary">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card kpi-card">
+                <div class="card-body">
+                    <div class="kpi-content">
+                        <div class="text-xs text-success">New Users Today</div>
+                        <div class="h5 mb-0">@Model.Statistics.NewUsersToday</div>
+                    </div>
+                    <div class="kpi-icon text-success">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card kpi-card">
+                <div class="card-body">
+                    <div class="kpi-content">
+                        <div class="text-xs text-primary">Total Courses</div>
+                        <div class="h5 mb-0">@Model.Statistics.TotalCourses</div>
+                    </div>
+                    <div class="kpi-icon text-primary">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-chart-line"></i>
+                    <h6 class="m-0 font-weight-bold">Revenue by Day Chart</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area" style="height: 400px;">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-star"></i>
+                    <h6 class="m-0 font-weight-bold">Top 5 Courses by Revenue</h6>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        @foreach (var course in Model.Statistics.TopSellingCourses)
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                @course.CourseName
+                                <span class="badge bg-primary rounded-pill">@course.TotalRevenue.ToString("N0") VNĐ</span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-user-tag"></i>
+                    <h6 class="m-0 font-weight-bold">User Role Distribution</h6>
+                </div>
+                <div class="card-body">
+                    <canvas id="userRoleChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-toggle-on"></i>
+                    <h6 class="m-0 font-weight-bold">Course Status Distribution</h6>
+                </div>
+                <div class="card-body">
+                    <canvas id="courseStatusChart"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0'); 
+            const day = String(today.getDate()).padStart(2, '0');
+            const maxDate = `${year}-${month}-${day}`;
+
+            document.getElementById('StartDate').max = maxDate;
+            document.getElementById('EndDate').max = maxDate;
+
+            const revenueData = @Html.Raw(JsonSerializer.Serialize(Model.Statistics.RevenueByDay));
+            const revenueLabels = revenueData.map(d => d.Period);
+            const revenuePoints = revenueData.map(d => d.Amount);
+            const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+
+            const gradient = revenueCtx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(78, 115, 223, 0.2)');
+            gradient.addColorStop(1, 'rgba(78, 115, 223, 0)');
+
+            new Chart(revenueCtx, {
+                type: 'line',
+                data: {
+                    labels: revenueLabels,
+                    datasets: [{
+                        label: 'Doanh thu',
+                        data: revenuePoints,
+                        backgroundColor: gradient,
+                        borderColor: 'rgba(78, 115, 223, 1)',
+                        borderWidth: 3,
+                        pointRadius: 3,
+                        pointBackgroundColor: 'rgba(78, 115, 223, 1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: { y: { ticks: { callback: value => value.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) } } },
+                    plugins: { tooltip: { callbacks: { label: context => `${context.dataset.label}: ${context.parsed.y.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}` } } }
+                }
+            });
+
+            const userRoleData = @Html.Raw(JsonSerializer.Serialize(Model.Statistics.UserRoleCounts));
+            const userRoleCtx = document.getElementById('userRoleChart').getContext('2d');
+            new Chart(userRoleCtx, {
+                type: 'pie',
+                data: {
+                    labels: Object.keys(userRoleData),
+                    datasets: [{
+                        data: Object.values(userRoleData),
+                        backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b'],
+                        hoverOffset: 4,
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: true }
+            });
+
+            const courseStatusData = @Html.Raw(JsonSerializer.Serialize(Model.Statistics.CourseStatusCounts));
+            const courseStatusCtx = document.getElementById('courseStatusChart').getContext('2d');
+            new Chart(courseStatusCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(courseStatusData),
+                    datasets: [{
+                        data: Object.values(courseStatusData),
+                        backgroundColor: ['#1cc88a', '#f6c23e', '#e74a3b', '#4e73df', '#36b9cc'],
+                        hoverOffset: 4,
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: true }
+            });
+        });
+    </script>
+}

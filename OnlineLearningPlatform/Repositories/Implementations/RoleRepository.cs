@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using OnlineLearningPlatform.Data;
+using OnlineLearningPlatform.Repositories.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using OnlineLearningPlatform.Repositories.Interfaces;
 
 namespace OnlineLearningPlatform.Repositories.Implementations
 {
@@ -9,16 +11,18 @@ namespace OnlineLearningPlatform.Repositories.Implementations
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<Models.Entities.UserPart.User> _userManager;
-
-        public RoleRepository(RoleManager<IdentityRole> roleManager, UserManager<Models.Entities.UserPart.User> userManager)
+        private readonly OnlineLearningDBContext _context;
+        public RoleRepository(RoleManager<IdentityRole> roleManager, UserManager<Models.Entities.UserPart.User> userManager, OnlineLearningDBContext context)
         {
             _roleManager = roleManager;
             _userManager = userManager;
+            _context = context;
         }
 
         public async Task<IEnumerable<IdentityRole>> GetAllAsync()
         {
             return _roleManager.Roles;
+
         }
 
         public async Task<IdentityRole?> GetByIdAsync(string roleId)
@@ -82,5 +86,19 @@ namespace OnlineLearningPlatform.Repositories.Implementations
                 return userIds;
             });
         }
+
+        public async Task<Dictionary<string, int>> GetUserCountsByRoleAsync()
+        {
+            return await _context.UserRoles
+                .GroupBy(ur => ur.RoleId)
+                .Select(g => new { RoleId = g.Key, Count = g.Count() })
+                .Join(_context.Roles,
+                      userRoleGroup => userRoleGroup.RoleId,
+                      role => role.Id,
+                      (userRoleGroup, role) => new { RoleName = role.Name, Count = userRoleGroup.Count })
+                .Where(r => r.RoleName != null)
+                .ToDictionaryAsync(r => r.RoleName!, r => r.Count);
+        }
+
     }
 }

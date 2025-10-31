@@ -28,13 +28,13 @@ namespace OnlineLearningPlatform.Services
         }
 
         public async Task<IPagedList<CourseViewModel>> GetCoursesPagedAsync(
-                    int pageNumber, int pageSize,
-                    string? searchTerm = null,
-                    List<string>? categories = null,
-                    List<long>? levelIds = null,
-                    string? priceRange = null,
-                    string? studyTimeRange = null,
-                    string? sortBy = null)
+           int pageNumber, int pageSize,
+           string? searchTerm = null,
+           List<string>? categories = null,
+           List<long>? levelIds = null,
+           string? priceRange = null,
+           string? studyTimeRange = null,
+           string? sortBy = null)
         {
             var query = _courseRepository.GetCoursesQuery();
 
@@ -65,79 +65,111 @@ namespace OnlineLearningPlatform.Services
                 switch (priceRange)
                 {
                     case "under50":
-                        query = query.Where(c => c.Price < 50m);
+                        query = query.Where(c => (c.Price - (c.Discount ?? 0m)) < 50m);
                         break;
                     case "50to200":
-                        query = query.Where(c => c.Price >= 50m && c.Price <= 200m);
+                        query = query.Where(c => (c.Price - (c.Discount ?? 0m)) >= 50m && (c.Price - (c.Discount ?? 0m)) <= 200m);
                         break;
                     case "200to500":
-                        query = query.Where(c => c.Price > 200m && c.Price <= 500m);
+                        query = query.Where(c => (c.Price - (c.Discount ?? 0m)) > 200m && (c.Price - (c.Discount ?? 0m)) <= 500m);
                         break;
                     case "500plus":
-                        query = query.Where(c => c.Price > 500m);
+                        query = query.Where(c => (c.Price - (c.Discount ?? 0m)) > 500m);
                         break;
                 }
+            }
+
+            var lightweightCourses = await query.Select(c => new
+            {
+                c.CourseId,
+                c.StudyTime,
+                c.PublishedAt,
+                c.CreatedAt,
+                EffectivePrice = c.Price - (c.Discount ?? 0m) 
+            }).ToListAsync();
+
+            Func<string?, decimal> parseStudyTime = (studyTimeString) =>
+            {
+                if (string.IsNullOrWhiteSpace(studyTimeString)) return decimal.MaxValue;
+                var digits = new string(studyTimeString.Where(ch => char.IsDigit(ch) || ch == '.').ToArray());
+                return decimal.TryParse(digits, out var duration) ? duration : decimal.MaxValue;
+            };
+
+
+            var processedList = lightweightCourses.AsEnumerable();
+
+            if (!string.IsNullOrEmpty(studyTimeRange))
+            {
+                processedList = processedList.Where(c =>
+                {
+                    var hours = parseStudyTime(c.StudyTime);
+                    if (hours == decimal.MaxValue) return false;
+                    return studyTimeRange switch
+                    {
+                        "under5" => hours < 5m,
+                        "5to20" => hours >= 5m && hours <= 20m,
+                        "20plus" => hours > 20m,
+                        _ => true
+                    };
+                });
             }
 
             switch (sortBy)
             {
                 case "newest":
-                    query = query.OrderByDescending(c => c.PublishedAt ?? c.CreatedAt);
+                    processedList = processedList.OrderByDescending(c => c.PublishedAt)
+                                                 .ThenByDescending(c => c.CourseId);
                     break;
                 case "priceAsc":
-                    query = query.OrderBy(c => c.Price);
+                    processedList = processedList.OrderBy(c => c.EffectivePrice)
+                                                 .ThenBy(c => c.CourseId);
                     break;
                 case "priceDesc":
-                    query = query.OrderByDescending(c => c.Price);
+                    processedList = processedList.OrderByDescending(c => c.EffectivePrice)
+                                                 .ThenByDescending(c => c.CourseId);
+                    break;
+                case "durationAsc":
+                    processedList = processedList.OrderBy(c => parseStudyTime(c.StudyTime))
+                                                 .ThenBy(c => c.CourseId);
+                    break;
+                case "durationDesc":
+                    processedList = processedList.OrderByDescending(c => parseStudyTime(c.StudyTime))
+                                                 .ThenByDescending(c => c.CourseId);
                     break;
                 default:
-                    query = query.OrderByDescending(c => c.PublishedAt ?? c.CreatedAt).ThenByDescending(c => c.CourseId);
+                    processedList = processedList.OrderByDescending(c => c.PublishedAt ?? c.CreatedAt)
+                                                 .ThenByDescending(c => c.CourseId);
                     break;
             }
 
-            var filteredCourses = await query.ToListAsync();
+            var totalItemCount = processedList.Count();
+            var pagedCourseIds = processedList
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .Select(c => c.CourseId)
+                .ToList();
 
-            IEnumerable<Course> finalFilteredList = filteredCourses;
+            // ==========================================================
+            // == THÊM 2 DÒNG DEBUG NÀY VÀO ==
+            System.Diagnostics.Debug.WriteLine($"--- Trang {pageNumber} ---");
+            System.Diagnostics.Debug.WriteLine("IDs: " + string.Join(", ", pagedCourseIds));
+            // ==========================================================
 
-            if (!string.IsNullOrEmpty(studyTimeRange))
+            if (!pagedCourseIds.Any())
             {
-                Func<Course, bool> studyFilter = c =>
-                {
-                    if (string.IsNullOrWhiteSpace(c.StudyTime)) return false;
-
-                    // Cố gắng parse số giờ từ chuỗi
-                    var digits = new string(c.StudyTime.Where(ch => char.IsDigit(ch) || ch == '.').ToArray());
-                    if (!decimal.TryParse(digits, out var hours)) return false;
-
-                    switch (studyTimeRange)
-                    {
-                        case "under5": return hours < 5m;
-                        case "5to20": return hours >= 5m && hours <= 20m;
-                        case "20plus": return hours > 20m;
-                        default: return true;
-                    }
-                };
-                finalFilteredList = finalFilteredList.Where(studyFilter);
+                return new StaticPagedList<CourseViewModel>(new List<CourseViewModel>(), pageNumber, pageSize, totalItemCount);
             }
 
-            // Xử lý sắp xếp theo thời gian học (durationAsc) trong memory
-            if (sortBy == "durationAsc")
-            {
-                finalFilteredList = finalFilteredList.OrderBy(c =>
-                {
-                    var digits = new string((c.StudyTime ?? "").Where(char.IsDigit).ToArray());
-                    decimal.TryParse(digits, out var duration);
-                    return duration;
-                });
-            }
+            var finalCourses = await _courseRepository.GetCoursesQuery()
+                                                      .Where(c => pagedCourseIds.Contains(c.CourseId))
+                                                      .ToListAsync();
 
-            var pagedEntities = finalFilteredList.ToPagedList(pageNumber, pageSize);
+            var orderedFinalCourses = finalCourses
+                .OrderBy(c => pagedCourseIds.IndexOf(c.CourseId))
+                .ToList();
 
-            var vmList = pagedEntities.Select(c => _mapper.Map<CourseViewModel>(c)).ToList();
-
-            var vmPaged = new StaticPagedList<CourseViewModel>(vmList, pagedEntities.GetMetaData());
-
-            return vmPaged;
+            var vmList = orderedFinalCourses.Select(c => _mapper.Map<CourseViewModel>(c)).ToList();
+            return new StaticPagedList<CourseViewModel>(vmList, pageNumber, pageSize, totalItemCount);
         }
 
 

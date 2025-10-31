@@ -90,5 +90,12 @@ namespace OnlineLearningPlatform.Repositories
                 .AsNoTracking()
                 .CountAsync(c => c.Creator == mentorId && c.Status == CourseStatus.Approved);
         }
+
+        public async Task<Dictionary<string, int>> GetCourseStatusCountsAsync()
+        {
+            return await _context.Courses
+                .GroupBy(c => c.Status)
+                .ToDictionaryAsync(g => g.Key.ToString(), g => g.Count());
+        }
     }
 }

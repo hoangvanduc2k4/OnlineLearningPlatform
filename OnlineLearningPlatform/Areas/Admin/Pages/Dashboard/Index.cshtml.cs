@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using OnlineLearningPlatform.Models.ViewModels;
+using OnlineLearningPlatform.Services.Interfaces;
 
 namespace OnlineLearningPlatform.Areas.Admin.Pages.Dashboard
 {
@@ -7,18 +10,25 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.Dashboard
     public class IndexModel : PageModel
     {
 
+        private readonly IStatisticService _statisticService;
 
-        public IndexModel()
+        public IndexModel(IStatisticService statisticService)
         {
+            _statisticService = statisticService;
         }
 
-        public string DashboardEmbedUrl { get; set; }
+        public DashboardViewModel Statistics { get; set; }
 
-        public void OnGet()
+        [BindProperty(SupportsGet = true)]
+        public DateTime? StartDate { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public DateTime? EndDate { get; set; }
+
+        public async Task<IActionResult> OnGetAsync()
         {
-
-            DashboardEmbedUrl = "https://lookerstudio.google.com/embed/reporting/ee8d865e-6f9b-494c-b0ac-4d9b69349073";
-
+            Statistics = await _statisticService.GetDashboardStatisticsAsync(StartDate, EndDate);
+            return Page();
         }
 
     }
