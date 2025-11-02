@@ -3,10 +3,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using OnlineLearningPlatform.Models.Entities.UserPart;
 using OnlineLearningPlatform.Services.Interfaces;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using X.PagedList;
 using X.PagedList.Extensions;
+using ClosedXML.Excel;
+using Microsoft.AspNetCore.Mvc;
 
 namespace OnlineLearningPlatform.Areas.Admin.Pages.Users
 {
@@ -101,6 +104,51 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.Users
                 TempData["SuccessMessage"] = "User deactivated successfully.";
             }
             await OnGetAsync(pageNumber, pageSize, searchTerm, filterType, role);
+        }
+
+        public async Task<IActionResult> OnPostExportExcelAsync(List<string> statuses)
+        {
+            var users = await _userService.GetAllUsersAsync(""); // Adjust to your service
+            var filtered = users.Where(u =>
+                (statuses.Contains("active") && u.IsActived && !u.IsDeleted) ||
+                (statuses.Contains("inactive") && !u.IsActived && !u.IsDeleted) ||
+                (statuses.Contains("deleted") && u.IsDeleted)
+            ).ToList();
+
+            using var workbook = new XLWorkbook();
+            var worksheet = workbook.Worksheets.Add("Users");
+            worksheet.Cell(1, 1).Value = "Id";
+            worksheet.Cell(1, 2).Value = "Email";
+            worksheet.Cell(1, 3).Value = "Full Name";
+            worksheet.Cell(1, 4).Value = "DOB";
+            worksheet.Cell(1, 5).Value = "Phone";
+            worksheet.Cell(1, 6).Value = "Gender";
+            worksheet.Cell(1, 7).Value = "IsActived";
+            worksheet.Cell(1, 8).Value = "IsDeleted";
+            worksheet.Cell(1, 9).Value = "CreatedAt";
+            worksheet.Cell(1, 10).Value = "UpdatedAt";
+            worksheet.Cell(1, 11).Value = "DeletedAt";
+
+            for (int i = 0; i < filtered.Count; i++)
+            {
+                var u = filtered[i];
+                worksheet.Cell(i + 2, 1).Value = u.Id;
+                worksheet.Cell(i + 2, 2).Value = u.Email;
+                worksheet.Cell(i + 2, 3).Value = u.FullName;
+                worksheet.Cell(i + 2, 4).Value = u.Dob?.ToString("dd/MM/yyyy");
+                worksheet.Cell(i + 2, 5).Value = u.Phone;
+                worksheet.Cell(i + 2, 6).Value = u.Gender.HasValue ? (u.Gender.Value ? "Male" : "Female") : "";
+                worksheet.Cell(i + 2, 7).Value = u.IsActived;
+                worksheet.Cell(i + 2, 8).Value = u.IsDeleted;
+                worksheet.Cell(i + 2, 9).Value = u.CreatedAt.ToString("dd/MM/yyyy");
+                worksheet.Cell(i + 2, 10).Value = u.UpdatedAt?.ToString("dd/MM/yyyy");
+                worksheet.Cell(i + 2, 11).Value = u.DeletedAt?.ToString("dd/MM/yyyy");
+            }
+
+            using var stream = new MemoryStream();
+            workbook.SaveAs(stream);
+            stream.Position = 0;
+            return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Users.xlsx");
         }
     }
 }

@@ -180,6 +180,16 @@
     </div>
 </div>
 
+    <form method="post" asp-page-handler="ExportExcel" class="mb-3 mt-3" id="exportForm">
+        <div id="exportOptions" style="display:none;">
+            <label><input type="checkbox" name="statuses" value="active" /> Active</label>
+            <label><input type="checkbox" name="statuses" value="inactive" /> Inactive</label>
+            <label><input type="checkbox" name="statuses" value="deleted" /> Deleted</label>
+            <button type="submit" class="btn btn-success btn-sm ms-2">Export Excel</button>
+        </div>
+        <button type="button" class="btn btn-success btn-sm ms-2" id="showExportOptionsBtn">Export Excel</button>
+    </form>
+
 @section Scripts {
     <script>
         function showSuccess(msg) {
@@ -203,5 +213,11 @@
                 position: 'topRight'
             });
         }
+
+            document.getElementById('showExportOptionsBtn').addEventListener('click', function () {
+            document.getElementById('exportOptions').style.display = 'block';
+            this.style.display = 'none';
+        });
     </script>
+
 }
