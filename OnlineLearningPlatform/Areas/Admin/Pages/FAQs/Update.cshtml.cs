@@ -41,6 +41,7 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.FAQs
 
             FAQ.UpdatedAt = DateTime.Now;
             await _faqsService.UpdateAsync(FAQ);
+            await _hub.Clients.All.SendAsync("LoadFAQs");
             await _hub.Clients.All.SendAsync("FAQUpdated", new
             {
                 faqId = FAQ.FaqId,
