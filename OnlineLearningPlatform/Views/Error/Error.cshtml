@@ -1,0 +1,25 @@
+﻿@{
+ViewData["Title"] = $"Error {ViewBag.StatusCode}";
+}
+
+<main class="container py-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2 text-center">
+
+            <i class="bi bi-exclamation-triangle-fill text-danger" style="font-size: 6rem;"></i>
+
+            <h1 class="display-1 fw-bold text-danger mt-3">@ViewBag.StatusCode</h1>
+
+            <h2 class="card-title mt-2">@ViewBag.ErrorTitle</h2>
+
+            <p class="lead text-muted mt-3">
+                @ViewBag.ErrorMessage
+            </p>
+
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-primary mt-4">
+                <i class="bi bi-arrow-left"></i> Back to Home
+            </a>
+
+        </div>
+    </div>
+</main>

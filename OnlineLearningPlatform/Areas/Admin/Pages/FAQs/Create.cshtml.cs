@@ -35,6 +35,7 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.FAQs
 
             FAQ.CreatedAt = DateTime.Now;
             await _faqsService.AddAsync(FAQ);
+            await _hub.Clients.All.SendAsync("LoadFAQs");
             await _hub.Clients.All.SendAsync("FAQCreated", new
             {
                 faqId = FAQ.FaqId,

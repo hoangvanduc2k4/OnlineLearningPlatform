@@ -28,16 +28,16 @@
 <body>
     <header id="header" class="header d-flex align-items-center sticky-top">
         <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-center">
-            <a class="logo d-flex align-items-center me-auto" asp-controller="Home" asp-action="Index">
+            <a class="logo d-flex align-items-center me-auto" asp-area="" asp-controller="Home" asp-action="Index">
                 <h1 class="sitename">KnowHub</h1>
             </a>
             <nav id="navmenu" class="navmenu mx-auto">
                 <ul>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index" class="active">Home</a></li> @*<-- Thêm asp-area="" *@
-                    <li><a asp-area="" asp-controller="Courses" asp-action="Index">Courses</a></li> @*<-- Thêm asp-area="" *@
-                    <li><a asp-area="" asp-controller="Instructors" asp-action="Index">Mentors</a></li> @*<-- Thêm asp-area="" *@
-                    <li><a asp-area="" asp-controller="FAQs" asp-action="Index">FAQs</a></li> @*<-- Thêm asp-area="" *@
-                    <li><a asp-area="" asp-controller="Contact" asp-action="Index">Contact</a></li> @*<-- Thêm asp-area="" *@
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index" class="active">Home</a></li>
+                    <li><a asp-area="" asp-controller="Courses" asp-action="Index">Courses</a></li> 
+                    <li><a asp-area="" asp-controller="Instructors" asp-action="Index">Mentors</a></li> 
+                    <li><a asp-area="" asp-controller="FAQs" asp-action="Index">FAQs</a></li> 
+                    <li><a asp-area="" asp-controller="Contact" asp-action="Index">Contact</a></li> 
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
