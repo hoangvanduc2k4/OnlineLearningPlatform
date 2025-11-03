@@ -1,6 +1,4 @@
-﻿using System.Net;
-using System.Text;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using OnlineLearningPlatform.Data;
 using OnlineLearningPlatform.Enums;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
@@ -8,6 +6,8 @@ using OnlineLearningPlatform.Models.Entities.Others;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Services.Interfaces;
 using OnlineLearningPlatform.Utils;
+using System.Net;
+using System.Text;
 
 namespace OnlineLearningPlatform.Services.Implementations
 {
@@ -17,13 +17,21 @@ namespace OnlineLearningPlatform.Services.Implementations
         private readonly OnlineLearningDBContext _context;
         private readonly ITransactionService _transactionService;
         private readonly ICourseEnrollmentService _courseEnrollmentService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public VnPayService(IOptions<VnPayConfig> config, OnlineLearningDBContext context, ITransactionService transactionService, ICourseEnrollmentService courseEnrollmentService)
+        public VnPayService(
+            IOptions<VnPayConfig> config,
+            OnlineLearningDBContext context,
+            ITransactionService transactionService,
+            ICourseEnrollmentService courseEnrollmentService,
+            IHttpContextAccessor httpContextAccessor
+        )
         {
             _config = config.Value;
             _context = context;
             _transactionService = transactionService;
             _courseEnrollmentService = courseEnrollmentService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public string CreatePaymentUrl(HttpContext context, VnPaymentRequestModel model)
@@ -53,6 +61,9 @@ namespace OnlineLearningPlatform.Services.Implementations
             }
             string queryString = data.ToString().TrimEnd('&');
             string signData = queryString;
+
+            Console.WriteLine($"[DEBUG] SignData (Create): {signData}");
+
             string vnp_SecureHash = VnPayUtils.HmacSHA512(_config.HashSecret, signData);
             string paymentUrl = _config.BaseUrl + "?" + queryString + "&vnp_SecureHash=" + vnp_SecureHash;
 
@@ -62,13 +73,33 @@ namespace OnlineLearningPlatform.Services.Implementations
         public async Task<VnPaymentResponseModel> PaymentExecute(IQueryCollection collections)
         {
             var vnp_SecureHash = collections["vnp_SecureHash"].ToString();
+
             var vnpayData = new SortedDictionary<string, string>(new VnPayUtils.VnPayCompare());
 
-            foreach (var (key, value) in collections)
+
+            string rawQuery = _httpContextAccessor.HttpContext.Request.QueryString.Value;
+
+            if (rawQuery.StartsWith("?"))
             {
-                if (!string.IsNullOrEmpty(key) && key.StartsWith("vnp_") && key != "vnp_SecureHashType" && key != "vnp_SecureHash")
+                rawQuery = rawQuery.Substring(1);
+            }
+
+            string[] pairs = rawQuery.Split('&');
+            foreach (string pair in pairs)
+            {
+                string[] kv = pair.Split('=');
+                if (kv.Length != 2) continue;
+
+                string key = kv[0];
+                string value = kv[1];
+
+                if (!string.IsNullOrEmpty(key) && key.StartsWith("vnp_"))
                 {
-                    vnpayData.Add(key, value.ToString());
+                    if (key == "vnp_SecureHashType" || key == "vnp_SecureHash")
+                    {
+                        continue;
+                    }
+                    vnpayData.Add(key, value);
                 }
             }
 
@@ -77,10 +108,14 @@ namespace OnlineLearningPlatform.Services.Implementations
             {
                 if (!string.IsNullOrEmpty(value))
                 {
-                    data.Append(WebUtility.UrlEncode(key) + "=" + WebUtility.UrlEncode(value) + "&");
+                    data.Append(key + "=" + value + "&");
                 }
             }
+
             string signData = data.ToString().TrimEnd('&');
+
+            Console.WriteLine($"[DEBUG] SignData (Callback): {signData}");
+
             string newSecureHash = VnPayUtils.HmacSHA512(_config.HashSecret, signData);
 
             var vnPayResponseCode = collections["vnp_ResponseCode"].ToString();
@@ -101,46 +136,58 @@ namespace OnlineLearningPlatform.Services.Implementations
             try
             {
                 TransactionHistory? transaction = await _transactionService.GetTransactionById(long.Parse(orderId));
-                if (transaction != null)
+
+                if (transaction == null)
                 {
-                    if (transaction.Status == TransactionStatus.Completed)
-                    {
-                        responseModel.Success = true;
-                        return responseModel;
-                    }
-                    if (newSecureHash.Equals(vnp_SecureHash, StringComparison.InvariantCultureIgnoreCase) && vnPayResponseCode == "00")
-                    {
-                        transaction.Status = TransactionStatus.Completed;
-                        transaction.Description = $"Successfully pay for Course: {transaction.Course?.CourseName}";
-
-                        var isEnrolled = await _courseEnrollmentService.CheckCourseEnrollment(transaction.UserId, transaction.CourseId!.Value);
-
-                        if (!isEnrolled)
-                        {
-                            var enrollment = new CourseEnrollment
-                            {
-                                UserId = transaction.UserId,
-                                CourseId = transaction.CourseId!.Value,
-                                DateCreated = DateTime.Now
-                            };
-                            await _courseEnrollmentService.AddCourseEnrollmmentAsync(enrollment);
-                        }
-                        await _transactionService.UpdateTransactionAsync(transaction);
-                        transaction.ModifiedDate = DateTime.Now;
-                        responseModel.Success = true;
-                    }
-                    else
-                    {
-                        transaction.Status = TransactionStatus.Failed;
-                        transaction.Description = $"Failed. Error Code VNPay is: {vnPayResponseCode}";
-                        transaction.ModifiedDate = DateTime.Now;
-                        await _transactionService.UpdateTransactionAsync(transaction);
-                    }
+                    responseModel.OrderDescription = "Không tìm thấy giao dịch.";
+                    return responseModel;
                 }
+
+                if (transaction.Status == TransactionStatus.Completed)
+                {
+                    responseModel.Success = true;
+                    responseModel.OrderDescription = "Giao dịch đã được xử lý trước đó.";
+                    return responseModel;
+                }
+
+                if (newSecureHash.Equals(vnp_SecureHash, StringComparison.InvariantCultureIgnoreCase) && vnPayResponseCode == "00")
+                {
+                    string courseName = transaction.Course?.CourseName ?? "Unknown Course";
+                    string description = $"Successfully pay for Course: {courseName}";
+
+                    transaction.Status = TransactionStatus.Completed;
+                    transaction.Description = description.Length > 255 ? description.Substring(0, 252) + "..." : description;
+                    transaction.ModifiedDate = DateTime.Now;
+
+                    await _transactionService.UpdateTransactionAsync(transaction);
+
+                    var isEnrolled = await _courseEnrollmentService.CheckCourseEnrollment(transaction.UserId, transaction.CourseId!.Value);
+                    if (!isEnrolled)
+                    {
+                        var enrollment = new CourseEnrollment
+                        {
+                            UserId = transaction.UserId,
+                            CourseId = transaction.CourseId!.Value,
+                            DateCreated = DateTime.Now
+                        };
+                        await _courseEnrollmentService.AddCourseEnrollmmentAsync(enrollment);
+                    }
+
+                    responseModel.Success = true;
+                }
+                else
+                {
+                    transaction.Status = TransactionStatus.Failed;
+                    transaction.Description = $"Failed. Error Code VNPay is: {vnPayResponseCode}. Hash check failed: {!newSecureHash.Equals(vnp_SecureHash, StringComparison.InvariantCultureIgnoreCase)}";
+                    transaction.ModifiedDate = DateTime.Now;
+                    await _transactionService.UpdateTransactionAsync(transaction);
+                }
+
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"PaymentExecute Error: {ex.Message} \n {ex.StackTrace}");
+                responseModel.OrderDescription = "Lỗi hệ thống khi xử lý giao dịch.";
             }
 
             return responseModel;

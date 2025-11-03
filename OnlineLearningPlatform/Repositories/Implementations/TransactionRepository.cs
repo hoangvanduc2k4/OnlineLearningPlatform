@@ -19,7 +19,7 @@ namespace OnlineLearningPlatform.Repositories.Implementations
 
         public async Task<TransactionHistory> GetTransactionById(long? transactionId)
         {
-            return await _context.TransactionHistories.Include(x => x.User).FirstOrDefaultAsync(x => x.TransactionId == transactionId);
+            return await _context.TransactionHistories.Include(x => x.User).Include(x => x.Course).FirstOrDefaultAsync(x => x.TransactionId == transactionId);
         }
 
 

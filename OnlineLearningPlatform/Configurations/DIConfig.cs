@@ -12,6 +12,8 @@ namespace OnlineLearningPlatform.Configurations
     {
         public static IServiceCollection ConfigureDIRepoService(this IServiceCollection services, IConfiguration configuration)
         {
+
+            services.AddHttpContextAccessor();
             //User repository
             services.AddScoped<IUserRepository, UserRepository>();
 

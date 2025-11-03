@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using OnlineLearningPlatform.Data;
 using OnlineLearningPlatform.Enums;
 using OnlineLearningPlatform.Models.Entities.Others;
 using OnlineLearningPlatform.Models.Entities.UserPart;
 using OnlineLearningPlatform.Models.ViewModels;
-using OnlineLearningPlatform.Services.Implementations;
 using OnlineLearningPlatform.Services.Interfaces;
 
 namespace OnlineLearningPlatform.Controllers
@@ -133,12 +130,12 @@ namespace OnlineLearningPlatform.Controllers
                 return RedirectToAction("Details", new { id = courseId });
             }
             Console.WriteLine($"[DEBUG] Transaction created with ID: {transaction.TransactionId}");
-            var priceAfterDiscount = course.Price - (course.Price * (course.Discount ?? 0) / 100); // Calculate final price
+            var priceAfterDiscount = course.Price - (course.Price * (course.Discount ?? 0) / 100);
 
             var vnPayModel = new VnPaymentRequestModel
             {
                 Amount = (double)priceAfterDiscount,
-                Description = $"Pay for course: {course.CourseName} (after {(course.Discount ?? 0)}% discount)", // Updated description
+                Description = $"Pay for course: {course.CourseName} (after {(course.Discount ?? 0)}% discount)",
                 OrderId = transaction.TransactionId
             };
 
