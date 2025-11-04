@@ -25,8 +25,7 @@ namespace OnlineLearningPlatform.Services.Interfaces
                     string? sortBy = null
                 );
 
-        Task<CourseDetailsViewModel?> GetCourseDetailsAsync(long id);
-
+        Task<CourseDetailsViewModel?> GetCourseDetailsAsync(long id, string? userId);
 
         Task<Course?> GetCourseByIdAsync(long courseId);
 

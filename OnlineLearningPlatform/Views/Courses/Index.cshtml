@@ -48,7 +48,7 @@
                                         @{
                                             var isAllChecked = !selCats.Any() || selCats.Contains("All");
                                         }
-                                        <input type="checkbox" name="categories" value="All" @(isAllChecked ? "checked" : "") />
+                                        <input type="radio" name="categories" value="All" @(isAllChecked ? "checked" : "") />
                                         <span class="checkmark"></span>
                                         All Categories
                                     </label>
@@ -59,7 +59,7 @@
                                         {
                                             var catName = cat.CategoryName;
                                             <label class="filter-checkbox d-block">
-                                                <input type="checkbox" name="categories" value="@catName" @(selCats.Contains(catName.ToString()) ? "checked" : "") />
+                                                <input type="radio" name="categories" value="@catName" @(selCats.Contains(catName.ToString()) ? "checked" : "") />
                                                 <span class="checkmark"></span>
                                                 @catName
                                             </label>
@@ -76,45 +76,26 @@
                                 <div class="filter-options">
 
                                     <label class="filter-checkbox d-block">
-
-                                        <input type="checkbox" name="levels" value="All" @(selLevels.Count == 0 || selLevels.Contains(0) ? "checked" : "") />
-
+                                        <input type="radio" name="levels" value="0" @(selLevels.Count == 0 || selLevels.Contains(0) ? "checked" : "") />
                                         <span class="checkmark"></span>
-
                                         All Levels
-
                                     </label>
 
                                     @if (allLevels.Any())
-
                                     {
-
                                         foreach (var lvl in allLevels)
-
                                         {
-
                                             var lvlId = lvl.LevelId ?? lvl.Id ?? 0;
-
                                             var lvlName = lvl.LevelName;
-
                                             <label class="filter-checkbox d-block">
-
-                                                <input type="checkbox" name="levels" value="@lvlId" @(selLevels.Contains((long)lvlId) ? "checked" : "") />
-
+                                                <input type="radio" name="levels" value="@lvlId" @(selLevels.Contains((long)lvlId) ? "checked" : "") />
                                                 <span class="checkmark"></span>
-
                                                 @lvlName
-
                                             </label>
-
                                         }
-
                                     }
-
                                 </div>
-
                             </div>
-
 
 
                             <div class="filter-group mt-3">

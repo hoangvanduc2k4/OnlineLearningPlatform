@@ -262,6 +262,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="action-buttons">
                                 @if (TempData["Error"] != null)
                                 {
@@ -269,20 +270,40 @@
                                         @TempData["Error"]
                                     </div>
                                 }
-                                <form asp-controller="Courses" asp-action="Checkout" method="post" id="checkoutForm">
-                                    <input type="hidden" name="courseId" value="@Model.CourseId" />
-                                    <button type="submit" class="btn btn-primary" id="enrollButton">Enroll Now</button>
-                                </form>
+
+                                @if (Model.IsEnrolled)
+                                {
+                                    <a asp-controller="Learn" asp-action="Course" asp-route-id="@Model.CourseId" class="btn btn-primary" id="learnButton">
+                                        Learn Now
+                                    </a>
+                                }
+                                else
+                                {
+                                    <form asp-controller="Courses" asp-action="Checkout" method="post" id="checkoutForm">
+                                        <input type="hidden" name="courseId" value="@Model.CourseId" />
+                                        <button type="submit" class="btn btn-primary" id="enrollButton">Enroll Now</button>
+                                    </form>
+                                }
+
 
                                 @if (User.Identity.IsAuthenticated)
                                 {
-                                    var btnClass = Model.IsInWishlist ? "btn-danger" : "btn-secondary";
-                                    var iconClass = Model.IsInWishlist ? "bi-heart-fill" : "bi-heart";
-                                    var btnText = Model.IsInWishlist ? "Remove from Wishlist" : "Add to Wishlist";
+                                    if (Model.IsEnrolled)
+                                    {
+                                        <button id="wishlist-btn" class="btn btn-secondary" disabled title="You are already enrolled in this course">
+                                            <i class="bi bi-heart"></i> Add to Wishlist
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        var btnClass = Model.IsInWishlist ? "btn-danger" : "btn-secondary";
+                                        var iconClass = Model.IsInWishlist ? "bi-heart-fill" : "bi-heart";
+                                        var btnText = Model.IsInWishlist ? "Remove from Wishlist" : "Add to Wishlist";
 
-                                    <button id="wishlist-btn" class="btn @btnClass" data-course-id="@Model.CourseId">
-                                        <i class="bi @iconClass"></i> @btnText
-                                    </button>
+                                        <button id="wishlist-btn" class="btn @btnClass" data-course-id="@Model.CourseId">
+                                            <i class="bi @iconClass"></i> @btnText
+                                        </button>
+                                    }
                                 }
 
                                 <a class="btn btn-tertiary"
@@ -293,6 +314,9 @@
                                     <i class="bi bi-chat-dots-fill"></i> Chat with Mentor
                                 </a>
                             </div>
+
+
+
                             <div class="guarantee"><i class="bi bi-shield-check"></i><span>30-day money-back guarantee</span></div>
 
                             <div class="share-section">
@@ -395,7 +419,6 @@
                     border-color: #007bff;
                 }
 
-            /* Class mới cho nút khi đã trong wishlist */
             .action-buttons .btn-danger {
                 background-color: #dc3545;
                 border-color: #dc3545;
@@ -474,13 +497,21 @@
                 background-color: #7f8c8d;
             }
     </style>
+
     <script>
-        document.getElementById('checkoutForm').addEventListener('submit', function() {
-            var enrollButton = document.getElementById('enrollButton');
-            enrollButton.disabled = true;
-            enrollButton.innerText = 'Processing...';
-        });
+        var checkoutForm = document.getElementById('checkoutForm');
+
+        if (checkoutForm) {
+            checkoutForm.addEventListener('submit', function () {
+                var enrollButton = document.getElementById('enrollButton');
+                if (enrollButton) {
+                    enrollButton.disabled = true;
+                    enrollButton.innerText = 'Processing...';
+                }
+            });
+        }
     </script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const wishlistBtn = document.getElementById('wishlist-btn');
@@ -537,4 +568,6 @@
             }
         });
     </script>
+
+
 }

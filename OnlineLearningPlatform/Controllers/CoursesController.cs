@@ -5,6 +5,7 @@ using OnlineLearningPlatform.Models.Entities.Others;
 using OnlineLearningPlatform.Models.Entities.UserPart;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Services.Interfaces;
+using System.Security.Claims; // Đảm bảo bạn đã using cái này
 
 namespace OnlineLearningPlatform.Controllers
 {
@@ -32,20 +33,20 @@ namespace OnlineLearningPlatform.Controllers
         }
 
         public async Task<IActionResult> Index(
-           int pageNumber = 1,
-           int pageSize = 6,
-           string? searchTerm = null,
-           string[]? categories = null,
-           long[]? levels = null,
-           string? priceRange = null,
-           string? studyTimeRange = null,
-           string? sortBy = null)
+         int pageNumber = 1,
+         int pageSize = 6,
+         string? searchTerm = null,
+         string[]? categories = null,
+         long[]? levels = null,
+         string? priceRange = null,
+         string? studyTimeRange = null,
+         string? sortBy = null)
         {
             var categoryList = categories?.ToList();
             var levelList = levels?.ToList();
 
             var paged = await _courseService.GetCoursesPagedAsync(
-                pageNumber, pageSize, searchTerm, categoryList, levelList, priceRange, studyTimeRange, sortBy);
+              pageNumber, pageSize, searchTerm, categoryList, levelList, priceRange, studyTimeRange, sortBy);
 
             ViewBag.SearchTerm = searchTerm;
             ViewBag.PageSize = pageSize;
@@ -58,19 +59,20 @@ namespace OnlineLearningPlatform.Controllers
             ViewBag.AllLevels = await _levelService.GetAllActiveLevelAysnc();
             return View(paged);
         }
+
         public async Task<IActionResult> Details(long id)
         {
-            var vm = await _courseService.GetCourseDetailsAsync(id);
+            var userId = _userManager.GetUserId(User);
+
+            var vm = await _courseService.GetCourseDetailsAsync(id, userId);
             if (vm == null)
             {
                 return NotFound();
             }
 
-            var user = await _userManager.GetUserAsync(User);
-
-            if (user != null)
+            if (userId != null)
             {
-                vm.IsInWishlist = await _wishlistService.IsInWishlistAsync(user.Id, id);
+                vm.IsInWishlist = await _wishlistService.IsInWishlistAsync(userId, id);
             }
             else
             {
@@ -130,6 +132,7 @@ namespace OnlineLearningPlatform.Controllers
                 return RedirectToAction("Details", new { id = courseId });
             }
             Console.WriteLine($"[DEBUG] Transaction created with ID: {transaction.TransactionId}");
+
             var priceAfterDiscount = course.Price - (course.Price * (course.Discount ?? 0) / 100);
 
             var vnPayModel = new VnPaymentRequestModel

@@ -55,7 +55,7 @@ namespace OnlineLearningPlatform.Services
                 query = query.Where(c => c.CourseCategories.Any(cc => cats.Contains(cc.Category.CategoryName)));
             }
 
-            if (levelIds != null && levelIds.Any())
+            if (levelIds != null && levelIds.Any() && !levelIds.Contains(0))
             {
                 query = query.Where(c => c.LevelId.HasValue && levelIds.Contains(c.LevelId.Value));
             }
@@ -85,7 +85,7 @@ namespace OnlineLearningPlatform.Services
                 c.StudyTime,
                 c.PublishedAt,
                 c.CreatedAt,
-                EffectivePrice = c.Price - (c.Discount ?? 0m) 
+                EffectivePrice = c.Price - (c.Discount ?? 0m)
             }).ToListAsync();
 
             Func<string?, decimal> parseStudyTime = (studyTimeString) =>
@@ -149,11 +149,6 @@ namespace OnlineLearningPlatform.Services
                 .Select(c => c.CourseId)
                 .ToList();
 
-            // ==========================================================
-            // == THÊM 2 DÒNG DEBUG NÀY VÀO ==
-            System.Diagnostics.Debug.WriteLine($"--- Trang {pageNumber} ---");
-            System.Diagnostics.Debug.WriteLine("IDs: " + string.Join(", ", pagedCourseIds));
-            // ==========================================================
 
             if (!pagedCourseIds.Any())
             {
@@ -191,7 +186,7 @@ namespace OnlineLearningPlatform.Services
         }
 
 
-        public async Task<CourseDetailsViewModel?> GetCourseDetailsAsync(long id)
+        public async Task<CourseDetailsViewModel?> GetCourseDetailsAsync(long id, string? userId)
         {
             var courseEntity = await _courseRepository.GetByIdWithDetailsAsync(id);
             if (courseEntity == null) return null;
@@ -214,9 +209,14 @@ namespace OnlineLearningPlatform.Services
                 vm.Ratings = new List<RatingViewModel>();
             }
 
+            vm.IsEnrolled = false;
+            if (!string.IsNullOrEmpty(userId))
+            {
+                vm.IsEnrolled = await _courseEnrollmentRepository.CheckUserPurchaseCourseAsync(userId, id);
+            }
+
             return vm;
         }
-
         public async Task<Course?> GetCourseByIdAsync(long courseId)
         {
             return await _courseRepository.GetByIdAsync(courseId);

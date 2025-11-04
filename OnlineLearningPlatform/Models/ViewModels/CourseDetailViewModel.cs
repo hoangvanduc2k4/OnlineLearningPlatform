@@ -27,11 +27,14 @@
 
         public bool IsInWishlist { get; set; }
 
+        public bool IsEnrolled { get; set; }
+
         // Chi tiết nội dung khóa học
         public List<ModuleViewModel> Modules { get; set; } = new List<ModuleViewModel>();
 
         // Danh sách đánh giá
         public List<RatingViewModel> Ratings { get; set; } = new List<RatingViewModel>();
+
     }
 
     public class ModuleViewModel
