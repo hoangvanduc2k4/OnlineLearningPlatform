@@ -33,21 +33,22 @@ namespace OnlineLearningPlatform.Controllers
         }
 
         public async Task<IActionResult> Index(
-         int pageNumber = 1,
-         int pageSize = 6,
-         string? searchTerm = null,
-         string[]? categories = null,
-         long[]? levels = null,
-         string? priceRange = null,
-         string? studyTimeRange = null,
-         string? sortBy = null)
+      int pageNumber = 1,
+      int pageSize = 6,
+      string? searchTerm = null,
+      string[]? categories = null,
+      long[]? levels = null,
+      string? priceRange = null,
+      string? studyTimeRange = null,
+      string? sortBy = null)
         {
             var categoryList = categories?.ToList();
             var levelList = levels?.ToList();
 
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var paged = await _courseService.GetCoursesPagedAsync(
-              pageNumber, pageSize, searchTerm, categoryList, levelList, priceRange, studyTimeRange, sortBy);
-
+                pageNumber, pageSize, searchTerm, categoryList, levelList,
+                priceRange, studyTimeRange, sortBy, userId);
             ViewBag.SearchTerm = searchTerm;
             ViewBag.PageSize = pageSize;
             ViewBag.SortBy = sortBy;

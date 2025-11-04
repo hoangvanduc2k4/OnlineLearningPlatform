@@ -15,7 +15,8 @@ namespace OnlineLearningPlatform.Models.ViewModels
         public string MentorId { get; set; } = null!;
         public string? MentorName { get; set; }
         public string? MentorAvatarUrl { get; set; }
-        
+
+        public bool IsEnrolled { get; set; }
         // level
         public string? LevelName { get; set; }
 

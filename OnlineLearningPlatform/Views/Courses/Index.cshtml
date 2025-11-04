@@ -300,7 +300,16 @@
                                                 <span class="instructor-name small text-muted">@instructor</span>
                                             </div>
 
-                                            <a asp-controller="Courses" asp-action="Details" asp-route-id="@course.CourseId" class="btn-course">Enroll Now</a>
+
+                                            @if (course.IsEnrolled)
+                                            {
+                                                <a asp-controller="Learn" asp-action="Course" asp-route-id="@course.CourseId" class="btn-course">Learn Now</a>
+                                            }
+                                            else
+                                            {
+                                                <a asp-controller="Courses" asp-action="Details" asp-route-id="@course.CourseId" class="btn-course">Enroll Now</a>
+                                            }
+
                                         </div>
                                     </div><!-- End Course Card -->
                                 </div>

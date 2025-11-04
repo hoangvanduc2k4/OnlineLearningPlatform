@@ -16,14 +16,15 @@ namespace OnlineLearningPlatform.Services.Interfaces
         Task<List<CourseViewModel>> GetTopNewestCoursesAsync(int count = 3);
 
         Task<IPagedList<CourseViewModel>> GetCoursesPagedAsync(
-                    int pageNumber, int pageSize,
-                    string? searchTerm = null,
-                    List<string>? categories = null,
-                    List<long>? levelIds = null,
-                    string? priceRange = null,
-                    string? studyTimeRange = null,
-                    string? sortBy = null
-                );
+        int pageNumber, int pageSize,
+        string? searchTerm = null,
+        List<string>? categories = null,
+        List<long>? levelIds = null,
+        string? priceRange = null,
+        string? studyTimeRange = null,
+        string? sortBy = null,
+        string? userId = null
+    );
 
         Task<CourseDetailsViewModel?> GetCourseDetailsAsync(long id, string? userId);
 

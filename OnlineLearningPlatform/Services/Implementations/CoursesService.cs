@@ -34,7 +34,8 @@ namespace OnlineLearningPlatform.Services
            List<long>? levelIds = null,
            string? priceRange = null,
            string? studyTimeRange = null,
-           string? sortBy = null)
+           string? sortBy = null,
+           string? userId = null)
         {
             var query = _courseRepository.GetCoursesQuery();
 
@@ -156,14 +157,28 @@ namespace OnlineLearningPlatform.Services
             }
 
             var finalCourses = await _courseRepository.GetCoursesQuery()
-                                                      .Where(c => pagedCourseIds.Contains(c.CourseId))
-                                                      .ToListAsync();
+                                        .Where(c => pagedCourseIds.Contains(c.CourseId))
+                                        .ToListAsync();
 
             var orderedFinalCourses = finalCourses
                 .OrderBy(c => pagedCourseIds.IndexOf(c.CourseId))
                 .ToList();
 
-            var vmList = orderedFinalCourses.Select(c => _mapper.Map<CourseViewModel>(c)).ToList();
+            var vmList = new List<CourseViewModel>();
+
+            foreach (var course in orderedFinalCourses)
+            {
+                var vm = _mapper.Map<CourseViewModel>(course);
+
+                if (!string.IsNullOrEmpty(userId))
+                {
+                    vm.IsEnrolled = await _courseEnrollmentRepository.CheckUserPurchaseCourseAsync(userId, course.CourseId);
+                }
+
+
+                vmList.Add(vm);
+            }
+
             return new StaticPagedList<CourseViewModel>(vmList, pageNumber, pageSize, totalItemCount);
         }
 
