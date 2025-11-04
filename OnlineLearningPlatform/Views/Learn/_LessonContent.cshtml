@@ -1,0 +1,21 @@
+@model OnlineLearningPlatform.Models.ViewModels.LessonViewModel
+<div class="card shadow-sm mb-3">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">@Model.LessonName</h5>
+    </div>
+    <div class="card-body">
+        @if (!string.IsNullOrEmpty(Model.LessonVideo))
+        {
+            <div class="mb-3">
+                <video controls style="max-width:100%">
+                    <source src="@Model.LessonVideo" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        }
+        <div class="lesson-content mb-3">
+            @Html.Raw(Model.LessonContent)
+        </div>
+        <div class="text-muted small">Duration: @(Model.Duration ?? 0) min</div>
+    </div>
+</div>
