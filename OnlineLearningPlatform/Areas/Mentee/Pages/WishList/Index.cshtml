@@ -1,0 +1,171 @@
+﻿@page
+@model OnlineLearningPlatform.Areas.Mentee.Pages.WishList.IndexModel
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@{
+    ViewData["Title"] = "My Wishlist";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-title light-background">
+    <div class="container d-lg-flex justify-content-between align-items-center py-4">
+        <h1 class="mb-2 mb-lg-0">@ViewData["Title"]</h1>
+        <nav class="breadcrumbs">
+            <ol class="mb-0">
+                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="current">My Wishlist</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<section id="wishlist-page" class="wishlist-page section">
+    <div class="container py-5" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row mb-4">
+            <div class="col-md-8 offset-md-2">
+                <form method="get" class="d-flex">
+                    <input type="text" name="SearchTerm" class="form-control me-2" placeholder="Search your wishlist..." value="@Model.SearchTerm" />
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
+        </div>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+        }
+
+        <div class="row">
+            @if (Model.WishlistCourses.Any())
+            {
+                @foreach (var course in Model.WishlistCourses)
+                {
+                    var imgUrlRaw = !string.IsNullOrEmpty(course.ImageUrl) ? course.ImageUrl : "~/assets/img/education/courses-3.webp";
+                    var imgUrl = Url.Content(imgUrlRaw);
+
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="course-card h-100">
+                            <div class="course-image">
+                                <img src="@imgUrl" alt="@course.CourseName" class="img-fluid">
+                            </div>
+                            <div class="course-content card-body d-flex flex-column">
+                                <h3 class="h5"><a asp-controller="Courses" asp-action="Details" asp-route-id="@course.CourseId">@course.CourseName</a></h3>
+                                <p class="text-muted small">By @(course.MentorName ?? "Instructor")</p>
+
+                                <div class="mt-auto d-flex justify-content-between align-items-center">
+
+                                    <a asp-area="" asp-controller="Courses" asp-action="Details" asp-route-id="@course.CourseId" class="btn btn-sm btn-outline-primary">View Details</a>
+
+                                    <form method="post" asp-page-handler="Remove" onsubmit="return confirm('Are you sure you want to remove this from your wishlist?');">
+                                        <input type="hidden" name="courseId" value="@course.CourseId" />
+                                        <input type="hidden" name="SearchTerm" value="@Model.SearchTerm" />
+                                        <input type="hidden" name="pageNumber" value="@Model.WishlistCourses.PageNumber" />
+                                        <button type="submit" class="btn btn-sm btn-danger" title="Remove from wishlist">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12 text-center">
+                    @if (!string.IsNullOrEmpty(Model.SearchTerm))
+                    {
+                        <p>No courses found in your wishlist matching "@Model.SearchTerm".</p>
+                        <a asp-page="Index" class="btn btn-primary">Clear Search</a>
+                    }
+                    else
+                    {
+                        <p>Your wishlist is empty. <a asp-area="" asp-controller="Courses" asp-action="Index">Browse courses</a> to add some!</p>
+                    }
+                </div>
+            }
+        </div>
+
+        @if (Model.WishlistCourses.PageCount > 1)
+        {
+            <div class="pagination-wrapper" data-aos="fade-up" data-aos-delay="300">
+                <nav aria-label="Wishlist pagination">
+
+                    @Html.PagedListPager(
+                    Model.WishlistCourses,
+                                page => Url.Page("/WishList/Index", new { area = "Mentee", pageNumber = page, SearchTerm = Model.SearchTerm }),
+                                new PagedListRenderOptions
+                                {
+                                    UlElementClasses = new[] { "pagination", "justify-content-center" },
+                                    LiElementClasses = new[] { "page-item" },
+                                    PageClasses = new[] { "page-link" },
+                                    ActiveLiElementClass = "active",
+                                    MaximumPageNumbersToDisplay = 5,
+                                    DisplayLinkToFirstPage = PagedListDisplayMode.IfNeeded,
+                                    DisplayLinkToLastPage = PagedListDisplayMode.IfNeeded,
+                                    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                                    DisplayLinkToNextPage = PagedListDisplayMode.Always
+                                }
+                                )
+            </nav>
+        </div>
+                }
+    </div>
+</section>
+<style>
+    .pagination-wrapper .pagination {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        padding-left: 0;
+        margin-top: 1.5rem;
+    }
+
+    .pagination-wrapper .page-item {
+        margin: 0 6px; /* khoảng cách giữa các nút */
+    }
+
+    .pagination-wrapper .page-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        color: #0d6efd; /* màu chữ xanh */
+        background-color: #fff;
+        border: none;
+        border-radius: 10px; /* bo góc như hình */
+        font-weight: 500;
+        transition: all 0.2s ease-in-out;
+        box-shadow: none;
+    }
+
+        .pagination-wrapper .page-link:hover {
+            background-color: #e7f1ff; /* nền xanh nhạt khi hover */
+            color: #0b5ed7;
+        }
+
+    .pagination-wrapper .page-item.active .page-link {
+        background-color: #0d6efd; /* nền xanh đậm */
+        color: #fff; /* chữ trắng */
+        font-weight: 600;
+        box-shadow: 0 2px 6px rgba(13, 110, 253, 0.4);
+    }
+
+    .pagination-wrapper .page-item.disabled .page-link {
+        color: #adb5bd;
+        background-color: transparent;
+        cursor: not-allowed;
+    }
+
+    .pagination-wrapper .page-link:focus {
+        outline: none;
+        box-shadow: none;
+    }
+</style>

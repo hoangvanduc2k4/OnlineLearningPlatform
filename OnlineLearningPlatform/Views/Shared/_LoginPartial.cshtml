@@ -37,6 +37,7 @@
                     <i class="bi bi-person me-2"></i>Account
                 </a>
             </li>
+
             @if (User.IsInRole("Mentee") || User.IsInRole("Mentor"))
             {
                 <li>
@@ -45,11 +46,18 @@
                     </a>
                 </li>
             }
+
             @if (User.IsInRole("Mentee"))
             {
                 <li>
                     <a class="dropdown-item" asp-controller="MyCourses" asp-action="Index">
                         <i class="bi bi-journal-bookmark me-2"></i>My Learning
+                    </a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item" asp-area="Mentee" asp-page="/WishList/Index">
+                        <i class="bi bi-heart me-2"></i>My Wishlist
                     </a>
                 </li>
                 <li>
@@ -58,6 +66,7 @@
                     </a>
                 </li>
             }
+
             @if (User.IsInRole("Mentor"))
             {
                 <li>
@@ -67,11 +76,14 @@
                 </li>
                 <li><a class="dropdown-item" asp-controller="MyCourses" asp-action="Index"><i class="bi bi-journal-bookmark me-2"></i>My Learning</a></li>
             }
+
             @if (User.IsInRole("Admin"))
             {
                 <li><a class="dropdown-item" href="@Url.Content("~/Admin/Dashboard")"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a></li>
             }
+
             <li><hr class="dropdown-divider"></li>
+
             <li>
                 <form asp-area="Identity" asp-page="/Account/Logout"
                       asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
@@ -80,6 +92,7 @@
                     </button>
                 </form>
             </li>
+
         </ul>
     </div>
 }
