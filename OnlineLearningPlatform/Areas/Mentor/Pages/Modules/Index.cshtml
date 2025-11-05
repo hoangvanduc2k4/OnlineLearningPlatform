@@ -1,0 +1,67 @@
+﻿@page
+@model OnlineLearningPlatform.Areas.Mentor.Pages.Modules.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Mentor/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Module[0].ModuleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Module[0].ModuleNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Module[0].Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Module[0].Course)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Module[0].DateCreated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Module[0].ModifiedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Module) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModuleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModuleNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ModuleId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ModuleId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ModuleId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
