@@ -1,14 +1,14 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.SignalR;
 using OnlineLearningPlatform.Enums;
+using OnlineLearningPlatform.Hubs;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Models.ViewModels;
-using OnlineLearningPlatform.Repositories;
 using OnlineLearningPlatform.Repositories.Interfaces;
 using OnlineLearningPlatform.Services.Interfaces;
+using System.Security.Claims;
 
 namespace OnlineLearningPlatform.Areas.Mentor.Controllers
 {
@@ -20,17 +20,19 @@ namespace OnlineLearningPlatform.Areas.Mentor.Controllers
         private readonly ICategoryRepository _categoryRepository;
         private readonly ILevelRepository _levelRepository;
         private readonly IWebHostEnvironment _webHostEnvironment;
-
+        private readonly IHubContext<CRUDHub> _hub;
         public CourseController(
         ICourseService courseService,
         ICategoryRepository categoryRepository,
         ILevelRepository levelRepository,
-        IWebHostEnvironment webHostEnvironment)
+        IWebHostEnvironment webHostEnvironment,
+        IHubContext<CRUDHub> hub)
         {
             _courseService = courseService;
             _categoryRepository = categoryRepository;
             _levelRepository = levelRepository;
             _webHostEnvironment = webHostEnvironment;
+            _hub = hub;
         }
 
         // GET: /Mentor/Course
@@ -105,6 +107,8 @@ namespace OnlineLearningPlatform.Areas.Mentor.Controllers
             }
 
             await PopulateFormOptions(viewModel);
+            await _hub.Clients.All.SendAsync("LoadCourses");
+
             return View(viewModel);
         }
 
@@ -218,7 +222,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Controllers
                     TempData["SuccessMessage"] = "Course submitted for review successfully!";
                 else
                     TempData["SuccessMessage"] = "Course saved as draft successfully!";
-
+                await _hub.Clients.All.SendAsync("LoadCourses");
                 return RedirectToAction(nameof(Index));
             }
 
@@ -284,7 +288,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Controllers
             {
                 TempData["ErrorMessage"] = "Error: Course not found or you don't have permission.";
             }
-
+            await _hub.Clients.All.SendAsync("LoadCourses");
             return RedirectToAction(nameof(Index));
         }
     }
