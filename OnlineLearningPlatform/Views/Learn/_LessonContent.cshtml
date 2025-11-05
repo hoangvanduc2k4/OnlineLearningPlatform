@@ -1,0 +1,40 @@
+﻿@model OnlineLearningPlatform.Models.ViewModels.LessonViewModel
+<div class="card shadow-sm mb-3">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">@Model.LessonName</h5>
+    </div>
+    <div class="card-body">
+        @if (!string.IsNullOrEmpty(Model.LessonVideo))
+        {
+            <div class="mb-3">
+                @{
+                    bool isYoutube = Model.LessonVideo.Contains("youtube.com") || Model.LessonVideo.Contains("youtu.be");
+                }
+                @if (isYoutube)
+                {
+                    string embedUrl = Model.LessonVideo;
+                    if (embedUrl.Contains("watch?v="))
+                    {
+                        embedUrl = "https://www.youtube.com/embed/" + embedUrl.Split("watch?v=")[1].Split('&')[0];
+                    }
+                    else if (embedUrl.Contains("youtu.be/"))
+                    {
+                        embedUrl = "https://www.youtube.com/embed/" + embedUrl.Split("youtu.be/")[1].Split('?')[0];
+                    }
+                <iframe width="100%" height="400" src="@embedUrl" frameborder="0" allowfullscreen></iframe>
+                }
+                else
+                {
+                    <video controls style="max-width:100%">
+                        <source src="@Model.LessonVideo" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                }
+            </div>
+        }
+        <div class="lesson-content mb-3">
+            @Html.Raw(Model.LessonContent)
+        </div>
+        <div class="text-muted small">Duration: @(Model.Duration ?? 0) min</div>
+    </div>
+</div>

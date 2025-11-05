@@ -1,0 +1,65 @@
+@model OnlineLearningPlatform.Models.ViewModels.CourseDetailsViewModel
+@{
+    ViewData["Title"] = "Learn: " + Model.CourseName;
+    var selectedLesson = ViewBag.SelectedLesson as OnlineLearningPlatform.Models.ViewModels.LessonViewModel;
+}
+<div class="container-fluid mt-4">
+    <div class="row">
+        <!-- Sidebar: Modules & Lessons -->
+        <div class="col-md-4 col-lg-3">
+            <div class="list-group" id="modulesList">
+                @foreach (var module in Model.Modules.OrderBy(m => m.ModuleNumber))
+                {
+                    <div class="mb-2">
+                        <a href="#" class="list-group-item list-group-item-action fw-bold module-toggle" data-module-id="@module.ModuleId">
+                            <i class="bi bi-folder2-open me-1"></i> @module.ModuleName
+                        </a>
+                        <div class="lessons-list ms-3" style="display:none;">
+                            @foreach (var lesson in module.Lessons.OrderBy(l => l.LessonNumber))
+                            {
+                                <a href="#" class="list-group-item list-group-item-action lesson-link @(selectedLesson?.LessonId == lesson.LessonId ? "active" : "")" data-lesson-id="@lesson.LessonId">
+                                    <i class="bi bi-play-circle me-1"></i> @lesson.LessonName
+                                </a>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- Main Content: Lesson -->
+        <div class="col-md-8 col-lg-9">
+            <div id="lessonContent">
+                @if (selectedLesson != null)
+                {
+                    @await Html.PartialAsync("_LessonContent", selectedLesson)
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+<script>
+    document.querySelectorAll('.module-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            var lessons = btn.nextElementSibling;
+            if (lessons) lessons.style.display = lessons.style.display === 'none' ? 'block' : 'none';
+        });
+    });
+    document.querySelectorAll('.lesson-link').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var lessonId = link.getAttribute('data-lesson-id');
+            fetch('/Learn/GetLesson/' + lessonId, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById('lessonContent').innerHTML = html;
+                    // Remove active from all links
+                    document.querySelectorAll('.lesson-link').forEach(l => l.classList.remove('active'));
+                    // Add active to the clicked link
+                    link.classList.add('active');
+                });
+        });
+    });
+</script>
+}

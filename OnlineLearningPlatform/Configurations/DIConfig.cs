@@ -73,6 +73,9 @@ namespace OnlineLearningPlatform.Configurations
             services.AddScoped<IWishlistRepository, WishlistRepository>();
             services.AddScoped<IWishlistService, WishlistService>();
 
+            services.AddScoped<ILessonRepository, LessonRepository>();
+            services.AddScoped<ILessonService, LessonService>();
+
             return services;
         }
     }
