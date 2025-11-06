@@ -1,0 +1,186 @@
+﻿@model OnlineLearningPlatform.Models.ViewModels.CourseDetailsViewModel
+@{
+    ViewData["Title"] = "Learn: " + Model.CourseName;
+    var selectedLesson = ViewBag.SelectedLesson as OnlineLearningPlatform.Models.ViewModels.LessonViewModel;
+}
+<div class="container-fluid mt-4">
+    <div class="row">
+        <!-- Sidebar: Modules & Lessons & Quizzes -->
+        <div class="col-md-4 col-lg-3">
+            <div class="list-group" id="modulesList">
+                @foreach (var module in Model.Modules.OrderBy(m => m.ModuleNumber))
+                {
+                    <div class="mb-2">
+                        <a href="#" class="list-group-item list-group-item-action fw-bold module-toggle" data-module-id="@module.ModuleId">
+                            <i class="bi bi-folder2-open me-1"></i> @module.ModuleName
+                        </a>
+                        <div class="lessons-list ms-3" style="display:none;">
+                            @foreach (var lesson in module.Lessons.OrderBy(l => l.LessonNumber))
+                            {
+                                <a href="#" class="list-group-item list-group-item-action lesson-link @(selectedLesson?.LessonId == lesson.LessonId ? "active" : "")" data-lesson-id="@lesson.LessonId">
+                                    <i class="bi bi-play-circle me-1"></i> @lesson.LessonName
+                                </a>
+                            }
+                            @foreach (var quiz in module.Quizzes)
+                            {
+                                <a href="#" class="list-group-item list-group-item-action quiz-link" data-quiz-id="@quiz.QuizId" data-quiz-time="@quiz.QuizTime">
+                                    <i class="bi bi-question-circle me-1 text-success"></i> [Quiz] @quiz.QuizName
+                                </a>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- Main Content: Lesson/Quiz -->
+        <div class="col-md-8 col-lg-9">
+            <div id="lessonContent">
+                @if (selectedLesson != null)
+                {
+                    @await Html.PartialAsync("_LessonContent", selectedLesson)
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+<script>
+    let quizTimer = null;
+    let quizStartTime = null;
+    let quizEndTime = null;
+    let quizTimeLeft = 0;
+    function startQuizTimer(minutes) {
+        clearInterval(quizTimer);
+        quizTimeLeft = minutes * 60;
+        quizStartTime = new Date();
+        updateTimerDisplay();
+        quizTimer = setInterval(function() {
+            quizTimeLeft--;
+            updateTimerDisplay();
+            if (quizTimeLeft <= 0) {
+                clearInterval(quizTimer);
+                autoSubmitQuiz();
+            }
+        }, 1000);
+    }
+    function updateTimerDisplay() {
+        let timerDiv = document.getElementById('quiz-timer');
+        if (timerDiv) {
+            let min = Math.floor(quizTimeLeft / 60);
+            let sec = quizTimeLeft % 60;
+            timerDiv.innerText = `Time left: ${min}:${sec.toString().padStart(2, '0')}`;
+        }
+    }
+    function autoSubmitQuiz() {
+        let form = document.getElementById('quizForm');
+        if (form) {
+            quizEndTime = new Date();
+            submitQuizForm(form, true);
+        }
+    }
+    document.addEventListener('submit', function(e) {
+        if (e.target && e.target.id === 'quizForm') {
+            e.preventDefault();
+            quizEndTime = new Date();
+            submitQuizForm(e.target, false);
+        }
+    });
+
+    function submitQuizForm(form, isAuto) {
+        var submitBtn = form.querySelector('button[type=submit]');
+        var data = {
+            quizId: submitBtn.getAttribute('data-quiz-id'),
+            answers: {},
+            startTime: quizStartTime ? quizStartTime.toISOString() : null,
+            endTime: (quizEndTime || new Date()).toISOString()
+        };
+        form.querySelectorAll('input[type=radio]:checked').forEach(function(inp) {
+            var qid = inp.name.replace('q_', '');
+            data.answers[qid] = parseInt(inp.value);
+        });
+        fetch('/Learn/SubmitQuiz', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(result => {
+            document.getElementById('quizResult').innerText =
+                `Score: ${result.score} (${result.correct}/${result.total}) - ${result.pass ? 'Passed' : 'Failed'}` + (isAuto ? ' (Auto submitted)' : '');
+            clearInterval(quizTimer);
+            loadQuizHistory(data.quizId);
+
+            // Đổi nút thành Try Again
+            submitBtn.textContent = 'Try Again';
+            submitBtn.classList.add('btn-warning');
+            submitBtn.classList.remove('btn-primary');
+            submitBtn.onclick = function(ev) {
+                ev.preventDefault();
+                // Reset form
+                form.reset();
+                document.getElementById('quizResult').innerText = '';
+                // Đổi lại nút thành Submit Quiz
+                submitBtn.textContent = 'Submit Quiz';
+                submitBtn.classList.remove('btn-warning');
+                submitBtn.classList.add('btn-primary');
+                // Reset timer nếu có
+                var quizTime = parseInt(submitBtn.getAttribute('data-quiz-time')) || 0;
+                if (quizTime > 0) {
+                    startQuizTimer(quizTime);
+                }
+                // Xóa sự kiện onclick để quay lại submit mặc định
+                submitBtn.onclick = null;
+            };
+        });
+    }
+    function loadQuizHistory(quizId) {
+        fetch(`/Learn/GetQuizHistory/${quizId}`)
+            .then(res => res.text())
+            .then(html => {
+                let historyDiv = document.getElementById('quiz-history');
+                if (historyDiv) historyDiv.innerHTML = html;
+            });
+    }
+    document.querySelectorAll('.module-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            var lessons = btn.nextElementSibling;
+            if (lessons) lessons.style.display = lessons.style.display === 'none' ? 'block' : 'none';
+        });
+    });
+    document.querySelectorAll('.lesson-link').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            clearInterval(quizTimer);
+            var lessonId = link.getAttribute('data-lesson-id');
+            fetch('/Learn/GetLesson/' + lessonId, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById('lessonContent').innerHTML = html;
+                    document.querySelectorAll('.lesson-link').forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                });
+        });
+    });
+    document.querySelectorAll('.quiz-link').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            clearInterval(quizTimer);
+            var quizId = link.getAttribute('data-quiz-id');
+            var quizTime = parseInt(link.getAttribute('data-quiz-time')) || 0;
+            fetch('/Learn/GetQuiz/' + quizId, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById('lessonContent').innerHTML = html;
+                    document.querySelectorAll('.lesson-link').forEach(l => l.classList.remove('active'));
+                    document.querySelectorAll('.quiz-link').forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                    if (quizTime > 0) {
+                        startQuizTimer(quizTime);
+                    }
+                    loadQuizHistory(quizId);
+                });
+        });
+    });
+</script>
+}

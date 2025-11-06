@@ -39,14 +39,14 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.Levels
             {
                 return Page();
             }
-
-            await _levelService.UpdateLevelAsync(Level);
-            await _hub.Clients.All.SendAsync("LevelUpdated", new
+            var existingLevel = await _levelService.GetLevelByNameAsync(Level.LevelName);
+            if (existingLevel != null && existingLevel.LevelId != Level.LevelId)
             {
-                levelId = Level.LevelId,
-                levelName = Level.LevelName,
-                isDeleted = Level.IsDeleted
-            });
+                ModelState.AddModelError("Level.LevelName", "Level has already existed.");
+                return Page();
+            }
+            await _levelService.UpdateLevelAsync(Level);
+            await _hub.Clients.All.SendAsync("LoadedLevel");
 
             return RedirectToPage("./Index");
         }

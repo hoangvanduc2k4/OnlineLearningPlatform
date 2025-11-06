@@ -41,14 +41,14 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.Categories
             {
                 return Page();
             }
-
-            await _categoryService.UpdateCategoryAsync(Category);
-            await _hub.Clients.All.SendAsync("CategoryUpdated", new
+            var existingCategory = await _categoryService.GetCategoryByNameAsync(Category.CategoryName);
+            if (existingCategory != null && existingCategory.CategoryId != Category.CategoryId)
             {
-                categoryId = Category.CategoryId,
-                categoryName = Category.CategoryName,
-                isDeleted = Category.IsDeleted
-            });
+                ModelState.AddModelError("Category.CategoryName", "Category has already existed.");
+                return Page();
+            }
+            await _categoryService.UpdateCategoryAsync(Category);
+            await _hub.Clients.All.SendAsync("LoadedCategory");
             return RedirectToPage("./Index");
         }
     }

@@ -2,6 +2,7 @@
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Repositories.Interfaces;
+using System.Threading.Tasks;
 using OnlineLearningPlatform.Services.Interfaces;
 
 namespace OnlineLearningPlatform.Services.Implementations
@@ -25,6 +26,21 @@ namespace OnlineLearningPlatform.Services.Implementations
             lesson.ModifiedDate = DateTime.Now;
 
             await _lessonRepository.AddAsync(lesson);
+        }
+
+        public async Task<LessonViewModel?> GetLessonViewModelByIdAsync(long lessonId)
+        {
+            var lesson = await _lessonRepository.GetLessonByIdAsync(lessonId);
+            if (lesson == null) return null;
+            return new LessonViewModel
+            {
+                LessonId = lesson.LessonId,
+                LessonName = lesson.LessonName,
+                LessonNumber = lesson.LessonNumber,
+                LessonContent = lesson.LessonContent,
+                LessonVideo = lesson.LessonVideo,
+                Duration = lesson.Duration
+            };
         }
     }
 }

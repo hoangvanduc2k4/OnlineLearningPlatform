@@ -1,9 +1,11 @@
-﻿using OnlineLearningPlatform.Models.ViewModels;
+using System.Threading.Tasks;
+using OnlineLearningPlatform.Models.ViewModels;
 
 namespace OnlineLearningPlatform.Services.Interfaces
 {
-    public interface ILessonService
+    public interface ILessonService 
     {
+        Task<LessonViewModel?> GetLessonViewModelByIdAsync(long lessonId);
         Task CreateLessonAsync(LessonInputViewModel viewModel);
     }
 }

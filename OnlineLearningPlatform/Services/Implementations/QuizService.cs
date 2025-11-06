@@ -179,6 +179,6 @@ namespace OnlineLearningPlatform.Services.Implementations
             return filtered;
         }
 
-
+        public async Task<Quiz> GetQuizAsync(long quizId) => await _quizRepository.GetByIdAsync(quizId);
     }
 }

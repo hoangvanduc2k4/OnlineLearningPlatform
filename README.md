@@ -4,7 +4,7 @@
 
 📖 Giới thiệu
 
-Online Learning Platform là một nền tảng học tập trực tuyến hiện đại, được xây dựng bằng ASP.NET Core MVC. Chúng tôi kết nối học viên (Mentee), giảng viên (Mentor) và quản trị viên (Admin) trong một hệ sinh thái học tập số hóa, nơi bạn có thể quản lý khóa học dễ dàng, theo dõi tiến độ học tập, trao đổi trực tiếp và nâng tầm trải nghiệm học tập. Với thiết kế thân thiện và công nghệ tiên tiến, dự án không chỉ là công cụ học tập mà còn là cầu nối kiến thức bền vững!
+  Online Learning Platform là một nền tảng học tập trực tuyến hiện đại, được xây dựng bằng ASP.NET Core MVC. Chúng tôi kết nối học viên (Mentee), giảng viên (Mentor) và quản trị viên (Admin) trong một hệ sinh thái học tập số hóa, nơi bạn có thể quản lý khóa học dễ dàng, theo dõi tiến độ học tập, trao đổi trực tiếp và nâng tầm trải nghiệm học tập. Với thiết kế thân thiện và công nghệ tiên tiến, dự án không chỉ là công cụ học tập mà còn là cầu nối kiến thức bền vững!
 
 
 
@@ -22,9 +22,9 @@ Dự án được thiết kế với vai trò người dùng rõ ràng, mang đ�
 
   -  🔐 Đăng ký / đăng nhập an toàn với ASP.NET Core Identity.
 
-  -  📚 Xem danh sách khóa học hấp dẫn, đăng ký (enroll) và mua khóa học chỉ trong vài cú click.
+  -  📚 Xem danh sách khóa học hấp dẫn, đăng ký (enroll) và mua khóa học chỉ trong vài cú click, nếu đang phân vân thì có thể để vào WishList
 
-  -  📈 Theo dõi tiến độ học tập chi tiết, hoàn thành bài tập (assignments) và kiểm tra kiến thức.
+  -  📈 Xem video bài giảng chi tiết nếu không hiểu thì có AI Chat bot hỗ trợ giải thích hoặc tóm gọn nội dung bài học và làm các bài quiz để test kiến thức nếu không biết làm thì có AI hướng dẫn làm.
   
   -  ⭐ Đánh giá \& review khóa học sau khi hoàn thành, chia sẻ trải nghiệm với cộng đồng.
   
@@ -39,22 +39,25 @@ Dự án được thiết kế với vai trò người dùng rõ ràng, mang đ�
 
   -  📝 Tạo mới, chỉnh sửa và quản lý khóa học một cách linh hoạt.
 
-  -  📹 Upload tài liệu, video bài giảng, bài tập và lecture chất lượng cao.
+  -  📹 Upload video bài giảng, tạo các quiz và lecture chất lượng cao.
 
-  -  👥 Theo dõi tiến độ học tập của từng học viên trong khóa học, hỗ trợ kịp thời.
+  -  👥 Hỗ trợ kịp thời  qua signalR
+    
+  -  📝 Dùng AI để soạn nội dung bài học hoặc soạn bank đề thi
 
 
 
 \* 🛡️ Admin – Quản lý toàn diện, kiểm soát chặt chẽ
 
-
+  -  ✅ Xem thống kê số liệu toàn hệ thống
 
   -  👥 Quản lý người dùng (mentee, mentor): Thêm/sửa/xóa/khóa tài khoản dễ dàng.
 
-  -  📂 Quản lý loại khóa học, cấp bậc và hệ thống Q\&A chuyên sâu.
+  -  📂 Quản lý loại khóa học, cấp bậc và hệ thống FAQ.
 
   -  ✅ Duyệt và kiểm soát nội dung khóa học từ mentor (approve/moderate) để đảm bảo chất lượng.
-
+  -  
+  -  ✅ Duyệt CV để cho mentee apply thàng Mentor
 
 
 🧩 Công nghệ sử dụng
@@ -254,34 +257,43 @@ Dự án theo mô hình MVC với Controller → Service → Repository, đảm 
 ```
 
 OnlineLearningPlatform/
-
+├── Areas/
+    ├── Identity
+    ├── Admin
+    ├── Mentor
+    └── Mentee
 ├── Controllers/
 
-│   └── CourseController.cs          # Xử lý HTTP requests
-
+    └── CourseController.cs          # Xử lý HTTP requests
+├── Mappers/
+├── Utils/
+├── Attributes/
 ├── Services/
 
-│   ├── ICourseService.cs            # Interface logic nghiệp vụ
+   ├── Interface
+       └── ICourseService         # Interface logic nghiệp vụ
 
-│   └── CourseService.cs             # Triển khai logic
+   └── Implimentation
+       └── ICourseService              # Triển khai logic
 
 ├── Repositories/
 
-│   ├── IBaseRepository.cs           # Generic interface cho CRUD cơ bản
+    ├── IBaseRepository.cs           # Generic interface cho CRUD cơ bản
 
-│   ├── BaseRepository.cs            # Generic base class triển khai IBaseRepository<T>
+    ├── BaseRepository.cs            # Generic base class triển khai IBaseRepository<T>
 
-│   ├── ICourseRepository.cs         # Extend IBaseRepository<Course> cho operations tùy chỉnh
+    ├── ICourseRepository.cs         # Extend IBaseRepository<Course> cho operations tùy chỉnh
 
-│   └── CourseRepository.cs          # Extend BaseRepository<Course>, ICourseRepository
+    └── CourseRepository.cs          # Extend BaseRepository<Course>, ICourseRepository
 
 ├── Configurations/
 
-│   └── DIConfig.cs                  # Cấu hình Dependency Injection
+    └── DIConfig.cs                  # Cấu hình Dependency Injection
 
 ├── Data/
-
-│   └── OnlineLearningDBContext.cs   # Entity Framework DbContext
+    ├── SeedData
+    ├── Migration
+    └── OnlineLearningDBContext.cs   # Entity Framework DbContext
 
 ├── Models/
 

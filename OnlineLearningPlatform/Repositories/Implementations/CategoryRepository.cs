@@ -15,6 +15,15 @@ namespace OnlineLearningPlatform.Repositories.Implementations
         {
             return await _context.Categories.Where(c => !c.IsDeleted).ToListAsync();
         }
+
+        public async Task<Category?> GetCategoryByNameAsync(string categoryName)
+        {
+            if (string.IsNullOrWhiteSpace(categoryName))
+                return null;
+
+            return await _context.Categories.AsNoTracking()
+                .FirstOrDefaultAsync(c => c.CategoryName.ToLower() == categoryName.ToLower());
+        }
     }
 
 }

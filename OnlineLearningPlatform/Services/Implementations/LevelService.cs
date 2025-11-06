@@ -43,6 +43,11 @@ namespace OnlineLearningPlatform.Services
             level.IsDeleted = true;
             await _levelRepository.UpdateAsync(level);
         }
+
+        public async Task<Level?> GetLevelByNameAsync(string levelName)
+        {
+            return await _levelRepository.GetLevelByNameAsync(levelName);
+        }
     }
 
 }

@@ -2,6 +2,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
+using OnlineLearningPlatform.Hubs;
 using OnlineLearningPlatform.Models.Entities.UserPart;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Repositories.Interfaces;
@@ -17,15 +19,16 @@ namespace OnlineLearningPlatform.Areas.Mentee.Pages.WishList
         private readonly IWishlistRepository _wishlistRepository;
         private readonly UserManager<User> _userManager;
         private readonly IMapper _mapper;
-
+        private readonly IHubContext<CRUDHub> _hub;
         public IndexModel(
             IWishlistRepository wishlistRepository,
             UserManager<User> userManager,
-            IMapper mapper)
+            IMapper mapper, IHubContext<CRUDHub> hub)
         {
             _wishlistRepository = wishlistRepository;
             _userManager = userManager;
             _mapper = mapper;
+            _hub = hub;
         }
 
         public IPagedList<CourseViewModel> WishlistCourses { get; set; }
@@ -81,7 +84,7 @@ namespace OnlineLearningPlatform.Areas.Mentee.Pages.WishList
             {
                 TempData["ErrorMessage"] = "Course not found in wishlist.";
             }
-
+            await _hub.Clients.All.SendAsync("LoadWishList");
             return RedirectToPage(new { SearchTerm = SearchTerm, pageNumber = pageNumber });
         }
     }
