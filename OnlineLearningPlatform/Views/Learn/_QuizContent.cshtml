@@ -1,0 +1,47 @@
+@model List<OnlineLearningPlatform.Models.ViewModels.QuestionWithOptionsViewModel>
+@{
+    var quiz = ViewBag.Quiz as OnlineLearningPlatform.Models.ViewModels.QuizViewModel;
+}
+<div class="card shadow-sm mb-3">
+    <div class="card-header bg-success text-white">
+        <h5 class="mb-0">Quiz: @quiz?.QuizName</h5>
+        <div class="small">Time: @quiz?.QuizTime min | Pass: @quiz?.PassScore</div>
+        <div id="quiz-timer" class="fw-bold text-warning"></div>
+    </div>
+    <form id="quizForm">
+        <div class="card-body">
+            @if (Model != null && Model.Any())
+            {
+                int qIndex = 0;
+                foreach (var question in Model)
+                {
+                    <div class="mb-4">
+                        <div class="fw-bold">Question @(++qIndex): @question.QuestionContent</div>
+                        <div class="ms-3 mt-2">
+                            @foreach (var option in question.Options)
+                            {
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q_@question.QuestionId" value="@option.OptionId" id="opt_@option.OptionId">
+                                    <label class="form-check-label" for="opt_@option.OptionId">
+                                        @option.OptionText
+                                    </label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="alert alert-info">No questions found for this quiz.</div>
+            }
+        </div>
+        <div class="card-footer bg-light">
+            <button type="submit" class="btn btn-primary" data-quiz-id="@quiz?.QuizId">Submit Quiz</button>
+            <span id="quizResult" class="ms-3 fw-bold"></span>
+        </div>
+    </form>
+</div>
+<div id="quiz-history" class="mt-4"></div>
+
+

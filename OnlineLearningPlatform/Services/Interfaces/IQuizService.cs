@@ -5,6 +5,7 @@ namespace OnlineLearningPlatform.Services.Interfaces
 {
     public interface IQuizService
     {
+        Task<Quiz> GetQuizAsync(long quizId);
         Task<Quiz> CreateQuizAsync(QuizViewModel quizDTO);
         Task UpdateQuizAsync(QuizViewModel quizDTO);
         Task DeleteQuizAsync(Quiz quiz);

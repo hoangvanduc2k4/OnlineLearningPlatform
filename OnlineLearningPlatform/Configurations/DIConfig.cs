@@ -59,6 +59,8 @@ namespace OnlineLearningPlatform.Configurations
             //quiz
             services.AddScoped<IQuizRepository, QuizRepository>();
             services.AddScoped<IQuizService, QuizService>();
+            services.AddScoped<IQuizResultRepository, QuizResultRepository>();
+            services.AddScoped<IQuizResultService, QuizResultService>();
             //mentorApllication
             services.AddScoped<IMentorApplicationRepository, MentorApplicationRepository>();
             services.AddScoped<IMentorApplicationService, MentorApplicationService>();
