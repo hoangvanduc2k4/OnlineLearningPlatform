@@ -40,7 +40,7 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.Categories
             if (category != null)
             {
                 await _categoryService.DeleteCategoryAsync(category);
-                await _hub.Clients.All.SendAsync("CategoryDeleted", category.CategoryId);
+                await _hub.Clients.All.SendAsync("LoadedCategory");
                 TempData["SuccessMessage"] = "Deleted successfully.";
 
             }
