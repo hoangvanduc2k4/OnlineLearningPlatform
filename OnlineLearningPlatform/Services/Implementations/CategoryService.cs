@@ -14,7 +14,10 @@ namespace OnlineLearningPlatform.Services
         {
             _categoryRepository = categoryRepository;
         }
-
+        public async Task<Category?> GetCategoryByNameAsync(string categoryName)
+        {
+            return await _categoryRepository.GetCategoryByNameAsync(categoryName);
+        }
 
         public async Task<IEnumerable<Category>> GetAllCategoryAysnc()
         {

@@ -6,12 +6,12 @@ namespace OnlineLearningPlatform.Models.Entities.CoursePart
     {
         [Key]
         public long LevelId { get; set; }
-
         [StringLength(255)]
+        [Required]
         public string? LevelName { get; set; }
 
         [Required]
-        public bool IsDeleted { get; set; } = false;    
+        public bool IsDeleted { get; set; } = false;
 
         public virtual ICollection<Course> Courses { get; set; } = new List<Course>();
 

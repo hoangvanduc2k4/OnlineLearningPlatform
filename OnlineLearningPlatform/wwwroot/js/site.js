@@ -13,6 +13,15 @@ connection.on("LoadCourses", function () {
 connection.on("LoadWishList", function () {
     window.location.reload()
 });
+connection.on("LoadedLevel", function () {
+    window.location.reload()
+});
+connection.on("LoadedCategory", function () {
+    window.location.reload()
+});
 connection.start().catch(function (err) {
     return console.error(err.toString());
 });
+
+
+

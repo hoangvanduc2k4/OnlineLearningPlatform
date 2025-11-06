@@ -32,7 +32,7 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.Levels
             if (level != null)
             {
                 await _levelService.DeleteLevelAsync(level);
-                await _hub.Clients.All.SendAsync("LevelDeleted", level.LevelId);
+                await _hub.Clients.All.SendAsync("LoadedLevel");
                 TempData["SuccessMessage"] = "Deleted successfully.";
             }
             Levels = (await _levelService.GetAllLevelAysnc()).ToList();

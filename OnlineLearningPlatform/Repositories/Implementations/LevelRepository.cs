@@ -14,6 +14,18 @@ namespace OnlineLearningPlatform.Repositories.Implementations
         {
             return await _context.Levels.Where(l => !l.IsDeleted).ToListAsync();
         }
+
+
+        public async Task<Level?> GetLevelByNameAsync(string levelName)
+        {
+            if (string.IsNullOrWhiteSpace(levelName))
+                return null;
+
+            return await _context.Levels.AsNoTracking()
+                .Where(l => l.LevelName.ToLower().Contains(levelName.ToLower()))
+                .FirstOrDefaultAsync();
+        }
+
     }
 
 }

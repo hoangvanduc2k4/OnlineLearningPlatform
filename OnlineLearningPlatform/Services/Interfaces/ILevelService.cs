@@ -10,6 +10,8 @@ namespace OnlineLearningPlatform.Services.Interfaces
         Task AddLevelAsync(Level level);
         Task UpdateLevelAsync(Level level);
         Task DeleteLevelAsync(Level level);
+        Task<Level?> GetLevelByNameAsync(string levelName);
+
     }
 
 }
