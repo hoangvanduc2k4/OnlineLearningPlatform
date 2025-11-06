@@ -1,0 +1,38 @@
+@model List<OnlineLearningPlatform.Models.Entities.CoursePart.QuizResult>
+@if (Model != null && Model.Any())
+{
+    <div class="card">
+        <div class="card-header bg-light fw-bold">Quiz History</div>
+        <div class="card-body p-2">
+            <table class="table table-sm table-bordered mb-0">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Score</th>
+                        <th>Correct</th>
+                        <th>Total</th>
+                        <th>Time (s)</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var r in Model)
+                {
+                    <tr>
+                        <td>@r.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
+                        <td>@r.Score</td>
+                        <td>@r.CorrectAnswers</td>
+                        <td>@r.TotalQuestions</td>
+                        <td>@((r.EndTime - r.StartTime).TotalSeconds.ToString("0"))</td>
+                        <td>@(r.Score >= (ViewBag.PassScore ?? 0.1) ? "Passed" : "Failed")</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-info">No quiz history found.</div>
+}

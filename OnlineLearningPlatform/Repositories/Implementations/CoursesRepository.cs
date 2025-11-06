@@ -29,7 +29,7 @@ namespace OnlineLearningPlatform.Repositories
 
         public async Task<Course?> GetByIdWithDetailsAsync(long id)
         {
-            return await _context.Set<Course>()
+            Course? course = await _context.Set<Course>()
                 .Include(c => c.CourseImageUrls)
                 .Include(c => c.CourseCategories).ThenInclude(cc => cc.Category)
                 .Include(c => c.Modules).ThenInclude(m => m.Lessons)
@@ -37,6 +37,7 @@ namespace OnlineLearningPlatform.Repositories
                 .Include(c => c.Level)
                 .Include(c => c.CreatorUser)
                 .FirstOrDefaultAsync(c => c.CourseId == id);
+            return course;
         }
 
         public async Task<IEnumerable<Course>> GetAllByMentorIdAsync(string mentorId)
