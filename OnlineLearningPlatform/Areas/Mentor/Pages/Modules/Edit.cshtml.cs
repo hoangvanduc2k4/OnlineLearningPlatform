@@ -1,78 +1,79 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using OnlineLearningPlatform.Data;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
+using OnlineLearningPlatform.Models.Entities.UserPart;
+using OnlineLearningPlatform.Models.ViewModels;
+using OnlineLearningPlatform.Services.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace OnlineLearningPlatform.Areas.Mentor.Pages.Modules
 {
+    [Authorize(Roles = "Mentor")]
     public class EditModel : PageModel
     {
-        private readonly OnlineLearningPlatform.Data.OnlineLearningDBContext _context;
+        private readonly IModuleService _moduleService;
+        private readonly UserManager<User> _userManager;
+        private readonly ICourseService _courseService; 
 
-        public EditModel(OnlineLearningPlatform.Data.OnlineLearningDBContext context)
+        public EditModel(IModuleService moduleService, UserManager<User> userManager, ICourseService courseService)
         {
-            _context = context;
+            _moduleService = moduleService;
+            _userManager = userManager;
+            _courseService = courseService;
         }
 
         [BindProperty]
-        public Module Module { get; set; } = default!;
+        public ModuleInputViewModel ModuleVM { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(long? id)
+        public async Task<IActionResult> OnGetAsync(long id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var mentor = await _userManager.GetUserAsync(User);
+            var mentorId = await _userManager.GetUserIdAsync(mentor);
+            if (string.IsNullOrEmpty(mentorId)) return Forbid();
 
-            var module =  await _context.Modules.FirstOrDefaultAsync(m => m.ModuleId == id);
-            if (module == null)
-            {
-                return NotFound();
-            }
-            Module = module;
-           ViewData["CourseId"] = new SelectList(_context.Courses, "CourseId", "CourseName");
+            var moduleViewModel = await _moduleService.GetModuleForEditAsync(id, mentorId);
+            if (moduleViewModel == null) return NotFound();
+
+            ModuleVM = moduleViewModel;
+
+            var course = await _courseService.GetCourseByIdAndMentorAsync(ModuleVM.CourseId, mentorId);
+            if (course == null) return Forbid();
+
+            ViewData["CourseName"] = course.CourseName;
+            ViewData["CourseId"] = ModuleVM.CourseId;
+
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            var mentor = await _userManager.GetUserAsync(User);
+            var mentorId = await _userManager.GetUserIdAsync(mentor);
+            if (string.IsNullOrEmpty(mentorId)) return Forbid();
+
             if (!ModelState.IsValid)
             {
+                var course = await _courseService.GetCourseByIdAndMentorAsync(ModuleVM.CourseId, mentorId);
+                if (course == null) return Forbid();
+
+                ViewData["CourseName"] = course.CourseName;
+                ViewData["CourseId"] = ModuleVM.CourseId;
                 return Page();
             }
 
-            _context.Attach(Module).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ModuleExists(Module.ModuleId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            var success = await _moduleService.UpdateModuleAsync(ModuleVM, mentorId);
+            if (!success) return NotFound();
 
             return RedirectToPage("./Index");
-        }
-
-        private bool ModuleExists(long id)
-        {
-            return _context.Modules.Any(e => e.ModuleId == id);
         }
     }
 }

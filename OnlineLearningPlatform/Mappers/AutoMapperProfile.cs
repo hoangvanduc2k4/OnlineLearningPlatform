@@ -72,6 +72,9 @@ namespace OnlineLearningPlatform.Mappers
          src.Feedback))
      .ForMember(dest => dest.FeedbackDate, opt => opt.MapFrom(src =>
          src.DateCreated));
+            CreateMap<ModuleInputViewModel, Module>();
+            CreateMap<Module, ModuleInputViewModel>();
+            CreateMap<LessonInputViewModel, Lesson>();
         }
     }
 }

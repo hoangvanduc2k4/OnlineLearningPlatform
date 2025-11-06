@@ -72,7 +72,12 @@ namespace OnlineLearningPlatform.Configurations
             // wishlist
             services.AddScoped<IWishlistRepository, WishlistRepository>();
             services.AddScoped<IWishlistService, WishlistService>();
-
+            // modules
+            services.AddScoped<IModuleRepository, ModuleRepository>();
+            services.AddScoped<IModuleService, ModuleService>();
+            // lessons
+            services.AddScoped<ILessonRepository, LessonRepository>();
+            services.AddScoped<ILessonService, LessonService>();
             return services;
         }
     }

@@ -1,0 +1,33 @@
+﻿@page "{id:long}"
+@model OnlineLearningPlatform.Areas.Mentor.Pages.Courses.ManageModel
+@{
+    ViewData["Title"] = "Manage Course";
+    Layout = "~/Areas/Mentor/Views/Shared/_Layout.cshtml";
+}
+
+<div id="manage-content">
+
+    @if (Model.ModuleId != null)
+    {
+        <partial name="_ManageModulePartial" />
+    }
+    else if (Model.LessonId != null)
+    {
+        <div class="p-4">
+            <h2>Edit Lesson</h2>
+            <p>Content for editing Lesson ID @Model.LessonId will go here.</p>
+        </div>
+    }
+    else if (Model.QuizId != null)
+    {
+        <div class="p-4">
+            <h2>Edit Quiz</h2>
+            <p>Content for editing Quiz ID @Model.QuizId will go here.</p>
+        </div>
+    }
+    else
+    {
+        <partial name="_ManageCoursePartial" />
+    }
+
+</div>

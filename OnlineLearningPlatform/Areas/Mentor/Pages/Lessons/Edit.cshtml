@@ -1,0 +1,90 @@
+﻿@page
+@model OnlineLearningPlatform.Areas.Mentor.Pages.Lessons.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Mentor/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Lesson</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Lesson.LessonId" />
+            <div class="form-group">
+                <label asp-for="Lesson.ModuleId" class="control-label"></label>
+                <select asp-for="Lesson.ModuleId" class="form-control" asp-items="ViewBag.ModuleId"></select>
+                <span asp-validation-for="Lesson.ModuleId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Lesson.LessonNumber" class="control-label"></label>
+                <input asp-for="Lesson.LessonNumber" class="form-control" />
+                <span asp-validation-for="Lesson.LessonNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Lesson.LessonName" class="control-label"></label>
+                <input asp-for="Lesson.LessonName" class="form-control" />
+                <span asp-validation-for="Lesson.LessonName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lesson.LessonContent" class="control-label"></label>
+                <input asp-for="Lesson.LessonContent" class="form-control" />
+                <span asp-validation-for="Lesson.LessonContent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lesson.LessonVideo" class="control-label"></label>
+                <input asp-for="Lesson.LessonVideo" class="form-control" />
+                <span asp-validation-for="Lesson.LessonVideo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lesson.Duration" class="control-label"></label>
+                <input asp-for="Lesson.Duration" class="form-control" />
+                <span asp-validation-for="Lesson.Duration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Lesson.CreatedAt" class="control-label"></label>
+                <input asp-for="Lesson.CreatedAt" class="form-control" />
+                <span asp-validation-for="Lesson.CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lesson.UpdatedAt" class="control-label"></label>
+                <input asp-for="Lesson.UpdatedAt" class="form-control" />
+                <span asp-validation-for="Lesson.UpdatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Lesson.Status" class="control-label"></label>
+                <select asp-for="Lesson.Status" class="form-control"></select>
+                <span asp-validation-for="Lesson.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lesson.DateCreated" class="control-label"></label>
+                <input asp-for="Lesson.DateCreated" class="form-control" />
+                <span asp-validation-for="Lesson.DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lesson.ModifiedDate" class="control-label"></label>
+                <input asp-for="Lesson.ModifiedDate" class="form-control" />
+                <span asp-validation-for="Lesson.ModifiedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

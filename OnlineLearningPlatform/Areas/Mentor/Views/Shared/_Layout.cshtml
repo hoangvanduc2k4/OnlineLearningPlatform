@@ -21,7 +21,7 @@
 	<link href="~/css/main.css" rel="stylesheet" asp-append-version="true">
 
 	<link href="~/css/chatbot.css" rel="stylesheet" asp-append-version="true">
-
+	@await RenderSectionAsync("Styles", required: false)
 	<style>
 		/* Root variables for theming */
 		:root {
@@ -58,7 +58,7 @@
 			position: fixed;
 			top: 0;
 			left: 0;
-			width: 250px;
+			width: 270px;
 			height: 100%;
 			background: var(--sidebar-bg);
 			color: var(--sidebar-text);
@@ -167,7 +167,7 @@
 			display: flex;
 			align-items: center;
 			height: 100%;
-			padding: 0 20px;
+			padding: 0 40px;
 		}
 
 		.pc-mob-drp {
@@ -230,7 +230,7 @@
 		/* Main content: Spacious and responsive */
 		.pc-container {
 			margin-top: 60px;
-			margin-left: 250px;
+			margin-left: 270px;
 			padding: 20px;
 			min-height: calc(100vh - 120px);
 			transition: var(--transition);
@@ -294,10 +294,36 @@
 							<span class="pc-mtext">Course Management</span>
 						</a>
 					</li>
+					@if (ViewData["CourseId"] != null)
+					{
+						long courseId = 0; 
+						if (ViewData["CourseId"] is long cId) 
+						{
+							courseId = cId;
+						}
+						long? moduleId = ViewData["ModuleId"] as long?;
+						long? lessonId = ViewData["LessonId"] as long?;
+						long? quizId = ViewData["QuizId"] as long?;
+
+						@await Component.InvokeAsync("CourseHierarchy", new
+						{
+							courseId = courseId,
+										currentModuleId = moduleId,
+										currentLessonId = lessonId,
+										currentQuizId = quizId
+										})
+					}
+
 					<li class="pc-item">
 						<a asp-area="Mentor" asp-page="/Modules/Index" class="pc-link">
 							<span class="pc-micon"><i class="bi bi-journal-album"></i></span>
 							<span class="pc-mtext">Modules Management</span>
+						</a>
+					</li>
+					<li class="pc-item">
+						<a asp-area="Mentor" asp-page="/Lessons/Index" class="pc-link">
+							<span class="pc-micon"><i class="bi bi-journal-album"></i></span>
+							<span class="pc-mtext">Lessons Management</span>
 						</a>
 					</li>
 					<li class="pc-item">
@@ -366,6 +392,5 @@
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 	@await RenderSectionAsync("Scripts", required: false)
-
 </body>
 </html>

@@ -1,0 +1,97 @@
+﻿@page
+@model OnlineLearningPlatform.Areas.Mentor.Pages.Lessons.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Mentor/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Lesson[0].LessonNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lesson[0].LessonName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lesson[0].LessonContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lesson[0].LessonVideo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lesson[0].Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lesson[0].CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lesson[0].UpdatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lesson[0].Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lesson[0].Module)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lesson[0].DateCreated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lesson[0].ModifiedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Lesson) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LessonNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LessonName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LessonContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LessonVideo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Module.ModuleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.LessonId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.LessonId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.LessonId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

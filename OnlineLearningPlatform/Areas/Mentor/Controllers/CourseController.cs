@@ -154,7 +154,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Controllers
                 ExistingCoverImageUrl = course.CourseImageUrls.FirstOrDefault()?.Url,
                 CurrentStatus = course.Status
             };
-
+            ViewData["CourseId"] = id;
             await PopulateFormOptions(viewModel);
             return View(viewModel);
         }
