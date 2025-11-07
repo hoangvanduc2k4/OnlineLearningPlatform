@@ -26,9 +26,9 @@ namespace OnlineLearningPlatform.Services.Implementations
         public async Task<Quiz> CreateQuizAsync(QuizViewModel quizDTO)
         {
             int convertedTime = quizDTO.QuizTime;
-            if (quizDTO.TimeUnit == "minutes")
+            if (quizDTO.TimeUnit == "Second")
             {
-                convertedTime = quizDTO.QuizTime * 60; // Chuyển phút sang giây
+                convertedTime = quizDTO.QuizTime / 60;
             }
             var quiz = new Quiz
             {
@@ -51,11 +51,16 @@ namespace OnlineLearningPlatform.Services.Implementations
             {
                 throw new Exception("Quiz không tồn tại");
             }
+            int convertedTime = quizDTO.QuizTime;
+            if (quizDTO.TimeUnit == "Second")
+            {
+                convertedTime = quizDTO.QuizTime / 60;
+            }
 
             // Cập nhật các thuộc tính của entity hiện có
             existingQuiz.QuizName = quizDTO.QuizName;
             existingQuiz.ModuleId = quizDTO.ModuleId;
-            existingQuiz.QuizTime = quizDTO.QuizTime;
+            existingQuiz.QuizTime = convertedTime;
             existingQuiz.PassScore = quizDTO.PassScore;
             existingQuiz.Status = quizDTO.IsActived? QuizStatus.Active:QuizStatus.Inactive;
             existingQuiz.UpdatedAt = DateTime.Now;
