@@ -19,12 +19,16 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Questions
         private readonly IQuizService _quizService;
         private readonly IHubContext<CRUDHub> _hub;
 
-        public UpdateModel(UserManager<User> userManager, IQuestionService questionService, IQuizService quizService, IHubContext<CRUDHub> hub)
+        private readonly ICourseService _courseService;
+        private readonly IModuleService _moduleService;
+        public UpdateModel(UserManager<User> userManager, IQuestionService questionService, IQuizService quizService, IHubContext<CRUDHub> hub, ICourseService courseService, IModuleService moduleService)
         {
             _questionService = questionService;
             _quizService = quizService;
             _hub = hub;
             _userManager = userManager;
+            _courseService = courseService;
+            _moduleService = moduleService;
         }
 
         [BindProperty]
@@ -63,7 +67,15 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Questions
                 // Gán dữ liệu cho page
                 Question = question;
                 QuizName = quiz.QuizName;
-
+                var module = await _moduleService.GetModuleForEditAsync(quiz.ModuleId, mentorId);
+                var course = await _courseService.GetCourseByIdAndMentorAsync(module.CourseId, mentorId);
+                if (course != null && module != null)
+                {
+                    ViewData["CourseName"] = course.CourseName;
+                    ViewData["ModuleName"] = module.ModuleName;
+                    ViewData["CourseId"] = course.CourseId;
+                    ViewData["QuizId"] = quizId;
+                }
                 return Page();
             }
             catch (UnauthorizedAccessException ex)
@@ -97,6 +109,16 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Questions
                 if (!ModelState.IsValid)
                 {
                     QuizName = quiz.QuizName;
+                    var module = await _moduleService.GetModuleForEditAsync(quiz.ModuleId, mentorId);
+                    var course = await _courseService.GetCourseByIdAndMentorAsync(module.CourseId, mentorId);
+
+                    if (course != null && module != null)
+                    {
+                        ViewData["CourseName"] = course.CourseName;
+                        ViewData["ModuleName"] = module.ModuleName;
+                        ViewData["CourseId"] = course.CourseId;
+                        ViewData["QuizId"] = QuizId;
+                    }
                     return Page();
                 }
 
