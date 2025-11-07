@@ -36,12 +36,27 @@ namespace OnlineLearningPlatform.Areas.Mentor.Controllers
         }
 
         // GET: /Mentor/Course
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(
+            int pageNumber = 1,
+            string? searchTerm = null,
+            string? sortBy = null)
         {
             var mentorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (mentorId == null) return Unauthorized();
 
-            var courses = await _courseService.GetCoursesForMentorAsync(mentorId);
+            int pageSize = 5; 
+
+            var courses = await _courseService.GetCoursesPagedByMentorAsync(
+                mentorId,
+                pageNumber,
+                pageSize,
+                searchTerm,
+                sortBy
+            );
+
+            ViewData["SearchTerm"] = searchTerm;
+            ViewData["SortBy"] = sortBy;
+
             return View(courses);
         }
 

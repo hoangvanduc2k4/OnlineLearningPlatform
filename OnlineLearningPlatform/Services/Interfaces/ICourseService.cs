@@ -38,6 +38,13 @@ namespace OnlineLearningPlatform.Services.Interfaces
 
         Task<int> GetStudentCountsByMentorIdsAsync(string mentorId);
         Task<CourseHierarchyViewModel?> GetCourseForHierarchyAsync(long courseId);
+
+        Task<IPagedList<Course>> GetCoursesPagedByMentorAsync(
+        string mentorId,
+        int pageNumber,
+        int pageSize,
+        string? searchTerm,
+        string? sortBy  );
     }
 
 }

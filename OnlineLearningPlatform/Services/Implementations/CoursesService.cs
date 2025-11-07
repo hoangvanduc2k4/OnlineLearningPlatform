@@ -374,5 +374,46 @@ namespace OnlineLearningPlatform.Services
 
             return vm;
         }
+
+        public async Task<IPagedList<Course>> GetCoursesPagedByMentorAsync(
+        string mentorId,
+        int pageNumber,
+        int pageSize,
+        string? searchTerm,
+        string? sortBy)
+        {
+            IEnumerable<Course> courses = await _courseRepository.GetAllByMentorIdAsync(mentorId);
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                var lower = searchTerm.Trim().ToLower();
+                courses = courses.Where(c => c.CourseName.ToLower().Contains(lower));
+            }
+
+            switch (sortBy)
+            {
+                case "name_desc":
+                    courses = courses.OrderByDescending(c => c.CourseName);
+                    break;
+                case "date_asc":
+                    courses = courses.OrderBy(c => c.CreatedAt);
+                    break;
+                case "date_desc":
+                    courses = courses.OrderByDescending(c => c.CreatedAt);
+                    break;
+                case "price_asc":
+                    courses = courses.OrderBy(c => c.Price);
+                    break;
+                case "price_desc":
+                    courses = courses.OrderByDescending(c => c.Price);
+                    break;
+                default: 
+                    courses = courses.OrderBy(c => c.CourseName);
+                    break;
+            }
+
+            IPagedList<Course> pagedResult = courses.ToPagedList(pageNumber, pageSize);
+            return pagedResult;
+        }
     }
 }
