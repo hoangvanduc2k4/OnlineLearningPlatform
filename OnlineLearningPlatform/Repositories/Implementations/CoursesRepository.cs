@@ -98,5 +98,20 @@ namespace OnlineLearningPlatform.Repositories
                 .GroupBy(c => c.Status)
                 .ToDictionaryAsync(g => g.Key.ToString(), g => g.Count());
         }
+
+        public async Task<Course?> GetByIdWithDetailsToLearnAsync(long id)
+        {
+            return await _context.Set<Course>()
+             .Include(c => c.CourseImageUrls)
+             .Include(c => c.CourseCategories).ThenInclude(cc => cc.Category)
+             .Include(c => c.Modules.Where(m=>m.Status == CommonStatus.Showed))
+                 .ThenInclude(m => m.Lessons.Where(l => l.Status == CommonStatus.Showed))
+             .Include(c => c.Modules.Where(m => m.Status == CommonStatus.Showed))
+                 .ThenInclude(m => m.Quizzes.Where(q => q.Status == QuizStatus.Active))
+             .Include(c => c.Level)
+             .Include(c => c.CreatorUser)
+             .FirstOrDefaultAsync(c => c.CourseId == id);
+        }
+
     }
 }

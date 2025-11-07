@@ -17,5 +17,6 @@ namespace OnlineLearningPlatform.Repositories.Interfaces
         Task<int> GetCourseCountsByMentorIdsAsync(string mentorId);
 
         Task<Dictionary<string, int>> GetCourseStatusCountsAsync();
+        Task<Course?> GetByIdWithDetailsToLearnAsync(long id);
     }
 }
