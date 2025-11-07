@@ -130,10 +130,7 @@ namespace OnlineLearningPlatform.Services.Implementations
         {
             var quizzes = await _quizRepository.GetAllWithModuleAndCourseAsync();
 
-            if (role == "Mentor")
-            {
                 quizzes = quizzes.Where(q => q.Module.Course.Creator == currentUserId);
-            }
 
             var filtered = quizzes
                 .Where(q => q.Status == QuizStatus.Active &&
@@ -157,11 +154,7 @@ namespace OnlineLearningPlatform.Services.Implementations
         {
             var quizzes = await _quizRepository.GetAllWithModuleAndCourseAsync();
 
-            if (role == "Mentor")
-            {
                 quizzes = quizzes.Where(q => q.Module.Course.Creator == currentUserId);
-            }
-
             var filtered = quizzes
                 .Where(q => q.Status != QuizStatus.Active &&
                             (string.IsNullOrEmpty(searchTerm) ||
