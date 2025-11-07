@@ -15,11 +15,13 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Courses
     {
         private readonly ICourseService _courseService;
         private readonly UserManager<User> _userManager;
+        private readonly IModuleService _moduleService;
 
-        public ManageModel(ICourseService courseService, UserManager<User> userManager)
+        public ManageModel(ICourseService courseService, UserManager<User> userManager, IModuleService moduleService)
         {
             _courseService = courseService;
             _userManager = userManager;
+            _moduleService = moduleService;
         }
 
         public CourseDetailsViewModel CourseVM { get; set; } = default!;
@@ -57,6 +59,25 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Courses
             ViewData["LessonId"] = lessonId;
             ViewData["QuizId"] = quizId;
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostDeleteModuleAsync(long moduleId, long courseId)
+        {
+            var mentorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(mentorId)) return Forbid();
+
+            var success = await _moduleService.HideModuleAsync(moduleId, mentorId);
+
+            if (!success)
+            {
+                TempData["ErrorMessage"] = "Failed to delete module or module not found.";
+            }
+            else
+            {
+                TempData["SuccessMessage"] = "Module has been hidden (deleted).";
+            }
+
+            return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = courseId });
         }
     }
 }

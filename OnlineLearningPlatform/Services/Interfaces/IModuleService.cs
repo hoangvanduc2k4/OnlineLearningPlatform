@@ -11,5 +11,6 @@ namespace OnlineLearningPlatform.Services.Interfaces
         Task<ModuleInputViewModel?> GetModuleForEditAsync(long moduleId, string mentorId);
 
         Task<bool> UpdateModuleAsync(ModuleInputViewModel viewModel, string mentorId);
+        Task<bool> HideModuleAsync(long moduleId, string mentorId);
     }
 }

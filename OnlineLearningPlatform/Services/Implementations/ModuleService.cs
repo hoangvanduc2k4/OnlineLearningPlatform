@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using OnlineLearningPlatform.Enums;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Repositories.Interfaces;
@@ -71,6 +72,21 @@ namespace OnlineLearningPlatform.Services.Implementations
             entityFromDb.ModifiedDate = DateTime.Now;
 
             await _moduleRepository.UpdateAsync(entityFromDb);
+            return true;
+        }
+
+        public async Task<bool> HideModuleAsync(long moduleId, string mentorId)
+        {
+            var module = await _moduleRepository.GetModuleForEditAsync(moduleId, mentorId);
+
+            if (module == null)
+            {
+                return false; 
+            }
+
+            module.Status = CommonStatus.Hided;
+
+            await _moduleRepository.UpdateAsync(module);
             return true;
         }
     }
