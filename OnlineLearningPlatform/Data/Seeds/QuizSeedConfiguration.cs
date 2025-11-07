@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using System;
 using System.Collections.Generic;
+using OnlineLearningPlatform.Enums;
 
 namespace OnlineLearningPlatform.Data.Seeds
 {
@@ -17,10 +18,12 @@ namespace OnlineLearningPlatform.Data.Seeds
         {
             var quizzes = new List<Quiz>();
             long quizId = 1;
+            var baseDate = new DateTime(2025, 1, 1);
 
-            // Tạo quiz cho 12 module đầu tiên
-            for (long moduleId = 1; moduleId <= 12; moduleId++)
+            for (long moduleId = 1; moduleId <= 150; moduleId++)
             {
+                var createdDate = baseDate.AddDays((moduleId - 1) / 3);
+
                 quizzes.Add(new Quiz
                 {
                     QuizId = quizId++,
@@ -28,10 +31,10 @@ namespace OnlineLearningPlatform.Data.Seeds
                     QuizName = $"Quiz for Module {moduleId}",
                     QuizTime = 20, // 20 phút thi
                     PassScore = 70, // điểm đạt
-                    CreatedAt = new DateTime(2025, 1, 1),
+                    CreatedAt = createdDate,
                     UpdatedAt = null,
-                    DateCreated = new DateTime(2025, 1, 1),
-                    Status = OnlineLearningPlatform.Enums.QuizStatus.Active
+                    DateCreated = createdDate,
+                    Status = QuizStatus.Active
                 });
             }
 

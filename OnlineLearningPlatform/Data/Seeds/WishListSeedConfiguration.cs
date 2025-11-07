@@ -20,19 +20,19 @@ namespace OnlineLearningPlatform.Data.Seeds
                 new WishList
                 {
                     CourseId = 1,
-                    UserId = "3",
+                    UserId = "6",
                     CreatedAt = new DateTime(2025, 3, 1)
                 },
                 new WishList
                 {
                     CourseId = 2,
-                    UserId = "4",
+                    UserId = "6",
                     CreatedAt = new DateTime(2025, 3, 2)
                 },
                 new WishList
                 {
                     CourseId = 3,
-                    UserId = "5",
+                    UserId = "6",
                     CreatedAt = new DateTime(2025, 3, 3)
                 },
                 new WishList
@@ -44,21 +44,10 @@ namespace OnlineLearningPlatform.Data.Seeds
                 new WishList
                 {
                     CourseId = 5,
-                    UserId = "3",
-                    CreatedAt = new DateTime(2025, 3, 5)
-                },
-                new WishList
-                {
-                    CourseId = 2,
-                    UserId = "5",
-                    CreatedAt = new DateTime(2025, 3, 6)
-                },
-                new WishList
-                {
-                    CourseId = 1,
                     UserId = "6",
-                    CreatedAt = new DateTime(2025, 3, 7)
+                    CreatedAt = new DateTime(2025, 3, 5)
                 }
+
             };
         }
     }

@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using OnlineLearningPlatform.Enums;
 using OnlineLearningPlatform.Models.Entities.Others;
+using System; // Cần cho DateTime
+using System.Collections.Generic; // Cần cho List
 
 namespace OnlineLearningPlatform.Data.Seeds
 {
@@ -17,14 +19,13 @@ namespace OnlineLearningPlatform.Data.Seeds
             var list = new List<TransactionHistory>();
             long id = 1;
 
-            // 6 giao dịch mẫu cho userId = 3
             list.Add(new TransactionHistory
             {
                 TransactionId = id++,
-                UserId = "3",
+                UserId = "5",
                 CourseId = 1,
-                Amount = 19.99m,
-                Status = TransactionStatus.Completed,
+                Amount = 499000m, // Đã đổi sang tiền Việt
+                Status = TransactionStatus.Completed, // Đã đổi
                 Description = "Purchase course 1",
                 DateCreated = new DateTime(2025, 3, 10)
             });
@@ -32,10 +33,10 @@ namespace OnlineLearningPlatform.Data.Seeds
             list.Add(new TransactionHistory
             {
                 TransactionId = id++,
-                UserId = "3",
+                UserId = "5",
                 CourseId = 2,
-                Amount = 29.99m,
-                Status = TransactionStatus.Completed,
+                Amount = 509000m, // Đã đổi sang tiền Việt
+                Status = TransactionStatus.Completed, // Đã đổi
                 Description = "Purchase course 2",
                 DateCreated = new DateTime(2025, 3, 11)
             });
@@ -43,21 +44,21 @@ namespace OnlineLearningPlatform.Data.Seeds
             list.Add(new TransactionHistory
             {
                 TransactionId = id++,
-                UserId = "3",
+                UserId = "5",
                 CourseId = 3,
-                Amount = 24.99m,
-                Status = TransactionStatus.Pending,
-                Description = "Pending payment for course 3",
+                Amount = 519000m, // Đã đổi sang tiền Việt
+                Status = TransactionStatus.Completed, // Đã đổi (từ Pending)
+                Description = "Purchase course 3", // Cập nhật description
                 DateCreated = new DateTime(2025, 3, 12)
             });
 
             list.Add(new TransactionHistory
             {
                 TransactionId = id++,
-                UserId = "3",
+                UserId = "5",
                 CourseId = 4,
-                Amount = 34.99m,
-                Status = TransactionStatus.Completed,
+                Amount = 529000m, // Đã đổi sang tiền Việt
+                Status = TransactionStatus.Completed, // Đã đổi
                 Description = "Purchase course 4",
                 DateCreated = new DateTime(2025, 3, 13)
             });
@@ -65,21 +66,21 @@ namespace OnlineLearningPlatform.Data.Seeds
             list.Add(new TransactionHistory
             {
                 TransactionId = id++,
-                UserId = "3",
+                UserId = "5",
                 CourseId = 5,
-                Amount = 39.99m,
-                Status = TransactionStatus.Failed,
-                Description = "Failed transaction for course 5",
+                Amount = 539000m, // Đã đổi sang tiền Việt
+                Status = TransactionStatus.Completed, // Đã đổi (từ Failed)
+                Description = "Purchase course 5", // Cập nhật description
                 DateCreated = new DateTime(2025, 3, 14)
             });
 
             list.Add(new TransactionHistory
             {
                 TransactionId = id++,
-                UserId = "3",
+                UserId = "5",
                 CourseId = 6,
-                Amount = 44.99m,
-                Status = TransactionStatus.Completed,
+                Amount = 549000m, // Đã đổi sang tiền Việt
+                Status = TransactionStatus.Completed, // Đã đổi
                 Description = "Purchase course 6",
                 DateCreated = new DateTime(2025, 3, 15)
             });

@@ -37,12 +37,46 @@ namespace OnlineLearningPlatform.Data.Seeds
                 new User
                 {
                     Id = "2",
-                    UserName = "mentor@demo.com",
-                    NormalizedUserName = "MENTOR@DEMO.COM",
-                    Email = "mentor@demo.com",
-                    NormalizedEmail = "MENTOR@DEMO.COM",
+                    UserName = "mentor1@demo.com",
+                    NormalizedUserName = "MENTOR1@DEMO.COM",
+                    Email = "mentor1@demo.com",
+                    NormalizedEmail = "MENTOR1@DEMO.COM",
                     EmailConfirmed = true,
-                    FullName = "Demo Mentor",
+                    FullName = "Demo Mentor1",
+                    Dob = new DateOnly(1990, 1, 1),
+                    Phone = "0000000001",
+                    Gender = true,
+                    AvatarUrl = "https://picsum.photos/seed/2/200/200",
+                    CreatedAt = new DateTime(2025, 1, 1),
+                    PasswordHash = hasher.HashPassword(null, "123456")
+                },
+                  new User
+                {
+                    Id = "3",
+                    UserName = "mentor2@demo.com",
+                    NormalizedUserName = "MENTOR2@DEMO.COM",
+                    Email = "mentor2@demo.com",
+                    NormalizedEmail = "MENTOR2@DEMO.COM",
+                    EmailConfirmed = true,
+                    FullName = "Demo Mentor2",
+                    Dob = new DateOnly(1990, 1, 1),
+                    Phone = "0000000001",
+                    Gender = true,
+                    AvatarUrl = "https://picsum.photos/seed/2/200/200",
+                    CreatedAt = new DateTime(2025, 1, 1),
+                    PasswordHash = hasher.HashPassword(null, "123456")
+                },
+
+
+                    new User
+                {
+                    Id = "4",
+                    UserName = "mentor3@demo.com",
+                    NormalizedUserName = "MENTOR3@DEMO.COM",
+                    Email = "mentor3@demo.com",
+                    NormalizedEmail = "MENTOR3@DEMO.COM",
+                    EmailConfirmed = true,
+                    FullName = "Demo Mentor3",
                     Dob = new DateOnly(1990, 1, 1),
                     Phone = "0000000001",
                     Gender = true,
@@ -54,7 +88,7 @@ namespace OnlineLearningPlatform.Data.Seeds
                 // --- 3 mentee cố định ---
                 new User
                 {
-                    Id = "3",
+                    Id = "5",
                     UserName = "mentee1@example.com",
                     NormalizedUserName = "MENTEE1@EXAMPLE.COM",
                     Email = "mentee1@example.com",
@@ -70,7 +104,7 @@ namespace OnlineLearningPlatform.Data.Seeds
                 },
                  new User
                 {
-                    Id = "4",
+                    Id = "6",
                     UserName = "mentee2@example.com",
                     NormalizedUserName = "MENTEE2@EXAMPLE.COM",
                     Email = "mentee2@example.com",
@@ -86,7 +120,7 @@ namespace OnlineLearningPlatform.Data.Seeds
                 },
                 new User
                 {
-                    Id = "5",
+                    Id = "7",
                     UserName = "mentee3@example.com",
                     NormalizedUserName = "MENTEE3@EXAMPLE.COM",
                     Email = "mentee3@example.com",
@@ -104,7 +138,7 @@ namespace OnlineLearningPlatform.Data.Seeds
             };
 
             // --- Tự động thêm nhiều mentee ---
-            for (int i = 6; i <= 50; i++)
+            for (int i = 8; i <= 50; i++)
             {
                 users.Add(new User
                 {
