@@ -68,6 +68,10 @@
                             </button>
                         </div>
                     </form>
+
+                    <!-- Hidden values for client script to read (avoids Razor-in-script JS parsing issues) -->
+                    <input type="hidden" id="__currentUserId" value="@currentUser?.Id" />
+                    <input type="hidden" id="__partnerId" value="@partner?.Id" />
                 </div>
             </div>
         </div>
@@ -81,6 +85,10 @@
             var chatMessages = document.getElementById('chat-messages');
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
+            // Read server-rendered IDs from hidden inputs to avoid Razor inside JS expression parsing issues
+            const currentUserId = document.getElementById('__currentUserId')?.value;
+            const partnerId = document.getElementById('__partnerId')?.value;
+
             // Khởi tạo kết nối SignalR
             const connection = new signalR.HubConnectionBuilder()
                 .withUrl("/userChatHub")
@@ -90,11 +98,10 @@
             // Khi nhận được tin nhắn mới
             connection.on("ReceiveMessage", function (message) {
                 // Chỉ xử lý tin nhắn liên quan đến cuộc trò chuyện hiện tại
-                      const currentUserId = @Html.Raw(Json.Serialize(currentUser.Id));
-        const partnerId = @Html.Raw(Json.Serialize(partner.Id));
+                if (!currentUserId || !partnerId) return;
 
-        if ((message.senderId === currentUserId && message.receiverId === partnerId) ||
-            (message.senderId === partnerId && message.receiverId === currentUserId)) {
+                if ((message.senderId === currentUserId && message.receiverId === partnerId) ||
+                    (message.senderId === partnerId && message.receiverId === currentUserId)) {
 
                     const isCurrentUserMessage = message.senderId == currentUserId;
                     const messageHtml = `
@@ -133,7 +140,9 @@
                 console.log("Kết nối SignalR thành công!");
 
                 // Tham gia nhóm người dùng
-                connection.invoke("JoinUserGroup", currentUserId);
+                if (currentUserId) {
+                    connection.invoke("JoinUserGroup", currentUserId);
+                }
 
                 // Xử lý form gửi tin nhắn
                 const messageForm = document.getElementById("messageForm");
@@ -164,7 +173,9 @@
 
             // Xử lý khi rời khỏi trang
             window.addEventListener("beforeunload", function () {
-                connection.invoke("LeaveUserGroup", currentUserId);
+                if (currentUserId) {
+                    connection.invoke("LeaveUserGroup", currentUserId);
+                }
             });
         });
     </script>
