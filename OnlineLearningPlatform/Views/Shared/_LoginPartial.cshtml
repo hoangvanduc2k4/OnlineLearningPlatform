@@ -50,7 +50,7 @@
             @if (User.IsInRole("Mentee"))
             {
                 <li>
-                    <a class="dropdown-item" asp-controller="MyCourses" asp-action="Index">
+                    <a class="dropdown-item" asp-area="Mentee" asp-page="/MyCourse/Index">
                         <i class="bi bi-journal-bookmark me-2"></i>My Learning
                     </a>
                 </li>
