@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineLearningPlatform.Data;
 
@@ -11,9 +12,11 @@ using OnlineLearningPlatform.Data;
 namespace OnlineLearningPlatform.Data.Migrations
 {
     [DbContext(typeof(OnlineLearningDBContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251107100454_FixSeedLan2")]
+    partial class FixSeedLan2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -4594,7 +4597,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 2 of Course 1",
                             ModuleNumber = 2,
-                            Status = 0
+                            Status = 1
                         },
                         new
                         {
@@ -4603,13 +4606,13 @@ namespace OnlineLearningPlatform.Data.Migrations
                             DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 3 of Course 1",
                             ModuleNumber = 3,
-                            Status = 0
+                            Status = 2
                         },
                         new
                         {
                             ModuleId = 4L,
                             CourseId = 2L,
-                            DateCreated = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 1 of Course 2",
                             ModuleNumber = 1,
                             Status = 0
@@ -4618,25 +4621,25 @@ namespace OnlineLearningPlatform.Data.Migrations
                         {
                             ModuleId = 5L,
                             CourseId = 2L,
-                            DateCreated = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 2 of Course 2",
                             ModuleNumber = 2,
-                            Status = 0
+                            Status = 1
                         },
                         new
                         {
                             ModuleId = 6L,
                             CourseId = 2L,
-                            DateCreated = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 3 of Course 2",
                             ModuleNumber = 3,
-                            Status = 0
+                            Status = 2
                         },
                         new
                         {
                             ModuleId = 7L,
                             CourseId = 3L,
-                            DateCreated = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 1 of Course 3",
                             ModuleNumber = 1,
                             Status = 0
@@ -4645,25 +4648,25 @@ namespace OnlineLearningPlatform.Data.Migrations
                         {
                             ModuleId = 8L,
                             CourseId = 3L,
-                            DateCreated = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 2 of Course 3",
                             ModuleNumber = 2,
-                            Status = 0
+                            Status = 1
                         },
                         new
                         {
                             ModuleId = 9L,
                             CourseId = 3L,
-                            DateCreated = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 3 of Course 3",
                             ModuleNumber = 3,
-                            Status = 0
+                            Status = 2
                         },
                         new
                         {
                             ModuleId = 10L,
                             CourseId = 4L,
-                            DateCreated = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 1 of Course 4",
                             ModuleNumber = 1,
                             Status = 0
@@ -4672,25 +4675,25 @@ namespace OnlineLearningPlatform.Data.Migrations
                         {
                             ModuleId = 11L,
                             CourseId = 4L,
-                            DateCreated = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 2 of Course 4",
                             ModuleNumber = 2,
-                            Status = 0
+                            Status = 1
                         },
                         new
                         {
                             ModuleId = 12L,
                             CourseId = 4L,
-                            DateCreated = new DateTime(2025, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 3 of Course 4",
                             ModuleNumber = 3,
-                            Status = 0
+                            Status = 2
                         },
                         new
                         {
                             ModuleId = 13L,
                             CourseId = 5L,
-                            DateCreated = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 1 of Course 5",
                             ModuleNumber = 1,
                             Status = 0
@@ -4699,25 +4702,25 @@ namespace OnlineLearningPlatform.Data.Migrations
                         {
                             ModuleId = 14L,
                             CourseId = 5L,
-                            DateCreated = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 2 of Course 5",
                             ModuleNumber = 2,
-                            Status = 0
+                            Status = 1
                         },
                         new
                         {
                             ModuleId = 15L,
                             CourseId = 5L,
-                            DateCreated = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 3 of Course 5",
                             ModuleNumber = 3,
-                            Status = 0
+                            Status = 2
                         },
                         new
                         {
                             ModuleId = 16L,
                             CourseId = 6L,
-                            DateCreated = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 1 of Course 6",
                             ModuleNumber = 1,
                             Status = 0
@@ -4726,25 +4729,25 @@ namespace OnlineLearningPlatform.Data.Migrations
                         {
                             ModuleId = 17L,
                             CourseId = 6L,
-                            DateCreated = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 2 of Course 6",
                             ModuleNumber = 2,
-                            Status = 0
+                            Status = 1
                         },
                         new
                         {
                             ModuleId = 18L,
                             CourseId = 6L,
-                            DateCreated = new DateTime(2025, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 3 of Course 6",
                             ModuleNumber = 3,
-                            Status = 0
+                            Status = 2
                         },
                         new
                         {
                             ModuleId = 19L,
                             CourseId = 7L,
-                            DateCreated = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 1 of Course 7",
                             ModuleNumber = 1,
                             Status = 0
@@ -4753,25 +4756,25 @@ namespace OnlineLearningPlatform.Data.Migrations
                         {
                             ModuleId = 20L,
                             CourseId = 7L,
-                            DateCreated = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 2 of Course 7",
                             ModuleNumber = 2,
-                            Status = 0
+                            Status = 1
                         },
                         new
                         {
                             ModuleId = 21L,
                             CourseId = 7L,
-                            DateCreated = new DateTime(2025, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 3 of Course 7",
                             ModuleNumber = 3,
-                            Status = 0
+                            Status = 2
                         },
                         new
                         {
                             ModuleId = 22L,
                             CourseId = 8L,
-                            DateCreated = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 1 of Course 8",
                             ModuleNumber = 1,
                             Status = 0
@@ -4780,25 +4783,25 @@ namespace OnlineLearningPlatform.Data.Migrations
                         {
                             ModuleId = 23L,
                             CourseId = 8L,
-                            DateCreated = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 2 of Course 8",
                             ModuleNumber = 2,
-                            Status = 0
+                            Status = 1
                         },
                         new
                         {
                             ModuleId = 24L,
                             CourseId = 8L,
-                            DateCreated = new DateTime(2025, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 3 of Course 8",
                             ModuleNumber = 3,
-                            Status = 0
+                            Status = 2
                         },
                         new
                         {
                             ModuleId = 25L,
                             CourseId = 9L,
-                            DateCreated = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 1 of Course 9",
                             ModuleNumber = 1,
                             Status = 0
@@ -4807,25 +4810,25 @@ namespace OnlineLearningPlatform.Data.Migrations
                         {
                             ModuleId = 26L,
                             CourseId = 9L,
-                            DateCreated = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 2 of Course 9",
                             ModuleNumber = 2,
-                            Status = 0
+                            Status = 1
                         },
                         new
                         {
                             ModuleId = 27L,
                             CourseId = 9L,
-                            DateCreated = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 3 of Course 9",
                             ModuleNumber = 3,
-                            Status = 0
+                            Status = 2
                         },
                         new
                         {
                             ModuleId = 28L,
                             CourseId = 10L,
-                            DateCreated = new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 1 of Course 10",
                             ModuleNumber = 1,
                             Status = 0
@@ -4834,25 +4837,25 @@ namespace OnlineLearningPlatform.Data.Migrations
                         {
                             ModuleId = 29L,
                             CourseId = 10L,
-                            DateCreated = new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 2 of Course 10",
                             ModuleNumber = 2,
-                            Status = 0
+                            Status = 1
                         },
                         new
                         {
                             ModuleId = 30L,
                             CourseId = 10L,
-                            DateCreated = new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 3 of Course 10",
                             ModuleNumber = 3,
-                            Status = 0
+                            Status = 2
                         },
                         new
                         {
                             ModuleId = 31L,
                             CourseId = 11L,
-                            DateCreated = new DateTime(2025, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 1 of Course 11",
                             ModuleNumber = 1,
                             Status = 0
@@ -4861,25 +4864,25 @@ namespace OnlineLearningPlatform.Data.Migrations
                         {
                             ModuleId = 32L,
                             CourseId = 11L,
-                            DateCreated = new DateTime(2025, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 2 of Course 11",
                             ModuleNumber = 2,
-                            Status = 0
+                            Status = 1
                         },
                         new
                         {
                             ModuleId = 33L,
                             CourseId = 11L,
-                            DateCreated = new DateTime(2025, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 3 of Course 11",
                             ModuleNumber = 3,
-                            Status = 0
+                            Status = 2
                         },
                         new
                         {
                             ModuleId = 34L,
                             CourseId = 12L,
-                            DateCreated = new DateTime(2025, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 1 of Course 12",
                             ModuleNumber = 1,
                             Status = 0
@@ -4888,1045 +4891,19 @@ namespace OnlineLearningPlatform.Data.Migrations
                         {
                             ModuleId = 35L,
                             CourseId = 12L,
-                            DateCreated = new DateTime(2025, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 2 of Course 12",
                             ModuleNumber = 2,
-                            Status = 0
+                            Status = 1
                         },
                         new
                         {
                             ModuleId = 36L,
                             CourseId = 12L,
-                            DateCreated = new DateTime(2025, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateCreated = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ModuleName = "Module 3 of Course 12",
                             ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 37L,
-                            CourseId = 13L,
-                            DateCreated = new DateTime(2025, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 13",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 38L,
-                            CourseId = 13L,
-                            DateCreated = new DateTime(2025, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 13",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 39L,
-                            CourseId = 13L,
-                            DateCreated = new DateTime(2025, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 13",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 40L,
-                            CourseId = 14L,
-                            DateCreated = new DateTime(2025, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 14",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 41L,
-                            CourseId = 14L,
-                            DateCreated = new DateTime(2025, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 14",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 42L,
-                            CourseId = 14L,
-                            DateCreated = new DateTime(2025, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 14",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 43L,
-                            CourseId = 15L,
-                            DateCreated = new DateTime(2025, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 15",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 44L,
-                            CourseId = 15L,
-                            DateCreated = new DateTime(2025, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 15",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 45L,
-                            CourseId = 15L,
-                            DateCreated = new DateTime(2025, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 15",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 46L,
-                            CourseId = 16L,
-                            DateCreated = new DateTime(2025, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 16",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 47L,
-                            CourseId = 16L,
-                            DateCreated = new DateTime(2025, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 16",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 48L,
-                            CourseId = 16L,
-                            DateCreated = new DateTime(2025, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 16",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 49L,
-                            CourseId = 17L,
-                            DateCreated = new DateTime(2025, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 17",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 50L,
-                            CourseId = 17L,
-                            DateCreated = new DateTime(2025, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 17",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 51L,
-                            CourseId = 17L,
-                            DateCreated = new DateTime(2025, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 17",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 52L,
-                            CourseId = 18L,
-                            DateCreated = new DateTime(2025, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 18",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 53L,
-                            CourseId = 18L,
-                            DateCreated = new DateTime(2025, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 18",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 54L,
-                            CourseId = 18L,
-                            DateCreated = new DateTime(2025, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 18",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 55L,
-                            CourseId = 19L,
-                            DateCreated = new DateTime(2025, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 19",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 56L,
-                            CourseId = 19L,
-                            DateCreated = new DateTime(2025, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 19",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 57L,
-                            CourseId = 19L,
-                            DateCreated = new DateTime(2025, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 19",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 58L,
-                            CourseId = 20L,
-                            DateCreated = new DateTime(2025, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 20",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 59L,
-                            CourseId = 20L,
-                            DateCreated = new DateTime(2025, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 20",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 60L,
-                            CourseId = 20L,
-                            DateCreated = new DateTime(2025, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 20",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 61L,
-                            CourseId = 21L,
-                            DateCreated = new DateTime(2025, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 21",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 62L,
-                            CourseId = 21L,
-                            DateCreated = new DateTime(2025, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 21",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 63L,
-                            CourseId = 21L,
-                            DateCreated = new DateTime(2025, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 21",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 64L,
-                            CourseId = 22L,
-                            DateCreated = new DateTime(2025, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 22",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 65L,
-                            CourseId = 22L,
-                            DateCreated = new DateTime(2025, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 22",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 66L,
-                            CourseId = 22L,
-                            DateCreated = new DateTime(2025, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 22",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 67L,
-                            CourseId = 23L,
-                            DateCreated = new DateTime(2025, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 23",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 68L,
-                            CourseId = 23L,
-                            DateCreated = new DateTime(2025, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 23",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 69L,
-                            CourseId = 23L,
-                            DateCreated = new DateTime(2025, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 23",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 70L,
-                            CourseId = 24L,
-                            DateCreated = new DateTime(2025, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 24",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 71L,
-                            CourseId = 24L,
-                            DateCreated = new DateTime(2025, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 24",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 72L,
-                            CourseId = 24L,
-                            DateCreated = new DateTime(2025, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 24",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 73L,
-                            CourseId = 25L,
-                            DateCreated = new DateTime(2025, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 25",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 74L,
-                            CourseId = 25L,
-                            DateCreated = new DateTime(2025, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 25",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 75L,
-                            CourseId = 25L,
-                            DateCreated = new DateTime(2025, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 25",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 76L,
-                            CourseId = 26L,
-                            DateCreated = new DateTime(2025, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 26",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 77L,
-                            CourseId = 26L,
-                            DateCreated = new DateTime(2025, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 26",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 78L,
-                            CourseId = 26L,
-                            DateCreated = new DateTime(2025, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 26",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 79L,
-                            CourseId = 27L,
-                            DateCreated = new DateTime(2025, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 27",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 80L,
-                            CourseId = 27L,
-                            DateCreated = new DateTime(2025, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 27",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 81L,
-                            CourseId = 27L,
-                            DateCreated = new DateTime(2025, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 27",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 82L,
-                            CourseId = 28L,
-                            DateCreated = new DateTime(2025, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 28",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 83L,
-                            CourseId = 28L,
-                            DateCreated = new DateTime(2025, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 28",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 84L,
-                            CourseId = 28L,
-                            DateCreated = new DateTime(2025, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 28",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 85L,
-                            CourseId = 29L,
-                            DateCreated = new DateTime(2025, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 29",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 86L,
-                            CourseId = 29L,
-                            DateCreated = new DateTime(2025, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 29",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 87L,
-                            CourseId = 29L,
-                            DateCreated = new DateTime(2025, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 29",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 88L,
-                            CourseId = 30L,
-                            DateCreated = new DateTime(2025, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 30",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 89L,
-                            CourseId = 30L,
-                            DateCreated = new DateTime(2025, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 30",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 90L,
-                            CourseId = 30L,
-                            DateCreated = new DateTime(2025, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 30",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 91L,
-                            CourseId = 31L,
-                            DateCreated = new DateTime(2025, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 31",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 92L,
-                            CourseId = 31L,
-                            DateCreated = new DateTime(2025, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 31",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 93L,
-                            CourseId = 31L,
-                            DateCreated = new DateTime(2025, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 31",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 94L,
-                            CourseId = 32L,
-                            DateCreated = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 32",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 95L,
-                            CourseId = 32L,
-                            DateCreated = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 32",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 96L,
-                            CourseId = 32L,
-                            DateCreated = new DateTime(2025, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 32",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 97L,
-                            CourseId = 33L,
-                            DateCreated = new DateTime(2025, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 33",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 98L,
-                            CourseId = 33L,
-                            DateCreated = new DateTime(2025, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 33",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 99L,
-                            CourseId = 33L,
-                            DateCreated = new DateTime(2025, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 33",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 100L,
-                            CourseId = 34L,
-                            DateCreated = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 34",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 101L,
-                            CourseId = 34L,
-                            DateCreated = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 34",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 102L,
-                            CourseId = 34L,
-                            DateCreated = new DateTime(2025, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 34",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 103L,
-                            CourseId = 35L,
-                            DateCreated = new DateTime(2025, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 35",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 104L,
-                            CourseId = 35L,
-                            DateCreated = new DateTime(2025, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 35",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 105L,
-                            CourseId = 35L,
-                            DateCreated = new DateTime(2025, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 35",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 106L,
-                            CourseId = 36L,
-                            DateCreated = new DateTime(2025, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 36",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 107L,
-                            CourseId = 36L,
-                            DateCreated = new DateTime(2025, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 36",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 108L,
-                            CourseId = 36L,
-                            DateCreated = new DateTime(2025, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 36",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 109L,
-                            CourseId = 37L,
-                            DateCreated = new DateTime(2025, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 37",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 110L,
-                            CourseId = 37L,
-                            DateCreated = new DateTime(2025, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 37",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 111L,
-                            CourseId = 37L,
-                            DateCreated = new DateTime(2025, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 37",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 112L,
-                            CourseId = 38L,
-                            DateCreated = new DateTime(2025, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 38",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 113L,
-                            CourseId = 38L,
-                            DateCreated = new DateTime(2025, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 38",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 114L,
-                            CourseId = 38L,
-                            DateCreated = new DateTime(2025, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 38",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 115L,
-                            CourseId = 39L,
-                            DateCreated = new DateTime(2025, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 39",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 116L,
-                            CourseId = 39L,
-                            DateCreated = new DateTime(2025, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 39",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 117L,
-                            CourseId = 39L,
-                            DateCreated = new DateTime(2025, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 39",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 118L,
-                            CourseId = 40L,
-                            DateCreated = new DateTime(2025, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 40",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 119L,
-                            CourseId = 40L,
-                            DateCreated = new DateTime(2025, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 40",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 120L,
-                            CourseId = 40L,
-                            DateCreated = new DateTime(2025, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 40",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 121L,
-                            CourseId = 41L,
-                            DateCreated = new DateTime(2025, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 41",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 122L,
-                            CourseId = 41L,
-                            DateCreated = new DateTime(2025, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 41",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 123L,
-                            CourseId = 41L,
-                            DateCreated = new DateTime(2025, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 41",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 124L,
-                            CourseId = 42L,
-                            DateCreated = new DateTime(2025, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 42",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 125L,
-                            CourseId = 42L,
-                            DateCreated = new DateTime(2025, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 42",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 126L,
-                            CourseId = 42L,
-                            DateCreated = new DateTime(2025, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 42",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 127L,
-                            CourseId = 43L,
-                            DateCreated = new DateTime(2025, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 43",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 128L,
-                            CourseId = 43L,
-                            DateCreated = new DateTime(2025, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 43",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 129L,
-                            CourseId = 43L,
-                            DateCreated = new DateTime(2025, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 43",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 130L,
-                            CourseId = 44L,
-                            DateCreated = new DateTime(2025, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 44",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 131L,
-                            CourseId = 44L,
-                            DateCreated = new DateTime(2025, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 44",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 132L,
-                            CourseId = 44L,
-                            DateCreated = new DateTime(2025, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 44",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 133L,
-                            CourseId = 45L,
-                            DateCreated = new DateTime(2025, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 45",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 134L,
-                            CourseId = 45L,
-                            DateCreated = new DateTime(2025, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 45",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 135L,
-                            CourseId = 45L,
-                            DateCreated = new DateTime(2025, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 45",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 136L,
-                            CourseId = 46L,
-                            DateCreated = new DateTime(2025, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 46",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 137L,
-                            CourseId = 46L,
-                            DateCreated = new DateTime(2025, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 46",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 138L,
-                            CourseId = 46L,
-                            DateCreated = new DateTime(2025, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 46",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 139L,
-                            CourseId = 47L,
-                            DateCreated = new DateTime(2025, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 47",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 140L,
-                            CourseId = 47L,
-                            DateCreated = new DateTime(2025, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 47",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 141L,
-                            CourseId = 47L,
-                            DateCreated = new DateTime(2025, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 47",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 142L,
-                            CourseId = 48L,
-                            DateCreated = new DateTime(2025, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 48",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 143L,
-                            CourseId = 48L,
-                            DateCreated = new DateTime(2025, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 48",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 144L,
-                            CourseId = 48L,
-                            DateCreated = new DateTime(2025, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 48",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 145L,
-                            CourseId = 49L,
-                            DateCreated = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 49",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 146L,
-                            CourseId = 49L,
-                            DateCreated = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 49",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 147L,
-                            CourseId = 49L,
-                            DateCreated = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 49",
-                            ModuleNumber = 3,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 148L,
-                            CourseId = 50L,
-                            DateCreated = new DateTime(2025, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 1 of Course 50",
-                            ModuleNumber = 1,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 149L,
-                            CourseId = 50L,
-                            DateCreated = new DateTime(2025, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 2 of Course 50",
-                            ModuleNumber = 2,
-                            Status = 0
-                        },
-                        new
-                        {
-                            ModuleId = 150L,
-                            CourseId = 50L,
-                            DateCreated = new DateTime(2025, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ModuleName = "Module 3 of Course 50",
-                            ModuleNumber = 3,
-                            Status = 0
+                            Status = 2
                         });
                 });
 
@@ -8874,7 +7851,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5602),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2786),
                             UserId = "3"
                         },
                         new
@@ -8887,7 +7864,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5613),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2795),
                             UserId = "4"
                         },
                         new
@@ -8900,7 +7877,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5616),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2798),
                             UserId = "3"
                         },
                         new
@@ -8913,7 +7890,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5617),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2799),
                             UserId = "4"
                         },
                         new
@@ -8926,7 +7903,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5618),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2800),
                             UserId = "3"
                         },
                         new
@@ -8939,7 +7916,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5620),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2802),
                             UserId = "4"
                         },
                         new
@@ -8952,7 +7929,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5621),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2803),
                             UserId = "3"
                         },
                         new
@@ -8965,7 +7942,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5622),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2804),
                             UserId = "4"
                         },
                         new
@@ -8978,7 +7955,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5623),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2805),
                             UserId = "3"
                         },
                         new
@@ -8991,7 +7968,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5625),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2807),
                             UserId = "4"
                         },
                         new
@@ -9004,7 +7981,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5626),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2807),
                             UserId = "3"
                         },
                         new
@@ -9017,7 +7994,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5627),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2808),
                             UserId = "4"
                         },
                         new
@@ -9030,7 +8007,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5627),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2809),
                             UserId = "3"
                         },
                         new
@@ -9043,7 +8020,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5628),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2810),
                             UserId = "4"
                         },
                         new
@@ -9056,7 +8033,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5629),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2811),
                             UserId = "3"
                         },
                         new
@@ -9069,7 +8046,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5630),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2812),
                             UserId = "4"
                         },
                         new
@@ -9082,7 +8059,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5631),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2813),
                             UserId = "3"
                         },
                         new
@@ -9095,7 +8072,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5633),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2815),
                             UserId = "4"
                         },
                         new
@@ -9108,7 +8085,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5634),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2815),
                             UserId = "3"
                         },
                         new
@@ -9121,7 +8098,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5635),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2816),
                             UserId = "4"
                         },
                         new
@@ -9134,7 +8111,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5662),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2817),
                             UserId = "3"
                         },
                         new
@@ -9147,7 +8124,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5664),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2818),
                             UserId = "4"
                         },
                         new
@@ -9160,7 +8137,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 80.00m,
                             StartTime = new DateTime(2025, 3, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5665),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2819),
                             UserId = "3"
                         },
                         new
@@ -9173,7 +8150,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Score = 60.00m,
                             StartTime = new DateTime(2025, 3, 2, 9, 30, 0, 0, DateTimeKind.Unspecified),
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(5666),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(2820),
                             UserId = "4"
                         });
                 });
@@ -10359,7 +9336,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "1",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/1/200/200",
-                            ConcurrencyStamp = "e17afad7-6a8a-4551-b331-912fad1df2fe",
+                            ConcurrencyStamp = "4b636209-8113-45ed-b0cb-e55fa32a3db4",
                             CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(2003, 7, 6),
                             Email = "admin@admin.com",
@@ -10371,12 +9348,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEL56n6RJv3siZv1w2ZNmf56IIWbmUG6YqwIlypZrg0zmyaeeGNTIk5Zte7qST2pYFg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGGxDhj35T7007Bt4A8SjvntvDtmnAglvUty0qIRtZQBzLsKWfSJDumltqkQ2qtfig==",
                             Phone = "0000000000",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "80f295e4-8376-4657-9fb7-750a0299df1c",
+                            SecurityStamp = "9e2377ed-07ef-4a5f-a420-b4c0496964d8",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 611, DateTimeKind.Local).AddTicks(9774),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 166, DateTimeKind.Local).AddTicks(6329),
                             UserName = "admin@admin.com"
                         },
                         new
@@ -10384,7 +9361,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "2",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/2/200/200",
-                            ConcurrencyStamp = "7467a1ad-58a6-48cc-8aee-9ec8385e4e0e",
+                            ConcurrencyStamp = "0a72eb2b-bd0c-44d4-8698-9e07d93866d3",
                             CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1990, 1, 1),
                             Email = "mentor@demo.com",
@@ -10396,12 +9373,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MENTOR@DEMO.COM",
                             NormalizedUserName = "MENTOR@DEMO.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEB3BxHXAdcllErBe59EYGW8y9RN2lvZ0k+yvlwzHC+3wXrlQD3uaNoONHFeODq8Z3Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGnIIVRdbdpX7Qz5j12itUHWBeXYyUUEub/o/hrUqp7uvoEdBsEmT7xZt8T87/poow==",
                             Phone = "0000000001",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f77e8b8a-946e-4b98-b7f5-7cba09f5c6f7",
+                            SecurityStamp = "154ed329-d9f8-4e41-be81-8e90d7a01013",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 653, DateTimeKind.Local).AddTicks(9780),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 209, DateTimeKind.Local).AddTicks(4612),
                             UserName = "mentor@demo.com"
                         },
                         new
@@ -10409,7 +9386,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "3",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/mentee1/200/200",
-                            ConcurrencyStamp = "f79840df-ac33-4021-86f9-d997568739c4",
+                            ConcurrencyStamp = "07a7adac-32b7-417d-8bb0-b96bf071ab73",
                             CreatedAt = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1998, 3, 3),
                             Email = "mentee1@example.com",
@@ -10421,12 +9398,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MENTEE1@EXAMPLE.COM",
                             NormalizedUserName = "MENTEE1@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIDocTzWaK0Z4ckgQPjytqmeOXgcTcr18H2/6kvtnEpP+VUEQ1jwlpwLdyUrgRQ3fA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEeN97yMg5s6vdGw+4ScS41vLtAJ9TK9sH6EE4sItIIuoHSdC04d9dP3upSZwoIwyg==",
                             Phone = "0900000003",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e8eaa377-a3b3-48d5-9d96-fed6a04a33a0",
+                            SecurityStamp = "ca75643e-4395-435a-a34f-afe93275a7a1",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 693, DateTimeKind.Local).AddTicks(9279),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 248, DateTimeKind.Local).AddTicks(9341),
                             UserName = "mentee1@example.com"
                         },
                         new
@@ -10434,7 +9411,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "4",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/mentee2/200/200",
-                            ConcurrencyStamp = "7f8baaeb-f613-48e9-8a26-96e2f6c999d8",
+                            ConcurrencyStamp = "9c77a5d1-10af-441e-a58e-57e695c997a2",
                             CreatedAt = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1997, 4, 4),
                             Email = "mentee2@example.com",
@@ -10446,12 +9423,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MENTEE2@EXAMPLE.COM",
                             NormalizedUserName = "MENTEE2@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOe9r6Y+2SQCkdkyaOdzy4shz5jLBe1bOQWyhhycRRTJiKxICHLEPS/yW+Wq2tqU5w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJVMV3/SXaGa41V9MTxXZUY3PC+/J6YRqJ+QpsX3EeLIHyMTiSupHC1dsH2niiWHBQ==",
                             Phone = "0900000004",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "57b85f77-5414-41e3-95cd-c0a0f6add5a7",
+                            SecurityStamp = "212fee24-1190-488e-8dbc-e18b419e33a9",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 737, DateTimeKind.Local).AddTicks(2100),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 291, DateTimeKind.Local).AddTicks(9686),
                             UserName = "mentee2@example.com"
                         },
                         new
@@ -10459,7 +9436,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "5",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/mentee3/200/200",
-                            ConcurrencyStamp = "cfa4daf5-03fa-4d37-8a37-2a04c1f3b559",
+                            ConcurrencyStamp = "39377b96-d2fc-445b-a910-bc1156d4771f",
                             CreatedAt = new DateTime(2025, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1996, 5, 5),
                             Email = "mentee3@example.com",
@@ -10471,12 +9448,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MENTEE3@EXAMPLE.COM",
                             NormalizedUserName = "MENTEE3@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMiFsHX93tOhmvs64um31h/IesZPdkftdxsy8lnumJFEhD+CMU0mBKK02+Zvcs/ZAQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPKVBBTiT3Z6Ao7MC2wpBb7Tw/uuJLd7QJ5b2Dky9KlWw6+6wQF9oleTJ6tsVwKE1w==",
                             Phone = "0900000005",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "93e48d3d-1da2-46ee-9374-8f78f697b1c6",
+                            SecurityStamp = "ef1f92ea-8f12-4033-b0b9-0363980b3e82",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 780, DateTimeKind.Local).AddTicks(5776),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 333, DateTimeKind.Local).AddTicks(2761),
                             UserName = "mentee3@example.com"
                         },
                         new
@@ -10484,7 +9461,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "6",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/6/200/200",
-                            ConcurrencyStamp = "c86ef4d1-4894-4f8f-b9cb-76cd06896884",
+                            ConcurrencyStamp = "dbb94100-4a97-424e-82e4-e8d1c1a66cb2",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1994, 1, 1),
                             Email = "user6@example.com",
@@ -10496,12 +9473,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER6@EXAMPLE.COM",
                             NormalizedUserName = "USER6@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEJR/XxdxuImQSKdAHqmB82N0iWinhToR13O8Du+QzcXMeVC5C4/T+cblbFGY4yjGQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELcNmkCFFbdCiQDqZODEm0CX5P3wTrgvY9U6Se5TqYkmNXRtX/o4wl+0Ts263WfwPw==",
                             Phone = "0900000006",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "82d8c3c7-b515-4f48-b789-8ed634a04f73",
+                            SecurityStamp = "2522a8fe-e2dd-4336-a3e5-00d721587c40",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 821, DateTimeKind.Local).AddTicks(924),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 373, DateTimeKind.Local).AddTicks(6550),
                             UserName = "user6@example.com"
                         },
                         new
@@ -10509,7 +9486,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "7",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/7/200/200",
-                            ConcurrencyStamp = "167986a3-7948-4e1f-a942-dc7579aee4d0",
+                            ConcurrencyStamp = "14784472-6678-4876-9af1-f45751228064",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1993, 1, 1),
                             Email = "user7@example.com",
@@ -10521,12 +9498,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER7@EXAMPLE.COM",
                             NormalizedUserName = "USER7@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJSa+oRejVtPTydXdZ9ohTIzV9iw3+oLiZKBJpJ4CByAkZYVRwUi47OzRdtRqZJdDQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIp3hqb5xTGMqzX7ZnZawaAizRBE8E1IwTWFcGcCWd1BBZpC0J2nDlBIJCfc+cfErA==",
                             Phone = "0900000007",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f47c7206-0363-4a6f-a099-1cffa1ab5626",
+                            SecurityStamp = "80dd5299-827a-4eee-b384-0330a4956a67",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 862, DateTimeKind.Local).AddTicks(2795),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 414, DateTimeKind.Local).AddTicks(5248),
                             UserName = "user7@example.com"
                         },
                         new
@@ -10534,7 +9511,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "8",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/8/200/200",
-                            ConcurrencyStamp = "bfd283fc-bfe7-4c84-b4c9-0ac063b67bac",
+                            ConcurrencyStamp = "e3be31c0-2bf7-4aea-8a69-a83945da44ad",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1992, 1, 1),
                             Email = "user8@example.com",
@@ -10546,12 +9523,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER8@EXAMPLE.COM",
                             NormalizedUserName = "USER8@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBW7h8RTJn+evzw6EaJu4H3LQ5IpM8eq9HjRjSs2TYqXwe7MIpWBOSUG1DXUDwmvwg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGdIWvWdq23QGq3Sf74xotuOffTcmD3tgZ05j4tr+Cz9ZUwOkTw0+SylXiW0c24DRQ==",
                             Phone = "0900000008",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f92eb2a0-5f93-4322-bc6f-7feb893e9b96",
+                            SecurityStamp = "c6d44e94-49d2-4e13-9803-a9654456708e",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 904, DateTimeKind.Local).AddTicks(3553),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 454, DateTimeKind.Local).AddTicks(8281),
                             UserName = "user8@example.com"
                         },
                         new
@@ -10559,7 +9536,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "9",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/9/200/200",
-                            ConcurrencyStamp = "9e74bea5-b000-4bc9-ac3c-821deaf7c2ec",
+                            ConcurrencyStamp = "e3785afa-27e9-43d7-9a26-a70b5816688f",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1991, 1, 1),
                             Email = "user9@example.com",
@@ -10571,12 +9548,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER9@EXAMPLE.COM",
                             NormalizedUserName = "USER9@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKCkWuw/O07dipKbjhhqZ+1l3+DU5tzSfBTsK8MyJHHBbavfV55GsdA1IObOejcIlg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKb1zTkr8C+S0myp6rnGylBrshV6UWJ3SEWW35l/Mk68BHJ4OBDm9xmk9Khd68vnjg==",
                             Phone = "0900000009",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "97b8808e-2470-49da-b7bc-cd0d3a3fb62b",
+                            SecurityStamp = "ad6c7612-5761-4060-8f74-83ca90d0b2be",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 946, DateTimeKind.Local).AddTicks(2320),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 495, DateTimeKind.Local).AddTicks(5061),
                             UserName = "user9@example.com"
                         },
                         new
@@ -10584,7 +9561,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "10",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/10/200/200",
-                            ConcurrencyStamp = "96753b3c-2b1d-4544-ba03-14e960dcdc90",
+                            ConcurrencyStamp = "b3594d53-ac35-4ffd-a124-eef92aa5a1f2",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1990, 1, 1),
                             Email = "user10@example.com",
@@ -10596,12 +9573,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER10@EXAMPLE.COM",
                             NormalizedUserName = "USER10@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEP9yVnnEJWG0iUBwkkW3iB3GSlOa+NuTX5J8enOlA3WF5CSkSMSOgAokIjIagXPfuA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOShF3Okl1ejoHPqNlJDh1PAuOro1s+mplrTQOkZXsz6Luf/8yiwvxqC9o2rO4kaTQ==",
                             Phone = "0900000010",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d9767441-5c5d-4a8c-b8f7-1a6fdc24222a",
+                            SecurityStamp = "8e9bfdc0-5581-4d0c-9766-28bf9953a915",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 3, 986, DateTimeKind.Local).AddTicks(4150),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 536, DateTimeKind.Local).AddTicks(1865),
                             UserName = "user10@example.com"
                         },
                         new
@@ -10609,7 +9586,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "11",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/11/200/200",
-                            ConcurrencyStamp = "1dec32c5-39c5-4f21-9ea1-d94e333e5486",
+                            ConcurrencyStamp = "bd4b6315-9be4-4d96-b07d-bbaf3d67cb45",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1989, 1, 1),
                             Email = "user11@example.com",
@@ -10621,12 +9598,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER11@EXAMPLE.COM",
                             NormalizedUserName = "USER11@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEENLMdh+y1yK1Bc4K8yhey0Cz9AMNFjas8a8+JGX7W8MpqJVMzMWZ34beQKjp9nKIA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHYUj/xrJ/aWZzrV8lH1Yk2zwEapnWjsKgoBazsA1gefE1hGi9FLdjwA/kFd5IyZ0Q==",
                             Phone = "0900000011",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a5148e3d-078a-4797-8391-c6aee16ff360",
+                            SecurityStamp = "a9ecbff6-80d1-40b7-97d4-af873d03ed8f",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 25, DateTimeKind.Local).AddTicks(4801),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 576, DateTimeKind.Local).AddTicks(6471),
                             UserName = "user11@example.com"
                         },
                         new
@@ -10634,7 +9611,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "12",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/12/200/200",
-                            ConcurrencyStamp = "d50cd1e0-f05e-4f8a-90ef-a63014548d1e",
+                            ConcurrencyStamp = "3ad387f6-0be3-4b11-b0a1-4a482791e73e",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1988, 1, 1),
                             Email = "user12@example.com",
@@ -10646,12 +9623,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER12@EXAMPLE.COM",
                             NormalizedUserName = "USER12@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEM8JUFTTb2xpQ53c48t0zaQMnaJF8bPzJhtz2BcOXukuZw1paMkS/k/unKeD1xLYxg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEgxtZKeU/m+joZDh5CZgm7a5Kvz24r/26y6B8YbC4HkBgR1y9rZpVaadboIMtz54A==",
                             Phone = "0900000012",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ce24da09-348f-4ce7-bdba-8fb4b2ffe730",
+                            SecurityStamp = "e4898f3a-0d8d-4b99-9d27-04754eb92449",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 69, DateTimeKind.Local).AddTicks(5561),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 617, DateTimeKind.Local).AddTicks(1106),
                             UserName = "user12@example.com"
                         },
                         new
@@ -10659,7 +9636,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "13",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/13/200/200",
-                            ConcurrencyStamp = "55acf748-4084-4dc3-8790-87b166d7b001",
+                            ConcurrencyStamp = "a619c6c8-50dc-4b0f-bb70-93b538d84f51",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1987, 1, 1),
                             Email = "user13@example.com",
@@ -10671,12 +9648,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER13@EXAMPLE.COM",
                             NormalizedUserName = "USER13@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMBV5xa6WGErjI5MY68bfT/kTxtqUX2eGvyVJ4VtwqI2fR1IP3UTn1/IvcNuqnXCdA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENJ49rVivwFwdmfcn2bwUTXn3eyqQIAX/dkGBH8Ssc6/0wSLt7SxKTNEUNEq0AnGpg==",
                             Phone = "0900000013",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0f320f14-b87a-48dc-a049-117e4cdc85e2",
+                            SecurityStamp = "0a6929ae-0a61-4e62-a405-205d521e4238",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 110, DateTimeKind.Local).AddTicks(5595),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 659, DateTimeKind.Local).AddTicks(4967),
                             UserName = "user13@example.com"
                         },
                         new
@@ -10684,7 +9661,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "14",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/14/200/200",
-                            ConcurrencyStamp = "37ba7fb0-6137-410d-9513-eba626758f69",
+                            ConcurrencyStamp = "e14b9285-2d49-4f65-bca0-8e2a206369c3",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1986, 1, 1),
                             Email = "user14@example.com",
@@ -10696,12 +9673,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER14@EXAMPLE.COM",
                             NormalizedUserName = "USER14@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEL2uciFkqWNL3ienX16c4IJwM8UC4JcySGctaEasUL/e5hZsh1Jh7DaeKJx6peimfQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJDvvwYzmCn2sPwrQKfVKWcybN80dfHsZsI+rpSkaTTz4n45qbzYL4RyPrAqTDyo7g==",
                             Phone = "0900000014",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1d3c853c-b853-4ccf-ba8a-b467e2e2ff0e",
+                            SecurityStamp = "17359f79-bc15-424c-8be5-61714bacb72e",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 149, DateTimeKind.Local).AddTicks(7467),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 700, DateTimeKind.Local).AddTicks(2905),
                             UserName = "user14@example.com"
                         },
                         new
@@ -10709,7 +9686,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "15",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/15/200/200",
-                            ConcurrencyStamp = "6f4a9b51-3dbd-47f6-887f-72bc2951ab2c",
+                            ConcurrencyStamp = "a9a3500a-9ea2-4391-bec6-c409e963b00d",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1985, 1, 1),
                             Email = "user15@example.com",
@@ -10721,12 +9698,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER15@EXAMPLE.COM",
                             NormalizedUserName = "USER15@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAjfwweyWI4qCqw43iRFgtjekk6g2jLfJhwcyz++dh/xIKiM8q2sbIpXSWGoJKW4UQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEA1rYpmIid0RIpZb9AnMo5uLsuHP8d+K7Zkt+D1CuZVNmLAaeeX2OwD122vYjEOVzg==",
                             Phone = "0900000015",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0b55e674-e0b4-48bc-b573-0a9339aa7d7d",
+                            SecurityStamp = "6c3120c7-6f83-4bae-8d3e-b95c223142ba",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 190, DateTimeKind.Local).AddTicks(7679),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 741, DateTimeKind.Local).AddTicks(1692),
                             UserName = "user15@example.com"
                         },
                         new
@@ -10734,7 +9711,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "16",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/16/200/200",
-                            ConcurrencyStamp = "cc4a5c27-0d03-472f-a2a0-03223e9e02bc",
+                            ConcurrencyStamp = "fcced67d-9792-4303-999a-83ada1e7bc8c",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1984, 1, 1),
                             Email = "user16@example.com",
@@ -10746,12 +9723,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER16@EXAMPLE.COM",
                             NormalizedUserName = "USER16@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEKATlhbmPFDtCO1GQEQlzLql4BNDiA5hgCsaJbJNjwWm9l0Fuuwx0Cs6EIDoFSzOg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENdVK9ns7RZ9NmlGY8LJacfpa3AGdUoBiTsqYyxxafUX8eZiYRI/MbDvb+z3v39YKA==",
                             Phone = "0900000016",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c8ae84fa-fe21-4bc0-9f21-f7d4bb265cec",
+                            SecurityStamp = "079a63d7-0536-4b7d-8b16-133e6656ca12",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 231, DateTimeKind.Local).AddTicks(839),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 781, DateTimeKind.Local).AddTicks(7510),
                             UserName = "user16@example.com"
                         },
                         new
@@ -10759,7 +9736,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "17",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/17/200/200",
-                            ConcurrencyStamp = "076e15d5-f8cb-47c3-9eac-1149af2af985",
+                            ConcurrencyStamp = "9ea1f14c-baef-437c-9b6f-506136ffb60a",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1983, 1, 1),
                             Email = "user17@example.com",
@@ -10771,12 +9748,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER17@EXAMPLE.COM",
                             NormalizedUserName = "USER17@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDXUgOCDtc8DDdWFEpRbDtSa1Hi2ZSjXkH1YA2eC6302yepCDpe68jIhJYKtZB6HmQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEL6jrvPRZ8s3brOW6Fw0P5LRW7mGHvITPR7gtzqKJGiG/HjsstyeqXRidM56KyJTcQ==",
                             Phone = "0900000017",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "be062aa4-cef9-4bcf-a16b-5974644f2bba",
+                            SecurityStamp = "c0b9d800-a187-4d90-aa6a-da8123441382",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 269, DateTimeKind.Local).AddTicks(5780),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 822, DateTimeKind.Local).AddTicks(6566),
                             UserName = "user17@example.com"
                         },
                         new
@@ -10784,7 +9761,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "18",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/18/200/200",
-                            ConcurrencyStamp = "42af72bf-78ee-48ac-a36d-1228e55f3a28",
+                            ConcurrencyStamp = "7d5e76c5-ae54-4be0-88f3-188ac47e4492",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1982, 1, 1),
                             Email = "user18@example.com",
@@ -10796,12 +9773,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER18@EXAMPLE.COM",
                             NormalizedUserName = "USER18@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPhw4YF33Llw2edRpPS+KtTPBs2ND6uB0KrJdE//9Gzj7bCme92sgkZOUVNkg033Tw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBikMpFaBs+a+Ctk2+1q66g9XyxqLm4TX04hODXz0WituVLjAfNFf01tFmYdEfOiFA==",
                             Phone = "0900000018",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0510966e-0eca-4cfb-8c85-d40473419010",
+                            SecurityStamp = "f3773a2f-17aa-44d2-acc3-1715628bdc07",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 309, DateTimeKind.Local).AddTicks(9995),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 861, DateTimeKind.Local).AddTicks(1070),
                             UserName = "user18@example.com"
                         },
                         new
@@ -10809,7 +9786,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "19",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/19/200/200",
-                            ConcurrencyStamp = "54365f36-d47e-4f59-8224-3b2f1cc917b1",
+                            ConcurrencyStamp = "814ad285-5258-4dd9-b35f-7f3780dce765",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1981, 1, 1),
                             Email = "user19@example.com",
@@ -10821,12 +9798,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER19@EXAMPLE.COM",
                             NormalizedUserName = "USER19@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEG8QcYtg18/XqHZhV585asjFy7c97v/dn54kRvav0+j/RTblL6NiK5lL+FOtLqWl9A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMNtQNgBUgANZZzzX7hJXVt0+FUfAnRSuKCIRpVoSdHc9DS0BmMHUSSUonug0COJCg==",
                             Phone = "0900000019",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "71263947-44a6-4eba-96c0-5106571f70f7",
+                            SecurityStamp = "91eee0d2-fb64-46de-9c39-c35514a39a98",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 349, DateTimeKind.Local).AddTicks(5351),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 900, DateTimeKind.Local).AddTicks(4744),
                             UserName = "user19@example.com"
                         },
                         new
@@ -10834,7 +9811,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "20",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/20/200/200",
-                            ConcurrencyStamp = "140cb195-6c9a-41a4-9976-438220d4ca21",
+                            ConcurrencyStamp = "042233cb-2b2e-4086-89f0-5f4411f50b3a",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1980, 1, 1),
                             Email = "user20@example.com",
@@ -10846,12 +9823,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER20@EXAMPLE.COM",
                             NormalizedUserName = "USER20@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEENNPk6pAz0S+udOqN0E0c59Z3pGwQHz/zxXoBNIQ1+GSE5zxvia+HXiHAe/Zu88Jw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHG66l73wq5VLbRsnjnfuDFyvBwDpNqzi1SQIBtmeq7TFbK9fKgFq8+JVpJ8dkLtQg==",
                             Phone = "0900000020",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a4906804-2b5f-408d-96aa-77afe63d92d5",
+                            SecurityStamp = "0b9cb08b-97fa-4932-81a6-ae71344dc1c9",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 389, DateTimeKind.Local).AddTicks(520),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 939, DateTimeKind.Local).AddTicks(6399),
                             UserName = "user20@example.com"
                         },
                         new
@@ -10859,7 +9836,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "21",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/21/200/200",
-                            ConcurrencyStamp = "f0af6b09-2cdd-430a-b927-5c5f1eb26419",
+                            ConcurrencyStamp = "dfe83569-80da-4db1-84f6-e763d7d76ddf",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1979, 1, 1),
                             Email = "user21@example.com",
@@ -10871,12 +9848,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER21@EXAMPLE.COM",
                             NormalizedUserName = "USER21@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDhCHXyYERYsdvjFuMvxX6ES6KROFPWE89Z+QilF6R2T7BrFNKrBzaoZyyWj7f/NEw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGyqzpbX7OFvShRlCij5maJHGnR3QIuNSIxvkEXXXu3RtyQim5juhQSB07AY3DDRhg==",
                             Phone = "0900000021",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "64490b8a-d27e-4e94-a854-f336751eca5b",
+                            SecurityStamp = "d7dc7d93-b3e8-4871-9cb0-d32ea0e67aa6",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 430, DateTimeKind.Local).AddTicks(6353),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 51, 979, DateTimeKind.Local).AddTicks(3866),
                             UserName = "user21@example.com"
                         },
                         new
@@ -10884,7 +9861,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "22",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/22/200/200",
-                            ConcurrencyStamp = "7ba1670d-7978-44e8-88a6-b88fa32ae228",
+                            ConcurrencyStamp = "ec9edeb4-a995-4606-939f-8ea7b7476d81",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1978, 1, 1),
                             Email = "user22@example.com",
@@ -10896,12 +9873,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER22@EXAMPLE.COM",
                             NormalizedUserName = "USER22@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPPg9bEqKBw3CC4Hb+KBdykpC16jrHWp+M0w2LfiOMUcKJHo2IT3zaSsYKcg+fBHUw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHEuNka0FTAfD6it4UQUwus7LEx6gkIFSCdhyqrg6abD9wutnHUoambF8XcAJDvunA==",
                             Phone = "0900000022",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d3c01ea2-28bb-4516-84cd-c6dfd0b3b242",
+                            SecurityStamp = "cd4f246e-72ad-47ea-9546-e5024b178b63",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 471, DateTimeKind.Local).AddTicks(476),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 21, DateTimeKind.Local).AddTicks(988),
                             UserName = "user22@example.com"
                         },
                         new
@@ -10909,7 +9886,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "23",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/23/200/200",
-                            ConcurrencyStamp = "2f0d5c18-4a37-4669-83e2-229df2f662ea",
+                            ConcurrencyStamp = "a83db2d9-d42d-4dbe-b817-3e92ae078b9e",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1977, 1, 1),
                             Email = "user23@example.com",
@@ -10921,12 +9898,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER23@EXAMPLE.COM",
                             NormalizedUserName = "USER23@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAt9tNlkFt9ub3Rq2jwvCq+zWpNcBUEb0QRF3f1PeH6sIFtn1NZvXOFz/jGi9iBycQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEtdowAFH/F1Hlkd4a0o+k4KFKzOeJu1WofZyRT8mD/5xP5B6qsq3D/F6Xt8yBgP9g==",
                             Phone = "0900000023",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "84ebbaf5-ed5b-4950-96f1-f29fe4cdb466",
+                            SecurityStamp = "4cfca961-9521-4e00-9ece-0be40915f0d3",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 511, DateTimeKind.Local).AddTicks(2302),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 61, DateTimeKind.Local).AddTicks(7996),
                             UserName = "user23@example.com"
                         },
                         new
@@ -10934,7 +9911,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "24",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/24/200/200",
-                            ConcurrencyStamp = "98f610ec-11d9-4192-9de5-1743ffe254f8",
+                            ConcurrencyStamp = "3dfa8b44-c48c-4c51-b222-4ed30b64f932",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1976, 1, 1),
                             Email = "user24@example.com",
@@ -10946,12 +9923,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER24@EXAMPLE.COM",
                             NormalizedUserName = "USER24@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK3mzA2Px4tkZKEACtc39k6Od/uZOqY5jF8IWONJesG+zj/EcD8hUn5eAjWrDI/n+w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJbI07CkjbYlhrZRTg/OHutrR+D8Y4KZOjaydDD+KxMeRrIjbUrclBV3F2p0n9gs9A==",
                             Phone = "0900000024",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f2cbb0f5-dd83-45fc-938f-eb7578b9f91b",
+                            SecurityStamp = "73f22c3b-be55-4e1a-9a71-774dd750d276",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 550, DateTimeKind.Local).AddTicks(4175),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 103, DateTimeKind.Local).AddTicks(4232),
                             UserName = "user24@example.com"
                         },
                         new
@@ -10959,7 +9936,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "25",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/25/200/200",
-                            ConcurrencyStamp = "757bf270-083d-4f2c-9b73-15b4fd5a89aa",
+                            ConcurrencyStamp = "ae405221-1a49-4f7f-8176-c9528622ecb5",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1975, 1, 1),
                             Email = "user25@example.com",
@@ -10971,12 +9948,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER25@EXAMPLE.COM",
                             NormalizedUserName = "USER25@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIjSNDHYbq4ropicioKuhq8p105ptpZogREj+XO7d0UR2PM1MsbLvIHLjK6vcoGhJg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPth9n2SgPlkFwpTeZbV2HUGSjBeQ5Qf57hTEPekpez2j1ONcm+2dXwYs7uNcX3y0g==",
                             Phone = "0900000025",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ab075a0d-6bd3-400f-b965-07b5a2b1d9f8",
+                            SecurityStamp = "abe38ed0-10df-4e65-a925-2c20ca740c73",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 590, DateTimeKind.Local).AddTicks(151),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 145, DateTimeKind.Local).AddTicks(6851),
                             UserName = "user25@example.com"
                         },
                         new
@@ -10984,7 +9961,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "26",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/26/200/200",
-                            ConcurrencyStamp = "ed718ca6-2de2-4bc6-8e14-26c8f1b32716",
+                            ConcurrencyStamp = "e1491b68-2485-491c-871c-4efc965fd9d8",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1974, 1, 1),
                             Email = "user26@example.com",
@@ -10996,12 +9973,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER26@EXAMPLE.COM",
                             NormalizedUserName = "USER26@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEL05bgGqH9oLar7L1VVuXplyIyk4j8pW0SUIXalMsByImA6dMedeHRm65g7kveLSUQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEL4TkfzG8DUHasQJ6R+3gzJpaGVHUR/sbZTTcec0kfeciPwCpEAEeSt8g2qu9edRLA==",
                             Phone = "0900000026",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e644941b-449f-4a66-aa0e-ee6cc0628c58",
+                            SecurityStamp = "1e78ff3e-5c7c-45e1-ac77-b14c5ac676d3",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 630, DateTimeKind.Local).AddTicks(3758),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 190, DateTimeKind.Local).AddTicks(4850),
                             UserName = "user26@example.com"
                         },
                         new
@@ -11009,7 +9986,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "27",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/27/200/200",
-                            ConcurrencyStamp = "befcfef2-b88c-45a7-b163-da90b597458d",
+                            ConcurrencyStamp = "ee7990a9-25c6-4fc8-8ca7-edc0aeb47deb",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1973, 1, 1),
                             Email = "user27@example.com",
@@ -11021,12 +9998,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER27@EXAMPLE.COM",
                             NormalizedUserName = "USER27@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDIllJi5XA4aSX+SuDDYxUO0q0D4jMV+z8bbaDiDrqINk+i71kNIbjjI5NHVCVL6pw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEE2Q3cEYRWcXVIi5esEDtLl5+wZglB7R3JwZKlPpb3O+9MVJDZWAW181Bk7xwGi+Zg==",
                             Phone = "0900000027",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4d0e8dd4-3fb2-43d5-94f6-eccd9ea458d2",
+                            SecurityStamp = "09c2a397-5d59-4a64-bdf5-cc6941850899",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 677, DateTimeKind.Local).AddTicks(1999),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 232, DateTimeKind.Local).AddTicks(371),
                             UserName = "user27@example.com"
                         },
                         new
@@ -11034,7 +10011,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "28",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/28/200/200",
-                            ConcurrencyStamp = "ccf1d518-ef48-41b6-b52b-1b952500719a",
+                            ConcurrencyStamp = "d6335f6f-9aa3-4380-be4e-56e9b1a144bb",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1972, 1, 1),
                             Email = "user28@example.com",
@@ -11046,12 +10023,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER28@EXAMPLE.COM",
                             NormalizedUserName = "USER28@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEImsuqbO6HuWaNDKwONQzWu8DFaQFe1UUyGhsv4PtivKd7njY/YeRtbULjnrRf9eBw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFJYzscDVYJu+fHVuLcMgyYryvFsgYloATm4LGUGy3xQviVvePM+SGlJs//k2OsOlg==",
                             Phone = "0900000028",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a663fd0b-faa6-4da5-ae5f-bf2558c5051b",
+                            SecurityStamp = "14be59fd-2df3-4cac-9f64-85fd4340ca29",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 720, DateTimeKind.Local).AddTicks(6478),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 272, DateTimeKind.Local).AddTicks(5505),
                             UserName = "user28@example.com"
                         },
                         new
@@ -11059,7 +10036,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "29",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/29/200/200",
-                            ConcurrencyStamp = "c51aefc2-6155-40a5-8766-d50bd9535a2e",
+                            ConcurrencyStamp = "6b377ea6-e600-4076-8664-5fccadf080b1",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1971, 1, 1),
                             Email = "user29@example.com",
@@ -11071,12 +10048,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER29@EXAMPLE.COM",
                             NormalizedUserName = "USER29@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJ2T58dpzECIHYhrjHweYFmmmQ+mjY7G+HsZC1MuzFY8hdPLnd/xk+evoiZRGNbeuA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMxhi6DTgCITTAmBfi/J72Hhv+Bi/Y9fIJV0wXgBr+7VoYQ15DSzNHN8wCL+q29SgA==",
                             Phone = "0900000029",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5e610ea4-7bc1-4a68-a302-1a27e56f7176",
+                            SecurityStamp = "b1c58378-d0a5-45e9-b4ef-3a9ebec452c6",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 763, DateTimeKind.Local).AddTicks(5520),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 310, DateTimeKind.Local).AddTicks(8581),
                             UserName = "user29@example.com"
                         },
                         new
@@ -11084,7 +10061,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "30",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/30/200/200",
-                            ConcurrencyStamp = "61db3961-175f-46e9-bb2f-ede814ebbaf8",
+                            ConcurrencyStamp = "5dfb11ff-3e05-4364-8b9e-65c6c16e1bf2",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1970, 1, 1),
                             Email = "user30@example.com",
@@ -11096,12 +10073,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER30@EXAMPLE.COM",
                             NormalizedUserName = "USER30@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEO3zkxpn6ECLs1mBnwVeO8utGoAYvjY0eSskP1oqoZHOKzMFe9Y6jDNJWqZbEJdNJQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEC4nIUNIPAvSMMp9ZDraJqoQJPsviPn6ZgM6X+8HxSZ25lE3mFUOYJKOmJc8rmUdmA==",
                             Phone = "0900000030",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "51f5dcb2-1a0d-42a7-a87f-7e0ff311c1bb",
+                            SecurityStamp = "327b6db8-c8f1-4d7b-892b-157615c52bc5",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 804, DateTimeKind.Local).AddTicks(5186),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 350, DateTimeKind.Local).AddTicks(1513),
                             UserName = "user30@example.com"
                         },
                         new
@@ -11109,7 +10086,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "31",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/31/200/200",
-                            ConcurrencyStamp = "215ee829-a8a2-489b-a554-5cbff30937bd",
+                            ConcurrencyStamp = "976b2f21-8326-400a-b9da-292bffe40f20",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1969, 1, 1),
                             Email = "user31@example.com",
@@ -11121,12 +10098,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER31@EXAMPLE.COM",
                             NormalizedUserName = "USER31@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOlADYS/V68/+A45FSyhbMlot7YZDncV6TDOreF+V5tjYy5o60oMPGT7z3GDRxc03w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFOMT7xwRlZru0xwnp7eGEtl9xHqRqsIA1hvRPjNMgEKWn9qS8RTmn9Hdu/1yOnk5A==",
                             Phone = "0900000031",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e38ef75d-8ec6-4f20-aaa2-e3c35efeb424",
+                            SecurityStamp = "3ddcd77f-ea3e-43fa-9632-81dd892ca264",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 845, DateTimeKind.Local).AddTicks(3648),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 390, DateTimeKind.Local).AddTicks(1249),
                             UserName = "user31@example.com"
                         },
                         new
@@ -11134,7 +10111,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "32",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/32/200/200",
-                            ConcurrencyStamp = "de483fd5-1fc8-4ca0-a5f4-045e34d340d8",
+                            ConcurrencyStamp = "1a19cf43-b209-4f68-8482-bfc8b8666e0d",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1968, 1, 1),
                             Email = "user32@example.com",
@@ -11146,12 +10123,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER32@EXAMPLE.COM",
                             NormalizedUserName = "USER32@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFpp/Tp6+ErHcChakvB38hCxuB5FR1v3GEtWeg2nw0GA4OOYxUYVvm0Urz8VMpWqxg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIipZeL0v9qTJb5M0rq38/WnOg5fwmIb7Eq8tnAD6G00E89WxFeIugc4aWiuO0gUcA==",
                             Phone = "0900000032",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ee5294d5-e35c-4aa3-937d-9bca7aa31817",
+                            SecurityStamp = "f7196a2d-964e-428b-b515-eea98fe7e5b4",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 886, DateTimeKind.Local).AddTicks(7992),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 430, DateTimeKind.Local).AddTicks(8279),
                             UserName = "user32@example.com"
                         },
                         new
@@ -11159,7 +10136,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "33",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/33/200/200",
-                            ConcurrencyStamp = "0e6d7f3e-0bbe-445a-95b0-8366358d014f",
+                            ConcurrencyStamp = "c78a3335-a796-4dd4-9814-12026a42ec8e",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1967, 1, 1),
                             Email = "user33@example.com",
@@ -11171,12 +10148,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER33@EXAMPLE.COM",
                             NormalizedUserName = "USER33@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHODc7UPTj3qr8JxDlQrnrWP3Easnid6KVRlLVmzmfnM7PizaBkgYW8aNYKO+z9Emw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEETIajillgrpxamYK7A69cFFcxlh3fO1hrISetHqnGPIyebQLr8JKu2+g1WWvDYWCA==",
                             Phone = "0900000033",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2b8b8fd1-be18-4c2d-aa01-0394094f7367",
+                            SecurityStamp = "a9501c2f-1609-4553-a244-99c99b56de0b",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 928, DateTimeKind.Local).AddTicks(1223),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 471, DateTimeKind.Local).AddTicks(266),
                             UserName = "user33@example.com"
                         },
                         new
@@ -11184,7 +10161,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "34",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/34/200/200",
-                            ConcurrencyStamp = "94631287-a63f-4af9-9d9e-6b205f82365e",
+                            ConcurrencyStamp = "db1071ab-773a-43a1-a57f-9e7b2063b40e",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1966, 1, 1),
                             Email = "user34@example.com",
@@ -11196,12 +10173,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER34@EXAMPLE.COM",
                             NormalizedUserName = "USER34@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKmYvnFuGKQb/GxrtFMktS4Ta3HIy7cUcGLEH22H7RnXu218uEgpdJyz3dOKpOz67g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDfyYljEIZWtmohtx+jbD9JWOROQLd5APZtaPLZUXc4/IvAxPoi9L0z76LbDG9XOkg==",
                             Phone = "0900000034",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3a7b05b3-e76a-4646-8d2d-ce94d37b5379",
+                            SecurityStamp = "b3068fbe-d617-4637-be68-d455d07b32a2",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 4, 969, DateTimeKind.Local).AddTicks(1990),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 511, DateTimeKind.Local).AddTicks(2943),
                             UserName = "user34@example.com"
                         },
                         new
@@ -11209,7 +10186,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "35",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/35/200/200",
-                            ConcurrencyStamp = "b2d00b33-e2e1-4c80-9cd1-e5f16c1d08e9",
+                            ConcurrencyStamp = "62b41839-97e7-4ee5-ac11-d3594322454c",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1965, 1, 1),
                             Email = "user35@example.com",
@@ -11221,12 +10198,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER35@EXAMPLE.COM",
                             NormalizedUserName = "USER35@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFRWZ3umXtl4eMwQDM8S0Eyj0dsaw2ScwSPeKiKVsbVXYxHrkCxKNq7YmMEm0T8kpQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMxEFwGduJoRXYYwjitx6hzJJpM56XY71F9H7pyBvCfs7pV+FY+NtC/4rfbzSA+Few==",
                             Phone = "0900000035",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "82bfe265-655d-40de-9d8b-e49ac08d8a2d",
+                            SecurityStamp = "2dc2e068-4854-4143-954c-0d01e8104d9d",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 5, 10, DateTimeKind.Local).AddTicks(7864),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 552, DateTimeKind.Local).AddTicks(1163),
                             UserName = "user35@example.com"
                         },
                         new
@@ -11234,7 +10211,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "36",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/36/200/200",
-                            ConcurrencyStamp = "4b5373f8-a52d-460c-b75d-e431c0a1d737",
+                            ConcurrencyStamp = "dac95709-7088-4a19-bea2-38e5a3dcf60e",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1964, 1, 1),
                             Email = "user36@example.com",
@@ -11246,12 +10223,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER36@EXAMPLE.COM",
                             NormalizedUserName = "USER36@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDWQCFc7kXbRay2CiCdQe0FIauReFasyRP8HIiWOMt6iG83ms7/rNvBWV9g7B8OfMg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEP/VuxoybF2s0C968lBwlNh2y+zbg+wALYDx17fEgzRNItND3MYSPJzDz6cCY10ztg==",
                             Phone = "0900000036",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d53d5a6d-7aaa-434c-86e7-b887d3ab2fb7",
+                            SecurityStamp = "b61a912a-b7f8-4414-97cb-35a5767311c5",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 5, 51, DateTimeKind.Local).AddTicks(8319),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 592, DateTimeKind.Local).AddTicks(4556),
                             UserName = "user36@example.com"
                         },
                         new
@@ -11259,7 +10236,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "37",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/37/200/200",
-                            ConcurrencyStamp = "a30e54bd-728b-46ec-ad4f-2eb4cad75346",
+                            ConcurrencyStamp = "0c08db48-b332-40fd-b460-dd6e7005cb0d",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1963, 1, 1),
                             Email = "user37@example.com",
@@ -11271,12 +10248,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER37@EXAMPLE.COM",
                             NormalizedUserName = "USER37@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBcDKw1WGPzHGQmDa6gpJMkQOvOHe6aS5UXM4lF8fEiWSYXY6jK00qzeoq+GnG08gw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEH3mV/ko5dD2deZEuUli/73kz1Cqb+Uz+fgKEJCSi6LbeLUVQ80TqY3cY8DXypXQGw==",
                             Phone = "0900000037",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4a4301a3-b90c-4902-82d4-965b087a5c7c",
+                            SecurityStamp = "e8abd741-1c78-4656-b45c-87d4b4de8799",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 5, 93, DateTimeKind.Local).AddTicks(1917),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 631, DateTimeKind.Local).AddTicks(5427),
                             UserName = "user37@example.com"
                         },
                         new
@@ -11284,7 +10261,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "38",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/38/200/200",
-                            ConcurrencyStamp = "d76dcd1e-4136-4fab-8f3c-3d8fabd98071",
+                            ConcurrencyStamp = "4d15b3fd-f9ab-4fde-8de8-13c23d5345e8",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1962, 1, 1),
                             Email = "user38@example.com",
@@ -11296,12 +10273,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER38@EXAMPLE.COM",
                             NormalizedUserName = "USER38@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDrh/z0WM6QyqDSOyP1S5wfOEs2cixwffa5gICSsP+iyFcV49mNJeQL/oBbY438C1g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJCfA1wbIB95qxcuWB4ud0WRjSxVs6A49xCFwsylWGx290tGpBzZ/4/F5DYyUwlvfw==",
                             Phone = "0900000038",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b4f3a5e3-225c-4838-9455-74ee004b06c8",
+                            SecurityStamp = "f726e308-e104-4038-9e69-f26ca0a1d863",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 5, 133, DateTimeKind.Local).AddTicks(6402),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 671, DateTimeKind.Local).AddTicks(68),
                             UserName = "user38@example.com"
                         },
                         new
@@ -11309,7 +10286,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "39",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/39/200/200",
-                            ConcurrencyStamp = "a3f6d681-d358-4b13-a37b-1d2b0ebcc12d",
+                            ConcurrencyStamp = "edfd6dce-ffd5-4055-924c-c460381e9089",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1961, 1, 1),
                             Email = "user39@example.com",
@@ -11321,12 +10298,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER39@EXAMPLE.COM",
                             NormalizedUserName = "USER39@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGNg754bCJIOP/+6YaOLOmkJ1j0Sv/NU0vmiXvT0g99gVjlLWBT6+44v3J++p6bB/Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPYdWg+NY+PJuj1QgPRCVmIKs/xGKi60Y8wzrWkz8p2+3UTxtsHbGY64Bj7sWrKK7Q==",
                             Phone = "0900000039",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "831bb60f-e8da-4a7d-bfa9-aa3ec2cd1706",
+                            SecurityStamp = "b88f7750-ce81-4240-b677-2582fad0326e",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 5, 171, DateTimeKind.Local).AddTicks(7640),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 712, DateTimeKind.Local).AddTicks(579),
                             UserName = "user39@example.com"
                         },
                         new
@@ -11334,7 +10311,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "40",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/40/200/200",
-                            ConcurrencyStamp = "67b93485-77ac-4a3e-83bd-640b82d4e088",
+                            ConcurrencyStamp = "5f020bae-cec1-4cbb-8753-4f8463f1af10",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1960, 1, 1),
                             Email = "user40@example.com",
@@ -11346,12 +10323,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER40@EXAMPLE.COM",
                             NormalizedUserName = "USER40@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFbPyGq7ef3q9S3Ps96DjBwUnRJkJbu5i1+U92pRNRv+/HY+gc+oBccRmkg2T44Lmg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIurJ5MDvU+b7ZCfxDaIE7zV1E5cyg+XlJcS0wYCZ9rGUCUEfId+wAR8VaEKfNtDWg==",
                             Phone = "0900000040",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a7235158-72af-4d68-aba0-7006d6d09c9d",
+                            SecurityStamp = "be3f3664-383f-449f-9ebb-dc279121ef93",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 5, 211, DateTimeKind.Local).AddTicks(1968),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 752, DateTimeKind.Local).AddTicks(9740),
                             UserName = "user40@example.com"
                         },
                         new
@@ -11359,7 +10336,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "41",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/41/200/200",
-                            ConcurrencyStamp = "f9ff335e-435a-4204-84ad-88d2a1e3d3e9",
+                            ConcurrencyStamp = "f6c99d94-20c2-4d3b-b123-c35cbd00cce1",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1959, 1, 1),
                             Email = "user41@example.com",
@@ -11371,12 +10348,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER41@EXAMPLE.COM",
                             NormalizedUserName = "USER41@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAbykF0Ed5ppdpY9WtLAAOxey52lvJz9ot9jC8wJCef+vlh8179HszRYah/za4wFkg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELPPMjDIcFMW5mh304Q7sM0Qy7T9sfzG0X0krzgaUHRYmhvpjkSnK8lIDYU3ElEwVw==",
                             Phone = "0900000041",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "37ffef7d-5625-46e7-a3ef-e479249085df",
+                            SecurityStamp = "238a8d26-cdff-4b0f-94f1-16d5a2918e5a",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 5, 251, DateTimeKind.Local).AddTicks(2930),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 794, DateTimeKind.Local).AddTicks(6771),
                             UserName = "user41@example.com"
                         },
                         new
@@ -11384,7 +10361,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "42",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/42/200/200",
-                            ConcurrencyStamp = "3c8ae1ee-45e1-4ddc-aaa4-bae36f8e97b1",
+                            ConcurrencyStamp = "a0c1bc10-4609-4cec-be1d-93cf260041e5",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1958, 1, 1),
                             Email = "user42@example.com",
@@ -11396,12 +10373,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER42@EXAMPLE.COM",
                             NormalizedUserName = "USER42@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEA4yFT3xvuBDS1k/kdP7nPHQruX4AyX2JMKOy1V0OdoegcAxIgRFWXA5yxiiD/PEZg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGWBTmu2ZRg5LOGgkQhXZMk14S/OMhNiBKkIECBykIPrppzmyq0WjrSy/rGovQfYow==",
                             Phone = "0900000042",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "14ee4bbc-d048-413c-b38c-e986fab13022",
+                            SecurityStamp = "9e7e0c1b-0744-4b41-94f4-53c6d4bb96c8",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 5, 291, DateTimeKind.Local).AddTicks(2134),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 836, DateTimeKind.Local).AddTicks(4218),
                             UserName = "user42@example.com"
                         },
                         new
@@ -11409,7 +10386,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "43",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/43/200/200",
-                            ConcurrencyStamp = "598cd393-128f-4a65-a51c-b4e1317d50ea",
+                            ConcurrencyStamp = "5bf7f698-beec-42df-b11f-559413d71fde",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1957, 1, 1),
                             Email = "user43@example.com",
@@ -11421,12 +10398,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER43@EXAMPLE.COM",
                             NormalizedUserName = "USER43@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEOXxbM8yX2gAhdOT8k6bX/lEvt3Izl5UkAIsHGw+bHY+KOVTyX6C21/yQr+QGrlTUw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJhr4FWNwTAlYmQ2hJgPlSUhHvHTHgzRfgGwBWdgUvaLEH7Q1atXKL/5ElBfYsGOYw==",
                             Phone = "0900000043",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3e1dfe7b-898d-46aa-a30b-d01e05e945e7",
+                            SecurityStamp = "2f7bf9cb-a6b9-4072-aef2-9b4d09ae3d19",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 5, 331, DateTimeKind.Local).AddTicks(3238),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 877, DateTimeKind.Local).AddTicks(6132),
                             UserName = "user43@example.com"
                         },
                         new
@@ -11434,7 +10411,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "44",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/44/200/200",
-                            ConcurrencyStamp = "bfdee269-5abc-4a3e-a699-e93fafc927b8",
+                            ConcurrencyStamp = "cd18d218-574d-49e4-98c7-86a90cbf3efd",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1956, 1, 1),
                             Email = "user44@example.com",
@@ -11446,12 +10423,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER44@EXAMPLE.COM",
                             NormalizedUserName = "USER44@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBGLuXO3qQgK3XEGGKbT/5/xvGR8SyPXIJV78sNA2SQNdWzPt5xOGqAHNHUIq6hShA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKApuYZ89DRTUY1S139/gGYLBI531jAy7DCIYeofkfUy3VqalMRM8MG7JyRxMS1DoA==",
                             Phone = "0900000044",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8934ac04-560f-416d-92ad-a25e81e07414",
+                            SecurityStamp = "2a63554d-cdfd-4be3-bcb7-39d97ca29bd6",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 5, 371, DateTimeKind.Local).AddTicks(3566),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 918, DateTimeKind.Local).AddTicks(7620),
                             UserName = "user44@example.com"
                         },
                         new
@@ -11459,7 +10436,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "45",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/45/200/200",
-                            ConcurrencyStamp = "8b9d84ec-37f2-44ae-9b45-78a84df8e157",
+                            ConcurrencyStamp = "81d30027-05da-4e4e-be51-78a2cea08cfd",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1955, 1, 1),
                             Email = "user45@example.com",
@@ -11471,12 +10448,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER45@EXAMPLE.COM",
                             NormalizedUserName = "USER45@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPNtXfNBUPkL4N5vStIFhOKw2CkdRmD22BM/MWnGfCkkUhI8OdObgIPJZ76O81ezyw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPIUDbd19z9D+Cx3SAdXFHcgV0kgzUELk1nsv5X1ur3TD61zmjI3K9GwvfYdehgpxg==",
                             Phone = "0900000045",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "63a84b0e-72ec-4801-9233-b5e51f640fa9",
+                            SecurityStamp = "4ee30a0e-50d3-4abd-9cf5-a50e81fa749e",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 5, 411, DateTimeKind.Local).AddTicks(4644),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 957, DateTimeKind.Local).AddTicks(5212),
                             UserName = "user45@example.com"
                         },
                         new
@@ -11484,7 +10461,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "46",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/46/200/200",
-                            ConcurrencyStamp = "550e6f59-f025-4379-97c9-cc007cb2a076",
+                            ConcurrencyStamp = "0cd026f1-35aa-498c-a6c8-c6cab0b59cc0",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1954, 1, 1),
                             Email = "user46@example.com",
@@ -11496,12 +10473,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER46@EXAMPLE.COM",
                             NormalizedUserName = "USER46@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPhzrRshpezxR/8+jKOQKPec/+nqHLYX8F3yse6HStu29UEQg3MPKTnoj4kTYKQHTw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFzrCdiaPcAHZOUJ9uwmUfcf6d/eBCAXUlYkRhbzqAdhVdzQ0Ui+RrZELCNt4yi6Ug==",
                             Phone = "0900000046",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "20c322fc-5a0b-430d-a301-342c54a6e874",
+                            SecurityStamp = "ce9a0bfc-aa98-4702-8f74-65abd4f3fce7",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 5, 451, DateTimeKind.Local).AddTicks(4544),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 52, 996, DateTimeKind.Local).AddTicks(6840),
                             UserName = "user46@example.com"
                         },
                         new
@@ -11509,7 +10486,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "47",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/47/200/200",
-                            ConcurrencyStamp = "464974d2-0a49-4d5e-a3b8-b1c8abc20208",
+                            ConcurrencyStamp = "eee09199-72f7-436d-910f-3dcd4e33f52c",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1953, 1, 1),
                             Email = "user47@example.com",
@@ -11521,12 +10498,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER47@EXAMPLE.COM",
                             NormalizedUserName = "USER47@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKE+sT7ot3Gy6wPxrW0jfRmyclrBaRxpKLrKDLTKD2gbDjtc9YtoUgArE6MuypqGzw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEIiWPex3BBel9ItL0x3oQ6nOza4sa/1SZw+2Zl8YuU+C2ezjHXRoM9YOc6ENgFKIA==",
                             Phone = "0900000047",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9f4a35ce-6b56-484f-9d29-c0aa90a1a3ed",
+                            SecurityStamp = "b499c407-fa74-4cea-bc64-5ff390020386",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 5, 491, DateTimeKind.Local).AddTicks(8970),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 53, 36, DateTimeKind.Local).AddTicks(5817),
                             UserName = "user47@example.com"
                         },
                         new
@@ -11534,7 +10511,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "48",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/48/200/200",
-                            ConcurrencyStamp = "1012b4ba-327e-4873-b07b-4cdf34308a19",
+                            ConcurrencyStamp = "085586d5-d61a-40fa-86dc-a25a76b8ff08",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1952, 1, 1),
                             Email = "user48@example.com",
@@ -11546,12 +10523,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER48@EXAMPLE.COM",
                             NormalizedUserName = "USER48@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEYrKvdlEdMS5q/46J3jXWsBAsAciHDd97VQL6Si8zRgVltr0PU7TnavkCm3duoxuA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDdYFBP9IrxWyPGyRC/NtJ6VNay0cVHvEEYuzFOWU/XnrJPYAFo+b4KInVE1IXbAoA==",
                             Phone = "0900000048",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ce602325-99f9-4fd4-9dd1-838db752df0d",
+                            SecurityStamp = "635c7103-9682-4e23-b400-792512fc1870",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 5, 532, DateTimeKind.Local).AddTicks(3283),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 53, 77, DateTimeKind.Local).AddTicks(1396),
                             UserName = "user48@example.com"
                         },
                         new
@@ -11559,7 +10536,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "49",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/49/200/200",
-                            ConcurrencyStamp = "985db3b6-207e-4915-85fb-4d03a671d403",
+                            ConcurrencyStamp = "450facdc-f737-4fcf-8845-a914f91a50ad",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1951, 1, 1),
                             Email = "user49@example.com",
@@ -11571,12 +10548,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER49@EXAMPLE.COM",
                             NormalizedUserName = "USER49@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJKaAfuo5REt6mFej/rClRnBm27rW1NjCI+gLCGO/aF1CeTye5f52M8Wxfpj6Wr+nA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECvBsz5JVjFLRYFpnxfHgMnAnWf5QVqdttJSVjAbsx2iMAnJZ/zAlVWb8zQlLEP38A==",
                             Phone = "0900000049",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "eeb7d593-45eb-4ab0-837e-8ad209e368f4",
+                            SecurityStamp = "6ad80b9f-28ea-4321-92c3-58a2817db6ed",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 5, 573, DateTimeKind.Local).AddTicks(3956),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 53, 117, DateTimeKind.Local).AddTicks(1392),
                             UserName = "user49@example.com"
                         },
                         new
@@ -11584,7 +10561,7 @@ namespace OnlineLearningPlatform.Data.Migrations
                             Id = "50",
                             AccessFailedCount = 0,
                             AvatarUrl = "https://picsum.photos/seed/50/200/200",
-                            ConcurrencyStamp = "face16a3-6fdd-4b07-995c-3524f0973fcf",
+                            ConcurrencyStamp = "9d689200-2c90-4eea-bbee-60aef716ce1e",
                             CreatedAt = new DateTime(2025, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Dob = new DateOnly(1950, 1, 1),
                             Email = "user50@example.com",
@@ -11596,12 +10573,12 @@ namespace OnlineLearningPlatform.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER50@EXAMPLE.COM",
                             NormalizedUserName = "USER50@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAELPSB+rz93krGauDZadrs+2oq6Yo6UrFK5PmLV7uMZbaaa/f3ZAcMX5G9292a8c0kA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPQ634CwHhvVin9BC2GXgWCmeaEVQVnmiPnJhU2b0fpDlfAUhdKE0X8w34LIs3jl0A==",
                             Phone = "0900000050",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5240ce56-10bf-4164-996f-114386d4260c",
+                            SecurityStamp = "de8df70d-3c5d-492f-a5c1-8722dd41862d",
                             TwoFactorEnabled = false,
-                            UpdatedAt = new DateTime(2025, 11, 7, 17, 10, 5, 613, DateTimeKind.Local).AddTicks(5876),
+                            UpdatedAt = new DateTime(2025, 11, 7, 17, 4, 53, 157, DateTimeKind.Local).AddTicks(2736),
                             UserName = "user50@example.com"
                         });
                 });

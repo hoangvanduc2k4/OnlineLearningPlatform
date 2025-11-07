@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using OnlineLearningPlatform.Enums;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
+using System;
+using System.Collections.Generic;
 
 namespace OnlineLearningPlatform.Data.Seeds
 {
@@ -16,9 +18,9 @@ namespace OnlineLearningPlatform.Data.Seeds
         {
             var modules = new List<Module>();
             long id = 1;
+            var baseDate = new DateTime(2025, 1, 1);
 
-            // Mỗi course có 3 module
-            for (long courseId = 1; courseId <= 12; courseId++)
+            for (long courseId = 1; courseId <= 50; courseId++)
             {
                 for (int m = 1; m <= 3; m++)
                 {
@@ -28,14 +30,9 @@ namespace OnlineLearningPlatform.Data.Seeds
                         ModuleName = $"Module {m} of Course {courseId}",
                         CourseId = courseId,
                         ModuleNumber = m,
-                        // Trạng thái thay đổi xen kẽ để dữ liệu phong phú
-                        Status = m switch
-                        {
-                            1 => CommonStatus.Showed,
-                            2 => CommonStatus.Hided,
-                            _ => CommonStatus.Privated
-                        },
-                        DateCreated = new DateTime(2025, 1, 1)
+
+                        Status = CommonStatus.Showed,
+                        DateCreated = baseDate.AddDays(courseId - 1)
                     });
                 }
             }

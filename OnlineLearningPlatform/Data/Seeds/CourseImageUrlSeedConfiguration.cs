@@ -16,7 +16,8 @@ namespace OnlineLearningPlatform.Data.Seeds
         {
             var list = new List<CourseImageUrl>();
             long id = 1;
-            for (int course = 1; course <= 12; course++)
+
+            for (int course = 1; course <= 50; course++)
             {
                 for (int img = 1; img <= 3; img++)
                 {
@@ -30,6 +31,5 @@ namespace OnlineLearningPlatform.Data.Seeds
             }
             return list.ToArray();
         }
-
     }
 }

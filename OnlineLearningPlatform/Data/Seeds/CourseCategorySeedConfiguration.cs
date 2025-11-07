@@ -17,7 +17,6 @@ namespace OnlineLearningPlatform.Data.Seeds
             var list = new List<CourseCategory>();
             for (long courseId = 1; courseId <= 12; courseId++)
             {
-                // assign 2 categories per course
                 list.Add(new CourseCategory { CategoryId = ((int)(courseId % 3) + 1), CourseId = courseId });
                 list.Add(new CourseCategory { CategoryId = (((int)((courseId + 1) % 3) + 1)), CourseId = courseId });
             }
