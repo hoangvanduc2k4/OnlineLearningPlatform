@@ -42,5 +42,27 @@ namespace OnlineLearningPlatform.Services.Implementations
                 Duration = lesson.Duration
             };
         }
+
+        public async Task<LessonInputViewModel?> GetLessonForEditAsync(long lessonId, string mentorId)
+        {
+            var lesson = await _lessonRepository.GetLessonWithCourseAsync(lessonId, mentorId);
+
+            if (lesson == null) return null;
+
+            return _mapper.Map<LessonInputViewModel>(lesson);
+        }
+
+        public async Task<bool> UpdateLessonAsync(LessonInputViewModel viewModel, string mentorId)
+        {
+            var entityFromDb = await _lessonRepository.GetLessonWithCourseAsync(viewModel.LessonId, mentorId);
+
+            if (entityFromDb == null) return false;
+
+            _mapper.Map(viewModel, entityFromDb);
+            entityFromDb.ModifiedDate = DateTime.Now;
+
+            await _lessonRepository.UpdateAsync(entityFromDb);
+            return true;
+        }
     }
 }

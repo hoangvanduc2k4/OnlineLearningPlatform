@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -50,6 +51,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Modules
 
             ViewData["CourseName"] = course.CourseName;
             ViewData["CourseId"] = ModuleVM.CourseId;
+            ViewData["ModuleId"] = id;
 
             return Page();
         }
@@ -67,6 +69,8 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Modules
 
                 ViewData["CourseName"] = course.CourseName;
                 ViewData["CourseId"] = ModuleVM.CourseId;
+                ViewData["ModuleId"] = ModuleVM.ModuleId;
+
                 return Page();
             }
 

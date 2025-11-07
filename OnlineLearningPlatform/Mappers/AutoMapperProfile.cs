@@ -75,6 +75,7 @@ namespace OnlineLearningPlatform.Mappers
             CreateMap<ModuleInputViewModel, Module>();
             CreateMap<Module, ModuleInputViewModel>();
             CreateMap<LessonInputViewModel, Lesson>();
+            CreateMap<Lesson, LessonInputViewModel>();
         }
     }
 }

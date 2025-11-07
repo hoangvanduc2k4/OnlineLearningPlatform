@@ -144,9 +144,8 @@
                     {
                         <li>
                             <a asp-area="Mentor"
-                               asp-page="/Courses/Manage"
-                               asp-route-id="@Model.CourseId"
-                               asp-route-lessonId="@lesson.LessonId"
+                               asp-page="/Lessons/Edit"
+                               asp-route-id="@lesson.LessonId"
                                class="@(currentLessonId == lesson.LessonId ? "active" : "")">
                                 @lesson.LessonName
                             </a>

@@ -5,6 +5,7 @@ namespace OnlineLearningPlatform.Models.ViewModels
 {
     public class LessonInputViewModel
     {
+        public long LessonId { get; set; }
         public long ModuleId { get; set; }
         public long CourseId { get; set; } 
 

@@ -58,6 +58,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
             ViewData["CourseName"] = course.CourseName;
             ViewData["ModuleName"] = module.ModuleName;
             ViewData["CourseId"] = courseId;
+            ViewData["ModuleId"] = moduleId;
 
             Quiz.ModuleId = moduleId;
             Quiz.CourseId = courseId;
@@ -77,6 +78,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
                 ViewData["CourseName"] = course?.CourseName;
                 ViewData["ModuleName"] = module?.ModuleName;
                 ViewData["CourseId"] = Quiz.CourseId;
+                ViewData["ModuleId"] = module.ModuleId;
 
                 return Page();
             }

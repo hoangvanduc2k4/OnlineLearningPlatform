@@ -8,5 +8,6 @@ namespace OnlineLearningPlatform.Repositories.Interfaces
     {
         Task<Lesson?> GetLessonByIdAsync(long lessonId);
         Task<IEnumerable<Lesson>> GetLessonsByModuleIdAsync(long moduleId);
+        Task<Lesson?> GetLessonWithCourseAsync(long lessonId, string mentorId);
     }
 }

@@ -22,5 +22,12 @@ namespace OnlineLearningPlatform.Repositories.Implementations
         {
             return await _dbSet.Where(l => l.ModuleId == moduleId).ToListAsync();
         }
+        public async Task<Lesson?> GetLessonWithCourseAsync(long lessonId, string mentorId)
+        {
+            return await _dbSet
+                .Include(l => l.Module)
+                    .ThenInclude(m => m.Course)
+                .FirstOrDefaultAsync(l => l.LessonId == lessonId && l.Module.Course.Creator == mentorId);
+        }
     }
 }

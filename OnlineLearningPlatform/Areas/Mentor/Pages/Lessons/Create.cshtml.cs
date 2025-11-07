@@ -56,6 +56,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Lessons
             ViewData["CourseName"] = course.CourseName;
             ViewData["ModuleName"] = module.ModuleName;
             ViewData["CourseId"] = courseId;
+            ViewData["ModuleId"] = moduleId;
 
             LessonVM = new LessonInputViewModel
             {
@@ -76,6 +77,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Lessons
                 ViewData["CourseName"] = course?.CourseName;
                 ViewData["ModuleName"] = module?.ModuleName;
                 ViewData["CourseId"] = LessonVM.CourseId;
+                ViewData["ModuleId"] = LessonVM.ModuleId;
 
                 return Page();
             }
