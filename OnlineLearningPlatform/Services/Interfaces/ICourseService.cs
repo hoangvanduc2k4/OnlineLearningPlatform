@@ -32,7 +32,12 @@ namespace OnlineLearningPlatform.Services.Interfaces
 
         Task ReviewCourseAsync(long courseId, string adminId, ReviewStatus reviewStatus, string? notes);
 
-        Task<IPagedList<Course>> GetCoursesByStatusPagedAsync(CourseStatus status, int pageNumber, int pageSize);
+        Task<IPagedList<Course>> GetCoursesByStatusPagedAsync(
+        CourseStatus status,
+        int pageNumber,
+        int pageSize,
+        string? searchTerm, 
+        string? sortBy       );
 
         Task<Course?> GetCourseForReviewAsync(long courseId);
 

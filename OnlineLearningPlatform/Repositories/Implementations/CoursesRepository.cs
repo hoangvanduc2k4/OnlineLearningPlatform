@@ -65,12 +65,23 @@ namespace OnlineLearningPlatform.Repositories
 
         public async Task<Course?> GetCourseForReviewAsync(long courseId)
         {
-            return await _context.Courses
-                .Include(c => c.CourseCategories).ThenInclude(cc => cc.Category)
+            Course? course = await _context.Set<Course>()
+                .AsNoTracking()
+                .Include(c => c.CreatorUser) 
                 .Include(c => c.CourseImageUrls)
+                .Include(c => c.CourseCategories).ThenInclude(cc => cc.Category)
                 .Include(c => c.Level)
-                .Include(c => c.CreatorUser)
+
+                .Include(c => c.Modules.Where(m => m.Status == CommonStatus.Showed))
+                    .ThenInclude(m => m.Lessons.Where(l => l.Status == CommonStatus.Showed))
+
+                .Include(c => c.Modules.Where(m => m.Status == CommonStatus.Showed))
+                    .ThenInclude(m => m.Quizzes.Where(q => q.Status == QuizStatus.Active))
+
+                .AsSplitQuery() 
                 .FirstOrDefaultAsync(c => c.CourseId == courseId);
+
+            return course;
         }
 
         public async Task<IPagedList<Course>> GetCoursesByStatusPagedAsync(CourseStatus status, int pageNumber, int pageSize)
@@ -111,6 +122,14 @@ namespace OnlineLearningPlatform.Repositories
                 .FirstOrDefaultAsync(c => c.CourseId == courseId);
 
             return course;
+        }
+
+        public async Task<IEnumerable<Course>> GetAllWithCreatorByStatusAsync(CourseStatus status)
+        {
+            return await _context.Set<Course>()
+                .Include(c => c.CreatorUser) 
+                .Where(c => c.Status == status)
+                .ToListAsync();
         }
     }
 }

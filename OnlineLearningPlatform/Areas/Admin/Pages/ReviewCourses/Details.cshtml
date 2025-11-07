@@ -1,4 +1,5 @@
 ﻿@page "{id:long}"
+@using OnlineLearningPlatform.Enums
 @model OnlineLearningPlatform.Areas.Admin.Pages.ReviewCourses.DetailsModel
 @{
     ViewData["Title"] = "Review Course";
@@ -68,8 +69,55 @@
             </div>
 
             <div class="card shadow-sm">
-                 <div class="card-header"><h4>Course Content (Modules/Lessons)</h4></div>
+                 <div class="card-header"><h4>Course Content</h4></div>
                  <div class="card-body">
+                    @if (Model.CourseToReview.Modules.Any())
+                    {
+                        <div class="accordion" id="courseContentAccordion">
+                            @foreach (var module in Model.CourseToReview.Modules.OrderBy(m => m.ModuleNumber))
+                            {
+                                <div class="accordion-item mb-2">
+                                    <h2 class="accordion-header" id="heading-@module.ModuleId">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-@module.ModuleId" aria-expanded="false">
+                                            <strong>Module @module.ModuleNumber: @module.ModuleName</strong>
+                                        </button>
+                                    </h2>
+                                    <div id="collapse-@module.ModuleId" class="accordion-collapse collapse" data-bs-parent="#courseContentAccordion">
+                                        <div class="accordion-body">
+                                            <ul class="list-group list-group-flush">
+                                                @foreach (var lesson in module.Lessons.OrderBy(l => l.LessonNumber))
+                                                {
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                        <span>
+                                                            <i class="bi bi-file-text me-2"></i>
+                                                            Lesson @lesson.LessonNumber: @lesson.LessonName
+                                                        </span>
+                                                    </li>
+                                                }
+                                                @foreach (var quiz in module.Quizzes)
+                                                {
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                        <span>
+                                                            <i class="bi bi-patch-question me-2"></i>
+                                                            Quiz: @quiz.QuizName
+                                                        </span>
+                                                    </li>
+                                                }
+                                                @if (!module.Lessons.Any() && !module.Quizzes.Any())
+                                                {
+                                                    <li class="list-group-item text-muted fst-italic">This module is empty.</li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted fst-italic">This course has no modules.</p>
+                    }
                  </div>
             </div>
         </div>
