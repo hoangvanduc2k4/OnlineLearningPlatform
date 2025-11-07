@@ -76,6 +76,10 @@ namespace OnlineLearningPlatform.Mappers
             CreateMap<Module, ModuleInputViewModel>();
             CreateMap<LessonInputViewModel, Lesson>();
             CreateMap<Lesson, LessonInputViewModel>();
+            CreateMap<Course, CourseHierarchyViewModel>();
+            CreateMap<Module, ModuleHierarchyViewModel>();
+            CreateMap<Lesson, LessonHierarchyViewModel>();
+            CreateMap<Quiz, QuizHierarchyViewModel>();
         }
     }
 }

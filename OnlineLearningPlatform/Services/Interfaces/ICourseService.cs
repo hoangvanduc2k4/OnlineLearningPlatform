@@ -37,6 +37,7 @@ namespace OnlineLearningPlatform.Services.Interfaces
         Task<Course?> GetCourseForReviewAsync(long courseId);
 
         Task<int> GetStudentCountsByMentorIdsAsync(string mentorId);
+        Task<CourseHierarchyViewModel?> GetCourseForHierarchyAsync(long courseId);
     }
 
 }

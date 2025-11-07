@@ -365,6 +365,14 @@ namespace OnlineLearningPlatform.Services
             return await _courseRepository.GetCourseCountsByMentorIdsAsync(mentorId);
         }
 
+        public async Task<CourseHierarchyViewModel?> GetCourseForHierarchyAsync(long courseId)
+        {
+            var courseEntity = await _courseRepository.GetCourseForHierarchyAsync(courseId);
+            if (courseEntity == null) return null;
 
+            var vm = _mapper.Map<CourseHierarchyViewModel>(courseEntity);
+
+            return vm;
+        }
     }
 }
