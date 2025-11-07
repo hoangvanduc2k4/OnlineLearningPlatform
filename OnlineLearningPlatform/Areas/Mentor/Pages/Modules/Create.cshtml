@@ -1,6 +1,7 @@
-﻿@page
+﻿@page "{courseId:long}"
 @model OnlineLearningPlatform.Areas.Mentor.Pages.Modules.CreateModel
-@using OnlineLearningPlatform.Enums @{
+@using OnlineLearningPlatform.Enums
+@{
     ViewData["Title"] = "Create";
     Layout = "~/Areas/Mentor/Views/Shared/_Layout.cshtml";
 }
@@ -12,19 +13,22 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
                 <span class="text-danger">*</span>
                 <label class="control-label">Course</label>
                 <input type="text" class="form-control" value="@ViewData["CourseName"]" readonly />
             </div>
+
             <div class="form-group">
                 <span class="text-danger">*</span>
                 <label asp-for="ModuleVM.ModuleName" class="control-label"></label>
                 <input asp-for="ModuleVM.ModuleName" class="form-control" />
                 <span asp-validation-for="ModuleVM.ModuleName" class="text-danger"></span>
             </div>
-            
+
             <input type="hidden" asp-for="ModuleVM.CourseId" />
+
             <div class="form-group">
                 <span class="text-danger">*</span>
                 <label asp-for="ModuleVM.ModuleNumber" class="control-label"></label>
@@ -41,15 +45,15 @@
                 <span asp-validation-for="ModuleVM.Status" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group mt-3">
                 <input type="submit" value="Create" class="btn btn-primary" />
+
+                <a asp-page="/Courses/Manage" asp-area="Mentor" asp-route-id="@Model.ModuleVM.CourseId" class="btn btn-outline-secondary">
+                    Back to Manage
+                </a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
 </div>
 
 @section Scripts {

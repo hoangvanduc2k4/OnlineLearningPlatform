@@ -23,7 +23,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Modules
     {
         private readonly IModuleService _moduleService;
         private readonly UserManager<User> _userManager;
-        private readonly ICourseService _courseService; 
+        private readonly ICourseService _courseService;
 
         public EditModel(IModuleService moduleService, UserManager<User> userManager, ICourseService courseService)
         {
@@ -51,7 +51,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Modules
 
             ViewData["CourseName"] = course.CourseName;
             ViewData["CourseId"] = ModuleVM.CourseId;
-            ViewData["ModuleId"] = id;
+            ViewData["ModuleId"] = id; 
 
             return Page();
         }
@@ -77,7 +77,8 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Modules
             var success = await _moduleService.UpdateModuleAsync(ModuleVM, mentorId);
             if (!success) return NotFound();
 
-            return RedirectToPage("./Index");
+            TempData["SuccessMessage"] = "Module updated successfully.";
+            return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = ModuleVM.CourseId });
         }
     }
 }

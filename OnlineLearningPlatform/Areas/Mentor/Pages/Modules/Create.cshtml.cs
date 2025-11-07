@@ -33,13 +33,15 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Modules
             {
                 return Forbid();
             }
-            if (courseId == 0)
+
+            var course = await _courseService.GetCourseByIdAndMentorAsync(courseId, mentorId);
+            if (course == null)
             {
-                return NotFound("Course ID is required.");
+                return Forbid(); 
             }
-            var courseName = await _courseService.GetCourseByIdAsync(courseId);
-            ViewData["CourseName"] = courseName.CourseName;
-            ViewData["CourseId"] = courseId;
+
+            ViewData["CourseName"] = course.CourseName;
+            ViewData["CourseId"] = courseId; 
             ModuleVM = new ModuleInputViewModel
             {
                 CourseId = courseId
@@ -58,15 +60,21 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Modules
 
             if (!ModelState.IsValid)
             {
-                var courseName = await _courseService.GetCourseByIdAsync(ModuleVM.CourseId);
-                ViewData["CourseName"] = courseName.CourseName;
+                var course = await _courseService.GetCourseByIdAndMentorAsync(ModuleVM.CourseId, mentorId);
+                if (course == null)
+                {
+                    return Forbid();
+                }
+
+                ViewData["CourseName"] = course.CourseName;
                 ViewData["CourseId"] = ModuleVM.CourseId;
                 return Page();
             }
 
             await _moduleService.CreateModuleAsync(ModuleVM);
 
-            return RedirectToPage("./Index");
+            TempData["SuccessMessage"] = "Module created successfully.";
+            return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = ModuleVM.CourseId });
         }
     }
 }
