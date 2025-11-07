@@ -1,15 +1,34 @@
-﻿@model IEnumerable<OnlineLearningPlatform.Models.Entities.CoursePart.Course>
+﻿@model IPagedList<OnlineLearningPlatform.Models.Entities.CoursePart.Course>
 @using OnlineLearningPlatform.Enums
-
+@using X.PagedList
+@using X.PagedList.Mvc.Core
 @{
     ViewData["Title"] = "Course Management";
     Layout = "~/Areas/Mentor/Views/Shared/_Layout.cshtml";
+
+    var searchTerm = ViewData["SearchTerm"] as string;
+    var sortBy = ViewData["SortBy"] as string;
 }
 
 <div class="card shadow-sm">
     <div class="card-header bg-light d-flex justify-content-between align-items-center">
-        <h4 class="mb-0">Your Courses</h4>
-        <a asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Create New Course</a>
+        <h4 class="mb-0">Manage Courses</h4>
+        <form method="get" asp-action="Index" class="d-flex align-items-center">
+
+            <select name="sortBy" class="form-select form-select-sm me-2" onchange="this.form.submit()" style="width: 250px;">
+                <option value="name_asc" selected="@(sortBy == "name_asc")">Sort by Name (A-Z)</option>
+                <option value="name_desc" selected="@(sortBy == "name_desc")">Sort by Name (Z-A)</option>
+                <option value="date_desc" selected="@(sortBy == "date_desc")">Newest First</option>
+                <option value="date_asc" selected="@(sortBy == "date_asc")">Oldest First</option>
+                <option value="price_desc" selected="@(sortBy == "price_desc")">Price (High-Low)</option>
+                <option value="price_asc" selected="@(sortBy == "price_asc")">Price (Low-High)</option>
+            </select>
+
+            <input type="text" name="searchTerm" value="@searchTerm" class="form-control form-control-sm me-2" placeholder="Search Course..." />
+            <button type="submit" class="btn btn-sm btn-outline-primary">Search</button>
+        </form>
+
+        <a asp-action="Create" class="btn btn-primary btn-sm"><i class="bi bi-plus-lg"></i> Create New Course</a>
     </div>
 
     <div class="card-body">
@@ -52,18 +71,10 @@
                                         string statusClass = "";
                                         switch (item.Status)
                                         {
-                                            case CourseStatus.Approved:
-                                                statusClass = "bg-success";
-                                                break;
-                                            case CourseStatus.Pending:
-                                                statusClass = "bg-warning text-dark";
-                                                break;
-                                            case CourseStatus.Draft:
-                                                statusClass = "bg-secondary";
-                                                break;
-                                            case CourseStatus.Rejected:
-                                                statusClass = "bg-danger";
-                                                break;
+                                            case CourseStatus.Approved: statusClass = "bg-success"; break;
+                                            case CourseStatus.Pending: statusClass = "bg-warning text-dark"; break;
+                                            case CourseStatus.Draft: statusClass = "bg-secondary"; break;
+                                            case CourseStatus.Rejected: statusClass = "bg-danger"; break;
                                         }
                                     }
                                     <span class="badge @statusClass">@item.Status</span>
@@ -76,36 +87,50 @@
                                             <i class="bi bi-pencil-fill"></i>
                                         </a>
 
-                                        <a class="btn btn-sm btn-outline-info" asp-action="Manage" asp-route-id="@item.CourseId" title="Manage Content">
+                                        <a class="btn btn-sm btn-outline-info"
+                                           asp-area="Mentor" asp-page="/Courses/Manage" asp-route-id="@item.CourseId"
+                                           title="Manage Content">
                                             <i class="bi bi-list-ul"></i>
                                         </a>
                                         <form method="post" asp-action="Delete" asp-route-id="@item.CourseId" class="d-inline">
                                             <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete"
-                                            onclick="return confirm('Are you sure you want to delete the course: @item.CourseName?')">
+                                                    onclick="return confirm('Are you sure you want to delete the course: @item.CourseName?')">
                                                 <i class="bi bi-trash-fill"></i>
                                             </button>
                                         </form>
                                     }
                                 </td>
-                                    </tr>
+                            </tr>
                         }
                     }
                     else
                     {
-                            <tr>
-                                <td colspan="5" class="text-center text-muted py-4">
-                                    You haven't created any courses yet.
-                                </td>
-                            </tr>
+                        <tr>
+                            <td colspan="5" class="text-center text-muted py-4">
+                                No courses found matching your criteria.
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>
         </div>
     </div>
-</div> 
 
-@section Scripts{
+    <div class="card-footer bg-white">
+        <nav aria-label="Page navigation" class="d-flex justify-content-center">
+            @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { pageNumber = page, searchTerm = searchTerm, sortBy = sortBy }),
+                        new PagedListRenderOptions
+                        {
+                            UlElementClasses = new[] { "pagination pagination-sm mb-0" },
+                            LiElementClasses = new[] { "page-item" },
+                            PageClasses = new[] { "page-link" }
+                        })
+        </nav>
+    </div>
+</div>
+
+@section Scripts {
     <script src="~/js/site.js"></script>
     <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
-    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
 }

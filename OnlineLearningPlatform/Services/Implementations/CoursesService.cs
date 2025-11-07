@@ -350,9 +350,51 @@ namespace OnlineLearningPlatform.Services
             await _courseRepository.UpdateAsync(course);
         }
 
-        public async Task<IPagedList<Course>> GetCoursesByStatusPagedAsync(CourseStatus status, int pageNumber, int pageSize)
+        public async Task<IPagedList<Course>> GetCoursesByStatusPagedAsync(
+            CourseStatus status,
+            int pageNumber,
+            int pageSize,
+            string? searchTerm,
+            string? sortBy)
         {
-            return await _courseRepository.GetCoursesByStatusPagedAsync(status, pageNumber, pageSize);
+            IEnumerable<Course> courses = await _courseRepository.GetAllWithCreatorByStatusAsync(status);
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                var lower = searchTerm.Trim().ToLower();
+                courses = courses.Where(c =>
+                    (c.CourseName != null && c.CourseName.ToLower().Contains(lower)) ||
+                    (c.CreatorUser?.FullName != null && c.CreatorUser.FullName.ToLower().Contains(lower))
+                );
+            }
+
+            switch (sortBy)
+            {
+                case "name_asc": 
+                    courses = courses.OrderBy(c => c.CourseName);
+                    break;
+                case "name_desc":
+                    courses = courses.OrderByDescending(c => c.CourseName);
+                    break;
+                case "mentor_asc":
+                    courses = courses.OrderBy(c => c.CreatorUser?.FullName);
+                    break;
+                case "mentor_desc":
+                    courses = courses.OrderByDescending(c => c.CreatorUser?.FullName);
+                    break;
+                case "date_asc":
+                    courses = courses.OrderBy(c => c.UpdatedAt);
+                    break;
+                case "date_desc":
+                    courses = courses.OrderByDescending(c => c.UpdatedAt);
+                    break;
+                default: 
+                    courses = courses.OrderByDescending(c => c.UpdatedAt ?? c.CreatedAt);
+                    break;
+            }
+
+            IPagedList<Course> pagedResult = courses.ToPagedList(pageNumber, pageSize);
+            return pagedResult;
         }
 
         public async Task<Course?> GetCourseForReviewAsync(long courseId)
@@ -365,6 +407,56 @@ namespace OnlineLearningPlatform.Services
             return await _courseRepository.GetCourseCountsByMentorIdsAsync(mentorId);
         }
 
+        public async Task<CourseHierarchyViewModel?> GetCourseForHierarchyAsync(long courseId)
+        {
+            var courseEntity = await _courseRepository.GetCourseForHierarchyAsync(courseId);
+            if (courseEntity == null) return null;
+
+            var vm = _mapper.Map<CourseHierarchyViewModel>(courseEntity);
+
+            return vm;
+        }
+
+        public async Task<IPagedList<Course>> GetCoursesPagedByMentorAsync(
+        string mentorId,
+        int pageNumber,
+        int pageSize,
+        string? searchTerm,
+        string? sortBy)
+        {
+            IEnumerable<Course> courses = await _courseRepository.GetAllByMentorIdAsync(mentorId);
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                var lower = searchTerm.Trim().ToLower();
+                courses = courses.Where(c => c.CourseName.ToLower().Contains(lower));
+            }
+
+            switch (sortBy)
+            {
+                case "name_desc":
+                    courses = courses.OrderByDescending(c => c.CourseName);
+                    break;
+                case "date_asc":
+                    courses = courses.OrderBy(c => c.CreatedAt);
+                    break;
+                case "date_desc":
+                    courses = courses.OrderByDescending(c => c.CreatedAt);
+                    break;
+                case "price_asc":
+                    courses = courses.OrderBy(c => c.Price);
+                    break;
+                case "price_desc":
+                    courses = courses.OrderByDescending(c => c.Price);
+                    break;
+                default: 
+                    courses = courses.OrderBy(c => c.CourseName);
+                    break;
+            }
+
+            IPagedList<Course> pagedResult = courses.ToPagedList(pageNumber, pageSize);
+            return pagedResult;
+        }
         public async Task<CourseDetailsViewModel> GetCourseDetailsToLearnAsync(int id, string? userId)
         {
             var courseEntity = await _courseRepository.GetByIdWithDetailsToLearnAsync(id);

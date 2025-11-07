@@ -1,0 +1,34 @@
+﻿@{
+    var moduleId = ViewData["ModuleId"];
+    var courseId = ViewData["CourseId"];
+}
+<div class="p-4">
+    <h2>Module Management</h2>
+    <p>Select an action for this module.</p>
+
+    <div class="d-grid gap-2 d-md-block">
+        <a asp-area="Mentor" asp-page="/Lessons/Create"
+           asp-route-moduleId="@moduleId"
+           asp-route-courseId="@courseId" class="btn btn-primary btn-lg">
+            <i class="bi bi-plus-circle"></i> Create New Lesson
+        </a>
+        <a asp-area="Mentor" asp-page="/Quizzes/Create"
+           asp-route-moduleId="@moduleId"
+           asp-route-courseId="@courseId" class="btn btn-primary btn-lg">
+            <i class="bi bi-plus-circle"></i> Create New Quiz
+        </a>
+        <a asp-area="Mentor" asp-page="/Modules/Edit" asp-route-id="@moduleId" class="btn btn-secondary btn-lg">
+            <i class="bi bi-pencil-square"></i> Edit Module
+        </a>
+        <form method="post"
+              asp-page-handler="DeleteModule"
+              asp-route-moduleId="@moduleId"
+              asp-route-courseId="@courseId"
+              class="d-inline">
+            <button type="submit" class="btn btn-danger btn-lg"
+                    onclick="return confirm('Are you sure you want to delete this module?')">
+                <i class="bi bi-trash"></i>
+            </button>
+        </form>
+    </div>
+</div>

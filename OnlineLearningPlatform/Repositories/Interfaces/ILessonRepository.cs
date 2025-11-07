@@ -1,6 +1,6 @@
+﻿using OnlineLearningPlatform.Models.Entities.CoursePart;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using OnlineLearningPlatform.Models.Entities.CoursePart;
 
 namespace OnlineLearningPlatform.Repositories.Interfaces
 {
@@ -8,5 +8,6 @@ namespace OnlineLearningPlatform.Repositories.Interfaces
     {
         Task<Lesson?> GetLessonByIdAsync(long lessonId);
         Task<IEnumerable<Lesson>> GetLessonsByModuleIdAsync(long moduleId);
+        Task<Lesson?> GetLessonWithCourseAsync(long lessonId, string mentorId);
     }
 }

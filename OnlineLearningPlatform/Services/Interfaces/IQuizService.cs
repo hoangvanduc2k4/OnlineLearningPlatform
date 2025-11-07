@@ -15,5 +15,6 @@ namespace OnlineLearningPlatform.Services.Interfaces
         Task<QuizViewModel> GetQuizByIdAsync(long quizId,string currentUserId);
         Task<IEnumerable<QuizViewModel>> GetActiveQuizzesAsync(string? searchTerm, string currentUserId, string role);
         Task<IEnumerable<QuizViewModel>> GetInactiveQuizzesAsync(string? searchTerm, string currentUserId, string role);
+        Task<bool> HideQuizAsync(long quizId, string mentorId);
     }
 }

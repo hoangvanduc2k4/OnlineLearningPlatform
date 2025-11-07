@@ -173,5 +173,21 @@ namespace OnlineLearningPlatform.Services.Implementations
         }
 
         public async Task<Quiz> GetQuizAsync(long quizId) => await _quizRepository.GetByIdAsync(quizId);
+        public async Task<bool> HideQuizAsync(long quizId, string mentorId)
+        {
+            var quizViewModel = await this.GetQuizByIdAsync(quizId, mentorId); 
+            if (quizViewModel == null)
+            {
+                return false; 
+            }
+
+            var quizEntity = await _quizRepository.GetByIdAsync(quizId);
+            if (quizEntity == null) return false;
+
+            quizEntity.Status = QuizStatus.Inactive;
+
+            await _quizRepository.UpdateAsync(quizEntity);
+            return true;
+        }
     }
 }

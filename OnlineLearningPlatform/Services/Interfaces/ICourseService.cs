@@ -32,11 +32,24 @@ namespace OnlineLearningPlatform.Services.Interfaces
 
         Task ReviewCourseAsync(long courseId, string adminId, ReviewStatus reviewStatus, string? notes);
 
-        Task<IPagedList<Course>> GetCoursesByStatusPagedAsync(CourseStatus status, int pageNumber, int pageSize);
+        Task<IPagedList<Course>> GetCoursesByStatusPagedAsync(
+        CourseStatus status,
+        int pageNumber,
+        int pageSize,
+        string? searchTerm, 
+        string? sortBy       );
 
         Task<Course?> GetCourseForReviewAsync(long courseId);
 
         Task<int> GetStudentCountsByMentorIdsAsync(string mentorId);
+        Task<CourseHierarchyViewModel?> GetCourseForHierarchyAsync(long courseId);
+
+        Task<IPagedList<Course>> GetCoursesPagedByMentorAsync(
+        string mentorId,
+        int pageNumber,
+        int pageSize,
+        string? searchTerm,
+        string? sortBy  );
         Task<CourseDetailsViewModel> GetCourseDetailsToLearnAsync(int id, string? userId);
     }
 

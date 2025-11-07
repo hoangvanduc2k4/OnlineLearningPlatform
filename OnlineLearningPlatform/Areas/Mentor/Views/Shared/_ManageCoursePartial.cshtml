@@ -1,0 +1,16 @@
+﻿@{
+    var courseId = ViewData["CourseId"];
+}
+<div class="p-4">
+    <h2>Course Management</h2>
+    <p>Select an action for this course.</p>
+
+    <div class="d-grid gap-2 d-md-block">
+        <a asp-area="Mentor" asp-page="/Modules/Create" asp-route-courseId="@courseId" class="btn btn-primary btn-lg">
+            <i class="bi bi-plus-circle"></i> Create New Module
+        </a>
+        <a asp-area="Mentor" asp-controller="Course" asp-action="Edit" asp-route-id="@courseId" class="btn btn-secondary btn-lg">
+            <i class="bi bi-pencil-square"></i> Edit Course
+        </a>
+    </div>
+</div>

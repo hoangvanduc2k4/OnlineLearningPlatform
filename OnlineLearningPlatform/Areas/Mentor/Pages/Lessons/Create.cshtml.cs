@@ -1,45 +1,43 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.SignalR;
-using Microsoft.EntityFrameworkCore;
 using OnlineLearningPlatform.Data;
-using OnlineLearningPlatform.Hubs;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
+using OnlineLearningPlatform.Models.Entities.UserPart;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Services.Interfaces;
-using System.Reflection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
-namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
+namespace OnlineLearningPlatform.Areas.Mentor.Pages.Lessons
 {
     [Authorize(Roles = "Mentor")]
     public class CreateModel : PageModel
     {
-        private readonly IQuizService _quizService;
-        private readonly IHubContext<CRUDHub> _hub;
-        private readonly ICourseService _courseService;
+        private readonly ILessonService _lessonService;
         private readonly IModuleService _moduleService;
-        // private readonly OnlineLearningDBContext _context;
+        private readonly ICourseService _courseService;
+        private readonly UserManager<User> _userManager;
 
         public CreateModel(
-            IQuizService quizService,
-            IHubContext<CRUDHub> hub,
-            ICourseService courseService,  
-            IModuleService moduleService) 
+            ILessonService lessonService,
+            IModuleService moduleService,
+            ICourseService courseService,
+            UserManager<User> userManager)
         {
-            _quizService = quizService;
-            _hub = hub;
-            _courseService = courseService; 
-            _moduleService = moduleService; 
-            // _context = context;
+            _lessonService = lessonService;
+            _moduleService = moduleService;
+            _courseService = courseService;
+            _userManager = userManager;
         }
 
         [BindProperty]
-        public QuizViewModel Quiz { get; set; } = new QuizViewModel();
-
-        // public SelectList AvailableModules { get; set; }
+        public LessonInputViewModel LessonVM { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(long moduleId, long courseId)
         {
@@ -60,34 +58,34 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
             ViewData["CourseId"] = courseId;
             ViewData["ModuleId"] = moduleId;
 
-            Quiz.ModuleId = moduleId;
-            Quiz.CourseId = courseId;
-
+            LessonVM = new LessonInputViewModel
+            {
+                ModuleId = moduleId,
+                CourseId = courseId
+            };
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var mentorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
             if (!ModelState.IsValid)
             {
-                var course = await _courseService.GetCourseByIdAndMentorAsync(Quiz.CourseId, mentorId);
-                var module = await _moduleService.GetModuleForEditAsync(Quiz.ModuleId, mentorId);
+                var mentorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var course = await _courseService.GetCourseByIdAndMentorAsync(LessonVM.CourseId, mentorId);
+                var module = await _moduleService.GetModuleForEditAsync(LessonVM.ModuleId, mentorId);
 
                 ViewData["CourseName"] = course?.CourseName;
                 ViewData["ModuleName"] = module?.ModuleName;
-                ViewData["CourseId"] = Quiz.CourseId;
-                ViewData["ModuleId"] = module.ModuleId;
+                ViewData["CourseId"] = LessonVM.CourseId;
+                ViewData["ModuleId"] = LessonVM.ModuleId;
 
                 return Page();
             }
 
-            await _quizService.CreateQuizAsync(Quiz);
-            await _hub.Clients.All.SendAsync("loadQuizzes");
-            TempData["SuccessMessage"] = "Quiz created successfully.";
+            await _lessonService.CreateLessonAsync(LessonVM);
 
-            return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = Quiz.CourseId });
+
+            return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = LessonVM.CourseId });
         }
     }
 }

@@ -1,0 +1,200 @@
+﻿@model OnlineLearningPlatform.Models.ViewModels.CourseHierarchyViewModel
+@{
+    var currentModuleId = ViewBag.CurrentModuleId as long?;
+    var currentLessonId = ViewBag.CurrentLessonId as long?;
+    var currentQuizId = ViewBag.CurrentQuizId as long?;
+}
+<style>
+    .hierarchy-nav {
+        padding-left: 15px;
+        padding-right: 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 10px;
+    }
+
+        .hierarchy-nav h6 {
+            color: #fff;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            padding-left: 15px;
+        }
+
+            /* --- 1. THÊM RULE NÀY CHO TÊN COURSE --- */
+            .hierarchy-nav h6 a {
+                color: #fff;
+                text-decoration: none;
+            }
+                /* Thêm màu 'active' cho cả tên Course */
+                .hierarchy-nav h6 a.active {
+                    color: #ffc107;
+                }
+
+
+    .module-list-nav {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .module-item-nav {
+        margin-bottom: 5px;
+    }
+
+    .module-trigger-nav {
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        user-select: none;
+        display: block;
+        padding: 8px 15px;
+        color: var(--sidebar-text); /* Dòng này có thể giữ nguyên hoặc xóa */
+        text-decoration: none;
+    }
+
+        .module-trigger-nav:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+        }
+
+        /* --- 2. THÊM RULE NÀY CHO TÊN MODULE --- */
+        /* Nó sẽ áp dụng cho link <a> bên trong .module-trigger-nav */
+        .module-trigger-nav a {
+            color: #fff; /* Đặt màu trắng */
+            text-decoration: none;
+            opacity: 0.9; /* Hơi mờ đi để phân biệt với Course */
+        }
+
+            .module-trigger-nav a.active {
+                color: #ffc107;
+                opacity: 1;
+            }
+
+
+    .toggle-icon-nav {
+        display: inline-block;
+        width: 15px;
+        font-size: 1em;
+        margin-right: 5px;
+        /* Thêm màu cho icon */
+        color: #fff;
+        opacity: 0.9;
+    }
+
+    .module-content-nav {
+        list-style: none;
+        padding-left: 20px;
+        display: none;
+    }
+
+        .module-content-nav li {
+            padding: 5px 0 5px 15px;
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* --- 3. SỬA LẠI RULE NÀY CHO LESSON/QUIZ --- */
+        .module-content-nav a {
+            font-size: 0.85rem;
+            color: #fff; /* Đổi từ var(--sidebar-text) sang #fff */
+            text-decoration: none;
+            opacity: 0.8;
+            display: block;
+        }
+
+            .module-content-nav a:hover {
+                opacity: 1;
+                text-decoration: underline;
+            }
+
+            .module-content-nav a.active {
+                font-weight: bold;
+                opacity: 1;
+                color: #ffc107;
+            }
+</style>
+
+<div class="hierarchy-nav">
+    <h6>
+        <a asp-area="Mentor"
+           asp-page="/Courses/Manage"
+           asp-route-id="@Model.CourseId"
+           class="@(currentModuleId == null && currentLessonId == null && currentQuizId == null ? "active" : "")">
+            @Model.CourseName
+        </a>
+    </h6>
+
+    <ul class="module-list-nav">
+        @foreach (var module in Model.Modules.OrderBy(m => m.ModuleNumber))
+        {
+            <li class="module-item-nav">
+                <div class="module-trigger-nav">
+                    <span class="toggle-icon-nav">+</span>
+
+                    <a asp-area="Mentor"
+                       asp-page="/Courses/Manage"
+                       asp-route-id="@Model.CourseId"
+                       asp-route-moduleId="@module.ModuleId"
+                       class="@(currentModuleId == module.ModuleId ? "active" : "")">
+                        @module.ModuleName
+                    </a>
+                </div>
+
+                <ul class="module-content-nav">
+                    @foreach (var lesson in module.Lessons.OrderBy(l => l.LessonNumber))
+                    {
+                        <li>
+                            <a asp-area="Mentor"
+                               asp-page="/Lessons/Edit"
+                               asp-route-id="@lesson.LessonId"
+                               class="@(currentLessonId == lesson.LessonId ? "active" : "")">
+                                @lesson.LessonName
+                            </a>
+                        </li>
+                    }
+
+                    @foreach (var quiz in module.Quizzes.OrderBy(q => q.QuizId))
+                    {
+                        <li>
+                            <a asp-area="Mentor"
+                               asp-page="/Quizzes/Update"
+                               asp-route-id="@quiz.QuizId"
+                               class="@(currentQuizId == quiz.QuizId ? "active" : "")">
+                                @quiz.QuizName (Quiz)
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </li>
+        }
+    </ul>
+</div>
+
+<script>
+    // Dùng một function để tránh xung đột
+    function initHierarchyNav() {
+        var triggers = document.querySelectorAll(".module-trigger-nav");
+        triggers.forEach(function(trigger) {
+
+            var icon = trigger.querySelector(".toggle-icon-nav");
+            var content = trigger.nextElementSibling; // .module-content-nav
+
+            // Tự động mở nếu có mục 'active' bên trong
+            if (content.querySelector("a.active")) {
+                content.style.display = "block";
+                icon.innerText = "-";
+            } else {
+                icon.innerText = "+";
+            }
+
+            trigger.addEventListener("click", function() {
+                if (icon.innerText === "+") {
+                    icon.innerText = "-";
+                    content.style.display = "block";
+                } else {
+                    icon.innerText = "+";
+                    content.style.display = "none";
+                }
+            });
+        });
+    }
+    document.addEventListener("DOMContentLoaded", initHierarchyNav);
+</script>

@@ -1,0 +1,66 @@
+﻿@page "{id:long}"
+@model OnlineLearningPlatform.Areas.Mentor.Pages.Modules.EditModel
+@using OnlineLearningPlatform.Enums
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Mentor/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit Module</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="ModuleVM.ModuleId" />
+
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label class="control-label">Course</label>
+                <input type="text" class="form-control" value="@ViewData["CourseName"]" readonly />
+            </div>
+
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="ModuleVM.ModuleName" class="control-label"></label>
+                <input asp-for="ModuleVM.ModuleName" class="form-control" />
+                <span asp-validation-for="ModuleVM.ModuleName" class="text-danger"></span>
+            </div>
+
+            <input type="hidden" asp-for="ModuleVM.CourseId" />
+
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="ModuleVM.ModuleNumber" class="control-label"></label>
+                <input asp-for="ModuleVM.ModuleNumber" class="form-control" />
+                <span asp-validation-for="ModuleVM.ModuleNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="ModuleVM.Status" class="control-label"></label>
+                <select asp-for="ModuleVM.Status" class="form-control" asp-items="Html.GetEnumSelectList<CommonStatus>()">
+                    <option value="">-- Select Status --</option>
+                </select>
+                <span asp-validation-for="ModuleVM.Status" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3 d-flex justify-content-between">
+                <div>
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a asp-page="/Courses/Manage" asp-area="Mentor" asp-route-id="@Model.ModuleVM.CourseId" class="btn btn-outline-secondary">
+                        Back to Manage
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
