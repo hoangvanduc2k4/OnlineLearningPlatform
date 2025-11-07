@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
+using System.Collections.Generic; // Phải có using này
 using OnlineLearningPlatform.Models.Entities.Others;
 using OnlineLearningPlatform.Enums;
 
@@ -15,54 +16,29 @@ namespace OnlineLearningPlatform.Data.Seeds
 
         private static List<FAQ> GetFaqs()
         {
-            return new List<FAQ>
+            var faqs = new List<FAQ>();
+            var baseDate = new DateTime(2025, 1, 1);
+
+            var topics = new[] { "payment", "account access", "course content", "certificates", "refunds", "support", "mobile app", "instructor" };
+
+            for (long i = 1; i <= 50; i++)
             {
-                new FAQ
+                var topic = topics[(int)((i - 1) % topics.Length)];
+                var createdDate = baseDate.AddDays(i - 1);
+
+                faqs.Add(new FAQ
                 {
-                    FaqId = 1,
-                    Question = "Làm thế nào để đăng ký tài khoản?",
-                    Answer = "Bạn có thể nhấn vào nút Đăng ký trên trang chủ và điền đầy đủ thông tin yêu cầu.",
-                    CreatedAt = DateTime.Parse("2025-01-01"),
-                    UpdatedAt = DateTime.Parse("2025-01-01"),
+                    FaqId = i,
+                    Question = $"Sample Question {i}: What is the policy for {topic}?",
+                    Answer = $"This is the detailed sample answer for question {i} regarding {topic}. " +
+                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    CreatedAt = createdDate,
+                    UpdatedAt = createdDate,
                     CommonStatus = CommonStatus.Showed
-                },
-                new FAQ
-                {
-                    FaqId = 2,
-                    Question = "Tôi có thể học các khóa học miễn phí không?",
-                    Answer = "Một số khóa học được cung cấp miễn phí, bạn có thể tìm trong danh mục 'Khóa học miễn phí'.",
-                    CreatedAt = DateTime.Parse("2025-01-02"),
-                    UpdatedAt = DateTime.Parse("2025-01-02"),
-                    CommonStatus = CommonStatus.Showed
-                },
-                new FAQ
-                {
-                    FaqId = 3,
-                    Question = "Phương thức thanh toán nào được hỗ trợ?",
-                    Answer = "Chúng tôi hỗ trợ thanh toán qua thẻ ngân hàng, ví điện tử và PayPal.",
-                    CreatedAt = DateTime.Parse("2025-01-03"),
-                    UpdatedAt = DateTime.Parse("2025-01-03"),
-                    CommonStatus = CommonStatus.Showed
-                },
-                new FAQ
-                {
-                    FaqId = 4,
-                    Question = "Làm thế nào để trở thành giảng viên?",
-                    Answer = "Bạn có thể nộp đơn ứng tuyển Mentor trong mục 'Trở thành giảng viên'.",
-                    CreatedAt = DateTime.Parse("2025-01-04"),
-                    UpdatedAt = DateTime.Parse("2025-01-04"),
-                    CommonStatus = CommonStatus.Showed
-                },
-                new FAQ
-                {
-                    FaqId = 5,
-                    Question = "Tôi có thể học trên điện thoại không?",
-                    Answer = "Có, nền tảng hỗ trợ cả trên web và ứng dụng di động.",
-                    CreatedAt = DateTime.Parse("2025-01-05"),
-                    UpdatedAt = DateTime.Parse("2025-01-05"),
-                    CommonStatus = CommonStatus.Showed
-                }
-            };
+                });
+            }
+
+            return faqs;
         }
     }
 }

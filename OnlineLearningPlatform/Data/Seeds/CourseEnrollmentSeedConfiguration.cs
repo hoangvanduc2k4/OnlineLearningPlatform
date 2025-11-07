@@ -9,7 +9,6 @@ namespace OnlineLearningPlatform.Data.Seeds
     {
         public void Configure(EntityTypeBuilder<CourseEnrollment> builder)
         {
-            // Nếu bảng dùng composite key CourseId + UserId
             builder.HasKey(e => new { e.CourseId, e.UserId });
 
             builder.HasData(

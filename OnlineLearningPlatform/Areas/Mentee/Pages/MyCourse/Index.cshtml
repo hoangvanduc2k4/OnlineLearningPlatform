@@ -1,0 +1,153 @@
+﻿@page
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model OnlineLearningPlatform.Areas.Mentee.Pages.MyCourse.IndexModel
+@{
+    ViewData["Title"] = "My Courses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main class="main courses-page">
+    <div class="page-title light-background">
+        <div class="container d-lg-flex justify-content-between align-items-center py-4">
+            <h1 class="mb-2 mb-lg-0">My Courses</h1>
+            <nav class="breadcrumbs">
+                <ol class="mb-0">
+                    <li><a href="/">Home</a></li>
+                    <li class="current">My Courses</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <section id="courses-2" class="courses-2 section">
+        <div class="container py-5" data-aos="fade-up" data-aos-delay="100">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form method="get" class="mb-4 d-flex align-items-center" style="max-width:400px;">
+                        <input type="text" name="SearchTerm" value="@Model.SearchTerm" class="form-control me-2" placeholder="Search course name..." />
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+                    <div class="courses-grid" data-aos="fade-up" data-aos-delay="200">
+                        <div class="row">
+                            @if (Model.PagedCourses != null && Model.PagedCourses.Any())
+                            {
+                                foreach (var course in Model.PagedCourses)
+                                {
+                                    var cat = (course.CategoryNames != null && course.CategoryNames.Any()) ? string.Join(", ", course.CategoryNames) : "Programming";
+                                    var level = !string.IsNullOrWhiteSpace(course.LevelName) ? course.LevelName : "Intermediate";
+                                    var duration = !string.IsNullOrWhiteSpace(course.StudyTime) ? course.StudyTime : "100";
+                                    var students = course.GetType().GetProperty("StudentsCount")?.GetValue(course)?.ToString() ?? "1,000";
+                                    var rating = course.GetType().GetProperty("Rating")?.GetValue(course)?.ToString() ?? "4.6";
+                                    var instructor = !string.IsNullOrWhiteSpace(course.MentorName) ? course.MentorName : (course.GetType().GetProperty("InstructorName")?.GetValue(course)?.ToString() ?? "Instructor");
+                                    var instructorImgRaw = !string.IsNullOrWhiteSpace(course.MentorAvatarUrl) ? course.MentorAvatarUrl : (course.GetType().GetProperty("InstructorImageUrl")?.GetValue(course)?.ToString() ?? "~/assets/img/person/person-m-3.webp");
+                                    var instructorImg = Url.Content(instructorImgRaw);
+                                    var badge = course.GetType().GetProperty("Badge")?.GetValue(course)?.ToString() ?? "";
+                                    decimal price = course.Price;
+                                    decimal? discount = course.Discount;
+                                    bool hasDiscount = discount.HasValue && discount.Value > 0;
+                                    var discountedPrice = hasDiscount ? (price - discount.Value) : price;
+                                    var priceStr = (discountedPrice <= 0) ? "Free" : discountedPrice.ToString("C");
+                                    var originalPriceStr = price > 0 ? price.ToString("C") : "Free";
+                                    var isFree = (badge?.ToLower().Contains("free") == true) || (price <= 0);
+                                    var imgUrlRaw = !string.IsNullOrEmpty(course.ImageUrl) ? course.ImageUrl : "~/assets/img/education/courses-3.webp";
+                                    var imgUrl = Url.Content(imgUrlRaw);
+                                    <div class="col-lg-4 col-md-4">
+                                        <div class="course-card">
+                                            <div class="course-image">
+                                                <img src="@imgUrl" alt="Course" class="img-fluid">
+                                                @if (hasDiscount && !isFree)
+                                                {
+                                                    <div class="course-price">
+                                                        <span class="fw-bold">@priceStr</span>
+                                                        <small class="text-muted text-decoration-line-through ms-2">
+                                                            @originalPriceStr
+                                                        </small>
+                                                    </div>
+                                                }
+                                                else if (!hasDiscount && !isFree)
+                                                {
+                                                    <div class="course-price">
+                                                        @originalPriceStr
+                                                    </div>
+                                                }
+                                                else if (isFree)
+                                                {
+                                                    <div class="course-price">Free</div>
+                                                }
+                                            </div>
+                                            <div class="course-content card-body d-flex flex-column">
+                                                <div class="course-meta">
+                                                    @foreach (var cname in course.CategoryNames)
+                                                    {
+                                                        <span class="category">@cname</span>
+                                                    }
+                                                    <span class="level">@level</span>
+                                                </div>
+                                                <h3 class="h5">@course.CourseName</h3>
+                                                <p class="text-muted mb-3">@course.Description</p>
+                                                <div class="course-stats d-flex justify-content-between align-items-center small text-muted mb-3">
+                                                    <div class="stat">
+                                                        <i class="bi bi-clock me-1"></i>
+                                                        <span>@(string.IsNullOrEmpty(duration) ? "— hours" : duration + " hours")</span>
+                                                    </div>
+                                                    <div class="stat">
+                                                        <i class="bi bi-people me-1"></i>
+                                                        <span>@students students</span>
+                                                    </div>
+                                                    <div class="rating">
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-half"></i>
+                                                        <span class="ms-1">@rating</span>
+                                                    </div>
+                                                </div>
+                                                <div class="instructor-info d-flex align-items-center mb-3">
+                                                    <img src="@instructorImg" alt="Instructor" class="instructor-avatar rounded-circle me-2" style="width:40px;height:40px;object-fit:cover;">
+                                                    <span class="instructor-name small text-muted">@instructor</span>
+                                                </div>
+                                                <a asp-area="" asp-controller="Learn" asp-action="Course" asp-route-id="@course.CourseId" class="btn-course">Learn Now</a>
+                                            </div>
+                                        </div><!-- End Course Card -->
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="col-12">
+                                    <div class="alert alert-info">You have not enrolled in any courses yet.</div>
+                                </div>
+                            }
+                        </div>
+                    </div><!-- End Courses Grid -->
+                    <!-- Pagination -->
+                    <div class="pagination-wrapper" data-aos="fade-up" data-aos-delay="300">
+                        <nav aria-label="Courses pagination">
+                            @Html.PagedListPager(
+                            Model.PagedCourses,
+                            page => Url.Page("/Mentee/MyCourse/Index", new
+                            {
+                                pageNumber = page,
+                                pageSize = Model.PagedCourses.PageSize,
+                                SearchTerm = Model.SearchTerm
+                            }),
+                            new PagedListRenderOptions
+                            {
+                                UlElementClasses = new[] { "pagination", "justify-content-center" },
+                                LiElementClasses = new[] { "page-item" },
+                                PageClasses = new[] { "page-link" },
+                                ActiveLiElementClass = "active",
+                                MaximumPageNumbersToDisplay = 5,
+                                DisplayLinkToFirstPage = PagedListDisplayMode.IfNeeded,
+                                DisplayLinkToLastPage = PagedListDisplayMode.IfNeeded,
+                                DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                                DisplayLinkToNextPage = PagedListDisplayMode.Always
+                            }
+                            )
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
