@@ -69,6 +69,9 @@
 
                 <div class="d-flex justify-content-end">
                     <a asp-page="/Courses/Manage" asp-area="Mentor" asp-route-id="@Model.Quiz.CourseId" class="btn btn-outline-secondary me-2">Cancel</a>
+                    <a asp-page="/Questions/Index" asp-area="Mentor" asp-route-quizId="@Model.Quiz.QuizId" class="btn btn-info me-2">
+                        <i class="bi bi-journal-text"></i> Questions
+                    </a>
                     <button type="submit" class="btn btn-primary">Save Changes</button>
                     <button type="submit" class="btn btn-danger ms-2"
                             asp-page-handler="Delete"
