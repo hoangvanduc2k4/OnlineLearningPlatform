@@ -7,7 +7,7 @@ namespace OnlineLearningPlatform.Models.ViewModels
         public int LessonNumber { get; set; }
         public int ModuleNumber { get; set; }
         public string? ModuleName { get; set; }
-        public int CourseId { get; set; }
+        public long CourseId { get; set; }
       
         //[Required]
         public long QuizId { get; set; }

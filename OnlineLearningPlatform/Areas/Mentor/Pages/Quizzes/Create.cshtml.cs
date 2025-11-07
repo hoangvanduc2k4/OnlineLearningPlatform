@@ -9,6 +9,7 @@ using OnlineLearningPlatform.Hubs;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Services.Interfaces;
+using System.Reflection;
 using System.Security.Claims;
 
 namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
@@ -17,51 +18,74 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
     public class CreateModel : PageModel
     {
         private readonly IQuizService _quizService;
-        private readonly OnlineLearningDBContext _context;
         private readonly IHubContext<CRUDHub> _hub;
+        private readonly ICourseService _courseService;
+        private readonly IModuleService _moduleService;
+        // private readonly OnlineLearningDBContext _context;
 
-        public CreateModel(IQuizService quizService, OnlineLearningDBContext context, IHubContext<CRUDHub> hub)
+        public CreateModel(
+            IQuizService quizService,
+            IHubContext<CRUDHub> hub,
+            ICourseService courseService,  
+            IModuleService moduleService) 
         {
             _quizService = quizService;
-            _context = context;
             _hub = hub;
+            _courseService = courseService; 
+            _moduleService = moduleService; 
+            // _context = context;
         }
 
         [BindProperty]
-        public QuizViewModel Quiz { get; set; }
+        public QuizViewModel Quiz { get; set; } = new QuizViewModel();
 
-        public SelectList AvailableModules { get; set; }
+        // public SelectList AvailableModules { get; set; }
 
-        public void OnGet()
+        public async Task<IActionResult> OnGetAsync(long moduleId, long courseId)
         {
             var mentorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var modules = _context.Modules
-                .Include(m => m.Course)
-                .Where(m => m.Course.Creator == mentorId) 
-                .ToList();
+            if (string.IsNullOrEmpty(mentorId)) return Forbid();
+            if (courseId == 0 || moduleId == 0) return NotFound();
 
-            AvailableModules = new SelectList(modules, "ModuleId", "ModuleName");
+            var course = await _courseService.GetCourseByIdAndMentorAsync(courseId, mentorId);
+            var module = await _moduleService.GetModuleForEditAsync(moduleId, mentorId);
+
+            if (course == null || module == null || module.CourseId != course.CourseId)
+            {
+                return Forbid();
+            }
+
+            ViewData["CourseName"] = course.CourseName;
+            ViewData["ModuleName"] = module.ModuleName;
+            ViewData["CourseId"] = courseId;
+
+            Quiz.ModuleId = moduleId;
+            Quiz.CourseId = courseId;
+
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
             var mentorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var modules = _context.Modules
-               .Include(m => m.Course)
-               .Where(m => m.Course.Creator == mentorId)
-               .ToList();
-
-            AvailableModules = new SelectList(modules, "ModuleId", "ModuleName");
 
             if (!ModelState.IsValid)
             {
+                var course = await _courseService.GetCourseByIdAndMentorAsync(Quiz.CourseId, mentorId);
+                var module = await _moduleService.GetModuleForEditAsync(Quiz.ModuleId, mentorId);
+
+                ViewData["CourseName"] = course?.CourseName;
+                ViewData["ModuleName"] = module?.ModuleName;
+                ViewData["CourseId"] = Quiz.CourseId;
+
                 return Page();
             }
 
             await _quizService.CreateQuizAsync(Quiz);
             await _hub.Clients.All.SendAsync("loadQuizzes");
             TempData["SuccessMessage"] = "Quiz created successfully.";
-            return RedirectToPage("./Index");
+
+            return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = Quiz.CourseId });
         }
     }
 }

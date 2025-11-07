@@ -4,12 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
 using OnlineLearningPlatform.Data;
 using OnlineLearningPlatform.Hubs;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Models.Entities.UserPart;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Services.Interfaces;
+using System.Security.Claims;
 
 namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
 {
@@ -21,7 +23,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
         private readonly OnlineLearningDBContext _context;
         private readonly IHubContext<CRUDHub> _hub;
 
-        public UpdateModel(UserManager<User> userManager,IQuizService quizService, OnlineLearningDBContext context, IHubContext<CRUDHub> hub)
+        public UpdateModel(UserManager<User> userManager, IQuizService quizService, OnlineLearningDBContext context, IHubContext<CRUDHub> hub)
         {
             _quizService = quizService;
             _context = context;
@@ -32,7 +34,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
         [BindProperty]
         public QuizViewModel Quiz { get; set; }
 
-        public SelectList AvailableModules { get; set; }
+        // public SelectList AvailableModules { get; set; }
 
         public async Task<IActionResult> OnGetAsync(long id)
         {
@@ -50,18 +52,28 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
 
                 Quiz = quiz;
 
-                AvailableModules = new SelectList(
-                    _context.Modules.ToList(),
-                    "ModuleId",
-                    "ModuleName",
-                    Quiz.ModuleId
-                );
+                var module = await _context.Modules
+                    .AsNoTracking()
+                    .Include(m => m.Course) 
+                    .FirstOrDefaultAsync(m => m.ModuleId == Quiz.ModuleId && m.Course.Creator == mentorId);
+
+                if (module == null)
+                {
+                    return Forbid(); 
+                }
+
+                ViewData["CourseName"] = module.Course.CourseName;
+                ViewData["ModuleName"] = module.ModuleName;
+                ViewData["CourseId"] = module.CourseId;
+                ViewData["QuizId"] = id;
+
+                Quiz.CourseId = module.CourseId;
 
                 return Page();
             }
             catch (UnauthorizedAccessException ex)
             {
-                TempData["ErrorMessage"] = ex.Message; 
+                TempData["ErrorMessage"] = ex.Message;
                 return RedirectToPage("./Index");
             }
             catch (Exception)
@@ -74,15 +86,25 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
 
         public async Task<IActionResult> OnPostAsync()
         {
-            AvailableModules = new SelectList(_context.Modules.ToList(), "ModuleId", "ModuleName", Quiz.ModuleId);
-
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
+            // AvailableModules = new SelectList(_context.Modules.ToList(), "ModuleId", "ModuleName", Quiz.ModuleId);
             var mentor = await _userManager.GetUserAsync(User);
             var mentorId = await _userManager.GetUserIdAsync(mentor);
+            if (string.IsNullOrEmpty(mentorId)) return Forbid();
+            if (!ModelState.IsValid)
+            {
+                var module = await _context.Modules
+                    .AsNoTracking()
+                    .Include(m => m.Course)
+                    .FirstOrDefaultAsync(m => m.ModuleId == Quiz.ModuleId && m.Course.Creator == mentorId);
+
+                if (module != null)
+                {
+                    ViewData["CourseName"] = module.Course.CourseName;
+                    ViewData["ModuleName"] = module.ModuleName;
+                    ViewData["CourseId"] = module.CourseId;
+                }
+                return Page();
+            }
 
             try
             {
@@ -103,11 +125,12 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
                 await _hub.Clients.All.SendAsync("loadQuizzes");
 
                 TempData["SuccessMessage"] = "Quiz updated successfully.";
-                return RedirectToPage("./Index");
+
+                return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = Quiz.CourseId });
             }
             catch (UnauthorizedAccessException ex)
             {
-                TempData["ErrorMessage"] = ex.Message; 
+                TempData["ErrorMessage"] = ex.Message;
                 return RedirectToPage("./Index");
             }
             catch (Exception)
@@ -116,6 +139,5 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
                 return RedirectToPage("./Index");
             }
         }
-
     }
 }
