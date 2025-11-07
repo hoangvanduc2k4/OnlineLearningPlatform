@@ -9,5 +9,6 @@ namespace OnlineLearningPlatform.Services.Interfaces
         Task CreateLessonAsync(LessonInputViewModel viewModel);
         Task<LessonInputViewModel?> GetLessonForEditAsync(long lessonId, string mentorId);
         Task<bool> UpdateLessonAsync(LessonInputViewModel viewModel, string mentorId);
+        Task<bool> HideLessonAsync(long lessonId, string mentorId);
     }
 }

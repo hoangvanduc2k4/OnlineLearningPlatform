@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
+using OnlineLearningPlatform.Enums;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Repositories.Interfaces;
-using System.Threading.Tasks;
 using OnlineLearningPlatform.Services.Interfaces;
+using System.Threading.Tasks;
 
 namespace OnlineLearningPlatform.Services.Implementations
 {
@@ -62,6 +63,21 @@ namespace OnlineLearningPlatform.Services.Implementations
             entityFromDb.ModifiedDate = DateTime.Now;
 
             await _lessonRepository.UpdateAsync(entityFromDb);
+            return true;
+        }
+
+        public async Task<bool> HideLessonAsync(long lessonId, string mentorId)
+        {
+            var lesson = await _lessonRepository.GetLessonWithCourseAsync(lessonId, mentorId);
+
+            if (lesson == null)
+            {
+                return false; 
+            }
+
+            lesson.Status = CommonStatus.Hided;
+
+            await _lessonRepository.UpdateAsync(lesson);
             return true;
         }
     }

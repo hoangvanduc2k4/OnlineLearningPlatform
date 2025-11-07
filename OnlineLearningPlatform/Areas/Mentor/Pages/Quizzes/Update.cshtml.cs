@@ -139,5 +139,26 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
                 return RedirectToPage("./Index");
             }
         }
+
+        public async Task<IActionResult> OnPostDeleteAsync()
+        {
+            var mentor = await _userManager.GetUserAsync(User);
+            var mentorId = await _userManager.GetUserIdAsync(mentor);
+            if (string.IsNullOrEmpty(mentorId)) return Forbid();
+
+            var success = await _quizService.HideQuizAsync(Quiz.QuizId, mentorId);
+
+            if (!success)
+            {
+                TempData["ErrorMessage"] = "Failed to delete quiz or quiz not found.";
+                return RedirectToPage(new { id = Quiz.QuizId });
+            }
+
+            await _hub.Clients.All.SendAsync("loadQuizzes");
+
+            TempData["SuccessMessage"] = "Quiz has been hidden (deleted).";
+
+            return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = Quiz.CourseId });
+        }
     }
 }

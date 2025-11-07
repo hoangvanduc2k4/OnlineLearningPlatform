@@ -88,5 +88,23 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Lessons
             TempData["SuccessMessage"] = "Lesson updated successfully.";
             return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = LessonVM.CourseId });
         }
+
+        public async Task<IActionResult> OnPostDeleteAsync()
+        {
+            var mentorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(mentorId)) return Forbid();
+
+            var success = await _lessonService.HideLessonAsync(LessonVM.LessonId, mentorId);
+
+            if (!success)
+            {
+                TempData["ErrorMessage"] = "Failed to delete lesson or lesson not found.";
+                return RedirectToPage(new { id = LessonVM.LessonId });
+            }
+
+            TempData["SuccessMessage"] = "Lesson has been hidden (deleted).";
+
+            return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = LessonVM.CourseId });
+        }
     }
 }

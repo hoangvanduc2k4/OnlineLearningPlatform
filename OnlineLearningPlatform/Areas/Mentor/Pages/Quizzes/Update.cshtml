@@ -70,6 +70,11 @@
                 <div class="d-flex justify-content-end">
                     <a asp-page="/Courses/Manage" asp-area="Mentor" asp-route-id="@Model.Quiz.CourseId" class="btn btn-outline-secondary me-2">Cancel</a>
                     <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="submit" class="btn btn-danger ms-2"
+                            asp-page-handler="Delete"
+                            onclick="return confirm('Are you sure you want to delete this quiz?')">
+                        <i class="bi bi-trash"></i>
+                    </button>
                 </div>
             </form>
         </div>
