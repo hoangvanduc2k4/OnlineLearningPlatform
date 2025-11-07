@@ -17,10 +17,12 @@ namespace OnlineLearningPlatform.Data.Seeds
         {
             var questions = new List<Question>();
             long questionId = 1;
+            var baseDate = new DateTime(2025, 1, 1);
 
-            // Mỗi quiz có 5 câu hỏi
-            for (long quizId = 1; quizId <= 12; quizId++)
+            for (long quizId = 1; quizId <= 150; quizId++)
             {
+                var createdDate = baseDate.AddDays((quizId - 1) / 3);
+
                 for (int q = 1; q <= 5; q++)
                 {
                     questions.Add(new Question
@@ -29,7 +31,7 @@ namespace OnlineLearningPlatform.Data.Seeds
                         QuestionNum = q,
                         QuizId = quizId,
                         QuestionContent = $"Question {q} for Quiz {quizId}",
-                        DateCreated = new DateTime(2025, 1, 1)
+                        DateCreated = createdDate
                     });
                 }
             }

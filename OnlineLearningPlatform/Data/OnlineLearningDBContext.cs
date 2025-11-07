@@ -279,29 +279,36 @@ namespace OnlineLearningPlatform.Data
             });
 
 
+
+            builder.ApplyConfiguration(new RoleSeedConfiguration());
+            builder.ApplyConfiguration(new LevelSeedConfiguration());
+            builder.ApplyConfiguration(new CategorySeedConfiguration());
             builder.ApplyConfiguration(new FAQSeedConfiguration());
-            builder.ApplyConfiguration(new MessageSeedConfiguration());
+
+
+            builder.ApplyConfiguration(new UserSeedConfiguration());
+            builder.ApplyConfiguration(new UserRoleSeedConfiguration());
+            builder.ApplyConfiguration(new CourseSeedConfiguration());
+            builder.ApplyConfiguration(new CourseImageUrlSeedConfiguration());
+            builder.ApplyConfiguration(new CourseCategorySeedConfiguration());
+            builder.ApplyConfiguration(new ModuleSeedConfiguration());
+
+            builder.ApplyConfiguration(new CourseEnrollmentSeedConfiguration());
+            builder.ApplyConfiguration(new WishListSeedConfiguration());
+            builder.ApplyConfiguration(new RatingSeedConfiguration());
+            builder.ApplyConfiguration(new AdminReviewCourseSeedConfiguration());
+
+            builder.ApplyConfiguration(new LessonSeedConfiguration());
+            builder.ApplyConfiguration(new QuizSeedConfiguration());
+
+            builder.ApplyConfiguration(new QuestionSeedConfiguration());
+            builder.ApplyConfiguration(new OptionSeedConfiguration());
+
             builder.ApplyConfiguration(new MentorApplicationSeedConfiguration());
+            builder.ApplyConfiguration(new MessageSeedConfiguration());
+            builder.ApplyConfiguration(new TransactionHistorySeedConfiguration());
             builder.ApplyConfiguration(new QuizResultSeedConfiguration());
             builder.ApplyConfiguration(new AnswerQuizSeedConfiguration());
-            builder.ApplyConfiguration(new OptionSeedConfiguration());
-            builder.ApplyConfiguration(new QuestionSeedConfiguration());
-            builder.ApplyConfiguration(new QuizSeedConfiguration());
-            builder.ApplyConfiguration(new LessonSeedConfiguration());
-            builder.ApplyConfiguration(new ModuleSeedConfiguration());
-            builder.ApplyConfiguration(new AdminReviewCourseSeedConfiguration());
-            builder.ApplyConfiguration(new TransactionHistorySeedConfiguration());
-            builder.ApplyConfiguration(new RatingSeedConfiguration());
-            builder.ApplyConfiguration(new CategorySeedConfiguration());
-            builder.ApplyConfiguration(new CourseCategorySeedConfiguration());
-            builder.ApplyConfiguration(new CourseEnrollmentSeedConfiguration());
-            builder.ApplyConfiguration(new CourseImageUrlSeedConfiguration());
-            builder.ApplyConfiguration(new CourseSeedConfiguration());
-            builder.ApplyConfiguration(new LevelSeedConfiguration());
-            builder.ApplyConfiguration(new RoleSeedConfiguration());
-            builder.ApplyConfiguration(new UserSeedConfiguration());
-            builder.ApplyConfiguration(new WishListSeedConfiguration());
-            builder.ApplyConfiguration(new UserRoleSeedConfiguration());
 
 
 
