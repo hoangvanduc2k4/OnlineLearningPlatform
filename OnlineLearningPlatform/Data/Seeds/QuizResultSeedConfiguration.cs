@@ -17,37 +17,43 @@ namespace OnlineLearningPlatform.Data.Seeds
         {
             var results = new List<QuizResult>();
             long quizResultId = 1;
-
-            // giả sử mỗi quiz có 5 câu hỏi (theo seed Question)
             int totalQuestions = 5;
 
-            // mỗi quiz có kết quả của 2 user: user 3 và user 4
-            for (long quizId = 1; quizId <= 12; quizId++)
+            var baseDateUser5 = new DateTime(2025, 3, 1, 10, 0, 0);
+            var baseDateUser6 = new DateTime(2025, 3, 2, 9, 30, 0);
+
+            for (long quizId = 1; quizId <= 150; quizId++)
             {
+                var user5StartTime = baseDateUser5.AddDays(quizId - 1);
+                var user5EndTime = user5StartTime.AddMinutes(15); // Giả sử làm trong 15 phút
+
+                var user6StartTime = baseDateUser6.AddDays(quizId - 1);
+                var user6EndTime = user6StartTime.AddMinutes(15);
+
                 results.Add(new QuizResult
                 {
                     QuizResultId = quizResultId++,
-                    UserId = "3",
+                    UserId = "5",
                     QuizId = quizId,
                     TotalQuestions = totalQuestions,
-                    CorrectAnswers = 4,
+                    CorrectAnswers = 4, // Khớp với 4/5 câu đúng
                     Score = 80.00m,
-                    StartTime = new DateTime(2025, 3, 1, 10, 0, 0),
-                    EndTime = new DateTime(2025, 3, 1, 10, 15, 0),
-                    CreatedAt = new DateTime(2025, 3, 1, 10, 15, 0)
+                    StartTime = user5StartTime,
+                    EndTime = user5EndTime,
+                    CreatedAt = user5EndTime
                 });
 
                 results.Add(new QuizResult
                 {
                     QuizResultId = quizResultId++,
-                    UserId = "4",
+                    UserId = "6",
                     QuizId = quizId,
                     TotalQuestions = totalQuestions,
-                    CorrectAnswers = 3,
+                    CorrectAnswers = 3, // Khớp với 3/5 câu đúng
                     Score = 60.00m,
-                    StartTime = new DateTime(2025, 3, 2, 9, 30, 0),
-                    EndTime = new DateTime(2025, 3, 2, 9, 45, 0),
-                    CreatedAt = new DateTime(2025, 3, 2, 9, 45, 0)
+                    StartTime = user6StartTime,
+                    EndTime = user6EndTime,
+                    CreatedAt = user6EndTime
                 });
             }
 

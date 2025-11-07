@@ -457,5 +457,36 @@ namespace OnlineLearningPlatform.Services
             IPagedList<Course> pagedResult = courses.ToPagedList(pageNumber, pageSize);
             return pagedResult;
         }
+        public async Task<CourseDetailsViewModel> GetCourseDetailsToLearnAsync(int id, string? userId)
+        {
+            var courseEntity = await _courseRepository.GetByIdWithDetailsToLearnAsync(id);
+            if (courseEntity == null) return null;
+
+            var ratings = await _ratingRepository.GetRatingsByCourseIdAsync(id);
+            var vm = _mapper.Map<CourseDetailsViewModel>(courseEntity);
+
+            vm.TotalQuizCount = courseEntity.Modules.Sum(m => m.Quizzes.Count);
+
+            if (ratings != null && ratings.Any())
+            {
+                vm.FeedbackCount = ratings.Count;
+                vm.AverageRating = ratings.Average(r => r.Rating);
+                vm.Ratings = _mapper.Map<List<RatingViewModel>>(ratings);
+            }
+            else
+            {
+                vm.FeedbackCount = 0;
+                vm.AverageRating = 0;
+                vm.Ratings = new List<RatingViewModel>();
+            }
+
+            vm.IsEnrolled = false;
+            if (!string.IsNullOrEmpty(userId))
+            {
+                vm.IsEnrolled = await _courseEnrollmentRepository.CheckUserPurchaseCourseAsync(userId, id);
+            }
+
+            return vm;
+        }
     }
 }

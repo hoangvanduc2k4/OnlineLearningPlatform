@@ -19,5 +19,6 @@ namespace OnlineLearningPlatform.Repositories.Interfaces
         Task<Dictionary<string, int>> GetCourseStatusCountsAsync();
         Task<Course?> GetCourseForHierarchyAsync(long courseId);
         Task<IEnumerable<Course>> GetAllWithCreatorByStatusAsync(CourseStatus status);
+        Task<Course?> GetByIdWithDetailsToLearnAsync(long id);
     }
 }

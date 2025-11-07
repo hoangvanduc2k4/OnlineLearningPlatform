@@ -33,7 +33,7 @@ namespace OnlineLearningPlatform.Controllers
         public async Task<IActionResult> Course(int id, long? lessonId = null)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var model = await _courseService.GetCourseDetailsAsync(id, userId);
+            var model = await _courseService.GetCourseDetailsToLearnAsync(id, userId);
             if (model == null || !model.IsEnrolled) return NotFound();
 
             // Chọn lesson đầu tiên nếu chưa có lessonId

@@ -50,6 +50,7 @@ namespace OnlineLearningPlatform.Services.Interfaces
         int pageSize,
         string? searchTerm,
         string? sortBy  );
+        Task<CourseDetailsViewModel> GetCourseDetailsToLearnAsync(int id, string? userId);
     }
 
 }
