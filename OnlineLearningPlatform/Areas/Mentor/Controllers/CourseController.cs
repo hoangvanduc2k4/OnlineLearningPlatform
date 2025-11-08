@@ -39,7 +39,8 @@ namespace OnlineLearningPlatform.Areas.Mentor.Controllers
         public async Task<IActionResult> Index(
             int pageNumber = 1,
             string? searchTerm = null,
-            string? sortBy = null)
+            string? sortBy = null,
+            CourseStatus? status = null)
         {
             var mentorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (mentorId == null) return Unauthorized();
@@ -51,11 +52,13 @@ namespace OnlineLearningPlatform.Areas.Mentor.Controllers
                 pageNumber,
                 pageSize,
                 searchTerm,
-                sortBy
+                sortBy,
+                status
             );
 
             ViewData["SearchTerm"] = searchTerm;
             ViewData["SortBy"] = sortBy;
+            ViewData["Status"] = status;
 
             return View(courses);
         }
