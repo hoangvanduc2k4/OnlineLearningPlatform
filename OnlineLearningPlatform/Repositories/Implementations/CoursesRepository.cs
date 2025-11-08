@@ -118,7 +118,7 @@ namespace OnlineLearningPlatform.Repositories
                     .ThenInclude(m => m.Lessons.Where(l => l.Status == CommonStatus.Showed))
                 .Include(c => c.Modules.Where(m => m.Status == CommonStatus.Showed))
                     .ThenInclude(m => m.Quizzes.Where(q => q.Status == QuizStatus.Active))
-                .AsSplitQuery() 
+                //.AsSplitQuery() 
                 .FirstOrDefaultAsync(c => c.CourseId == courseId);
 
             return course;

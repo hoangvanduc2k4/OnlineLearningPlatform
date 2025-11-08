@@ -169,23 +169,23 @@
 </div>
 
 <script>
-    // Dùng một function để tránh xung đột
     function initHierarchyNav() {
         var triggers = document.querySelectorAll(".module-trigger-nav");
-        triggers.forEach(function(trigger) {
 
+        triggers.forEach(function(trigger) {
             var icon = trigger.querySelector(".toggle-icon-nav");
             var content = trigger.nextElementSibling; // .module-content-nav
 
-            // Tự động mở nếu có mục 'active' bên trong
-            if (content.querySelector("a.active")) {
+            var selfActive = trigger.querySelector("a.active");
+            var childActive = content.querySelector("a.active");
+
+            if (selfActive || childActive) {
                 content.style.display = "block";
                 icon.innerText = "-";
             } else {
                 icon.innerText = "+";
             }
-
-            trigger.addEventListener("click", function() {
+            icon.addEventListener("click", function() {
                 if (icon.innerText === "+") {
                     icon.innerText = "-";
                     content.style.display = "block";
@@ -194,6 +194,7 @@
                     content.style.display = "none";
                 }
             });
+
         });
     }
     document.addEventListener("DOMContentLoaded", initHierarchyNav);
