@@ -71,10 +71,15 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Modules
                 return Page();
             }
 
-            await _moduleService.CreateModuleAsync(ModuleVM);
+            Module newModule = await _moduleService.CreateModuleAsync(ModuleVM);
 
             TempData["SuccessMessage"] = "Module created successfully.";
-            return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = ModuleVM.CourseId });
+            return RedirectToPage("/Courses/Manage", new
+            {
+                area = "Mentor",
+                id = ModuleVM.CourseId,
+                moduleId = newModule.ModuleId
+            });
         }
     }
 }

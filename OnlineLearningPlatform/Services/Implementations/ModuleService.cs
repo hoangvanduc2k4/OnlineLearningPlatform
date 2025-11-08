@@ -24,14 +24,15 @@ namespace OnlineLearningPlatform.Services.Implementations
             _mapper = mapper;
         }
 
-        public async Task CreateModuleAsync(ModuleInputViewModel viewModel)
+        public async Task<Module> CreateModuleAsync(ModuleInputViewModel viewModel)
         {
             var newModule = _mapper.Map<Module>(viewModel);
 
             newModule.DateCreated = DateTime.Now;
             newModule.ModifiedDate = DateTime.Now;
 
-            await _moduleRepository.AddAsync(newModule); 
+            await _moduleRepository.AddAsync(newModule);
+            return newModule;
         }
 
         public async Task<IEnumerable<SelectListItem>> GetCoursesForDropdownAsync(string mentorId)
