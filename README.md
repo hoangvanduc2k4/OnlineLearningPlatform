@@ -262,10 +262,25 @@ OnlineLearningPlatform/
     ├── Admin
     ├── Mentor
     └── Mentee
+         └── Pages
+               └── MyCourses
+               └── WishList
+               └── ...
 ├── Controllers/
 
     └── CourseController.cs          # Xử lý HTTP requests
+    └── HomeController.cs
+    └── ...
+├── Views/
+    └── Courses         
+    └── Home
+    └── ...
 ├── Mappers/
+├── Enums/
+    ├── CourseStatus
+    ├── QuizStatus
+    ├── ReviewStatus
+    └── ...
 ├── Utils/
 ├── Attributes/
 ├── Services/
