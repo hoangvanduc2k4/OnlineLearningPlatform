@@ -114,10 +114,10 @@ namespace OnlineLearningPlatform.Repositories
         {
             Course? course = await _context.Set<Course>()
                 .AsNoTracking() 
-                .Include(c => c.Modules.Where(m => m.Status == CommonStatus.Showed))
-                    .ThenInclude(m => m.Lessons.Where(l => l.Status == CommonStatus.Showed))
-                .Include(c => c.Modules.Where(m => m.Status == CommonStatus.Showed))
-                    .ThenInclude(m => m.Quizzes.Where(q => q.Status == QuizStatus.Active))
+                .Include(c => c.Modules.Where(m => m.Status != CommonStatus.Hided))
+                    .ThenInclude(m => m.Lessons.Where(l => l.Status != CommonStatus.Hided))
+                .Include(c => c.Modules.Where(m => m.Status != CommonStatus.Hided))
+                    .ThenInclude(m => m.Quizzes)
                 //.AsSplitQuery() 
                 .FirstOrDefaultAsync(c => c.CourseId == courseId);
 
