@@ -262,10 +262,25 @@ OnlineLearningPlatform/
     ├── Admin
     ├── Mentor
     └── Mentee
+         └── Pages
+               └── MyCourses
+               └── WishList
+               └── ...
 ├── Controllers/
 
     └── CourseController.cs          # Xử lý HTTP requests
+    └── HomeController.cs
+    └── ...
+├── Views/
+    └── Courses         
+    └── Home
+    └── ...
 ├── Mappers/
+├── Enums/
+    ├── CourseStatus
+    ├── QuizStatus
+    ├── ReviewStatus
+    └── ...
 ├── Utils/
 ├── Attributes/
 ├── Services/
@@ -274,21 +289,20 @@ OnlineLearningPlatform/
        └── ICourseService         # Interface logic nghiệp vụ
 
    └── Implimentation
-       └── ICourseService              # Triển khai logic
+       └── CourseService              # Triển khai logic
 
 ├── Repositories/
-
-    ├── IBaseRepository.cs           # Generic interface cho CRUD cơ bản
-
-    ├── BaseRepository.cs            # Generic base class triển khai IBaseRepository<T>
-
-    ├── ICourseRepository.cs         # Extend IBaseRepository<Course> cho operations tùy chỉnh
-
-    └── CourseRepository.cs          # Extend BaseRepository<Course>, ICourseRepository
-
+   ├── Interface
+          ├── IBaseRepository.cs           # Generic interface cho CRUD cơ bản
+          ├── ICourseRepository.cs         # Extend IBaseRepository<Course> cho operations tùy chỉnh
+          └──   ...
+   └── Implimentation
+          ├── BaseRepository.cs            # Generic base class triển khai IBaseRepository<T>
+          └── CourseRepository.cs          # Extend BaseRepository<Course>, ICourseRepository
 ├── Configurations/
 
     └── DIConfig.cs                  # Cấu hình Dependency Injection
+    └── ...
 
 ├── Data/
     ├── SeedData
@@ -297,13 +311,13 @@ OnlineLearningPlatform/
 
 ├── Models/
 
-│   ├── Entities/
+    ├── Entities/
 
-│   │   └── Course.cs                # Model DB entities
+           └── Course.cs                # Model DB entities
 
-│   └── ViewModels/
+    └── ViewModels/
 
-│       └── CourseViewModel.cs       # DTOs cho UI
+           └── CourseViewModel.cs       # DTOs cho UI
 
 └── Program.cs                       # Khởi tạo và gọi DIConfig
 

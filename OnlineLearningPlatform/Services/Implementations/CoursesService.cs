@@ -204,9 +204,11 @@ namespace OnlineLearningPlatform.Services
         public async Task<CourseDetailsViewModel?> GetCourseDetailsAsync(long id, string? userId)
         {
             var courseEntity = await _courseRepository.GetByIdWithDetailsAsync(id);
+
             if (courseEntity == null) return null;
 
             var ratings = await _ratingRepository.GetRatingsByCourseIdAsync(id);
+
             var vm = _mapper.Map<CourseDetailsViewModel>(courseEntity);
 
             vm.TotalQuizCount = courseEntity.Modules.Sum(m => m.Quizzes.Count);
@@ -232,6 +234,7 @@ namespace OnlineLearningPlatform.Services
 
             return vm;
         }
+
         public async Task<Course?> GetCourseByIdAsync(long courseId)
         {
             return await _courseRepository.GetByIdAsync(courseId);
@@ -370,7 +373,7 @@ namespace OnlineLearningPlatform.Services
 
             switch (sortBy)
             {
-                case "name_asc": 
+                case "name_asc":
                     courses = courses.OrderBy(c => c.CourseName);
                     break;
                 case "name_desc":
@@ -388,7 +391,7 @@ namespace OnlineLearningPlatform.Services
                 case "date_desc":
                     courses = courses.OrderByDescending(c => c.UpdatedAt);
                     break;
-                default: 
+                default:
                     courses = courses.OrderByDescending(c => c.UpdatedAt ?? c.CreatedAt);
                     break;
             }
@@ -453,7 +456,7 @@ namespace OnlineLearningPlatform.Services
                 case "price_desc":
                     courses = courses.OrderByDescending(c => c.Price);
                     break;
-                default: 
+                default:
                     courses = courses.OrderBy(c => c.CourseName);
                     break;
             }
