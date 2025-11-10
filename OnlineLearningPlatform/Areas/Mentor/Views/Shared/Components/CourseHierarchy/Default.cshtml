@@ -169,29 +169,37 @@
 </div>
 
 <script>
-    // Dùng một function để tránh xung đột
     function initHierarchyNav() {
         var triggers = document.querySelectorAll(".module-trigger-nav");
+
         triggers.forEach(function(trigger) {
-
             var icon = trigger.querySelector(".toggle-icon-nav");
-            var content = trigger.nextElementSibling; // .module-content-nav
+            var content = trigger.nextElementSibling; 
+            var link = trigger.querySelector("a");
 
-            // Tự động mở nếu có mục 'active' bên trong
-            if (content.querySelector("a.active")) {
+            var selfActive = link && link.classList.contains("active");
+            var childActive = content.querySelector("a.active");
+
+            if (selfActive || childActive) {
                 content.style.display = "block";
                 icon.innerText = "-";
             } else {
                 icon.innerText = "+";
             }
 
-            trigger.addEventListener("click", function() {
-                if (icon.innerText === "+") {
-                    icon.innerText = "-";
-                    content.style.display = "block";
-                } else {
-                    icon.innerText = "+";
-                    content.style.display = "none";
+            trigger.addEventListener("click", function(e) {
+
+                if (e.target.classList.contains("toggle-icon-nav")) {
+                    e.preventDefault(); 
+                    if (icon.innerText === "+") {
+                        icon.innerText = "-";
+                        content.style.display = "block";
+                    } else {
+                        icon.innerText = "+";
+                        content.style.display = "none";
+                    }
+                } else if (link && e.target !== link) {
+                    link.click();
                 }
             });
         });

@@ -6,11 +6,19 @@
     Layout = "~/Areas/Mentor/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create New Lesson</h1>
+<div class="d-flex align-items-center">
+    <a asp-page="/Courses/Manage" asp-area="Mentor" 
+       asp-route-id="@Model.LessonVM.CourseId"
+       asp-route-moduleId="@Model.LessonVM.ModuleId" 
+       class="btn btn-sm btn-outline-secondary me-3">
+        <i class="bi bi-arrow-left"></i>
+    </a>
+    <h1 class="mb-0 fs-3">Create New Lesson</h1>
+</div>
 <hr />
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-9">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -43,7 +51,7 @@
 
             <div class="form-group">
                 <label asp-for="LessonVM.LessonContent" class="control-label"></label>
-                <textarea asp-for="LessonVM.LessonContent" class="form-control" rows="5"></textarea>
+                <textarea asp-for="LessonVM.LessonContent" class="form-control" rows="8"></textarea>
                 <span asp-validation-for="LessonVM.LessonContent" class="text-danger"></span>
             </div>
 
@@ -70,8 +78,10 @@
 
             <div class="form-group mt-3">
                 <input type="submit" value="Create" class="btn btn-primary" />
-                <a asp-page="/Courses/Manage" asp-area="Mentor" asp-route-id="@Model.LessonVM.CourseId" class="btn btn-outline-secondary">
-                    Back to Manage
+                <a asp-page="/Courses/Manage" asp-area="Mentor"
+                   asp-route-id="@Model.LessonVM.CourseId"
+                   asp-route-moduleId="@Model.LessonVM.ModuleId" class="btn btn-outline-secondary">
+                    Back
                 </a>
             </div>
         </form>

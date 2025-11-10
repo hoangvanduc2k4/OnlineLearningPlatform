@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Models.ViewModels;
 
 namespace OnlineLearningPlatform.Services.Interfaces
@@ -7,7 +8,7 @@ namespace OnlineLearningPlatform.Services.Interfaces
     {
         Task<IEnumerable<SelectListItem>> GetCoursesForDropdownAsync(string mentorId);
 
-        Task CreateModuleAsync(ModuleInputViewModel viewModel);
+        Task<Module> CreateModuleAsync(ModuleInputViewModel viewModel);
         Task<ModuleInputViewModel?> GetModuleForEditAsync(long moduleId, string mentorId);
 
         Task<bool> UpdateModuleAsync(ModuleInputViewModel viewModel, string mentorId);

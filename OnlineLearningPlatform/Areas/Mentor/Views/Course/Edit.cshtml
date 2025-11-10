@@ -4,9 +4,13 @@
     ViewData["Title"] = "Edit Course";
     Layout = "~/Areas/Mentor/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Edit Course</h1>
-<h4>@Model.CourseName</h4>
+<div class="d-flex align-items-center">
+    <a asp-page="/Courses/Manage" asp-area="Mentor" asp-route-id="@Model.CourseId"
+       class="btn btn-sm btn-outline-secondary me-3">
+        <i class="bi bi-arrow-left"></i>
+    </a>
+    <h1 class="mb-0 fs-3">Edit Course</h1>
+</div>
 <hr />
 <div class="row">
     <div class="col-md-8">
@@ -116,7 +120,9 @@
                         <button type="submit" name="action" value="save_draft" class="btn btn-secondary">Save as Draft</button>
                         <button type="submit" name="action" value="submit_review" class="btn btn-primary">Submit for Review</button>
                 }
-                <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+                <a asp-page="/Courses/Manage" asp-area="Mentor" asp-route-id="@Model.CourseId" class="btn btn-outline-secondary">
+                    Back
+                </a>
             </div>
         </form>
     </div>

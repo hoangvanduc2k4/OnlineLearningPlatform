@@ -11,6 +11,7 @@ using OnlineLearningPlatform.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -85,7 +86,13 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Lessons
             await _lessonService.CreateLessonAsync(LessonVM);
 
 
-            return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = LessonVM.CourseId });
+            //return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = LessonVM.CourseId });
+            return RedirectToPage("/Courses/Manage", new
+            {
+                area = "Mentor",
+                id = LessonVM.CourseId,
+                moduleId = LessonVM.ModuleId
+            });
         }
     }
 }

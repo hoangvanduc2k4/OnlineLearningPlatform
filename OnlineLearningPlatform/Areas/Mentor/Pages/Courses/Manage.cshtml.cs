@@ -24,8 +24,6 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Courses
             _moduleService = moduleService;
         }
 
-        public CourseDetailsViewModel CourseVM { get; set; } = default!;
-
         [BindProperty(SupportsGet = true)]
         public long? ModuleId { get; set; } 
 
@@ -40,14 +38,10 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Courses
             var mentor = await _userManager.GetUserAsync(User);
             var mentorId = await _userManager.GetUserIdAsync(mentor);
 
-            CourseVM = await _courseService.GetCourseDetailsAsync(id, null);
-            if (CourseVM == null)
+            var course = await _courseService.GetCourseByIdAndMentorAsync(id, mentorId);
+            if (course == null)
             {
                 return NotFound();
-            }
-            if (CourseVM.MentorId == null || CourseVM.MentorId != mentorId)
-            {
-                return Forbid();
             }
 
             ModuleId = moduleId;

@@ -425,10 +425,14 @@ namespace OnlineLearningPlatform.Services
         int pageNumber,
         int pageSize,
         string? searchTerm,
-        string? sortBy)
+        string? sortBy,
+        CourseStatus? status)
         {
             IEnumerable<Course> courses = await _courseRepository.GetAllByMentorIdAsync(mentorId);
-
+            if (status != null)
+            {
+                courses = courses.Where(c => c.Status == status.Value);
+            }
             if (!string.IsNullOrWhiteSpace(searchTerm))
             {
                 var lower = searchTerm.Trim().ToLower();
