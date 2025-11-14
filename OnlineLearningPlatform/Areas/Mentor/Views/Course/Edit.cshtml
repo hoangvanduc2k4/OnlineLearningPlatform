@@ -157,14 +157,13 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
-            // --- Image Toggle & Preview Logic ---
             const imageOptionRadios = document.querySelectorAll('input[name="@Html.NameFor(m => m.ImageOption)"]');
             const fileUploadSection = document.getElementById('file-upload-section');
             const urlInputSection = document.getElementById('url-input-section');
-            const fileInput = document.getElementById('@Html.IdFor(m => m.NewCoverImage)'); // Trỏ đúng Id "NewCoverImage"
+            const fileInput = document.getElementById('@Html.IdFor(m => m.NewCoverImage)'); 
             const urlInput = document.getElementById('@Html.IdFor(m => m.CoverImageUrl)');
             const imagePreview = document.getElementById('image-preview');
-            const previewPlaceholder = document.getElementById('preview-placeholder'); // Lấy placeholder
+            const previewPlaceholder = document.getElementById('preview-placeholder'); 
 
             function showPreview(src) {
                 if (src) {
@@ -219,23 +218,19 @@
                 }
             });
             toggleImageInputs();
-            showPreview(null); // Ban đầu ẩn preview của ảnh mới
+            showPreview(null); 
 
 
-            // === LOGIC ĐỊNH DẠNG VÀ VALIDATION (ĐÃ CẬP NHẬT) ===
 
             const vndFormatter = new Intl.NumberFormat('de-DE');
 
-            // Lấy các trường Price
             const hiddenPriceInput = document.getElementById('@Html.IdFor(m => m.Price)');
             const visiblePriceInput = document.getElementById('Price-display');
 
-            // Lấy các trường Discount (MỚI)
             const hiddenDiscountInput = document.getElementById('@Html.IdFor(m => m.Discount)');
             const visibleDiscountInput = document.getElementById('Discount-display');
             const discountValidationSpan = document.getElementById('discount-validation-message');
 
-            // --- 1. Price Formatting Logic ---
             function formatVisiblePrice() {
                 let cursorPosition = visiblePriceInput.selectionStart;
                 let originalValue = visiblePriceInput.value;
@@ -268,7 +263,6 @@
                 }
             }
 
-            // --- 2. Discount Formatting Logic (MỚI) ---
             function formatVisibleDiscount() {
                 let cursorPosition = visibleDiscountInput.selectionStart;
                 let originalValue = visibleDiscountInput.value;
@@ -301,7 +295,6 @@
                 }
             }
 
-            // --- 3. Validation Logic (MỚI) ---
             function validatePriceVsDiscount() {
                 const priceVal = parseFloat(hiddenPriceInput.value) || 0;
                 const discountVal = parseFloat(hiddenDiscountInput.value) || 0;
@@ -315,16 +308,15 @@
                 }
             }
 
-            // --- 4. Gắn Event Listeners (ĐÃ CẬP NHẬT) ---
             if (visiblePriceInput) {
                 visiblePriceInput.addEventListener('input', () => {
                     formatVisiblePrice();
-                    validatePriceVsDiscount(); // Gọi validation
+                    validatePriceVsDiscount();
                 });
                 initializePrice();
             }
 
-            if (visibleDiscountInput) { // MỚI
+            if (visibleDiscountInput) { 
                 visibleDiscountInput.addEventListener('input', () => {
                     formatVisibleDiscount();
                     validatePriceVsDiscount(); 

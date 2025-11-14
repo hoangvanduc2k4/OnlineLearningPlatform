@@ -133,7 +133,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
-            // --- Image Toggle & Preview Logic (Giữ nguyên) ---
             const imageOptionRadios = document.querySelectorAll('input[name="@Html.NameFor(m => m.ImageOption)"]');
             const fileUploadSection = document.getElementById('file-upload-section');
             const urlInputSection = document.getElementById('url-input-section');
@@ -193,20 +192,16 @@
             toggleImageInputs();
 
 
-            // === LOGIC ĐỊNH DẠNG VÀ VALIDATION (ĐÃ CẬP NHẬT) ===
 
             const vndFormatter = new Intl.NumberFormat('de-DE');
 
-            // Lấy các trường Price
             const hiddenPriceInput = document.getElementById('@Html.IdFor(m => m.Price)');
             const visiblePriceInput = document.getElementById('Price-display');
 
-            // Lấy các trường Discount (MỚI)
             const hiddenDiscountInput = document.getElementById('@Html.IdFor(m => m.Discount)');
             const visibleDiscountInput = document.getElementById('Discount-display');
             const discountValidationSpan = document.getElementById('discount-validation-message');
 
-            // --- 1. Price Formatting Logic (Giữ nguyên) ---
             function formatVisiblePrice() {
                 let cursorPosition = visiblePriceInput.selectionStart;
                 let originalValue = visiblePriceInput.value;
@@ -214,7 +209,7 @@
                 let numericValueStr = originalValue.replace(/[^0-9]/g, '');
                 let numValue = parseFloat(numericValueStr);
 
-                hiddenPriceInput.value = numericValueStr; // Cập nhật trường ẩn
+                hiddenPriceInput.value = numericValueStr; 
 
                 let formattedValue = '';
                 if (!isNaN(numValue) && numValue !== 0) {
@@ -241,7 +236,6 @@
                 }
             }
 
-            // --- 2. Discount Formatting Logic (MỚI) ---
             function formatVisibleDiscount() {
                 let cursorPosition = visibleDiscountInput.selectionStart;
                 let originalValue = visibleDiscountInput.value;
@@ -249,7 +243,7 @@
                 let numericValueStr = originalValue.replace(/[^0-9]/g, '');
                 let numValue = parseFloat(numericValueStr);
 
-                hiddenDiscountInput.value = numericValueStr; // Cập nhật trường ẩn
+                hiddenDiscountInput.value = numericValueStr; 
 
                 let formattedValue = '';
                 if (!isNaN(numValue) && numValue !== 0) {
@@ -276,25 +270,23 @@
                 }
             }
 
-            // --- 3. Validation Logic (MỚI) ---
             function validatePriceVsDiscount() {
                 const priceVal = parseFloat(hiddenPriceInput.value) || 0;
                 const discountVal = parseFloat(hiddenDiscountInput.value) || 0;
 
                 if (discountVal > 0 && discountVal > priceVal) {
                     discountValidationSpan.textContent = 'Discount price cannot be higher than the original price.';
-                    visibleDiscountInput.classList.add('is-invalid'); // Thêm viền đỏ
+                    visibleDiscountInput.classList.add('is-invalid'); 
                 } else {
-                    discountValidationSpan.textContent = ''; // Xóa thông báo
-                    visibleDiscountInput.classList.remove('is-invalid'); // Xóa viền đỏ
+                    discountValidationSpan.textContent = ''; 
+                    visibleDiscountInput.classList.remove('is-invalid');
                 }
             }
 
-            // --- 4. Gắn Event Listeners (ĐÃ CẬP NHẬT) ---
             if (visiblePriceInput) {
                 visiblePriceInput.addEventListener('input', () => {
                     formatVisiblePrice();
-                    validatePriceVsDiscount(); // Gọi validation khi Price thay đổi
+                    validatePriceVsDiscount(); 
                 });
                 initializePrice();
             }
@@ -302,12 +294,11 @@
             if (visibleDiscountInput) {
                 visibleDiscountInput.addEventListener('input', () => {
                     formatVisibleDiscount();
-                    validatePriceVsDiscount(); // Gọi validation khi Discount thay đổi
+                    validatePriceVsDiscount(); 
                 });
                 initializeDiscount();
             }
 
-            // Chạy validation 1 lần khi tải trang
             validatePriceVsDiscount();
         });
     </script>
