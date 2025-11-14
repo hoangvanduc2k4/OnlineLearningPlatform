@@ -5,8 +5,7 @@ using OnlineLearningPlatform.Models.Entities.Others;
 using OnlineLearningPlatform.Models.Entities.UserPart;
 using OnlineLearningPlatform.Models.ViewModels;
 using OnlineLearningPlatform.Services.Interfaces;
-using System.Security.Claims; // Đảm bảo bạn đã using cái này
-
+using System.Security.Claims;
 namespace OnlineLearningPlatform.Controllers
 {
     public class CoursesController : Controller
