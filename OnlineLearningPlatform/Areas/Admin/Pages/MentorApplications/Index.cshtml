@@ -44,89 +44,23 @@
     </div>
 </form>
 
-@if (Model.PagedApplications == null || !Model.PagedApplications.Any())
-{
-    <div class="alert alert-info">No mentor applications found.</div>
-}
-else
-{
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover align-middle">
-            <thead class="table-light">
-                <tr>
-                    <th>#</th>
-                    <th>Applicant</th>
-                    <th>Email</th>
-                    <th>CV</th>
-                    <th>Note</th>
-                    <th>Status</th>
-                    <th>Submitted At</th>
-                    <th>Reviewed At</th>
-                    <th>Feedback</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            @if (Model.PagedApplications != null)
+<div id="applicationsContainer">
+    <partial name="_MentorApplicationsTablePartial" model="Model" />
+</div>
+
+<div class="card-footer bg-white">
+    <nav aria-label="Page navigation" class="d-flex justify-content-center">
+        @Html.PagedListPager(
+            Model.PagedApplications,
+            page => Url.Page("./Index", new { pageNumber = page, pageSize = Model.PageSize, SearchTerm = Model.SearchTerm, Status = Model.Status }),
+            new PagedListRenderOptions
             {
-                int seq = (Model.PagedApplications.PageNumber - 1) * Model.PagedApplications.PageSize;
-                foreach (var app in Model.PagedApplications)
-                {
-                    seq++;
-                    <tr>
-                        <td>@seq</td>
-                        <td>@app.User?.FullName</td>
-                        <td>@app.User?.Email</td>
-                        <td><a href="@app.CvUrl" target="_blank">View CV</a></td>
-                        <td>@app.Note</td>
-                        <td>
-                            @switch (app.Status)
-                            {
-                                case OnlineLearningPlatform.Enums.ApplicationStatus.Pending:
-                                    <span class="badge bg-warning text-dark">Pending</span>
-                                    break;
-                                case OnlineLearningPlatform.Enums.ApplicationStatus.Approved:
-                                    <span class="badge bg-success">Approved</span>
-                                    break;
-                                case OnlineLearningPlatform.Enums.ApplicationStatus.Rejected:
-                                    <span class="badge bg-danger">Rejected</span>
-                                    break;
-                            }
-                        </td>
-                        <td>@app.SubmittedAt.ToString("dd/MM/yyyy HH:mm")</td>
-                        <td>@(app.ReviewedAt.HasValue ? app.ReviewedAt.Value.ToString("dd/MM/yyyy HH:mm") : "-")</td>
-                        <td>@app.Feedback</td>
-                        <td>
-                            @if (app.Status == OnlineLearningPlatform.Enums.ApplicationStatus.Pending)
-                            {
-                                <button type="button" class="btn btn-sm btn-success mb-1" data-bs-toggle="modal" data-bs-target="#approveModal" data-id="@app.Id">Approve</button>
-                                <button type="button" class="btn btn-sm btn-danger mb-1" data-bs-toggle="modal" data-bs-target="#rejectModal" data-id="@app.Id">Reject</button>
-                            }
-                            else
-                            {
-                                <span class="text-muted">-</span>
-                            }
-                        </td>
-                    </tr>
-                }
-            }
-            </tbody>
-        </table>
-    </div>
-    <div class="card-footer bg-white">
-        <nav aria-label="Page navigation" class="d-flex justify-content-center">
-            @Html.PagedListPager(
-                Model.PagedApplications,
-                page => Url.Page("./Index", new { pageNumber = page, pageSize = Model.PageSize, SearchTerm = Model.SearchTerm, Status = Model.Status }),
-                new PagedListRenderOptions
-                {
-                    UlElementClasses = new[] { "pagination pagination-sm mb-0" },
-                    LiElementClasses = new[] { "page-item" },
-                    PageClasses = new[] { "page-link text-primary" }
-                })
-        </nav>
-    </div>
-}
+                UlElementClasses = new[] { "pagination pagination-sm mb-0" },
+                LiElementClasses = new[] { "page-item" },
+                PageClasses = new[] { "page-link text-primary" }
+            })
+    </nav>
+</div>
 
 <!-- Approve Modal -->
 <div class="modal fade" id="approveModal" tabindex="-1" aria-labelledby="approveModalLabel" aria-hidden="true">
@@ -186,6 +120,7 @@ else
 </div>
 
 @section Scripts {
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
     <script>
         var approveModal = document.getElementById('approveModal');
         approveModal && approveModal.addEventListener('show.bs.modal', function (event) {
@@ -198,6 +133,28 @@ else
             var button = event.relatedTarget;
             var id = button.getAttribute('data-id');
             document.getElementById('rejectSelectedId').value = id;
+        });
+    </script>
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl('/crudHub')
+            .withAutomaticReconnect()
+            .build();
+
+        connection.start()
+            .then(() => console.log('Connected to SignalR Hub'))
+            .catch(err => console.error(err.toString()));
+
+        connection.on('loadMentorApplications', function () {
+            // fetch partial and replace table
+            const url = window.location.pathname + window.location.search;
+            fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+                .then(res => res.text())
+                .then(html => {
+                    const container = document.getElementById("applicationsContainer");
+                    container.innerHTML = html;
+                })
+                .catch(err => console.error(err));
         });
     </script>
 }

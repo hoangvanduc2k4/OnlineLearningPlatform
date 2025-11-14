@@ -23,7 +23,7 @@ namespace OnlineLearningPlatform.Repositories.Implementations
         public async Task<List<WishList>> GetByUserIdAsync(string userId)
         {
             return await _context.WishLists
-                .Where(w => w.UserId == userId)
+                .Where(w => w.UserId == userId && w.Course.Status == Enums.CourseStatus.Approved) 
                 .Include(w => w.Course)
                     .ThenInclude(c => c.CreatorUser)
                 .Include(w => w.Course)

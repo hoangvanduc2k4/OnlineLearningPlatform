@@ -22,7 +22,7 @@
                         <option value="">All Roles</option>
                         @foreach (var role in Model.AvailableRoles)
                         {
-                            <option value="@role" selected=@(Model.SelectedRole == role  )>@role</option>
+                            <option value="@role" selected=@(Model.SelectedRole == role)>@role</option>
                         }
                     </select>
                     <input type="text" name="searchTerm" value="@Model.SearchTerm" class="form-control form-control-sm me-2" placeholder="Search user..." />
@@ -58,107 +58,8 @@
                             <th style="width: 18%;">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @if (Model.PagedUsers != null && Model.PagedUsers.Any())
-                        {
-                            int seq = (Model.PagedUsers.PageNumber - 1) * Model.PagedUsers.PageSize;
-                            foreach (var user in Model.PagedUsers)
-                            {
-                                seq++;
-                                <tr>
-                                    <td>@seq</td>
-                                    <td>@user.Email</td>
-                                    <td>@user.FullName</td>
-                                    <td>@(user.Dob.HasValue ? user.Dob.Value.ToString("dd/MM/yyyy") : "-")</td>
-                                    <td>
-                                        @if (user.Gender.HasValue)
-                                        {
-                                            @(user.Gender.Value ? "Male" : "Female")
-                                        }
-                                        else
-                                        {
-                                            <span>-</span>
-                                        }
-                                    </td>
-                                    <td>@(user.Phone ?? "-")</td>
-                                    <td>
-                                        @if (Model.UserRoles != null && Model.UserRoles.ContainsKey(user.Id))
-                                        {
-                                            @string.Join(", ", Model.UserRoles[user.Id])
-                                        }
-                                        else
-                                        {
-                                            <span>-</span>
-                                        }
-                                    </td>
-                                    <td>@user.CreatedAt.ToString("dd/MM/yyyy")</td>
-                                    <td>
-                                        <a asp-page="./Update" asp-route-id="@user.Id" class="btn btn-sm btn-warning me-1">
-                                            <i class="bi bi-pencil-fill"></i>
-                                        </a>
-                                        @if (Model.FilterType == "deleted")
-                                        {
-                                            <form method="post" asp-page-handler="Restore" class="d-inline">
-                                                <input type="hidden" name="id" value="@user.Id" />
-                                                <input type="hidden" name="pageNumber" value="@Model.PagedUsers.PageNumber" />
-                                                <input type="hidden" name="pageSize" value="@Model.PageSize" />
-                                                <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
-                                                <input type="hidden" name="filterType" value="@Model.FilterType" />
-                                                <input type="hidden" name="role" value="@Model.SelectedRole" />
-                                                <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('Are you sure you want to restore this user?')">
-                                                    <i class="bi bi-arrow-counterclockwise"></i> 
-                                                </button>
-                                            </form>
-                                        }
-                                        else if(Model.FilterType == "inactive")
-                                        {
-                                            <form method="post" asp-page-handler="Restore" class="d-inline">
-                                                <input type="hidden" name="id" value="@user.Id" />
-                                                <input type="hidden" name="pageNumber" value="@Model.PagedUsers.PageNumber" />
-                                                <input type="hidden" name="pageSize" value="@Model.PageSize" />
-                                                <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
-                                                <input type="hidden" name="filterType" value="@Model.FilterType" />
-                                                <input type="hidden" name="role" value="@Model.SelectedRole" />
-                                                <button type="submit" class="btn btn-sm btn-secondary me-1" onclick="return confirm('Are you sure you want to Activate this user?')">
-                                                    <i class="bi bi-person-x-fill"></i> 
-                                                </button>
-                                            </form>
-                                        }
-                                        else
-                                        {
-                                            <form method="post" asp-page-handler="Delete" class="d-inline">
-                                                <input type="hidden" name="id" value="@user.Id" />
-                                                <input type="hidden" name="pageNumber" value="@Model.PagedUsers.PageNumber" />
-                                                <input type="hidden" name="pageSize" value="@Model.PageSize" />
-                                                <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
-                                                <input type="hidden" name="filterType" value="@Model.FilterType" />
-                                                <input type="hidden" name="role" value="@Model.SelectedRole" />
-                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">
-                                                    <i class="bi bi-trash-fill"></i>
-                                                </button>
-                                            </form>
-                                            <form method="post" asp-page-handler="Deactivate" class="d-inline">
-                                                <input type="hidden" name="id" value="@user.Id" />
-                                                <input type="hidden" name="pageNumber" value="@Model.PagedUsers.PageNumber" />
-                                                <input type="hidden" name="pageSize" value="@Model.PageSize" />
-                                                <input type="hidden" name="searchTerm" value="@Model.SearchTerm" />
-                                                <input type="hidden" name="filterType" value="@Model.FilterType" />
-                                                <input type="hidden" name="role" value="@Model.SelectedRole" />
-                                                <button type="submit" class="btn btn-sm btn-secondary" onclick="return confirm('Are you sure you want to deactivate this user?')">
-                                                    <i class="bi bi-person-x-fill"></i>
-                                                </button>
-                                            </form>
-                                        }
-                                    </td>
-                                </tr>
-                            }
-                        }
-                        else
-                        {
-                            <tr>
-                                <td colspan="9" class="text-center py-3 text-muted">No users found.</td>
-                            </tr>
-                        }
+                    <tbody id="userTableBody">
+                        <partial name="_UserTablePartial" model="Model" />
                     </tbody>
                 </table>
             </div>
@@ -170,27 +71,28 @@
                          Model.PagedUsers,
                          page => Url.Page("./Index", new { pageNumber = page, pageSize = Model.PageSize, searchTerm = Model.SearchTerm, filterType = Model.FilterType, role = Model.SelectedRole }),
                          new PagedListRenderOptions
-                {
-                    UlElementClasses = new[] { "pagination pagination-sm mb-0" },
-                    LiElementClasses = new[] { "page-item" },
-                    PageClasses = new[] { "page-link text-primary" }
-                })
+                         {
+                             UlElementClasses = new[] { "pagination pagination-sm mb-0" },
+                             LiElementClasses = new[] { "page-item" },
+                             PageClasses = new[] { "page-link text-primary" }
+                         })
             </nav>
         </div>
     </div>
 </div>
 
-    <form method="post" asp-page-handler="ExportExcel" class="mb-3 mt-3" id="exportForm">
-        <div id="exportOptions" style="display:none;">
-            <label><input type="checkbox" name="statuses" value="active" /> Active</label>
-            <label><input type="checkbox" name="statuses" value="inactive" /> Inactive</label>
-            <label><input type="checkbox" name="statuses" value="deleted" /> Deleted</label>
-            <button type="submit" class="btn btn-success btn-sm ms-2">Export Excel</button>
-        </div>
-        <button type="button" class="btn btn-success btn-sm ms-2" id="showExportOptionsBtn">Export Excel</button>
-    </form>
+<form method="post" asp-page-handler="ExportExcel" class="mb-3 mt-3" id="exportForm">
+    <div id="exportOptions" style="display:none;">
+        <label><input type="checkbox" name="statuses" value="active" /> Active</label>
+        <label><input type="checkbox" name="statuses" value="inactive" /> Inactive</label>
+        <label><input type="checkbox" name="statuses" value="deleted" /> Deleted</label>
+        <button type="submit" class="btn btn-success btn-sm ms-2">Export Excel</button>
+    </div>
+    <button type="button" class="btn btn-success btn-sm ms-2" id="showExportOptionsBtn">Export Excel</button>
+</form>
 
 @section Scripts {
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
     <script>
         function showSuccess(msg) {
             iziToast.success({
@@ -214,10 +116,32 @@
             });
         }
 
-            document.getElementById('showExportOptionsBtn').addEventListener('click', function () {
+        document.getElementById('showExportOptionsBtn').addEventListener('click', function () {
             document.getElementById('exportOptions').style.display = 'block';
             this.style.display = 'none';
         });
-    </script>
 
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/crudHub")
+            .build();
+
+        connection.on("LoadUsers", function () {
+            const url = window.location.href;
+            fetch(url, {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('userTableBody').innerHTML = html;
+                showSuccess('User list has been updated!');
+            })
+            .catch(err => console.error('Failed to reload user table:', err));
+        });
+
+        connection.start().catch(function (err) {
+            return console.error(err.toString());
+        });
+    </script>
 }

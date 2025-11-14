@@ -25,7 +25,7 @@
     <link href="~/css/chatbot.css" rel="stylesheet" asp-append-version="true">
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header id="header" class="header d-flex align-items-center sticky-top">
         <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-center">
             <a class="logo d-flex align-items-center me-auto" asp-area="" asp-controller="Home" asp-action="Index">
@@ -45,11 +45,11 @@
         </div>
     </header>
 
-    <main role="main">
+    <main role="main" class="flex-fill">
         @RenderBody()
     </main>
 
-    <footer id="footer" class="footer accent-background">
+    <footer id="footer" class="footer accent-background mt-auto">
         <div class="container footer-top">
             <div class="row gy-4">
                 <div class="col-lg-6 col-md-12 footer-about">

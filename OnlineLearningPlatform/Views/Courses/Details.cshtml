@@ -5,7 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     Func<decimal, string> FormatPrice = price => price == 0 ? "Free" : $"{price:N0} VNĐ";
-    var discountedPrice = Model.Price - (Model.Price * (decimal)(Model.Discount ?? 0) / 100);
+
+    var discountAmount = (decimal)(Model.Discount ?? 0);
+    var discountedPrice = Model.Price - discountAmount;
+
 }
 
 <div class="page-title light-background">
@@ -224,11 +227,12 @@
                     <div class="enrollment-card mb-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="card-header">
                             <div class="price-display">
+
                                 @if (Model.Discount > 0)
                                 {
                                     <span class="current-price">@FormatPrice(discountedPrice)</span>
                                     <span class="original-price">@FormatPrice(Model.Price)</span>
-                                    <span class="discount">@Model.Discount% OFF</span>
+                                    <span class="discount">Discount @FormatPrice(discountAmount)</span>
                                 }
                                 else
                                 {
@@ -238,7 +242,7 @@
                         </div>
                         <div class="card-body">
                             <div class="course-details-card no-border-card" data-aos="fade-up" data-aos-delay="300">
-                                <h4>Course Details</h4>
+                                <h3 style="margin-bottom:20px; text-align: center">Course Details</h3>
                                 <div class="detail-grid">
                                     <div class="detail-row">
                                         <span class="detail-label">Duration</span>
@@ -513,60 +517,60 @@
     </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const wishlistBtn = document.getElementById('wishlist-btn');
+            document.addEventListener('DOMContentLoaded', function () {
+                const wishlistBtn = document.getElementById('wishlist-btn');
 
-            if (wishlistBtn) {
-                wishlistBtn.addEventListener('click', function () {
-                    const courseId = this.dataset.courseId;
-                    const button = this;
+                if (wishlistBtn) {
+                    wishlistBtn.addEventListener('click', function () {
+                        const courseId = this.dataset.courseId;
+                        const button = this;
 
-                    const url = '/Mentee/WishList/Toggle';
+                        const url = '/Mentee/WishList/Toggle';
 
-                    fetch(url, {
-                        method: 'POST',
-                        headers: {
+                        fetch(url, {
+                            method: 'POST',
+                            headers: {
 
         'RequestVerificationToken': '@Xsrf.GetAndStoreTokens(Context).RequestToken'
-                        },
-                        body: new URLSearchParams({
-                            'courseId': courseId
+                            },
+                            body: new URLSearchParams({
+                                'courseId': courseId
+                            })
                         })
-                    })
-                    .then(response => {
-                        if (response.status === 401) {
-                            window.location.href = '/Identity/Account/Login?ReturnUrl=' + window.location.pathname;
-                            return;
-                        }
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data) {
-                            const icon = button.querySelector('i');
-                            if (data.isInWishlist) {
-                                button.classList.remove('btn-secondary');
-                                button.classList.add('btn-danger');
-                                icon.classList.remove('bi-heart');
-                                icon.classList.add('bi-heart-fill');
-                                button.childNodes[2].nodeValue = ' Remove from Wishlist';
-                            } else {
-                                button.classList.remove('btn-danger');
-                                button.classList.add('btn-secondary');
-                                icon.classList.remove('bi-heart-fill');
-                                icon.classList.add('bi-heart');
-                                button.childNodes[2].nodeValue = ' Add to Wishlist';
+                        .then(response => {
+                            if (response.status === 401) {
+                                window.location.href = '/Identity/Account/Login?ReturnUrl=' + window.location.pathname;
+                                return;
                             }
-                        }
-                    })
-                    .catch(error => {
-                        console.error('There was a problem with the fetch operation:', error);
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (data) {
+                                const icon = button.querySelector('i');
+                                if (data.isInWishlist) {
+                                    button.classList.remove('btn-secondary');
+                                    button.classList.add('btn-danger');
+                                    icon.classList.remove('bi-heart');
+                                    icon.classList.add('bi-heart-fill');
+                                    button.childNodes[2].nodeValue = ' Remove from Wishlist';
+                                } else {
+                                    button.classList.remove('btn-danger');
+                                    button.classList.add('btn-secondary');
+                                    icon.classList.remove('bi-heart-fill');
+                                    icon.classList.add('bi-heart');
+                                    button.childNodes[2].nodeValue = ' Add to Wishlist';
+                                }
+                            }
+                        })
+                        .catch(error => {
+                            console.error('There was a problem with the fetch operation:', error);
+                        });
                     });
-                });
-            }
-        });
+                }
+            });
     </script>
 
 

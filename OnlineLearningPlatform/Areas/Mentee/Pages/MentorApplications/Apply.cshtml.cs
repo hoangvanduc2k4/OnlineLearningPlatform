@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using OnlineLearningPlatform.Models.Entities.Others;
 using OnlineLearningPlatform.Services.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.SignalR;
+using OnlineLearningPlatform.Hubs;
 
 namespace OnlineLearningPlatform.Areas.Mentee.Pages.MentorApplications
 {
@@ -14,12 +16,14 @@ namespace OnlineLearningPlatform.Areas.Mentee.Pages.MentorApplications
         private readonly IUserService _userService;
         private readonly IMentorApplicationService _mentorAppService;
         private readonly IWebHostEnvironment _env;
+        private readonly IHubContext<CRUDHub> _hubContext;
 
-        public ApplyModel(IUserService userService, IMentorApplicationService mentorAppService, IWebHostEnvironment env)
+        public ApplyModel(IUserService userService, IMentorApplicationService mentorAppService, IWebHostEnvironment env, IHubContext<CRUDHub> hubContext)
         {
             _userService = userService;
             _mentorAppService = mentorAppService;
             _env = env;
+            _hubContext = hubContext;
         }
 
         [BindProperty]
@@ -69,6 +73,9 @@ namespace OnlineLearningPlatform.Areas.Mentee.Pages.MentorApplications
             };
 
             await _mentorAppService.CreateAsync(mentorApp);
+
+            // Notify admins (and other clients) that mentor applications changed
+            await _hubContext.Clients.All.SendAsync("loadMentorApplications");
 
             TempData["SuccessMessage"] = "Application submitted successfully!";
             return RedirectToPage("./Apply");
