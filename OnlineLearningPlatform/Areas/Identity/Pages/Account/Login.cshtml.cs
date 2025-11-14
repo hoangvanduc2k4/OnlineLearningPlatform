@@ -2,12 +2,12 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using OnlineLearningPlatform.Models.Entities.UserPart;
+using System.ComponentModel.DataAnnotations;
 
 namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
 {
@@ -16,10 +16,17 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
         private readonly SignInManager<User> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<User> signInManager, ILogger<LoginModel> logger)
+        // --- THÊM VÀO ---
+        private readonly UserManager<User> _userManager;
+
+        public LoginModel(
+            SignInManager<User> signInManager,
+            ILogger<LoginModel> logger,
+            UserManager<User> userManager) // <-- Thêm tham số
         {
             _signInManager = signInManager;
             _logger = logger;
+            _userManager = userManager; // <-- Thêm dòng này
         }
 
         /// <summary>
@@ -58,15 +65,15 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "Email không được để trống")]
+            [EmailAddress(ErrorMessage = "Email không đúng định dạng")]
             public string Email { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
+            [Required(ErrorMessage = "Mật khẩu không được để trống")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
@@ -74,7 +81,7 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Display(Name = "Remember me?")]
+            [Display(Name = "Ghi nhớ đăng nhập?")]
             public bool RememberMe { get; set; }
         }
 
@@ -103,11 +110,38 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
+                // --- START FIX ---
+                // 1. Tìm user bằng email trước khi đăng nhập
+                var user = await _userManager.FindByEmailAsync(Input.Email);
+
+                // 2. Kiểm tra các trạng thái custom
+                if (user != null)
+                {
+                    if (user.IsDeleted)
+                    {
+                        // Nếu tài khoản đã bị xóa
+                        ModelState.AddModelError(string.Empty, "Tài khoản này đã bị xóa.");
+                        return Page();
+                    }
+
+                    if (!user.IsActived)
+                    {
+                        // Nếu tài khoản bị vô hiệu hóa
+                        ModelState.AddModelError(string.Empty, "Tài khoản này đã bị vô hiệu hóa. Vui lòng liên hệ quản trị viên.");
+                        return Page();
+                    }
+                }
+                // --- END FIX ---
+
+
+                // 3. Nếu vượt qua các kiểm tra trên, mới tiến hành đăng nhập
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+
                 if (result.Succeeded)
                 {
+                    _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
@@ -121,7 +155,8 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    // Trường hợp user == null (không tìm thấy) hoặc sai mật khẩu đều sẽ vào đây
+                    ModelState.AddModelError(string.Empty, "Email hoặc mật khẩu không chính xác.");
                     return Page();
                 }
             }
