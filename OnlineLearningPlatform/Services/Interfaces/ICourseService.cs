@@ -52,6 +52,14 @@ namespace OnlineLearningPlatform.Services.Interfaces
         string? sortBy,
         CourseStatus? status);
         Task<CourseDetailsViewModel> GetCourseDetailsToLearnAsync(int id, string? userId);
+
+        Task<IPagedList<CourseListViewModel>> GetCoursesPagedWithNoteByMentorAsync(
+        string mentorId,
+        int pageNumber,
+        int pageSize,
+        string? searchTerm,
+        string? sortBy,
+        CourseStatus? status);
     }
 
 }

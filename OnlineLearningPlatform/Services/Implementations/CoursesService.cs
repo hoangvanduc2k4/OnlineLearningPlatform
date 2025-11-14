@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DocumentFormat.OpenXml.InkML;
 using Microsoft.EntityFrameworkCore;
 using OnlineLearningPlatform.Enums;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
@@ -494,6 +495,72 @@ namespace OnlineLearningPlatform.Services
             }
 
             return vm;
+        }
+
+        public async Task<IPagedList<CourseListViewModel>> GetCoursesPagedWithNoteByMentorAsync(
+                        string mentorId,
+                        int pageNumber,
+                        int pageSize,
+                        string? searchTerm,
+                        string? sortBy,
+                        CourseStatus? status)
+        {
+            IQueryable<Course> coursesQuery = _courseRepository.GetCoursesQuery()
+                                        .Where(c => c.Creator == mentorId && c.Status != CourseStatus.Deleted);
+
+            IQueryable<AdminReviewCourse> reviewsQuery = _adminReviewCourseRepository.GetReviewsQuery();
+
+            var query = from course in coursesQuery
+                        join review in reviewsQuery on course.CourseId equals review.CourseId into courseReviews
+                        from latestReview in courseReviews.OrderByDescending(r => r.ReviewedAt).Take(1).DefaultIfEmpty() 
+                        select new CourseListViewModel
+                        {
+                            CourseId = course.CourseId,
+                            CourseName = course.CourseName,
+                            Price = course.Price,
+                            Discount = course.Discount,
+                            Status = course.Status,
+                            CreatedAt = course.CreatedAt,
+                            ReviewNote = (course.Status == CourseStatus.Rejected) ? latestReview.ReviewNotes : null
+                        };
+
+            if (status != null)
+            {
+                query = query.Where(c => c.Status == status.Value);
+            }
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                var lower = searchTerm.Trim().ToLower();
+                query = query.Where(c => c.CourseName.ToLower().Contains(lower));
+            }
+
+            switch (sortBy)
+            {
+                case "name_desc":
+                    query = query.OrderByDescending(c => c.CourseName);
+                    break;
+                case "date_asc":
+                    query = query.OrderBy(c => c.CreatedAt);
+                    break;
+                case "date_desc":
+                    query = query.OrderByDescending(c => c.CreatedAt);
+                    break;
+                case "price_asc":
+                    query = query.OrderBy(c => c.Price);
+                    break;
+                case "price_desc":
+                    query = query.OrderByDescending(c => c.Price);
+                    break;
+                default:
+                    query = query.OrderByDescending(c => c.CreatedAt);
+                    break;
+            }
+
+            var allMatchingCourses = await query.ToListAsync();
+
+            IPagedList<CourseListViewModel> pagedResult = allMatchingCourses.ToPagedList(pageNumber, pageSize);
+
+            return pagedResult;
         }
     }
 }

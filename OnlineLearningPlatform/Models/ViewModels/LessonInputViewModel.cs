@@ -22,7 +22,9 @@ namespace OnlineLearningPlatform.Models.ViewModels
         [Url(ErrorMessage = "Please enter a valid URL for the video.")]
         public string? LessonVideo { get; set; }
 
-        public string? Duration { get; set; } // (ví dụ: "10:00")
+        [Required(ErrorMessage = "Duration is required.")]
+        [Range(1, int.MaxValue, ErrorMessage = "Duration must be at least 1.")]
+        public string? Duration { get; set; } 
 
         [Required(ErrorMessage = "Please select a status.")]
         public CommonStatus Status { get; set; }

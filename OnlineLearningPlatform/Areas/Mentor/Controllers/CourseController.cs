@@ -47,7 +47,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Controllers
 
             int pageSize = 5; 
 
-            var courses = await _courseService.GetCoursesPagedByMentorAsync(
+            var courses = await _courseService.GetCoursesPagedWithNoteByMentorAsync(
                 mentorId,
                 pageNumber,
                 pageSize,
@@ -170,7 +170,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Controllers
                 Description = course.Description,
                 StudyTime = course.StudyTime,
                 Price = course.Price,
-                Discount = course.Discount,
+                Discount = course.Discount ?? 0,
                 LevelId = course.LevelId,
                 SelectedCategoryIds = course.CourseCategories.Select(cc => cc.CategoryId).ToList(),
                 ExistingCoverImageUrl = course.CourseImageUrls.FirstOrDefault()?.Url,

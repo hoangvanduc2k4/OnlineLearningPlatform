@@ -1,4 +1,4 @@
-﻿@model IPagedList<OnlineLearningPlatform.Models.Entities.CoursePart.Course>
+﻿@model IPagedList<OnlineLearningPlatform.Models.ViewModels.CourseListViewModel>
 @using OnlineLearningPlatform.Enums
 @using X.PagedList
 @using X.PagedList.Mvc.Core
@@ -62,10 +62,13 @@
             <table class="table table-hover align-middle">
                 <thead class="table-light">
                     <tr>
+                        <th>ID</th>
                         <th>Course Name</th>
                         <th>Price</th>
+                        <th>Discount</th>
                         <th class="text-center">Status</th>
                         <th>Date Created</th>
+                        <th>Admin Note</th>
                         <th class="text-end">Actions</th>
                     </tr>
                 </thead>
@@ -75,8 +78,10 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td><strong>@item.CourseName</strong></td>
-                                <td>$@item.Price.ToString("N2")</td>
+                                <td>@item.CourseId</td>
+                                <td>@item.CourseName</td>
+                                <td>@item.Price.ToString("N2") VND</td>
+                                <td>@((item.Discount ?? 0).ToString("N2")) VND</td>
                                 <td class="text-center">
                                     @{
                                         string statusClass = "";
@@ -90,7 +95,13 @@
                                     }
                                     <span class="badge @statusClass">@item.Status</span>
                                 </td>
-                                <td>@item.CreatedAt.ToString("dd MMM, yyyy")</td>
+                                <td>@item.CreatedAt.ToString("dd/MM/yyyy")</td>
+                                <td>
+                                    @if (item.Status == CourseStatus.Rejected && !string.IsNullOrEmpty(item.ReviewNote))
+                                    {
+                                        <span>@item.ReviewNote</span>
+                                    }
+                                </td>
                                 <td class="text-end">
                                     @if (item.Status != CourseStatus.Pending)
                                     {
