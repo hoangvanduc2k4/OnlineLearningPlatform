@@ -78,16 +78,8 @@
             submitQuizForm(form, true);
         }
     }
-    document.addEventListener('submit', function(e) {
-        if (e.target && e.target.id === 'quizForm') {
-            e.preventDefault();
-            quizEndTime = new Date();
-            submitQuizForm(e.target, false);
-        }
-    });
-
     function submitQuizForm(form, isAuto) {
-        var submitBtn = form.querySelector('button[type=submit]');
+        var submitBtn = form.querySelector('button[type=submit], button[data-quiz-id]');
         var data = {
             quizId: submitBtn.getAttribute('data-quiz-id'),
             answers: {},
@@ -110,27 +102,47 @@
             clearInterval(quizTimer);
             loadQuizHistory(data.quizId);
 
-            // Đổi nút thành Try Again
-            submitBtn.textContent = 'Try Again';
-            submitBtn.classList.add('btn-warning');
-            submitBtn.classList.remove('btn-primary');
-            submitBtn.onclick = function(ev) {
-                ev.preventDefault();
-                // Reset form
-                form.reset();
-                document.getElementById('quizResult').innerText = '';
-                // Đổi lại nút thành Submit Quiz
-                submitBtn.textContent = 'Submit Quiz';
-                submitBtn.classList.remove('btn-warning');
-                submitBtn.classList.add('btn-primary');
-                // Reset timer nếu có
-                var quizTime = parseInt(submitBtn.getAttribute('data-quiz-time')) || 0;
-                if (quizTime > 0) {
-                    startQuizTimer(quizTime);
+            // change submit button to Try Again
+            if (submitBtn) {
+                // set to non-submit to prevent default form submit
+                submitBtn.dataset.prevType = submitBtn.type || 'submit';
+                submitBtn.type = 'button';
+                submitBtn.textContent = 'Try Again';
+                submitBtn.classList.remove('btn-primary');
+                submitBtn.classList.add('btn-warning');
+                // attach try again handler, ensure we don't add multiple
+                if (submitBtn._tryAgainHandler) {
+                    submitBtn.removeEventListener('click', submitBtn._tryAgainHandler);
+                    submitBtn._tryAgainHandler = null;
                 }
-                // Xóa sự kiện onclick để quay lại submit mặc định
-                submitBtn.onclick = null;
-            };
+                const tryAgainHandler = function(ev) {
+                    ev.preventDefault();
+                    // reset form selections
+                    form.reset();
+                    document.getElementById('quizResult').innerText = '';
+                    // reset timer
+                    quizStartTime = null;
+                    quizEndTime = null;
+                    clearInterval(quizTimer);
+                    var quizTime = parseInt(submitBtn.getAttribute('data-quiz-time')) || 0;
+                    if (quizTime > 0) {
+                        startQuizTimer(quizTime);
+                    }
+                    // restore button to submit
+                    submitBtn.type = submitBtn.dataset.prevType || 'submit';
+                    submitBtn.textContent = 'Submit Quiz';
+                    submitBtn.classList.remove('btn-warning');
+                    submitBtn.classList.add('btn-primary');
+                    // remove handler
+                    submitBtn.removeEventListener('click', tryAgainHandler);
+                    submitBtn._tryAgainHandler = null;
+                };
+                submitBtn._tryAgainHandler = tryAgainHandler;
+                submitBtn.addEventListener('click', tryAgainHandler);
+            }
+        })
+        .catch(err => {
+            console.error('Submit quiz error', err);
         });
     }
     function loadQuizHistory(quizId) {
@@ -181,6 +193,13 @@
                     loadQuizHistory(quizId);
                 });
         });
+    });
+    document.addEventListener('submit', function(e) {
+        if (e.target && e.target.id === 'quizForm') {
+            e.preventDefault();
+            quizEndTime = new Date();
+            submitQuizForm(e.target, false);
+        }
     });
 </script>
 }

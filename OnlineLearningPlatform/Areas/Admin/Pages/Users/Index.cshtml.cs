@@ -1,15 +1,17 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
+using OnlineLearningPlatform.Hubs;
 using OnlineLearningPlatform.Models.Entities.UserPart;
 using OnlineLearningPlatform.Services.Interfaces;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using ClosedXML.Excel;
 using X.PagedList;
 using X.PagedList.Extensions;
-using ClosedXML.Excel;
-using Microsoft.AspNetCore.Mvc;
 
 namespace OnlineLearningPlatform.Areas.Admin.Pages.Users
 {
@@ -18,11 +20,13 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.Users
     {
         private readonly IUserService _userService;
         private readonly IRoleService _roleService;
+        private readonly IHubContext<CRUDHub> _hubContext;
 
-        public IndexModel(IUserService userService, IRoleService roleService)
+        public IndexModel(IUserService userService, IRoleService roleService, IHubContext<CRUDHub> hubContext)
         {
             _userService = userService;
             _roleService = roleService;
+            _hubContext = hubContext;
         }
 
         public IPagedList<User> PagedUsers { get; set; }
@@ -33,7 +37,7 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.Users
         public List<string> AvailableRoles { get; set; } = new();
         public Dictionary<string, List<string>> UserRoles { get; set; } = new();
 
-        public async Task OnGetAsync(int? pageNumber, int? pageSize, string searchTerm, string filterType, string role)
+        public async Task<IActionResult> OnGetAsync(int? pageNumber, int? pageSize, string searchTerm, string filterType, string role)
         {
             PageSize = pageSize ?? 10;
             SearchTerm = searchTerm;
@@ -67,21 +71,30 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.Users
 
             int page = pageNumber ?? 1;
             PagedUsers = users.OrderByDescending(u => u.CreatedAt).ToPagedList(page, PageSize);
+
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                // return partial HTML for AJAX requests
+                return Partial("_UserTablePartial", this);
+            }
+
+            return Page();
         }
 
-        public async Task OnPostDeleteAsync(string id, int? pageNumber, int? pageSize, string searchTerm, string filterType, string role)
+        public async Task<IActionResult> OnPostDeleteAsync(string id, int? pageNumber, int? pageSize, string searchTerm, string filterType, string role)
         {
             var user = await _userService.GetUserByIdAsync(id);
             if (user != null)
             {
                 await _userService.DeleteUserAsync(id);
                 TempData["SuccessMessage"] = "Deleted successfully.";
+                await _hubContext.Clients.All.SendAsync("LoadUsers");
             }
 
-            await OnGetAsync(pageNumber, pageSize, searchTerm, filterType, role);
+            return RedirectToPage("./Index", new { pageNumber, pageSize = pageSize ?? PageSize, searchTerm, filterType, role });
         }
 
-        public async Task OnPostRestoreAsync(string id, int? pageNumber, int? pageSize, string searchTerm, string filterType, string role)
+        public async Task<IActionResult> OnPostRestoreAsync(string id, int? pageNumber, int? pageSize, string searchTerm, string filterType, string role)
         {
             var user = await _userService.GetUserByIdAsync(id);
             if (user != null)
@@ -90,11 +103,13 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.Users
                 user.IsDeleted = false;
                 await _userService.UpdateUserAsync(user);
                 TempData["SuccessMessage"] = "User restored successfully.";
+                await _hubContext.Clients.All.SendAsync("LoadUsers");
             }
-            await OnGetAsync(pageNumber, pageSize, searchTerm, filterType, role);
+
+            return RedirectToPage("./Index", new { pageNumber, pageSize = pageSize ?? PageSize, searchTerm, filterType, role });
         }
 
-        public async Task OnPostDeactivateAsync(string id, int? pageNumber, int? pageSize, string searchTerm, string filterType, string role)
+        public async Task<IActionResult> OnPostDeactivateAsync(string id, int? pageNumber, int? pageSize, string searchTerm, string filterType, string role)
         {
             var user = await _userService.GetUserByIdAsync(id);
             if (user != null)
@@ -102,8 +117,10 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.Users
                 user.IsActived = false;
                 await _userService.UpdateUserAsync(user);
                 TempData["SuccessMessage"] = "User deactivated successfully.";
+                await _hubContext.Clients.All.SendAsync("LoadUsers");
             }
-            await OnGetAsync(pageNumber, pageSize, searchTerm, filterType, role);
+
+            return RedirectToPage("./Index", new { pageNumber, pageSize = pageSize ?? PageSize, searchTerm, filterType, role });
         }
 
         public async Task<IActionResult> OnPostExportExcelAsync(List<string> statuses)

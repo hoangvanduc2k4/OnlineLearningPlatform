@@ -7,6 +7,8 @@ using OnlineLearningPlatform.Enums;
 using X.PagedList;
 using System.Linq;
 using X.PagedList.Extensions;
+using Microsoft.AspNetCore.SignalR;
+using OnlineLearningPlatform.Hubs;
 
 namespace OnlineLearningPlatform.Areas.Admin.Pages.MentorApplications
 {
@@ -16,11 +18,13 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.MentorApplications
     {
         private readonly IMentorApplicationService _mentorAppService;
         private readonly IUserService _userService;
+        private readonly IHubContext<CRUDHub> _hubContext;
 
-        public IndexModel(IMentorApplicationService mentorAppService, IUserService userService)
+        public IndexModel(IMentorApplicationService mentorAppService, IUserService userService, IHubContext<CRUDHub> hubContext)
         {
             _mentorAppService = mentorAppService;
             _userService = userService;
+            _hubContext = hubContext;
         }
 
         public IPagedList<MentorApplication> PagedApplications { get; set; }
@@ -29,7 +33,7 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.MentorApplications
         [BindProperty]
         public string? Feedback { get; set; }
         [BindProperty]
-        public long SelectedId { get; set; }    
+        public long SelectedId { get; set; }
         [BindProperty(SupportsGet = true)]
         public ApplicationStatus? Status { get; set; }
         [BindProperty(SupportsGet = true)]
@@ -41,21 +45,28 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.MentorApplications
         public string? SuccessMessage { get; set; }
         public string? ErrorMessage { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
             int page = PageNumber ?? 1;
             PageSize = PageSizeParam ?? 10;
             var all = await _mentorAppService.GetAllAsync();
             if (!string.IsNullOrWhiteSpace(SearchTerm))
             {
-                all = all.Where(a => (a.User.FullName != null && a.User.FullName.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase))
-                    || (a.User.Email != null && a.User.Email.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase)));
+                all = all.Where(a => (a.User.FullName != null && a.User.FullName.Contains(SearchTerm, System.StringComparison.OrdinalIgnoreCase))
+                    || (a.User.Email != null && a.User.Email.Contains(SearchTerm, System.StringComparison.OrdinalIgnoreCase)));
             }
             if (Status.HasValue)
             {
                 all = all.Where(a => a.Status == Status.Value);
             }
             PagedApplications = all.OrderByDescending(a => a.SubmittedAt).ToPagedList(page, PageSize);
+
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return Partial("_MentorApplicationsTablePartial", this);
+            }
+
+            return Page();
         }
 
         public async Task<IActionResult> OnPostApproveAsync(long selectedId, string? feedback, int? pageNumber, int? pageSize, string? searchTerm, ApplicationStatus? status)
@@ -69,10 +80,14 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.MentorApplications
             }
             app.Status = ApplicationStatus.Approved;
             app.Feedback = feedback;
-            app.ReviewedAt = DateTime.UtcNow;
+            app.ReviewedAt = System.DateTime.UtcNow;
             app.AdminReviewerId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
             await _mentorAppService.UpdateAsync(app);
             SuccessMessage = "Application approved.";
+
+            // notify clients
+            await _hubContext.Clients.All.SendAsync("loadMentorApplications");
+
             return RedirectToPage(new { pageNumber, pageSize, searchTerm, status });
         }
 
@@ -87,10 +102,14 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.MentorApplications
             }
             app.Status = ApplicationStatus.Rejected;
             app.Feedback = feedback;
-            app.ReviewedAt = DateTime.UtcNow;
+            app.ReviewedAt = System.DateTime.UtcNow;
             app.AdminReviewerId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
             await _mentorAppService.UpdateAsync(app);
             SuccessMessage = "Application rejected.";
+
+            // notify clients
+            await _hubContext.Clients.All.SendAsync("loadMentorApplications");
+
             return RedirectToPage(new { pageNumber, pageSize, searchTerm, status });
         }
     }
