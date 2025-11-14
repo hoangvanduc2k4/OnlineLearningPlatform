@@ -2,12 +2,12 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using OnlineLearningPlatform.Attributes;
 using OnlineLearningPlatform.Models.Entities.UserPart;
+using System.ComponentModel.DataAnnotations;
 
 namespace OnlineLearningPlatform.Areas.Identity.Pages.Account.Manage
 {
@@ -53,17 +53,20 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account.Manage
         public class InputModel
         {
             [StringLength(2000)]
+            [Url(ErrorMessage = "AvatarUrl must be a valid URL")]
             public string? AvatarUrl { get; set; }
 
             [Display(Name = "Avatar")]
             [FileValidate]
-            public IFormFile Avatar { get; set; }
+            public IFormFile? Avatar { get; set; }
 
             [StringLength(255)]
+            [Required]
             [Display(Name = "Full name")]
             public string? FullName { get; set; }
 
             [DataType(DataType.Date)]
+            [DateValidate(ErrorMessage = "Date of birth must be in the past")]
             [Display(Name = "Date of birth")]
             public DateOnly? Dob { get; set; }
 
@@ -71,9 +74,10 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account.Manage
             public bool? Gender { get; set; }
 
             [Phone]
-            [StringLength(10)]
+            [StringLength(10, MinimumLength = 10, ErrorMessage = "Phone number must be exactly 10 digits")]
+            [RegularExpression(@"^(0[0-9]{9})$", ErrorMessage = "Phone number is invalid")]
             [Display(Name = "Phone number")]
-            public string PhoneNumber { get; set; }
+            public string? PhoneNumber { get; set; }
         }
 
         private async Task LoadAsync(User user)

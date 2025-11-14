@@ -2,16 +2,17 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using OnlineLearningPlatform.Attributes;
 using OnlineLearningPlatform.Models.Entities.UserPart;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+using System.Text.Encodings.Web;
 
 namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
 {
@@ -65,20 +66,24 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [EmailAddress]
+            [EmailAddress(ErrorMessage = "Email không hợp lệ")]
+            [StringLength(255)]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
             [StringLength(255)]
+            [Required]
             [Display(Name = "Full name")]
             public string? FullName { get; set; }
 
             [DataType(DataType.Date)]
+            [DateValidate(ErrorMessage = "Date of birth must be in the past")]
             [Display(Name = "Date of birth")]
             public DateOnly? Dob { get; set; }
 
-            [Phone]
-            [StringLength(10)]
+            [Phone(ErrorMessage = "Số điện thoại không hợp lệ")]
+            [StringLength(10, MinimumLength = 10, ErrorMessage = "Phone must be exactly 10 digits")]
+            [RegularExpression(@"^(0[0-9]{9})$", ErrorMessage = "Phone must start with 0 and be 10 digits")]
             [Display(Name = "Phone")]
             public string? Phone { get; set; }
 
@@ -86,17 +91,17 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
             public bool? Gender { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "{0} must be at least {2} and max {1} characters.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
 
+            [Required]
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Compare("Password", ErrorMessage = "Password và Confirm Password không trùng khớp")]
             public string ConfirmPassword { get; set; }
         }
-
 
 
         public async Task OnGetAsync(string returnUrl = null)
