@@ -1,12 +1,14 @@
 using Microsoft.AspNetCore.Http;
-using System.IO;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.SignalR;
+using OnlineLearningPlatform.Hubs;
 using OnlineLearningPlatform.Models.Entities.UserPart;
 using OnlineLearningPlatform.Services.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace OnlineLearningPlatform.Areas.Admin.Pages.Users
 {
@@ -14,11 +16,14 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.Users
     {
         private readonly IUserService _userService;
         private readonly IRoleService _roleService;
+        private readonly IHubContext<CRUDHub> _hubContext;
 
-        public UpdateModel(IUserService userService, IRoleService roleService)
+
+        public UpdateModel(IUserService userService, IRoleService roleService, IHubContext<CRUDHub> hubContext)
         {
             _userService = userService;
             _roleService = roleService;
+            _hubContext = hubContext;
         }
 
         [BindProperty]
@@ -124,7 +129,7 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.Users
                 await _roleService.AddUserToRoleAsync(user.Id, role);
             foreach (var role in rolesToRemove)
                 await _roleService.RemoveUserFromRoleAsync(user.Id, role);
-
+            await _hubContext.Clients.All.SendAsync("LoadUsers");
             TempData["SuccessMessage"] = "User updated successfully.";
             return RedirectToPage("Index");
         }
