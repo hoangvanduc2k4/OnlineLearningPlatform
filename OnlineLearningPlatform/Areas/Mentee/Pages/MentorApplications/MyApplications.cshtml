@@ -13,6 +13,7 @@
 }
 else
 {
+    <div id="myApplicationsContainer">
     <table class="table table-bordered table-hover">
         <thead class="table-light">
             <tr>
@@ -56,4 +57,36 @@ else
         }
         </tbody>
     </table>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl('/crudHub')
+            .withAutomaticReconnect()
+            .build();
+
+        connection.start()
+            .then(() => console.log('Connected to SignalR Hub'))
+            .catch(err => console.error(err.toString()));
+
+        connection.on('loadMentorApplications', function () {
+            // fetch updated applications for current user
+            fetch(window.location.pathname, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+                .then(res => res.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const partial = doc.querySelector('#myApplicationsContainer');
+                    if (partial) {
+                        console.log(html);
+                        document.getElementById('myApplicationsContainer').innerHTML = partial.innerHTML;
+                    }
+                    // otherwise reload full page as fallback
+                    else window.location.reload();
+                })
+                .catch(err => console.error(err));
+        });
+    </script>
 }

@@ -1,0 +1,72 @@
+@model OnlineLearningPlatform.Areas.Admin.Pages.MentorApplications.IndexModel
+
+@if (Model.PagedApplications == null || !Model.PagedApplications.Any())
+{
+    <div class="alert alert-info">No mentor applications found.</div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>#</th>
+                    <th>Applicant</th>
+                    <th>Email</th>
+                    <th>CV</th>
+                    <th>Note</th>
+                    <th>Status</th>
+                    <th>Submitted At</th>
+                    <th>Reviewed At</th>
+                    <th>Feedback</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            @if (Model.PagedApplications != null)
+            {
+                int seq = (Model.PagedApplications.PageNumber - 1) * Model.PagedApplications.PageSize;
+                foreach (var app in Model.PagedApplications)
+                {
+                    seq++;
+                    <tr>
+                        <td>@seq</td>
+                        <td>@app.User?.FullName</td>
+                        <td>@app.User?.Email</td>
+                        <td><a href="@app.CvUrl" target="_blank">View CV</a></td>
+                        <td>@app.Note</td>
+                        <td>
+                            @switch (app.Status)
+                            {
+                                case OnlineLearningPlatform.Enums.ApplicationStatus.Pending:
+                                    <span class="badge bg-warning text-dark">Pending</span>
+                                    break;
+                                case OnlineLearningPlatform.Enums.ApplicationStatus.Approved:
+                                    <span class="badge bg-success">Approved</span>
+                                    break;
+                                case OnlineLearningPlatform.Enums.ApplicationStatus.Rejected:
+                                    <span class="badge bg-danger">Rejected</span>
+                                    break;
+                            }
+                        </td>
+                        <td>@app.SubmittedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@(app.ReviewedAt.HasValue ? app.ReviewedAt.Value.ToString("dd/MM/yyyy HH:mm") : "-")</td>
+                        <td>@app.Feedback</td>
+                        <td>
+                            @if (app.Status == OnlineLearningPlatform.Enums.ApplicationStatus.Pending)
+                            {
+                                <button type="button" class="btn btn-sm btn-success mb-1" data-bs-toggle="modal" data-bs-target="#approveModal" data-id="@app.Id">Approve</button>
+                                <button type="button" class="btn btn-sm btn-danger mb-1" data-bs-toggle="modal" data-bs-target="#rejectModal" data-id="@app.Id">Reject</button>
+                            }
+                            else
+                            {
+                                <span class="text-muted">-</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+    </div>
+}
