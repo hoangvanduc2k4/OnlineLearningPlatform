@@ -85,7 +85,6 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Lessons
 
             if (!success) return NotFound();
 
-            TempData["SuccessMessage"] = "Lesson updated successfully.";
             //return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = LessonVM.CourseId });
             return RedirectToPage("/Courses/Manage", new
             {
@@ -108,7 +107,6 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Lessons
                 return RedirectToPage(new { id = LessonVM.LessonId });
             }
 
-            TempData["SuccessMessage"] = "Lesson has been hidden (deleted).";
 
             //return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = LessonVM.CourseId });
             return RedirectToPage("/Courses/Manage", new
