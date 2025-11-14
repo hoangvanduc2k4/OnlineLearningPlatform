@@ -120,12 +120,12 @@ namespace OnlineLearningPlatform.Areas.Mentor.Controllers
                 };
 
                 await _courseService.CreateCourseAsync(newCourse, mentorId, viewModel.SelectedCategoryIds, finalImageUrl);
-
+                await _hub.Clients.All.SendAsync("LoadCourses");
                 return RedirectToAction(nameof(Index));
             }
 
             await PopulateFormOptions(viewModel);
-            await _hub.Clients.All.SendAsync("LoadCourses");
+            
 
             return View(viewModel);
         }

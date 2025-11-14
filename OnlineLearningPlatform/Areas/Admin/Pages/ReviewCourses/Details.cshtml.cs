@@ -1,11 +1,13 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
 using OnlineLearningPlatform.Enums;
+using OnlineLearningPlatform.Hubs;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Models.Entities.Others;
 using OnlineLearningPlatform.Services.Interfaces;
+using System.Security.Claims;
 
 namespace OnlineLearningPlatform.Areas.Admin.Pages.ReviewCourses
 {
@@ -13,10 +15,12 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.ReviewCourses
     public class DetailsModel : PageModel
     {
         private readonly ICourseService _courseService;
+        private readonly IHubContext<CRUDHub> _hub;
 
-        public DetailsModel(ICourseService courseService)
+        public DetailsModel(ICourseService courseService, IHubContext<CRUDHub> hub)
         {
             _courseService = courseService;
+            _hub = hub;
         }
 
         public Course CourseToReview { get; set; }
@@ -43,6 +47,7 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.ReviewCourses
             await _courseService.ReviewCourseAsync(id, adminId, ReviewStatus.Approved, ReviewInput.ReviewNotes);
 
             TempData["SuccessMessage"] = "Course has been approved.";
+            await _hub.Clients.All.SendAsync("LoadCourses");
             return RedirectToPage("./Index");
         }
 
@@ -61,6 +66,7 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.ReviewCourses
             await _courseService.ReviewCourseAsync(id, adminId, ReviewStatus.Rejected, ReviewInput.ReviewNotes);
 
             TempData["SuccessMessage"] = "Course has been rejected.";
+            await _hub.Clients.All.SendAsync("LoadCourses");
             return RedirectToPage("./Index");
         }
     }
