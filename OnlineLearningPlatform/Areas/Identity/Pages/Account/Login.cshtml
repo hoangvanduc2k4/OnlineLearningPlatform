@@ -67,7 +67,7 @@
                             else
                             {
                                 <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="d-grid gap-2">
-                                    @foreach (var provider in Model.ExternalLogins!)
+                                    @foreach (var provider in Model.ExternalLogins!.Where(p => p.Name.Equals("Google", StringComparison.OrdinalIgnoreCase)))
                                     {
                                         <button type="submit" class="btn btn-outline-primary btn-block" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
                                             <i class="bi bi-box-arrow-in-right me-2"></i> Sign in with @provider.DisplayName
