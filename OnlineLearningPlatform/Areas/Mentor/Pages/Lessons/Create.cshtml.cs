@@ -14,6 +14,9 @@ using System.Linq;
 using System.Reflection;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace OnlineLearningPlatform.Areas.Mentor.Pages.Lessons
 {
@@ -21,24 +24,31 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Lessons
     public class CreateModel : PageModel
     {
         private readonly ILessonService _lessonService;
-        private readonly IModuleService _moduleService;
+        private readonly IModuleService _module_service;
         private readonly ICourseService _courseService;
         private readonly UserManager<User> _userManager;
+        private readonly IWebHostEnvironment _env;
 
         public CreateModel(
             ILessonService lessonService,
             IModuleService moduleService,
             ICourseService courseService,
-            UserManager<User> userManager)
+            UserManager<User> userManager,
+            IWebHostEnvironment env)
         {
             _lessonService = lessonService;
-            _moduleService = moduleService;
+            _module_service = moduleService;
             _courseService = courseService;
             _userManager = userManager;
+            _env = env;
         }
 
         [BindProperty]
         public LessonInputViewModel LessonVM { get; set; } = default!;
+
+        // bind uploaded file (optional)
+        [BindProperty]
+        public IFormFile? VideoFile { get; set; }
 
         public async Task<IActionResult> OnGetAsync(long moduleId, long courseId)
         {
@@ -47,7 +57,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Lessons
             if (courseId == 0 || moduleId == 0) return NotFound();
 
             var course = await _courseService.GetCourseByIdAndMentorAsync(courseId, mentorId);
-            var module = await _moduleService.GetModuleForEditAsync(moduleId, mentorId);
+            var module = await _module_service.GetModuleForEditAsync(moduleId, mentorId);
 
             if (course == null || module == null || module.CourseId != course.CourseId)
             {
@@ -73,7 +83,7 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Lessons
             {
                 var mentorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 var course = await _courseService.GetCourseByIdAndMentorAsync(LessonVM.CourseId, mentorId);
-                var module = await _moduleService.GetModuleForEditAsync(LessonVM.ModuleId, mentorId);
+                var module = await _module_service.GetModuleForEditAsync(LessonVM.ModuleId, mentorId);
 
                 ViewData["CourseName"] = course?.CourseName;
                 ViewData["ModuleName"] = module?.ModuleName;
@@ -83,10 +93,55 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Lessons
                 return Page();
             }
 
+            // If a video file was uploaded, validate and save it; uploaded file takes precedence over external URL.
+            if (VideoFile != null && VideoFile.Length > 0)
+            {
+                var allowedExt = new[] { ".mp4"};
+                var ext = Path.GetExtension(VideoFile.FileName).ToLowerInvariant();
+                const long maxBytes = 200L * 1024 * 1024; // 200 MB
+
+                if (!allowedExt.Contains(ext))
+                {
+                    ModelState.AddModelError("VideoFile", "Invalid video format. Allowed: mp4, mov, webm, ogg.");
+                    var mentorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    var course = await _courseService.GetCourseByIdAndMentorAsync(LessonVM.CourseId, mentorId);
+                    var module = await _module_service.GetModuleForEditAsync(LessonVM.ModuleId, mentorId);
+                    ViewData["CourseName"] = course?.CourseName;
+                    ViewData["ModuleName"] = module?.ModuleName;
+                    ViewData["CourseId"] = LessonVM.CourseId;
+                    ViewData["ModuleId"] = LessonVM.ModuleId;
+                    return Page();
+                }
+
+                if (VideoFile.Length > maxBytes)
+                {
+                    ModelState.AddModelError("VideoFile", "Video file is too large. Max allowed size is 200 MB.");
+                    var mentorId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    var course = await _courseService.GetCourseByIdAndMentorAsync(LessonVM.CourseId, mentorId);
+                    var module = await _module_service.GetModuleForEditAsync(LessonVM.ModuleId, mentorId);
+                    ViewData["CourseName"] = course?.CourseName;
+                    ViewData["ModuleName"] = module?.ModuleName;
+                    ViewData["CourseId"] = LessonVM.CourseId;
+                    ViewData["ModuleId"] = LessonVM.ModuleId;
+                    return Page();
+                }
+
+                var uploadsFolder = Path.Combine(_env.WebRootPath, "uploads", "lessons", "videos");
+                Directory.CreateDirectory(uploadsFolder);
+
+                var safeFileName = $"{Guid.NewGuid()}{ext}";
+                var filePath = Path.Combine(uploadsFolder, safeFileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await VideoFile.CopyToAsync(stream);
+                }
+
+                // set lesson video to saved relative path
+                LessonVM.LessonVideo = $"/uploads/lessons/videos/{safeFileName}";
+            }
+
             await _lessonService.CreateLessonAsync(LessonVM);
 
-
-            //return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = LessonVM.CourseId });
             return RedirectToPage("/Courses/Manage", new
             {
                 area = "Mentor",

@@ -4,6 +4,8 @@
 @{
     ViewData["Title"] = "Edit Lesson";
     Layout = "~/Areas/Mentor/Views/Shared/_Layout.cshtml";
+
+    var videoUrl = Model.ExternalVideoUrl ?? Model.LessonVM?.LessonVideo;
 }
 
 <div class="d-flex align-items-center">
@@ -19,7 +21,7 @@
 
 <div class="row">
     <div class="col-md-9">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <input type="hidden" asp-for="LessonVM.LessonId" />
@@ -58,9 +60,91 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="LessonVM.LessonVideo" class="control-label"></label>
-                <input asp-for="LessonVM.LessonVideo" class="form-control" />
-                <span asp-validation-for="LessonVM.LessonVideo" class="text-danger"></span>
+                <label class="control-label">Video</label>
+
+                @* Show current video or embedded external video *@
+                @if (!string.IsNullOrWhiteSpace(videoUrl))
+                {
+                    <div class="mb-3">
+                        <label class="form-label small">Current video</label>
+                        <div>
+                            @if (videoUrl.StartsWith("http://") || videoUrl.StartsWith("https://"))
+                            {
+                                var lower = videoUrl.ToLower();
+                                if (lower.Contains("youtube.com/watch") || lower.Contains("youtu.be/"))
+                                {
+                                    // extract YouTube id
+                                    string ytId = null;
+                                    try
+                                    {
+                                        if (lower.Contains("youtube.com/watch"))
+                                        {
+                                            var q = new System.Uri(videoUrl).Query;
+                                            var query = System.Web.HttpUtility.ParseQueryString(q);
+                                            ytId = query["v"];
+                                        }
+                                        if (string.IsNullOrWhiteSpace(ytId) && lower.Contains("youtu.be/"))
+                                        {
+                                            var parts = new System.Uri(videoUrl).AbsolutePath.Split('/');
+                                            ytId = parts.LastOrDefault();
+                                        }
+                                    }
+                                    catch { ytId = null; }
+
+                                    if (!string.IsNullOrWhiteSpace(ytId))
+                                    {
+                                        <div class="ratio ratio-16x9">
+                                            <iframe src="https://www.youtube.com/embed/@ytId" title="YouTube video" allowfullscreen frameborder="0"></iframe>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <a href="@videoUrl" target="_blank">Open video</a>
+                                    }
+                                }
+                                else if (videoUrl.EndsWith(".mp4") || videoUrl.EndsWith(".webm") || videoUrl.EndsWith(".ogg"))
+                                {
+                                    <video controls style="max-width:100%;height:auto;">
+                                        <source src="@videoUrl" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                }
+                                else
+                                {
+                                    // fallback - embed in iframe
+                                    <div class="ratio ratio-16x9">
+                                        <iframe src="@videoUrl" title="Video" allowfullscreen frameborder="0"></iframe>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                // server-stored relative path
+                                <video controls style="max-width:100%;height:auto;">
+                                    <source src="@videoUrl" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            }
+                        </div>
+                    </div>
+                }
+
+                <div class="mb-2">
+                    <small class="text-muted">You may either enter an external video URL or upload a video file. If you upload a file it will be used.</small>
+                </div>
+
+                <div class="mb-2">
+                    <label asp-for="ExternalVideoUrl" class="form-label">External video URL</label>
+                    <input asp-for="ExternalVideoUrl" class="form-control" placeholder="https://..." />
+                    <span asp-validation-for="ExternalVideoUrl" class="text-danger"></span>
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label">Or upload video file</label>
+                    <input type="file" name="VideoFile" accept=".mp4" class="form-control" />
+                    <small class="form-text text-muted">Allowed: mp4. Max 200 MB.</small>
+                    <span asp-validation-for="VideoFile" class="text-danger"></span>
+                </div>
             </div>
 
             <div class="form-group">
