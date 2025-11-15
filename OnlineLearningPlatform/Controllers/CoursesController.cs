@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OnlineLearningPlatform.Enums;
+using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Models.Entities.Others;
 using OnlineLearningPlatform.Models.Entities.UserPart;
 using OnlineLearningPlatform.Models.ViewModels;
@@ -113,6 +114,43 @@ namespace OnlineLearningPlatform.Controllers
                 return NotFound("Not found!");
             }
 
+            var discountAmount = course.Discount ?? 0;
+            var priceAfterDiscount = course.Price - discountAmount;
+            if (priceAfterDiscount < 0) priceAfterDiscount = 0;
+
+            if (priceAfterDiscount <= 0)
+            {
+                var freeTransaction = new TransactionHistory
+                {
+                    UserId = userId,
+                    CourseId = courseId,
+                    Amount = 0,
+                    Status = TransactionStatus.Completed,
+                    Description = "Enrolled in free course (or full discount)",
+                    DateCreated = DateTime.Now
+                };
+                await _transactionService.AddTransactionAsync(freeTransaction);
+
+                var enrollment = new CourseEnrollment
+                {
+                    UserId = userId,
+                    CourseId = courseId,
+                    DateCreated = DateTime.Now
+                };
+                await _courseEnrollmentService.AddCourseEnrollmmentAsync(enrollment);
+
+                TempData.Remove("IsProcessingCheckout");
+                TempData["Success"] = "You have successfully enrolled in this course!";
+                return RedirectToAction("Details", new { id = courseId });
+            }
+
+            if (priceAfterDiscount < 5000)
+            {
+                TempData.Remove("IsProcessingCheckout");
+                TempData["Error"] = "The final price (after discount) is less than 5,000 VND, which is below the minimum allowed by the payment gateway.";
+                return RedirectToAction("Details", new { id = courseId });
+            }
+
             var transaction = new TransactionHistory
             {
                 UserId = userId,
@@ -133,21 +171,17 @@ namespace OnlineLearningPlatform.Controllers
             }
             Console.WriteLine($"[DEBUG] Transaction created with ID: {transaction.TransactionId}");
 
-            var priceAfterDiscount = course.Price - (course.Price * (course.Discount ?? 0) / 100);
-
             var vnPayModel = new VnPaymentRequestModel
             {
                 Amount = (double)priceAfterDiscount,
-                Description = $"Pay for course: {course.CourseName} (after {(course.Discount ?? 0)}% discount)",
+                Description = $"Pay for course: {course.CourseName} (after {discountAmount.ToString("N0")} VND discount)",
                 OrderId = transaction.TransactionId
             };
-
 
             TempData.Remove("IsProcessingCheckout");
             var paymentUrl = _vnPayService.CreatePaymentUrl(HttpContext, vnPayModel);
 
             Console.WriteLine($"[DEBUG] Redirecting to VNPay URL: {paymentUrl}");
-
             Console.WriteLine($"[DEBUG] vnp_TxnRef sent: {transaction.TransactionId}");
             return Redirect(paymentUrl);
         }

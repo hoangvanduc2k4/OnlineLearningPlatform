@@ -147,7 +147,7 @@
         yearlyText.classList.add('active');
         pricingItems.forEach(item => {
           item.classList.add('yearly-active');
-        });
+        }); 
       } else {
         monthlyText.classList.add('active');
         yearlyText.classList.remove('active');

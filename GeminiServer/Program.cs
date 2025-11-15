@@ -1,9 +1,9 @@
-﻿using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Server;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
 
 namespace GeminiServer
 {
@@ -52,6 +52,9 @@ namespace GeminiServer
 
         static void HandleClient(TcpClient client, GeminiService geminiService)
         {
+            string clientIp = client.Client.RemoteEndPoint.ToString();
+            Console.WriteLine($"[{DateTime.Now}] New connection from {clientIp}");
+
             try
             {
                 using var stream = client.GetStream();
@@ -59,6 +62,8 @@ namespace GeminiServer
                 using var writer = new StreamWriter(stream, Encoding.UTF8) { AutoFlush = true };
 
                 string data = reader.ReadLine();
+                Console.WriteLine($"[{DateTime.Now}] Request from {clientIp}: {data}");
+
                 string response = "{}";
 
                 if (!string.IsNullOrEmpty(data))
@@ -67,6 +72,8 @@ namespace GeminiServer
                     {
                         dynamic request = JsonConvert.DeserializeObject(data);
                         string action = request?.action;
+
+                        Console.WriteLine($"[{DateTime.Now}] Action = {action}");
 
                         switch (action)
                         {
@@ -105,21 +112,24 @@ namespace GeminiServer
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"Error processing request: {ex.Message}");
+                        Console.WriteLine($"[{DateTime.Now}] Request parse error: {ex.Message}");
                         response = JsonConvert.SerializeObject(new { error = "Invalid request. Please try again." });
                     }
                 }
 
+                Console.WriteLine($"[{DateTime.Now}] Response to {clientIp}: {response}");
                 writer.WriteLine(response);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Client error: {ex.Message}");
+                Console.WriteLine($"[{DateTime.Now}] Client error ({clientIp}): {ex.Message}");
             }
             finally
             {
+                Console.WriteLine($"[{DateTime.Now}] Client disconnected: {clientIp}");
                 client.Close();
             }
         }
+
     }
 }
