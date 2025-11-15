@@ -62,21 +62,29 @@ namespace OnlineLearningPlatform.Services
                 query = query.Where(c => c.LevelId.HasValue && levelIds.Contains(c.LevelId.Value));
             }
 
+
             if (!string.IsNullOrEmpty(priceRange))
             {
                 switch (priceRange)
                 {
-                    case "under50":
-                        query = query.Where(c => (c.Price - (c.Discount ?? 0m)) < 50m);
+                    case "free":
+                        query = query.Where(c => (c.Price - (c.Discount ?? 0m)) == 0m);
                         break;
-                    case "50to200":
-                        query = query.Where(c => (c.Price - (c.Discount ?? 0m)) >= 50m && (c.Price - (c.Discount ?? 0m)) <= 200m);
+
+                    case "under1m":
+                        query = query.Where(c => (c.Price - (c.Discount ?? 0m)) > 0m && (c.Price - (c.Discount ?? 0m)) < 1000000m);
                         break;
-                    case "200to500":
-                        query = query.Where(c => (c.Price - (c.Discount ?? 0m)) > 200m && (c.Price - (c.Discount ?? 0m)) <= 500m);
+
+                    case "1mto4m":
+                        query = query.Where(c => (c.Price - (c.Discount ?? 0m)) >= 1000000m && (c.Price - (c.Discount ?? 0m)) <= 4000000m);
                         break;
-                    case "500plus":
-                        query = query.Where(c => (c.Price - (c.Discount ?? 0m)) > 500m);
+
+                    case "4mto10m":
+                        query = query.Where(c => (c.Price - (c.Discount ?? 0m)) > 4000000m && (c.Price - (c.Discount ?? 0m)) <= 10000000m);
+                        break;
+
+                    case "10mplus":
+                        query = query.Where(c => (c.Price - (c.Discount ?? 0m)) > 10000000m);
                         break;
                 }
             }
@@ -512,7 +520,7 @@ namespace OnlineLearningPlatform.Services
 
             var query = from course in coursesQuery
                         join review in reviewsQuery on course.CourseId equals review.CourseId into courseReviews
-                        from latestReview in courseReviews.OrderByDescending(r => r.ReviewedAt).Take(1).DefaultIfEmpty() 
+                        from latestReview in courseReviews.OrderByDescending(r => r.ReviewedAt).Take(1).DefaultIfEmpty()
                         select new CourseListViewModel
                         {
                             CourseId = course.CourseId,

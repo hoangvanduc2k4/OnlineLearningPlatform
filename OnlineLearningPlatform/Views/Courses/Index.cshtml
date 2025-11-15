@@ -126,33 +126,45 @@
                             <div class="filter-group mt-3">
                                 <h5>Price</h5>
                                 <div class="filter-options">
+
                                     <label class="filter-checkbox d-block">
-                                        <input type="radio" name="priceRange" value="under50" @(currentPrice == "under50" ? "checked" : "") />
+                                        <input type="radio" name="priceRange" value="free" @(currentPrice == "free" ? "checked" : "") />
                                         <span class="checkmark"></span>
-                                        Dưới 1.000.000 VNĐ
+                                        Free
                                     </label>
+
                                     <label class="filter-checkbox d-block">
-                                        <input type="radio" name="priceRange" value="50to200" @(currentPrice == "50to200" ? "checked" : "") />
+                                        <input type="radio" name="priceRange" value="under1m" @(currentPrice == "under1m" ? "checked" : "") />
+                                        <span class="checkmark"></span>
+                                        Under 1.000.000 VNĐ
+                                    </label>
+
+                                    <label class="filter-checkbox d-block">
+                                        <input type="radio" name="priceRange" value="1mto4m" @(currentPrice == "1mto4m" ? "checked" : "") />
                                         <span class="checkmark"></span>
                                         1.000.000 - 4.000.000 VNĐ
                                     </label>
+
                                     <label class="filter-checkbox d-block">
-                                        <input type="radio" name="priceRange" value="200to500" @(currentPrice == "200to500" ? "checked" : "") />
+                                        <input type="radio" name="priceRange" value="4mto10m" @(currentPrice == "4mto10m" ? "checked" : "") />
                                         <span class="checkmark"></span>
                                         4.000.000 - 10.000.000 VNĐ
                                     </label>
+
                                     <label class="filter-checkbox d-block">
-                                        <input type="radio" name="priceRange" value="500plus" @(currentPrice == "500plus" ? "checked" : "") />
+                                        <input type="radio" name="priceRange" value="10mplus" @(currentPrice == "10mplus" ? "checked" : "") />
                                         <span class="checkmark"></span>
                                         Trên 10.000.000 VNĐ
                                     </label>
+
                                     <label class="filter-checkbox d-block">
                                         <input type="radio" name="priceRange" value="" @(string.IsNullOrEmpty(currentPrice) ? "checked" : "") />
                                         <span class="checkmark"></span>
-                                        Bất kỳ
+                                        Any
                                     </label>
                                 </div>
                             </div>
+
                             <div class="mt-3">
                                 <button type="submit" class="btn btn-primary w-100">Filters</button>
                             </div>
