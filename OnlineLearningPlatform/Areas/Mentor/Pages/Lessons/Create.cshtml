@@ -19,7 +19,7 @@
 
 <div class="row">
     <div class="col-md-9">
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" id="lessonForm">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <input type="hidden" asp-for="LessonVM.ModuleId" />
@@ -69,9 +69,9 @@
 
                 <div class="mb-2">
                     <label class="form-label">Or upload video file</label>
-                    <input type="file" name="VideoFile" accept=".mp4" class="form-control" />
-                    <small class="form-text text-muted">Allowed: mp4. Max 200 MB.</small>
-                    <span asp-validation-for="VideoFile" class="text-danger"></span>
+                    <input type="file" name="VideoFile" id="videoFileInput" accept=".mp4,.mov,.webm,.ogg" class="form-control" />
+                    <small class="form-text text-muted">Allowed: mp4, mov, webm, ogg. Max 200 MB.</small>
+                    <div id="uploadError" class="text-danger mt-1" role="alert" style="display:none;"></div>
                 </div>
             </div>
 
@@ -103,7 +103,43 @@
 </div>
 
 @section Scripts {
-    @{
+    @{ 
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script>
+        (function(){
+            const maxBytes = 200 * 1024 * 1024; // 200MB
+            const form = document.getElementById('lessonForm');
+            const fileInput = document.getElementById('videoFileInput');
+            const errorDiv = document.getElementById('uploadError');
+
+            if (form && fileInput) {
+                form.addEventListener('submit', function(e){
+                    errorDiv.style.display = 'none';
+                    errorDiv.innerText = '';
+                    const f = fileInput.files && fileInput.files[0];
+                    if (f) {
+                        if (f.size > maxBytes) {
+                            e.preventDefault();
+                            errorDiv.style.display = 'block';
+                            errorDiv.innerText = 'File quá lớn. Kích thước tối đa 200 MB.';
+                            fileInput.focus();
+                            return false;
+                        }
+                    }
+                });
+
+                // optional: show immediate feedback on file select
+                fileInput.addEventListener('change', function(){
+                    errorDiv.style.display = 'none';
+                    errorDiv.innerText = '';
+                    const f = fileInput.files && fileInput.files[0];
+                    if (f && f.size > maxBytes) {
+                        errorDiv.style.display = 'block';
+                        errorDiv.innerText = 'File quá lớn. Kích thước tối đa 200 MB.';
+                    }
+                });
+            }
+        })();
+    </script>
 }
