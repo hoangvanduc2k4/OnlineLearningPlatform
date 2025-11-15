@@ -26,6 +26,17 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
+    @{
+        var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+        var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+        var currentArea = ViewContext.RouteData.Values["area"]?.ToString();
+        Func<string, string, bool> isActiveController = (ctrl, act) =>
+            string.Equals(currentController, ctrl, StringComparison.OrdinalIgnoreCase) &&
+            string.Equals(currentAction, act, StringComparison.OrdinalIgnoreCase);
+        Func<string, bool> isActiveControllerOnly = (ctrl) =>
+            string.Equals(currentController, ctrl, StringComparison.OrdinalIgnoreCase);
+    }
+
     <header id="header" class="header d-flex align-items-center sticky-top">
         <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-center">
             <a class="logo d-flex align-items-center me-auto" asp-area="" asp-controller="Home" asp-action="Index">
@@ -33,11 +44,11 @@
             </a>
             <nav id="navmenu" class="navmenu mx-auto">
                 <ul>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index" class="active">Home</a></li>
-                    <li><a asp-area="" asp-controller="Courses" asp-action="Index">Courses</a></li> 
-                    <li><a asp-area="" asp-controller="Instructors" asp-action="Index">Mentors</a></li> 
-                    <li><a asp-area="" asp-controller="FAQs" asp-action="Index">FAQs</a></li> 
-                    <li><a asp-area="" asp-controller="Contact" asp-action="Index">Contact</a></li> 
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index" class="@(isActiveController("Home","Index") ? "active" : "")">Home</a></li>
+                    <li><a asp-area="" asp-controller="Courses" asp-action="Index" class="@(isActiveControllerOnly("Courses") ? "active" : "")">Courses</a></li>
+                    <li><a asp-area="" asp-controller="Instructors" asp-action="Index" class="@(isActiveControllerOnly("Instructors") ? "active" : "")">Mentors</a></li>
+                    <li><a asp-area="" asp-controller="FAQs" asp-action="Index" class="@(isActiveControllerOnly("FAQs") ? "active" : "")">FAQs</a></li>
+                    <li><a asp-area="" asp-controller="Contact" asp-action="Index" class="@(isActiveControllerOnly("Contact") ? "active" : "")">Contact</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
