@@ -14,15 +14,16 @@ namespace OnlineLearningPlatform.Models.ViewModels
         public string? Description { get; set; }
 
         [Required(ErrorMessage = "The Price field is required.")]
-        [Range(0, double.MaxValue, ErrorMessage = "Price must be a positive number.")]
+        [Range(1000, double.MaxValue, ErrorMessage = "Price must be at least 1.000 VND.")]
         [Display(Name = "Price")]
         public decimal Price { get; set; }
 
 
         [Display(Name = "Discount Price")]
         [Range(0, double.MaxValue, ErrorMessage = "Discount must be a positive number.")]
-        public decimal? Discount { get; set; }
+        public decimal Discount { get; set; }
 
+        [Required(ErrorMessage = "Please select a level.")]
         [Display(Name = "Level")]
         public long? LevelId { get; set; }
 
@@ -41,6 +42,17 @@ namespace OnlineLearningPlatform.Models.ViewModels
 
         public SelectList? Levels { get; set; }
         public List<CategoryViewModel>? AllCategories { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (Discount > Price)
+            {
+                yield return new ValidationResult(
+                    "Discount price cannot be higher than the original price.",
+                    new[] { nameof(Discount) } 
+                );
+            }
+        }
     }
 
     public class CategoryViewModel

@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
 using OnlineLearningPlatform.Enums;
+using OnlineLearningPlatform.Hubs;
 using OnlineLearningPlatform.Models.Entities.CoursePart;
 using OnlineLearningPlatform.Services.Interfaces;
 using X.PagedList;
@@ -13,10 +15,11 @@ namespace OnlineLearningPlatform.Areas.Admin.Pages.ReviewCourses
     public class IndexModel : PageModel
     {
         private readonly ICourseService _courseService;
-
-        public IndexModel(ICourseService courseService)
+        private readonly IHubContext<CRUDHub> _hub;
+        public IndexModel(ICourseService courseService, IHubContext<CRUDHub> hub)
         {
             _courseService = courseService;
+            _hub = hub;
         }
 
         public IPagedList<Course> PendingCourses { get; set; }

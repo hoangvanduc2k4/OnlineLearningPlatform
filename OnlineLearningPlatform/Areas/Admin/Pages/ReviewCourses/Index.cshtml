@@ -35,9 +35,9 @@
                 <table class="table table-striped table-hover mb-0">
                     <thead class="bg-light text-dark">
                         <tr>
+                            <th>ID</th>
                             <th>Course Name</th>
                             <th>Mentor</th>
-                            <th>Price</th>
                             <th>Date Submitted</th>
                             <th class="text-end">Actions</th>
                         </tr>
@@ -48,10 +48,10 @@
                             @foreach (var course in Model.PendingCourses)
                             {
                                 <tr>
-                                    <td><strong>@course.CourseName</strong></td>
+                                    <td>@course.CourseId</td>
+                                    <td>@course.CourseName</td>
                                     <td>@course.CreatorUser.FullName</td>
-                                    <td>$@course.Price.ToString("N2")</td>
-                                    <td>@(course.UpdatedAt?.ToString("dd MMM, yyyy"))</td>
+                                    <td>@(course.UpdatedAt?.ToString("dd/MM/yyyy"))</td>
                                     <td class="text-end">
                                         <a asp-page="./Details" asp-route-id="@course.CourseId" class="btn btn-sm btn-primary">
                                             <i class="bi bi-eye-fill"></i> Review
@@ -85,3 +85,9 @@
         </div>
     </div>
 </div>
+
+
+@section Scripts {
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/site.js"></script>
+}

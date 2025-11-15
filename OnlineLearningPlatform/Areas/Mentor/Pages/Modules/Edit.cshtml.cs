@@ -77,7 +77,6 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Modules
             var success = await _moduleService.UpdateModuleAsync(ModuleVM, mentorId);
             if (!success) return NotFound();
 
-            TempData["SuccessMessage"] = "Module updated successfully.";
             return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = ModuleVM.CourseId });
         }
     }

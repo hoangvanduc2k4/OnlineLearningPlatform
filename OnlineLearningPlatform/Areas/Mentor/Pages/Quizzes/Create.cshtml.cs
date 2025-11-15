@@ -85,7 +85,6 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
 
             await _quizService.CreateQuizAsync(Quiz);
             await _hub.Clients.All.SendAsync("loadQuizzes");
-            TempData["SuccessMessage"] = "Quiz created successfully.";
 
             return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = Quiz.CourseId });
         }

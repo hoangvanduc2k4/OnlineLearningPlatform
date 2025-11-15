@@ -124,7 +124,6 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
                 await _quizService.UpdateQuizAsync(existingQuiz);
                 await _hub.Clients.All.SendAsync("loadQuizzes");
 
-                TempData["SuccessMessage"] = "Quiz updated successfully.";
 
                 return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = Quiz.CourseId });
             }
@@ -156,7 +155,6 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Quizzes
 
             await _hub.Clients.All.SendAsync("loadQuizzes");
 
-            TempData["SuccessMessage"] = "Quiz has been hidden (deleted).";
 
             return RedirectToPage("/Courses/Manage", new { area = "Mentor", id = Quiz.CourseId });
         }

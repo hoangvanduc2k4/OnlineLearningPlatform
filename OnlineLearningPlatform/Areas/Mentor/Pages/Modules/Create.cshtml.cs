@@ -73,7 +73,6 @@ namespace OnlineLearningPlatform.Areas.Mentor.Pages.Modules
 
             Module newModule = await _moduleService.CreateModuleAsync(ModuleVM);
 
-            TempData["SuccessMessage"] = "Module created successfully.";
             return RedirectToPage("/Courses/Manage", new
             {
                 area = "Mentor",

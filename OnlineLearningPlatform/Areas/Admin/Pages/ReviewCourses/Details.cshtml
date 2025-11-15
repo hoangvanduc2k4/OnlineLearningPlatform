@@ -34,17 +34,10 @@
                     <hr />
 
                     <div class="row mb-3">
-                        <div class="col-md-3"><strong>Price:</strong> $@Model.CourseToReview.Price.ToString("N2")</div>
+                        <div class="col-md-3"><strong>Price:</strong> @Model.CourseToReview.Price.ToString("N2") VND</div>
                         <div class="col-md-3">
                             <strong>Discount:</strong>
-                            @if (Model.CourseToReview.Discount.HasValue && Model.CourseToReview.Discount > 0)
-                            {
-                                    <span class="text-danger">$@Model.CourseToReview.Discount.Value.ToString("N2")</span>
-                            }
-                            else
-                            {
-                                    <span class="text-muted">N/A</span>
-                            }
+                            @((Model.CourseToReview.Discount ?? 0).ToString("N2")) VND
                         </div>
                         <div class="col-md-3"><strong>Level:</strong> @Model.CourseToReview.Level?.LevelName</div>
                         <div class="col-md-3"><strong>Study Time:</strong> @Model.CourseToReview.StudyTime</div>
@@ -147,3 +140,8 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/site.js"></script>
+}
