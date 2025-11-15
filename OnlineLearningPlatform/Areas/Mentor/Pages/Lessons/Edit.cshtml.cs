@@ -17,6 +17,8 @@ using System.IO;
 namespace OnlineLearningPlatform.Areas.Mentor.Pages.Lessons
 {
     [Authorize(Roles = "Mentor")]
+    [RequestSizeLimit(200_000_000)] // 200 MB
+
     public class EditModel : PageModel
     {
         private readonly ILessonService _lessonService;
