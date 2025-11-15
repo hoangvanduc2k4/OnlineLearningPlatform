@@ -20,13 +20,5 @@
                 <i class="bi bi-key me-2"></i> Password
             </a>
         </li>
-        @if (hasExternalLogins)
-        {
-            <li class="nav-item mb-2" id="external-logins">
-                <a id="external-login" class="nav-link d-flex align-items-center @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">
-                    <i class="bi bi-box-arrow-in-right me-2"></i> External logins
-                </a>
-            </li>
-        }
     </ul>
 </nav>
