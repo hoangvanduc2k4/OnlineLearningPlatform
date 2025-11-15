@@ -78,8 +78,7 @@ namespace OnlineLearningPlatform.Services
                 );
             }
 
-
-            filtered = filtered.OrderBy(f => f.FaqId);
+            filtered = filtered.OrderByDescending(f => f.CreatedAt);
 
             IEnumerable<FAQsViewModel> vmEnumerable = filtered
                 .Select(f => _mapper.Map<FAQsViewModel>(f));
@@ -105,7 +104,7 @@ namespace OnlineLearningPlatform.Services
                 );
             }
 
-            filtered = filtered.OrderBy(f => f.FaqId);
+            filtered = filtered.OrderByDescending(f => f.CreatedAt);
             IPagedList<FAQ> pagedResult = filtered.ToPagedList(pageNumber, pageSize);
             return pagedResult;
         }

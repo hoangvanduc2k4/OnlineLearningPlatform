@@ -27,7 +27,7 @@ namespace OnlineLearningPlatform.Controllers
             {
                 try
                 {
-                    var recipientEmail = "nguyenhoangson07122004@gmail.com";
+                    var recipientEmail = "notificationsystem404@gmail.com";
                     var subject = $"Contact message from {model.Name}: {model.Subject}";
 
                     var messageBody = $@"

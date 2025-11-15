@@ -46,7 +46,7 @@
                 <ul>
                     <li><a asp-area="" asp-controller="Home" asp-action="Index" class="@(isActiveController("Home","Index") ? "active" : "")">Home</a></li>
                     <li><a asp-area="" asp-controller="Courses" asp-action="Index" class="@(isActiveControllerOnly("Courses") ? "active" : "")">Courses</a></li>
-                    <li><a asp-area="" asp-controller="Instructors" asp-action="Index" class="@(isActiveControllerOnly("Instructors") ? "active" : "")">Mentors</a></li>
+                    @* <li><a asp-area="" asp-controller="Instructors" asp-action="Index" class="@(isActiveControllerOnly("Instructors") ? "active" : "")">Mentors</a></li> *@
                     <li><a asp-area="" asp-controller="FAQs" asp-action="Index" class="@(isActiveControllerOnly("FAQs") ? "active" : "")">FAQs</a></li>
                     <li><a asp-area="" asp-controller="Contact" asp-action="Index" class="@(isActiveControllerOnly("Contact") ? "active" : "")">Contact</a></li>
                 </ul>

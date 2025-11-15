@@ -111,7 +111,12 @@ namespace OnlineLearningPlatform.Controllers
             if (course == null)
             {
                 TempData.Remove("IsProcessingCheckout");
-                return NotFound("Not found!");
+                return RedirectToAction("Details", new { id = courseId });
+            }
+            if (course.Status != Enums.CourseStatus.Approved)
+            {
+                TempData.Remove("IsProcessingCheckout");
+                return RedirectToAction("Details", new { id = courseId });
             }
 
             var discountAmount = course.Discount ?? 0;

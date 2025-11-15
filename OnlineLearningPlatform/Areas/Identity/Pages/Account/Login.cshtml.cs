@@ -65,15 +65,15 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required(ErrorMessage = "Email không được để trống")]
-            [EmailAddress(ErrorMessage = "Email không đúng định dạng")]
+            [Required(ErrorMessage = "Email must not be empty.")]
+            [EmailAddress(ErrorMessage = "Email is invalid format.")]
             public string Email { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required(ErrorMessage = "Mật khẩu không được để trống")]
+            [Required(ErrorMessage = "Password must not be empty.")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
@@ -81,7 +81,7 @@ namespace OnlineLearningPlatform.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Display(Name = "Ghi nhớ đăng nhập?")]
+            [Display(Name = "Remember me.")]
             public bool RememberMe { get; set; }
         }
 
