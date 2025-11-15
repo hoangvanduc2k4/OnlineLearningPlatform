@@ -26,7 +26,7 @@
                         <h5 class="mb-0">@partner.FullName</h5>
                     </div>
                     <a href="@Url.Action("Index", "Chat")" class="btn btn-sm btn-light">
-                        <i class="fas fa-arrow-left me-1"></i> Quay lại
+                        <i class="fas fa-arrow-left me-1"></i> Back
                     </a>
                 </div>
                 <div class="card-body bg-light" id="chat-messages" style="height: 400px; overflow-y: auto;">
@@ -34,8 +34,8 @@
                     {
                         <div class="text-center py-5">
                             <i class="fas fa-comments fa-4x text-muted mb-3"></i>
-                            <p class="lead">Chưa có tin nhắn nào.</p>
-                            <p>Hãy bắt đầu cuộc trò chuyện!</p>
+                            <p class="lead">No messages yet.</p>
+                            <p>Let's start the conversation!</p>
                         </div>
                     }
                     else
@@ -62,9 +62,9 @@
                     <form id="messageForm" asp-action="SendMessage" asp-controller="Chat" method="post">
                         <input type="hidden" name="receiverId" value="@partner.Id" />
                         <div class="input-group">
-                            <input type="text" id="messageInput" name="content" class="form-control" placeholder="Nhập tin nhắn..." required>
+                            <input type="text" id="messageInput" name="content" class="form-control" placeholder="Enter message..." required>
                             <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-paper-plane me-1"></i> Gửi
+                                <i class="fas fa-paper-plane me-1"></i> Send
                             </button>
                         </div>
                     </form>
